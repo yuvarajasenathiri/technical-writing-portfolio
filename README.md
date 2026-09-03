@@ -79,11 +79,10 @@ Sample of a structured DITA XML component library (120+ topics across 3 product 
 
 | Company | Role | Period | Project | Focus | 
 |---|---|---|---|---|
-| R Systems International | Lead Engineer – Technical Writing | Aug 2022 – Present | SyncoraDMP (MES Platfrom) | User Guides, API docs, DITA XML, MES platform (B2B SaaS) |
-| Axiscades Technologies | Senior Engineer – Technical Writing | Jan – Jul 2022 | Boeing aerospace product documentation | xxx |
-| Raytheon Technologies | Associate Engineer – Technical Writing | Jul 2019 – Dec 2021 | Defense & aerospace software docs | xxx |
-| Capgemini Tech. Services | Process Associate – Technical Writing | Apr 2017 – Jul 2019 | Fintech product documentation | xxx |
-| Air India Engineering Services | Trainee – Technical Writing | Sep 2016 – Mar 2017 | Aircraft maintenance documentation | xxx |
+| R Systems International Ltd. | Lead Engineer – Technical Writing | Aug 2022 – Present | SyncoraDMP (MES Platfrom) | User Guides, System Admin Guides, Context-Sensitive Help, API docs, REST API References, Release Notes, Developer Onboarding Guides |
+| Axiscades Technologies Ltd. | Senior Engineer – Technical Writing | Jan – Jul 2022 | Enterprise Web Applications (Boeing) | User Manuals, Online Help Systems |
+| Raytheon Technologies | Associate Engineer – Technical Writing | Jul 2019 – Dec 2021 | Embedded and Enterprise Applications | User Manuals, Installation Guides, Operator Manuals, Troubleshooting Guides |
+| Capgemini Tech. Services | Process Associate – Technical Writing | Apr 2017 – Jul 2019 | Fintech Enterprise Applications | User Manuals, Online Help Systems, Context-Sensitive Help, Release Notes |
 
 ## 🏆 Key Achievements
 - Delivered end-to-end API documentation for a high-priority B2B integration project, producing 80+ REST API reference topics within sprint timelines and achieving zero post-release documentation corrections.
@@ -91,11 +90,11 @@ Sample of a structured DITA XML component library (120+ topics across 3 product 
 - Mentored 2 junior Technical Writers and implemented a peer-review process with standardized style guides, reducing first-pass SME review iterations by approximately two cycles per release and improving documentation quality consistency.
 
 ## 🎓 Education & Certifications
-- B.E, Aeronautical Engineering — Nehru Institute of Technology, Anna University (2012 - 2016)
+- Bachelor of Engineering (B.E.) in Aeronautical Engineering | Nehru Institute of Technology, Anna University | (2012 - 2016) | CCPA: 8.3
 - Oxygen XML Editor (DITA XML) for Technical Documentation | Udemy | 2021
 - API & Developer Documentation (Swagger/OAS, REST API, JSON & XML) | Udemy | 2022
 - Git & GitHub for Documentation Workflows | Udemy | 2022
-- Business Analysis Fundamentals (IIBA Endorsed) — Udemy/IIBA, 2025
+- Business Analysis Fundamentals (IIBA Endorsed) | Udemy/IIBA | 2025
 
 ---
 
