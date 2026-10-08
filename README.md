@@ -77,12 +77,34 @@ Sample of a structured DITA XML component library (120+ topics across 3 product 
 
 ## 💼 Experience Summary
 
-| Company | Role | Period | Project | Focus | 
+| Role | Company | Period | Project | Focus | 
 |---|---|---|---|---|
-| R Systems International Ltd. | Lead Engineer – Technical Writing | Aug 2022 – Present | SyncoraDMP (MES Platfrom) | User Guides, System Admin Guides, Context-Sensitive Help, API docs, REST API References, Release Notes, Developer Onboarding Guides |
-| Axiscades Technologies Ltd. | Senior Engineer – Technical Writing | Jan – Jul 2022 | Enterprise Web Applications (Boeing) | User Manuals, Online Help Systems |
-| Raytheon Technologies | Associate Engineer – Technical Writing | Jul 2019 – Dec 2021 | Embedded and Enterprise Applications | User Manuals, Installation Guides, Operator Manuals, Troubleshooting Guides |
-| Capgemini Tech. Services | Process Associate – Technical Writing | Apr 2017 – Jul 2019 | Fintech Enterprise Applications | User Manuals, Online Help Systems, Context-Sensitive Help, Release Notes |
+| Lead Engineer – Technical Writing | R Systems International Ltd. | Aug 2022 – Sep 2026 | SyncoraDMP (MES Platfrom) | User Guides, System Admin Guides, Context-Sensitive Help, API docs, REST API References, Release Notes, Developer Onboarding Guides |
+| Senior Engineer – Technical Writing | Axiscades Technologies Ltd. | Jan – Jul 2022 | Enterprise Web Applications | User Manuals, Online Help Systems |
+| Associate Engineer – Technical Writing | Raytheon Technologies | Jul 2019 – Dec 2021 | Embedded and Enterprise Applications | User Manuals, Installation Guides, Operator Manuals, Troubleshooting Guides |
+| Process Associate – Technical Writing | Capgemini Tech. Services | Apr 2017 – Jul 2019 | Fintech Enterprise Applications | User Manuals, Online Help Systems, Context-Sensitive Help, Release Notes |
+
+## 📁 Projects
+
+### SyncorDMP (MES Platform)
+Authored and maintained a 150+ page documentation suite covering user guides, developer onboarding guides, release notes, and REST API references, strengthening self-service adoption and reducing support escalations.
+- **Technology Stack:** DITA XML, B2B SaaS, OpenAPI Specifications (OAS), REST APIs, JSON/YAML, Docs-as-Code, SDLC, DDLC
+- **Tools & Platforms:** Oxygen XML Editor, Swagger, Confluence, Markdown, Postman, Jira, Git/GitHub, SnagIt
+
+### Enterprise Web Applications
+Created and enhanced user manuals, online help systems, and technical documentation for Enterprise Web Applications, collaborating with cross-functional teams to improve content accuracy and usability.
+- **Technology Stack:** DITA XML, Enterprise Software, Agile/Scrum, SDLC, DDLC, MSTP
+- **Tools & Platforms:** MadCap Flare, Jira, Git/GitHub, SnagIt
+
+### Embedded and Enterprise Applications
+Authored user manuals, installation guides, and troubleshooting guides, coordinating documentation delivery across multiple product releases and developing a reusable DITA XML component library.
+- **Technology Stack:** DITA XML, Enterprise Software, Agile/Scrum, SDLC, DDLC, STE
+- **Tools & Platforms:** Oxygen XML Editor, Jira, Git/GitHub, SnagIt
+
+### Fintech Enterprise Applications
+Produced user manuals and online help content, conducted audience analysis to develop targeted documentation strategies, and published release bulletins for product releases.
+- **Technology Stack:** SGML, Enterprise Software, Agile/Scrum, SDLC, DDLC, STE
+- **Tools & Platforms:** Arbortext Epic Editor (SGML), WMT, SnagIt
 
 ## 🏆 Key Achievements
 - Delivered end-to-end API documentation for a high-priority B2B integration project, producing 80+ REST API reference topics within sprint timelines and achieving zero post-release documentation corrections.
