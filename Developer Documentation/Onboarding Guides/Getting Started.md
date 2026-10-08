@@ -7,9 +7,10 @@ SmartHive Projects APIs require a mandatory header.
 1. `Authorization`: The OAuth access token to authenticate the user accessing data.
 
 **Example:**
-
-```curl -X GET https://projects.smarthive.com/api/v3/portal/{portal_id}/tasks  
-    -H "Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa"```
+```
+curl -X GET https://projects.smarthive.com/api/v3/portal/{portal_id}/tasks  
+-H "Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa"
+```
 	
 ## What's New in V3
 
@@ -18,9 +19,12 @@ Updates to areas like date formats, filtering, custom fields, and pagination mak
 what's new in v3, what has been updated, and what to review when moving from v2.
 
 **V3 API - Quick Example:**
-```GET /api/v3/portal/{portal_id}/projects
-Authorization: Bearer {token}```
-```Response:
+```
+GET /api/v3/portal/{portal_id}/projects
+Authorization: Bearer {token}
+```
+```
+Response:
 {
   "page_info": {
     "page": 1,
@@ -29,6 +33,7 @@ Authorization: Bearer {token}```
     "has_next_page": true
   },
   "projects": [...]
-}```
+}
+```
 
 
