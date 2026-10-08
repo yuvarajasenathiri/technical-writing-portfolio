@@ -22,6 +22,7 @@ what's new in v3, what has been updated, and what to review when moving from v2.
 ```
 GET /api/v3/portal/{portal_id}/projects
 Authorization: Bearer {token}
+
 Response:
 {
   "page_info": {
@@ -81,4 +82,42 @@ All date and time values follow a single ISO 8601 format across endpoints. This 
 | Date input format   | `MM-DD-YYYY`       | `YYYY-MM-DD`      |
 
 The `*_long` epoch fields are removed. ISO 8601 timestamps are universally parseable.
+
+### Advanced filtering
+
+You can define multiple conditions within a single request using a structured filter object. Filtering is processed entirely on the server, so only relevant records are returned.
+
+- **Supported conditions:**
+	- `is`
+	- `is_not`
+	- `contains`
+	- `starts_with`
+	- `before`
+	- `after`
+	- `is_empty`
+	- `is_not_empty`
+	- `between`
+	
+**Advanced Filter**
+```
+{
+  "filter": {
+    "criteria": [
+    {
+      "field_name": "due_date",
+      "criteria_condition": "today"
+    },
+    {
+      "field_name": "assignee",
+      "criteria_condition": "is",
+      "value": ["user_zpuid"]
+    }
+  ],
+  "pattern": "1 AND 2"
+  }
+}
+```
+
+- **Pattern logic:** Combine conditions using `AND`, `OR`, and grouping - for example, `"(1 OR 2) AND 3"`
+- **Custom field support:** Use the `api_name` of any custom field as the criteria `field_name`
 
