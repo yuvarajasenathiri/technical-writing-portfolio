@@ -98,7 +98,7 @@ You can define multiple conditions within a single request using a structured fi
 	- `is_not_empty`
 	- `between`
 	
-**Advanced Filter**
+**Advanced Filter - Quick Example**
 ```
 {
   "filter": {
@@ -121,3 +121,120 @@ You can define multiple conditions within a single request using a structured fi
 - **Pattern logic:** Combine conditions using `AND`, `OR`, and grouping - for example, `"(1 OR 2) AND 3"`
 - **Custom field support:** Use the `api_name` of any custom field as the criteria `field_name`
 
+For the complete syntax reference, see the Filter Guide.
+
+### Standardized Custom fields
+
+Custom fields now use clear and consistent api_name values. This makes it easier to reference them across requests, filters, and responses without additional mapping.
+
+|      | V2 | V3 |
+| :---        | :----  |      :---- |
+| In requests     | `UDF_CHAR1`, `UDF_LONG2`      | `expected_date`, `priority_level` |
+| In responses   | Same **UDF_** keys, no context      | Same **api_name**, consistent everywhere     |
+
+**V3 Custom Field in Response**
+```
+{
+  "expected_date": "2024-05-26"
+}
+```
+**V3 Custom Field in Filter**
+```
+{
+  "criteria": [
+    {
+      "field_name": "expected_date",
+      "criteria_condition": "is",
+      "value": ["2024-05-26"]
+    }
+  ]
+}
+```
+
+
+- **Stable references** - field identifiers don't shift when other fields are added or removed
+- **Works everywhere** - same `api_name` in requests, responses, and filter criteria
+
+For full details, see Custom Fields.
+
+### Request and Response Structure
+
+The same field structure is used in both requests and responses. This improves predictability and reduces the need for transformation logic when handling API data.
+
+|  Aspect    | V2/restapi | V3/api/v3 |
+| :---        | :----  |      :---- |
+| Content Type     | *application/x-www-form-urlencoded*     | *application/json* |
+| Body Style   | Flat, form-encoded parameters      | SJSON body, nested objects     |
+| Dates   | Mixed formats (MM-DD-YYYY, epoch, text)     | ISO 8601 everywhere     |
+| Related Data   | Flat fields *(person_responsible, assignee_name)*     | Grouped objects *(assignee, status)*    |
+| List Responses   | No pagination metadata      | *page_info* block with *has_next_page*     |
+
+**V3 Request (JSON)**
+```
+POST /api/v3/portal/{portal_id}/projects/{project_id}/tasks
+Content-Type: application/json
+
+{
+  "name": "Task Name",
+  "assignee": { "zpuid": "user_id" },
+  "due_date": "2024-05-26",
+  "priority": "High"
+}
+```
+**V3 Response**
+```
+{
+  "page_info": {
+    "page": 1,
+    "per_page": 100,
+    "page_count": 100,
+    "has_next_page": true
+  },
+  "tasks": [
+    {
+      "id": "12345",
+      "name": "Task Name",
+      "due_date": "2024-05-26T00:00:00.000Z",
+      "assignee": {
+        "zpuid": "...",
+        "name": "John Doe",
+        "email": "..."
+      },
+      "status": {
+        "id": "...",
+        "name": "Open",
+        "color": "#...",
+        "is_closed_type": false
+      }
+    }
+  ]
+}
+```
+
+### Pagination
+
+Pagination is now page-based, making it easier to work with large datasets.
+
+ - Use page and per_page to control results
+ - has_next_page indicates if more records are available
+ - Avoids duplicate or skipped records
+ - No need for manual offset calculations
+ 
+ For full details and examples, see Pagination.
+ 
+ ### Base URL Structure
+ 
+ All endpoints in v3 follow a consistent URL pattern. The base URL is simplified and standardized, and trailing slashes are no longer required. This makes it easier to construct and predict endpoint URLs across the API.
+ 
+|      | V2 | V3 |
+| :---        | :----  |      :---- |
+| Base URL    | */restapi/portal/{portal_id}/projects/*    | *api/v3/portal/{portal_id}/projects* |
+| Trailing slashes   | Some endpoints require trailing `/`      | No trailing slashes     |
+
+| Operation | V2 | V3 |
+| :---        | :----  |      :---- |
+| List tasks   | *GET /restapi/portal/{portal_id}/projects/{project_id}/tasks/*    | *GET api/v3/portal/{portal_id}/projects/{project_id}/tasks* |
+
+**Note**
+
+- If you're migrating from V2, update all endpoint URLs - the `/restapi/` prefix is replaced with `/api/v3/`.
