@@ -238,3 +238,29 @@ Pagination is now page-based, making it easier to work with large datasets.
 **Note**
 
 - If you're migrating from V2, update all endpoint URLs - the `/restapi/` prefix is replaced with `/api/v3/`.
+
+### Quick Comparison
+
+|  Area    | V2(/restapi) | V3(/api/v3) |
+| :---        | :----  |      :---- |
+| URL Pattern    | */restapi/portals/*    | */api/v3/portals* |
+| Date Format   | `"05-26-2014"` or `"May 26, 2014"` or `1399620397255`     | `"2024-05-26"` (date only) or `"2024-05-26T11:25:58.000Z"` (ISO 8601)     |
+| Pagination   | `index` + `range` (offset-based)   | `"page` + `per_page` with `has_next_page`     |
+| HTTP Method for Updates  | POST   | PATCH     |
+| Custom Fields  | `UDF_` prefix (for example, `UDF_CHAR1)` | `api_name` (for example, `"expected_date"`)    |
+| Request / Response Schema  | Fields sent in requests often differed from response field names | Request and response use the same field structure throughout    |
+| API Coverage | Limited modules and endpoints | Additional modules and endpoints, significantly expanding the overall API surface area   |
+
+**V3 Update Task Example**
+```
+PATCH /api/v3/portal/{portal_id}/projects/{project_id}/tasks/{task_id}
+Content-Type: application/json
+
+{
+  "assignee": {
+    "zpuid": "user_id"
+  },
+  "due_date": "2024-05-26",
+  "cf_priority_level": "High"
+}
+```
