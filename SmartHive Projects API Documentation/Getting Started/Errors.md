@@ -1,6 +1,6 @@
 # Error Codes
 
-Zoho Projects uses HTTP status codes to indicate success or failure of API calls. Status codes 2xx indicate success, 4xx indicate error in the information provided, and 5xx indicate server side errors. 
+SmartHive Projects uses HTTP status codes to indicate success or failure of API calls. Status codes 2xx indicate success, 4xx indicate error in the information provided, and 5xx indicate server side errors. 
 The following table lists some commonly used HTTP status codes.
 
 ## Status Codes
@@ -25,7 +25,7 @@ The following table lists some commonly used HTTP status codes.
 
 ## Other Error Responses
 
-Besides HTTP status codes and their corresponding error messages, error responses for Zoho Projects APIs also include a machine-parsable errorCode param to simplify error handling.
+Besides HTTP status codes and their corresponding error messages, error responses for SmartHive Projects APIs also include a machine-parsable errorCode param to simplify error handling.
 
 The different errorCodes and their uses are described below.
 
@@ -91,6 +91,7 @@ The HTTP request specified has an invalid input parameter.
     ]
   }
 }
+```
 
 ### INVALID_METHOD 400
 
