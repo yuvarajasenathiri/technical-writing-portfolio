@@ -118,8 +118,7 @@ Allows selection of multiple users from a predefined list. You can add or remove
 "remove": [ 
 { "zpuid": "User Id 4" }, 
 { "zpuid": "User Id 5" } 
-] 
-}]}
+]}]}
 ```
 **Example:** 
 ```
@@ -131,8 +130,7 @@ Allows selection of multiple users from a predefined list. You can add or remove
 "remove": [ 
 { "zpuid": "778946456" }, 
 { "zpuid": "71346753132" } 
-] 
-}]}
+]}]}
 ```
 
 ## Date Field
@@ -240,6 +238,3 @@ Captures web links. If no protocol is specified, https:// is used by default. Ma
 
 **JSON Schema:** `{ "key": "string"}`
 **Example:** `{"link":"https://projects.smartHive.com"}`
-
-
-
