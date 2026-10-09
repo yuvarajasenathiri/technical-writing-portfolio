@@ -30,7 +30,7 @@ Retry-After = 540 (seconds remaining)
 **Note:** Retry-After key is returned only when the rate limit has been exceeded.
 ```
 
-**Rate Limit Exceeded**
+## Rate Limit Exceeded
 
 If the number of requests exceeds the allowed limit:
 
