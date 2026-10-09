@@ -138,3 +138,250 @@ Range-based conditions such as `between` using exactly two values, and the forma
 - `is_not` with multiple values = **AND** logic (excludes all).
 - All other conditions accept a single value (or exactly 2 for `between` / `not_between`).
 - Preset conditions (`today`, `is_empty`, etc.) do not require a `value` array.
+
+## Conditions Reference
+
+### Text Conditions
+
+Used for text-based fields such as name, email, and custom fields, where matching is based on keywords or exact values. All comparisons are case-insensitive.
+
+| Condition    | API Value | What it does | Value |
+| :---        | :----  |      :---- | :---- |
+| Contains    | `contains`     | Matches if the field has the substring anywhere  | `["review"]` |
+| Doesn't contain   | `not_contains`       | Excludes records containing the substring  | `["test"]` |
+| Starts with  | `starts_with`       | Matches the beginning of the field value    | `["API"]` |
+| Ends with  | ZPUID      | `["4000000006061"]`   | Single value for most conditions |
+| Is  | `is`      | Exact match. Multiple values = OR logic  | `["High"]` or `["High", "Medium"]` |
+| Is not  | `is_not`      | Excludes exact matches. Multiple values = AND logic  | `["Low", "None"]` |
+
+**Text: Contains**
+
+```
+{
+  "criteria": [
+    {
+      "field_name": "name",
+      "criteria_condition": "contains",
+      "value": ["review"]
+    }
+  ],
+  "pattern": "1"
+}
+```
+**Multi-Value IS**
+
+```
+{
+  "criteria": [
+    {
+      "field_name": "waiting_for",
+      "criteria_condition": "is",
+      "value": ["frontend", "backend"]
+    }
+  ],
+  "pattern": "1"
+}
+```
+
+**Tip**
+
+- `contains`, `not_contains`, `starts_with`, and `ends_with` accept only a single value. Only `is` and `is_not` support multiple values in the array.
+
+### Comparison Conditions
+
+Used for numeric and date fields, where values are evaluated based on comparisons like greater than, less than, or within a range.
+
+| Condition    | API Value | What it does | Value |
+| :---        | :----  |      :---- | :---- |
+| Is  | `is`      | Exact match. Multiple values = OR logic  | `["100"]` or `["100", "200"]` |
+| Is not  | `is_not`      | Excludes exact matches. Multiple values = AND logic  | `["0"]` |
+| Less than    | `less_than`     | Field value is less than the given value  | `["50"]` |
+| Less than or equal   | `less_than_or_equal`       | Field value is less than or equal  | `["50"]` |
+| Greater than  | `greater_than`       | Field value is greater than the given value    | `["50"]` |
+| Greater than or equal  | `greater_than_or_equal`      | Field value is greater than or equal   | `["50"]` |
+| Between    | `between`     | Field value within range (inclusive)  | `["10", "100"]` |
+| Not between   | `not_between`       | Field value outside range  | `["10", "100"]` |
+
+**Date: Between**
+
+```
+{
+  "criteria": [
+    {
+      "field_name": "start_date",
+      "criteria_condition": "between",
+      "value": ["2024-11-01", "2024-11-30"]
+    }
+  ],
+  "pattern": "1"
+}
+```
+
+**Numeric: Greater Than**
+
+```
+{
+  "criteria": [
+    {
+      "field_name": "percentage_completion",
+      "criteria_condition": "greater_than",
+      "value": ["50"]
+    }
+  ],
+  "pattern": "1"
+}
+```
+
+**Tip**
+- For date fields, use `YYYY-MM-DD` format. Single value: `["2024-11-01"]`. Range: `["2024-11-01", "2024-11-30"]`.
+
+## Frequently Used Filters
+
+Ready-made filter payloads for the most common requests. Copy a payload, URL-encode it, and pass it as the `filter` query parameter. These filters work across modules such as tasks, issues, and custom modules. 
+
+### Filter by Open Status
+
+Returns all open tasks in a single request.
+
+Uses `status` with the `custom_condition` operator and the `${ALL_OPEN}` value.
+
+**Filter by Open Status**
+
+```
+{
+  "criteria": [
+    {
+      "field_name": "status",
+      "criteria_condition": "custom_condition",
+      "value": ["${ALL_OPEN}"]
+    }
+  ],
+  "pattern": "1"
+}
+```
+### Filter by Closed Status
+
+Returns all closed tasks in a single request.
+
+Uses `status` with the `custom_condition` operator and the `${ALL_CLOSED}` value.
+
+**Filter by Closed Status**
+
+```
+{
+  "criteria": [
+    {
+      "field_name": "status",
+      "criteria_condition": "custom_condition",
+      "value": ["${ALL_CLOSED}"]
+    }
+  ],
+  "pattern": "1"
+}
+```
+
+### Filter by Status
+
+Returns tasks in a specific status.
+
+Uses `status` with the `is` condition and the status ID as the value.
+
+**Filter by Status**
+
+```
+{
+  "criteria": [
+    {
+      "field_name": "status",
+      "criteria_condition": "is",
+      "value": ["268026000001877009"]
+    }
+  ],
+  "pattern": "1"
+}
+```
+
+### Filter by Owner
+
+Returns tasks owned by a specific user.
+
+Uses `owner` with the `is` condition and the user's ZPUID as the value.
+
+**Filter by Owner**
+
+```
+{
+  "criteria": [
+    {
+      "field_name": "owner",
+      "criteria_condition": "is",
+      "value": ["268026000002340076"]
+    }
+  ],
+  "pattern": "1"
+}
+```
+
+### Filter by Name
+
+Returns tasks whose name contains the given text.
+
+Uses `name` with the `contains` condition and the search text as the value.
+
+**Filter by Name**
+
+```
+{
+  "criteria": [
+    {
+      "field_name": "name",
+      "criteria_condition": "contains",
+      "value": ["test"]
+    }
+  ],
+  "pattern": "1"
+}
+```
+
+### Filter by Created Time
+
+Returns tasks created after a specific point in time.
+
+Uses `created_time` with the `greater_than` condition and a `YYYY-MM-DD` value.
+
+**Filter by Created Time**
+
+```
+{
+  "criteria": [
+    {
+      "field_name": "created_time",
+      "criteria_condition": "greater_than",
+      "value": ["2026-03-01"]
+    }
+  ],
+  "pattern": "1"
+}
+```
+
+### Filter by Last Modified Time
+
+Returns tasks last updated after a specific date.
+
+Uses `last_updated_time` with the `greater_than` condition and a `YYYY-MM-DD` value.
+
+**Filter by Last Modified Time**
+
+```
+{
+  "criteria": [
+    {
+      "field_name": "last_updated_time",
+      "criteria_condition": "greater_than",
+      "value": ["2026-03-01"]
+    }
+  ],
+  "pattern": "1"
+}
+```
+
