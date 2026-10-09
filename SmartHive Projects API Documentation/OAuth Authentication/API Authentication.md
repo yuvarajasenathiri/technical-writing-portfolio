@@ -34,7 +34,8 @@ For detailed information, refer to the OAuth documentation.
 
 ### Multi DC support
 
-SmartHive operates data centers in multiple regions. If your application serves users across regions, you must enable Multi DC support in the API console and use region-specific endpoints for both OAuth and SmartHive Projects API calls.
+SmartHive operates data centers in multiple regions. If your application serves users across regions, you must enable Multi DC support in the API console and use region-specific endpoints 
+for both OAuth and SmartHive Projects API calls. See Multi-DC Support.
 
 ## Scopes
 
@@ -77,3 +78,20 @@ You can also use this option when your application is a standalone server-side a
 	**Important:** The grant token expires after this time.
 6. In the **Scope Description**, enter a description, and then select **Create**. The organization-specific grant token for the specified scopes appears.
 7. Copy the grant token.
+
+### API endpoints by data center
+
+When making API calls, you must use the base URL corresponding to your user's data center. The access token response identifies the user's data center through the `location` and `api_domain` 
+values - use it to pick the matching SmartHive Projects base URL from the table below.
+
+| Data center   | API base URL |
+| :---        | :----  |      
+| United States (US)    | https://projects.smarthive.com      |
+| European Union (EU)   | https://projects.smarthive.eu |
+| India (IN)   | https://projects.smarthive.in     |
+| Australia (AU)   | https://projects.smarthive.com.au     |
+| Japan (JP)   | https://projects.smarthive.jp   |
+| United Kingdom (UK)  | https://projects.smarthive.uk     |
+
+**Important:** Never hardcode a single region's URL. Resolve the user's data center from the `location` / `api_domain` value in the access token response, then use the corresponding SmartHive Projects 
+base URL from the table above. See Multi-DC Support.
