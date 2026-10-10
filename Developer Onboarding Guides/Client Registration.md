@@ -35,4 +35,4 @@ After you register your application, you receive a client ID and client secret. 
 
 You can find the client ID and client secret on the Client Secret tab of your application in the console.
 
-To learn more about self clients, see Self client.
+To learn more about self client, see Self client.
