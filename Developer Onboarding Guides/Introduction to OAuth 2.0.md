@@ -2,15 +2,15 @@
 
 ## What is OAuth 2.0?
 
-OAuth 2.0 is an industry standard protocol which allows you to grant a third-party website or an application (i.e., a client) delegated access to the protected resources of SmartHive via SmartHive APIs. 
-It is a way to authenticate and authorize API requests made to SmartHive.
+OAuth 2.0 is an industry-standard protocol that lets you grant a third-party website or app (a client) delegated access to protected SmartHive resources through SmartHive APIs. It authenticates and 
+authorizes API requests made to SmartHive.
 
 ## Advantages of OAuth 2.0
 
-- Clients are not required to support password authentication or store user credentials, because the authentication and authorization is done by exchanging OAuth tokens.
-- Clients gain delegated access, i.e., access only to resources authorized by the user.
-- Users can revoke third-party application's delegated access anytime.
-- OAuth access tokens expire after a set time. If the client faces a security breach, user data will be compromised only until the access token is valid.
+- Clients don’t need to support password authentication or store user credentials, because OAuth tokens handle authentication and authorization.
+- Clients get delegated access only to the resources that the user authorizes.
+- Users can revoke a third-party app’s delegated access at any time.
+- OAuth access tokens expire after a set time. If a security breach affects a client, user data is at risk only while the access token is valid.
 
 ## OAuth 2.0 workflow
 

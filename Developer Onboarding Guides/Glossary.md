@@ -2,16 +2,26 @@
 
 | Term    | Description |
 | :---        | :----  |      
-| Protected resource    | It is the data present in a SmartHive service that the client wants to access. For example, if the client wants to access the records module in SmartHive MES using an API, then the records module is called the protected resource. The record module can be accessed by the client only after proper authorization using OAuth, hence then name protected resource.      |
-| Resource owner   | Resource owner is the user who can grant permission to the client and in turn access to the protected resource of their SmartHive account. |
-| Resource sever   | The server where the protected resources are stored, and to where the client must make API calls is called the resource server. In our case, the SmartHive app which has the resource the client wants to access represents the resource server.     |
-| Authorization server | The server which grants access tokens and refresh tokens on behalf of the resource owner (the user), for the client to access protected resources is called the authorization server. In our case, SmartHive Accounts is the authorization server.     |
-| Client  | The application which needs access to the protected resource is called the client. The client can be a server-based application, single page JavaScript application, or a self-client. The client can make API requests to the resource server after successful authorization by the authorization server on behalf of the user. |
-| Client type   | Indicates the type of application you develop. The four types of clients are: <br> • **Server-based application:** Web applications that are built to run with a dedicated HTTP server. Follows authorization code flow of OAuth. <br> • **Client-based application:** Single page JavaScript applications that are built to run exclusively on browsers independent of web servers. Follows implicit flow of OAuth. <br> • **Self-client:** Applications which doesn't have a redirect URI and is used only to fetch information automatically from your own account. |
-| Client ID   | A unique identifier for your application which you can receive when registering your application in the SmartHive API console. |
-| Client secret   | A unique secret key for your application which you can receive when registering your application in the SmartHive API console. Client secret is know only between your application and SmartHive, therefore, must be kept confidential. (Client secret is not needed for client-based applications and will not be provided).  |
-| Access token   | Access tokens are granted by the authorization server (SmartHive Accounts) and are used by the client to access the protected resources. It contains information about the user and the scopes. It essentially tells the resource owner that the bearer of this token has been authorized by the user to access the protected resource as per the scope defined. The validity of an access token is 1 hour. |
-| Refresh token  | Refresh tokens are used to generate a new access token after the old one expires. Refresh tokens are granted by the authorization server (SmartHive Accounts) and can be stored by the client to generate access tokens whenever required. |
-| Authorization code   | For server-based applications, access tokens cannot be generated directly. Instead, the client must first get an authorization code from the authorization server (SmartHive Accounts), and then exchange it for an access token. The lifetime of authorization code is only two minutes and can be used only once. |
+| Protected resource    | Data in a SmartHive service that the client wants to access. For example, if a client wants to use an API to access the Inventory module in SmartHive, the Inventory module is the protected resource. A client can access this data only after OAuth authorization, which is why it’s called a protected resource.    |
+
+| Resource owner   | The user who can give the client permission to access the protected resources in their SmartHive account. |
+
+| Resource sever   | The server that stores the protected resources and receives the client’s API calls. For SmartHive, the SmartHive app that has the resource the client wants to access is the resource server.     |
+
+| Authorization server | The server that grants access tokens and refresh tokens to the client on behalf of the resource owner (the user), so the client can access protected resources. For SmartHive, SmartHive Accounts is the authorization server.|
+
+| Client  | The app that needs access to the protected resource. A client can be a server-based app, a single-page JavaScript app, or a self-client. After the authorization server authorizes the client on behalf of the user, the client can make API requests to the resource server.|
+
+| Client type   | The type of app that you develop. There are three client types: <br> • **Server-based application:** A web app that’s built to run on a dedicated HTTP server. It uses the OAuth authorization code flow. <br> • **Client-based application:** A single-page JavaScript app that’s built to run exclusively in browsers, independent of web servers. It uses the OAuth implicit flow. <br> • **Self-client:** An app that doesn’t have a redirect URI and is used only to fetch information automatically from your own account. |
+
+| Client ID   | A unique identifier for your app. You receive it when you register your app in the SmartHive API Console. |
+
+| Client secret   | A unique secret key for your app. You receive it when you register your app in the SmartHive API Console. Only your app and SmartHive know the client secret, so keep it confidential. Client-based apps don’t need a client secret, and SmartHive doesn’t provide one.  |
+
+| Access token   | A token that the authorization server (SmartHive Accounts) grants and that the client uses to access protected resources. It contains information about the user and the scopes. It tells the resource server that the user authorized the bearer of the token to access the protected resource within the defined scopes. An access token is valid for 1 hour. |
+
+| Refresh token  | A token that the client uses to generate a new access token after the old one expires. The authorization server (SmartHive Accounts) grants refresh tokens, and the client can store them to generate access tokens when needed.|
+
+| Authorization code   | A code that the client exchanges for an access token. Server-based can’t generate access tokens directly. Instead, the client first gets an authorization code from the authorization server (SmartHive Accounts), and then exchanges it for an access token. An authorization code is valid for only 2 minutes and can be used only once. |
 
 
