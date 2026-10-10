@@ -25,10 +25,12 @@ After you register your application, you receive a client ID and client secret. 
 
 ```
 INFO:
+| Label | Description |
+| :---        | :----  |
+| Homepage URL    | The full URL of your application’s home page.| 
+| Authorized Redirect URI       | The URI of the application that the authorization server (SmartHive Accounts) sends the response to. The response includes the authorization code, or the access token for a client-based application, after the user grants consent. The URI must begin with https:// or http://. To add more redirect URIs, select [plus]. Example: https://www.panacim.com/oauthredirect  |
+| JavaScript Domain       | If your application is a client-based JavaScript application, specify its JavaScript domain. The domain must begin with https:// or http://. To add more JavaScript domains, select [plus].  |
 
-- **Homepage URL:** The full URL of your application’s home page.
-- **Authorized Redirect URI:** The URI of the application that the authorization server (SmartHive Accounts) sends the response to. The response includes the authorization code, or the access token for a client-based application, after the user grants consent. The URI must begin with https:// or http://. To add more redirect URIs, select [plus]. Example: https://www.panacim.com/oauthredirect
-- **JavaScript Domain:** If your application is a client-based JavaScript application, specify its JavaScript domain. The domain must begin with https:// or http://. To add more JavaScript domains, select [plus].
 ```
 
 You can find the client ID and client secret on the Client Secret tab of your application in the console.
