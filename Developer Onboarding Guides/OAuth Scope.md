@@ -11,8 +11,8 @@ token, the resource server will provide access only to the Asset Master module. 
 
 **Example:**
 
-- SmartHiveAssetMaster.users.CREATE
-- SmartHiveProduct.configure.UPDATE
+- `SmartHiveAssetMaster.users.CREATE`
+- `SmartHiveProduct.configure.UPDATE`
 
 When the user is asked for permission to grant access to the client, the scopes defined in the request will be shown.
 
@@ -22,8 +22,10 @@ A SmartHive OAuth scope has three parts:
 - **Scope name:** The name of the module in the service the client needs access to. Each SmartHive service is divided into different modules. You can view the scope names from the respective module's API docs.
 - **Operation type:**  The type of operation that is permissible for the client. It can be `ALL`, `READ`, `UPDATE`, `DELETE`. (`ALL` gives access to perform all operations).
 
+**Note**
+
 Access tokens can also be generated with multiple scopes. In such cases, the scopes should be separated by commas.
 
-**SYNTAX:** `service_name.scope_name.OPERATION_TYPE,service_name.scope_name.OPERATION_TYPE` 
+- **SYNTAX:** `service_name.scope_name.OPERATION_TYPE,service_name.scope_name.OPERATION_TYPE` 
 
-**Example:** `SmartHiveAssetMaster.users.CREATE,SmartHiveProduct.configure.UPDATE`
+- **Example:** `SmartHiveAssetMaster.users.CREATE,SmartHiveProduct.configure.UPDATE`
