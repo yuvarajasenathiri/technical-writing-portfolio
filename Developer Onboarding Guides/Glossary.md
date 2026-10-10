@@ -1,0 +1,10 @@
+# OAuth 2.0 glossary
+
+| Term    | Description |
+| :---        | :----  |      
+| Protected resource    | It is the data present in a SmartHive service that the client wants to access. For example, if the client wants to access the records module in SmartHive MES using an API, then the records module is called the protected resource. The record module can be accessed by the client only after proper authorization using OAuth, hence then name protected resource.      |
+| Resource owner   | Resource owner is the user who can grant permission to the client and in turn access to the protected resource of their SmartHive account. |
+| Resource sever   | The server where the protected resources are stored, and to where the client must make API calls is called the resource server. In our case, the SmartHive app which has the resource the client wants to access represents the resource server.     |
+| Authorization server | The server which grants access tokens and refresh tokens on behalf of the resource owner (the user), for the client to access protected resources is called the authorization server. In our case, SmartHive Accounts is the authorization server.     |
+| Client  | The application which needs access to the protected resource is called the client. The client can be a server-based application, single page JavaScript application, or a self-client. The client can make API requests to the resource server after successful authorization by the authorization server on behalf of the user. |
+| Client type   | Indicates the type of application you develop. The four types of clients are:<br> - **Server-based application:** Web applications that are built to run with a dedicated HTTP server. Follows authorization code flow of OAuth.<br> - **Client-based application:** Single page JavaScript applications that are built to run exclusively on browsers independent of web servers. Follows implicit flow of OAuth.<br> - **Self-client:** Applications which doesn't have a redirect URI and is used only to fetch information automatically from your own account. |
