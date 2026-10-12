@@ -24,10 +24,10 @@ Exchange the authorization code for an access token and a refresh token.
 
 | Parameter |	Description |
 | :---        | :----  |    
-| `client_id` |	*Required*. The unique ID that appears on the **Client Secret** tab of your self client. |
-| `client_secret` |	*Required*. The unique, confidential secret that appears on the **Client Secret** tab of your self client. |
-|`grant_type` |	*Required*. Pass the value `authorization_code`. |
-| `code` |	*Required*. The authorization code that you generated in Step 1. |
+| `client_id` |	*Required*.<br> The unique ID that appears on the **Client Secret** tab of your self client. |
+| `client_secret` |	*Required*.<br> The unique, confidential secret that appears on the **Client Secret** tab of your self client. |
+|`grant_type` |	*Required*.<br> Pass the value `authorization_code`. |
+| `code` |	*Required*.<br> The authorization code that you generated in Step 1. |
 
 **Request example**
 ```
@@ -76,10 +76,10 @@ When an access token expires, use the refresh token to get a new one.
 
 | Parameter |	Description |
 | :---        | :----  |    
-| `client_id` |	*Required*. The unique ID that appears on the **Client Secret** tab of your self client. |
-| `client_secret` |	*Required*. The unique, confidential secret that appears on the **Client Secret** tab of your self client. |
-|`grant_type` |	*Required*. Pass the value `refresh_token`. |
-| `refresh_token` |	*Required*. The refresh token that you got in Step 2. |
+| `client_id` |	*Required*.<br> The unique ID that appears on the **Client Secret** tab of your self client. |
+| `client_secret` |	*Required*.<br> The unique, confidential secret that appears on the **Client Secret** tab of your self client. |
+|`grant_type` |	*Required*.<br> Pass the value `refresh_token`. |
+| `refresh_token` |	*Required*.<br> The refresh token that you got in Step 2. |
 
 **Request example**
 ```
