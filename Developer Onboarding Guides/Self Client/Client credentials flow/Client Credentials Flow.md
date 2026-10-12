@@ -14,10 +14,7 @@
 | `client_secret` |	*Required*. The unique, confidential secret that appears on the **Client Secret** tab of your self client. |
 |`grant_type` |	*Required*. Pass the value `client_credentials`. |
 | `scope` |	*Required*. The scope for the resource that you want to access by using the access token. Example: `SmartHiveProductMaster.settings.READ` |
-| `soid` | *Required for some SmartHive apps*. Use this parameter only for apps that let you create multiple products or assets. To find out whether the parameter is required, see the API documentation 
-for the module.<br> **Tip:** If a request without this parameter returns the `missing_org_info` error, include the parameter.<br> **Syntax:** `{servicename}.{ssoid}`<br> • `servicename`: The name of the service that 
-the client makes API calls to. Every SmartHive pmodule has a unique service name, such as `SmartHiveAssetMaster` or `SmartHiveProductMaster`.<br> • `ssoid`: The unique ID of the app’s instance, also called the
-product ID or asset ID. To find this ID, see the API documentation for the module.<br> **Example:** `SmartHiveProductMaster.600*****434` |
+| `soid` | *Required for some SmartHive apps*. Use this parameter only for apps that let you create multiple products or assets. To find out whether the parameter is required, see the API documentation for the module.<br> **Tip:** If a request without this parameter returns the `missing_org_info` error, include the parameter.<br> **Syntax:** `{servicename}.{ssoid}`<br> • `servicename`: The name of the service that the client makes API calls to. Every SmartHive pmodule has a unique service name, such as `SmartHiveAssetMaster` or `SmartHiveProductMaster`.<br> • `ssoid`: The unique ID of the app’s instance, also called theproduct ID or asset ID. To find this ID, see the API documentation for the module.<br> **Example:** `SmartHiveProductMaster.600*****434` |
 
 **Request example**
 ```
