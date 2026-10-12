@@ -3,9 +3,9 @@
 ## Step 1: Generate an authorization code
 
 1. Go to your self client in the API Console.
-2. Select the **Generate Code** tab.
-	a. In the **Scope** field, enter the scopes that your app needs. Separate multiple scopes with commas. For the required scopes, see the API documentation for the module.
-	b. In the **Time Duration** field , select how long the authorization code is valid. The default is 3 minutes.
+2. Select the **Generate Code** tab.<br>
+	a. In the **Scope** field, enter the scopes that your app needs. Separate multiple scopes with commas. For the required scopes, see the API documentation for the module.<br>
+	b. In the **Time Duration** field , select how long the authorization code is valid. The default is 3 minutes.<br>
 	c. In the **Scope Description** field, enter a description for the scopes.
 3. Select **CREATE**.
 4. If prompted, select the SmartHive app, and then select the portal that the app needs to access.
