@@ -24,10 +24,10 @@ Exchange the authorization code for an access token and a refresh token.
 
 | Parameter |	Description |
 | :---        | :----  |    
-| `client_id` |	*Required.* The unique ID that appears on the **Client Secret** tab of your self client. |
-| `client_secret` |	*Required.* The unique, confidential secret that appears on the **Client Secret** tab of your self client. |
-|`grant_type` |	*Required.* Pass the value `authorization_code.` |
-| `code` |	*Required.* The authorization code that you generated in Step 1. |
+| `client_id` |	*Required*. The unique ID that appears on the **Client Secret** tab of your self client. |
+| `client_secret` |	*Required*. The unique, confidential secret that appears on the **Client Secret** tab of your self client. |
+|`grant_type` |	*Required*. Pass the value `authorization_code`. |
+| `code` |	*Required*. The authorization code that you generated in Step 1. |
 
 **Request example**
 ```
@@ -61,7 +61,7 @@ https://accounts.smarthive.in/oauth/v2/token
 
 ## Step 3: Use the access token to make API calls
 
-Send API requests to the service that you want to access by using the api_domain value from the access token response. An access token is valid for 1 hour. After that, it expires. To get a new access token, 
+Send API requests to the service that you want to access by using the `api_domain` value from the access token response. An access token is valid for 1 hour. After that, it expires. To get a new access token, 
 use the refresh token, as described in Step 4.
 
 ## Step 4: Refresh the access token
@@ -76,10 +76,10 @@ When an access token expires, use the refresh token to get a new one.
 
 | Parameter |	Description |
 | :---        | :----  |    
-| `client_id` |	*Required.* The unique ID that appears on the **Client Secret** tab of your self client. |
-| `client_secret` |	*Required.* The unique, confidential secret that appears on the **Client Secret** tab of your self client. |
-|`grant_type` |	*Required.* Pass the value `refresh_token.` |
-| `refresh_token` |	*Required.* The refresh token that you got in Step 2. |
+| `client_id` |	*Required*. The unique ID that appears on the **Client Secret** tab of your self client. |
+| `client_secret` |	*Required*. The unique, confidential secret that appears on the **Client Secret** tab of your self client. |
+|`grant_type` |	*Required*. Pass the value `refresh_token`. |
+| `refresh_token` |	*Required*. The refresh token that you got in Step 2. |
 
 **Request example**
 ```
