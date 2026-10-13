@@ -36,9 +36,7 @@ When you turn on multi DC support, you can use a separate client secret for each
 2. Go to the **Settings** tab.
 3. Turn on the toggle next to each DC you need.
 4. By default, each enabled DC has a unique client secret. To view and copy the client secret for a DC, select **SHOW CODE**.
-5. To use the same client secret for all DCs instead:
-	a) Select **Use the same OAuth credentials for all data centers**.
-	b) Select **OK**. You can use the default client secret to make requests in all DCs.
+5. To use the same client secret for all DCs instead:<br> a) Select **Use the same OAuth credentials for all data centers**.<br> b) Select **OK**. You can use the default client secret to make requests in all DCs.
 	
 ## Server-based applications
 
