@@ -76,7 +76,10 @@ refresh_token:
 "1000.3421ad0e1a6fe44663ea112b8b1c4fdf.cd38e645e3d7423651d17368855bc1c5"
 ```
 3. Basic authentication header: Send only client_id and client_secret this way. Base64-encode the credentials before you send them.
+
 **Encoding format:** `Base64encode(client_id:client_secret)`
+
 **Header format:** `Authorization: Basic {Base64 encoded credentials}`
 
-**Example:** ```Authorization: Basic MTAwMC5RVkY4TzVNWEZVWUFUQVFHSktFV1VYSktaSDdPT0U6MzFhOTlhZTI3ZGVmZjdmcjM0ZTQxOWZlMzIxYjcxMmEwMmNkZWR0ZWQ3```
+**Example:** 
+```Authorization: Basic MTAwMC5RVkY4TzVNWEZVWUFUQVFHSktFV1VYSktaSDdPT0U6MzFhOTlhZTI3ZGVmZjdmcjM0ZTQxOWZlMzIxYjcxMmEwMmNkZWR0ZWQ3```
