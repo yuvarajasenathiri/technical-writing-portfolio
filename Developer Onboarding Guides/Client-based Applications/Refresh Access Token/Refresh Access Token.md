@@ -38,7 +38,7 @@ After the authorization server verifies your app, it sends the access token to t
 | `access_token` |	The token your app uses to access the resources defined by the requested scopes. The token is valid for 1 hour. |
 | `api_domain` |	The domain your app sends API requests to when it accesses protected resources. |
 | `location` |	The datacenter (DC) where the user’s account is stored. |
-| `expires_in`	The time, in seconds, until the access token expires. An access token lasts 1 hour (3,600 seconds). |
+| `expires_in` | The time, in seconds, until the access token expires. An access token lasts 1 hour (3,600 seconds). |
 
 **Response example**
 ```
