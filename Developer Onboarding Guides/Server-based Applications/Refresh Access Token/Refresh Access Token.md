@@ -55,6 +55,7 @@ https://accounts.smarthive.com/oauth/v2/token
 You can send the parameters in one of the following formats:
 
 1. Query string: Send all parameters in the request URL as a query string.
+
 **Example:**<br>
 ```
 https://accounts.smarthive.com/oauth/v2/token?
@@ -64,6 +65,7 @@ client_id=1000.QVF8O5MXFUYATAQGJKEWUXJKZH7OOE
 &refresh_token=1000.3421ad0e1a6fe44663ea112b8b1c4fdf.cd38e645e3d7423651d17368855bc1c5
 ```
 2. Request body: Send all parameters in the request body, using the form-data or x-www-form-urlencoded data type.
+
 **Example:**<br>
 ```
 client_id: 
@@ -82,4 +84,7 @@ refresh_token:
 **Header format:** `Authorization: Basic {Base64 encoded credentials}`
 
 **Example:** 
-```Authorization: Basic MTAwMC5RVkY4TzVNWEZVWUFUQVFHSktFV1VYSktaSDdPT0U6MzFhOTlhZTI3ZGVmZjdmcjM0ZTQxOWZlMzIxYjcxMmEwMmNkZWR0ZWQ3```
+```
+Authorization: Basic 
+MTAwMC5RVkY4TzVNWEZVWUFUQVFHSktFV1VYSktaSDdPT0U6MzFhOTlhZTI3ZGVmZjdmcjM0ZTQxOWZlMzIxYjcxMmEwMmNkZWR0ZWQ3
+```
