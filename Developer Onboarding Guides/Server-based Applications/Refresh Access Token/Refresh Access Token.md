@@ -1,6 +1,6 @@
 # Refresh access token
 
-Use the refresh token to generate another access token for the same scopes.
+Use the refresh token to generate another access token for the same scopes.		
 
 With a refresh token, your app can create up to 10 access tokens in 10 minutes. If your app reaches the limit, SmartHive blocks access token creation for the rest of the 10 minutes. For more information, 
 see Token limits.
@@ -56,17 +56,18 @@ You can send the parameters in one of the following formats:
 
 1. Query string: Send all parameters in the request URL as a query string.
 **Example:**<br>
-```https://accounts.smarthive.com/oauth/v2/token?client_id=1000.QVF8O5MXFUYATAQGJKEWUXJKZH7OOE&grant_type=refresh_token&client_secret=31a99ae27deff7fr34e419fe321b712a02cdedted7
-&refresh_token=1000.3421ad0e1a6fe44663ea112b8b1c4fdf.cd38e645e3d7423651d17368855bc1c5```
-
+```
+https://accounts.smarthive.com/oauth/v2/token?client_id=1000.QVF8O5MXFUYATAQGJKEWUXJKZH7OOE&grant_type=refresh_token&client_secret=31a99ae27deff7fr34e419fe321b712a02cdedted7
+&refresh_token=1000.3421ad0e1a6fe44663ea112b8b1c4fdf.cd38e645e3d7423651d17368855bc1c5
+```
 2. Request body: Send all parameters in the request body, using the form-data or x-www-form-urlencoded data type.
 **Example:**<br>
-```client_id: "1000.QVF8O5MXFUYATAQGJKEWUXJKZH7OOE"client_secret: "31a99ae27deff7fr34e419fe321b712a02cdedted7"grant_type: "refresh_token"
-refresh_token: "1000.3421ad0e1a6fe44663ea112b8b1c4fdf.cd38e645e3d7423651d17368855bc1c5"```
-
+```
+client_id: "1000.QVF8O5MXFUYATAQGJKEWUXJKZH7OOE"client_secret: "31a99ae27deff7fr34e419fe321b712a02cdedted7"grant_type: "refresh_token"
+refresh_token: "1000.3421ad0e1a6fe44663ea112b8b1c4fdf.cd38e645e3d7423651d17368855bc1c5"
+```
 3. Basic authentication header: Send only client_id and client_secret this way. Base64-encode the credentials before you send them.
 **Encoding format:** `Base64encode(client_id:client_secret)`
 **Header format:** `Authorization: Basic {Base64 encoded credentials}`
 
-**Example:**<br>
-```Authorization: Basic MTAwMC5RVkY4TzVNWEZVWUFUQVFHSktFV1VYSktaSDdPT0U6MzFhOTlhZTI3ZGVmZjdmcjM0ZTQxOWZlMzIxYjcxMmEwMmNkZWR0ZWQ3```
+**Example:** ```Authorization: Basic MTAwMC5RVkY4TzVNWEZVWUFUQVFHSktFV1VYSktaSDdPT0U6MzFhOTlhZTI3ZGVmZjdmcjM0ZTQxOWZlMzIxYjcxMmEwMmNkZWR0ZWQ3```
