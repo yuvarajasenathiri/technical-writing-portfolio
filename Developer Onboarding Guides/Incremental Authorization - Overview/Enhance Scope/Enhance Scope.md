@@ -13,8 +13,8 @@ Use the scope enhancement request to add additional scopes to a refresh token.
 | `response_type` |	*Required*.<br> Set this parameter to `update_scopes`. |
 | `redirect_uri`	| *Required*.<br> The URI that the authorization server redirects the browser to with a success or failure response. It must match the URI that you provided when you registered the app in the API console, and it must start with http:// or https://.<br> For example: `https://www.victa.com/oauthredirect` |
 | `scope` | *Required*.<br> The list of additional scopes for the resource you want to access from the user’s account. The user sees the scopes when your app asks for consent.<br> For example: `SmartHiveProductMaster.settings.READ` |
-| `enhance_token`	*Required*.<br> The scope enhancement token you received in response to the previous request (step 1). |
-| `logout` |	*Required*.<br> If you want the user’s session to end after the user grants or rejects the permission, set this parameter to `true`. |
+| `enhance_token` |	*Required*.<br> The scope enhancement token you received in response to the previous request (step 1). |
+| `logout` | *Required*.<br> If you want the user’s session to end after the user grants or rejects the permission, set this parameter to `true`. |
 
 **Request example**
 ```
