@@ -9,10 +9,10 @@ Get a scope enhancement token from the authorization server. Send the refresh to
 ## Query parameters
 | Parameter	| Description |
 | :---        | :----  | 
-|`client_id` |	*Required*. The unique ID of your app. You can find it in the API console.|
-| `client_secret` |	*Required*. The unique secret for your app, known only to your app and SmartHive. You can find it in the API console. |
-| `grant_type`	| *Required*. Set this parameter to `update_scopes_token`.|
-| `refresh_token` |	*Required*. The refresh token that you want to add the additional scopes to.|
+|`client_id` |	*Required*.<br> The unique ID of your app. You can find it in the API console.|
+| `client_secret` |	*Required*.<br> The unique secret for your app, known only to your app and SmartHive. You can find it in the API console. |
+| `grant_type`	| *Required*.<br> Set this parameter to `update_scopes_token`.|
+| `refresh_token` |	*Required*.<br> The refresh token that you want to add the additional scopes to.|
 
 **Request example**
 ```
