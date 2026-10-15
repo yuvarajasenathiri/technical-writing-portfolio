@@ -2,7 +2,7 @@
 
 You can revoke OAuth tokens in two ways:
 
-- Users can revoke them, or 
+- Users can revoke them.
 - Your app can revoke them programmatically.
 
 ## Users: 
