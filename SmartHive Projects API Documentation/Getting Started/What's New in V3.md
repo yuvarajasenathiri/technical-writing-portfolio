@@ -217,7 +217,7 @@ API.
 | :---        | :----  |      :---- |
 | List tasks   | *GET /restapi/portal/{portal_id}/projects/{project_id}/tasks/*    | *GET api/v3/portal/{portal_id}/projects/{project_id}/tasks* |
 
-**Note:**If you're migrating from v2, replace the `/restapi/` prefix with `/api/v3/` in all endpoint URLs.
+**Note:** If you're migrating from v2, replace the `/restapi/` prefix with `/api/v3/` in all endpoint URLs.
 
 ## Quick Comparison
 
