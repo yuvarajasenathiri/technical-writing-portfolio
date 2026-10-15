@@ -1,10 +1,9 @@
-# What's New in V3
+# What's new in v3
 
-Version-3 (V3) builds on the existing smarthive Projects API by introducing a more consistent structure across endpoints and extending support for common integration needs. 
-Updates to areas like date formats, filtering, custom fields, and pagination make it easier to work with data in a predictable way. In this section, you'll find 
-what's new in v3, what has been updated, and what to review when moving from v2.
+Version 3 (v3) builds on the existing SmartHive Projects API. It introduces a more consistent structure across endpoints and extends support for common integration needs. Updates to date formats, filtering, 
+custom fields, and pagination make it easier to work with data predictably. This section describes what’s new in v3, what has changed, and what to review when you move from v2.
 
-**V3 API - Quick Example**
+**v3 API - Quick Example:**
 ```
 GET /api/v3/portal/{portal_id}/projects
 Authorization: Bearer {token}
@@ -20,12 +19,12 @@ Response:
   "projects": [...]
 }
 ```
-## Enhancements in v3 API
+## Enhancements in the v3 API
 
-V3 introduces a more consistent and structured way to work with the SmartHive Projects API. It simplifies how data is formatted, how requests are constructed, and how responses are handled, 
-making integrations easier to build and maintain. These updates also bring more clarity when working with filters, custom fields, and large datasets.
+v3 introduces a more consistent, structured way to work with the SmartHive Projects API. It simplifies how you format data, construct requests, and handle responses, which makes integrations easier to build 
+and maintain. These updates also make it clearer how to work with filters, custom fields, and large datasets.
 
-**V3 Improvements at a Glance**
+**v3 Improvements at a Glance:**
 ```
 // 1. Dates → ISO 8601
 "due_date": "2024-05-26T00:00:00.000Z"
@@ -55,11 +54,11 @@ making integrations easier to build and maintain. These updates also bring more 
   "has_next_page": true
 }
 ```
-## Consistent Date and Time Format
+## Consistent date and time Format
 
-All date and time values follow a single ISO 8601 format across endpoints. This ensures consistent parsing and removes the need to handle multiple formats.
+All date and time values follow a single ISO 8601 format across endpoints. This makes parsing consistent, so you don’t need to handle multiple formats.
 
-| Type     | V2 | V3 |
+| Type     | v2 | v3 |
 | :---        | :----  |      :---- |
 | Date only     | `"05-26-2014"` (MM-DD-YYYY)      | `"2024-05-26"` (YYYY-MM-DD)  |
 | Datetime   | `"05-13-2014 05:57 PM"` (12-hour)        | `"2024-05-26T11:25:58.000Z"` (ISO 8601)     |
@@ -67,11 +66,11 @@ All date and time values follow a single ISO 8601 format across endpoints. This 
 | Epoch   | `1399620397255`     | **removed**       |
 | Date input format   | `MM-DD-YYYY`       | `YYYY-MM-DD`      |
 
-The `*_long` epoch fields are removed. ISO 8601 timestamps are universally parseable.
+The `*_long` epoch fields are removed because ISO 8601 timestamps are widely supported.
 
 ## Advanced filtering
 
-You can define multiple conditions within a single request using a structured filter object. Filtering is processed entirely on the server, so only relevant records are returned.
+You can define multiple conditions in a single request by using a structured filter object. The server does all the filtering, so the response contains only the relevant records.
 
 - **Supported conditions:**
 	- `is`
@@ -84,7 +83,7 @@ You can define multiple conditions within a single request using a structured fi
 	- `is_not_empty`
 	- `between`
 	
-**Advanced Filter - Quick Example**
+**Advanced Filter - Quick Example:**
 ```
 {
   "filter": {
@@ -103,28 +102,27 @@ You can define multiple conditions within a single request using a structured fi
   }
 }
 ```
-
-- **Pattern logic:** Combine conditions using `AND`, `OR`, and grouping - for example, `"(1 OR 2) AND 3"`
-- **Custom field support:** Use the `api_name` of any custom field as the criteria `field_name`
+- **Pattern logic:** Combine conditions by using `AND`, `OR`, and grouping, for example, `"(1 OR 2) AND 3"`.
+- **Custom field support:** Use the `api_name` of any custom field as the criteria `field_name`.
 
 For the complete syntax reference, see the Filter Guide.
 
-## Standardized Custom fields
+## Standardized custom fields
 
-Custom fields now use clear and consistent api_name values. This makes it easier to reference them across requests, filters, and responses without additional mapping.
+Custom fields now use clear, consistent `api_name` values. You can reference them across requests, filters, and responses without additional mapping.
 
-|      | V2 | V3 |
+|      | v2 | v3 |
 | :---        | :----  |      :---- |
 | In requests     | `UDF_CHAR1`, `UDF_LONG2`      | `expected_date`, `priority_level` |
 | In responses   | Same **UDF_** keys, no context      | Same **api_name**, consistent everywhere     |
 
-**V3 Custom Field in Response**
+**v3 Custom Field in Response:**
 ```
 {
   "expected_date": "2024-05-26"
 }
 ```
-**V3 Custom Field in Filter**
+**v3 Custom Field in Filter:**
 ```
 {
   "criteria": [
@@ -136,18 +134,17 @@ Custom fields now use clear and consistent api_name values. This makes it easier
   ]
 }
 ```
+- **Stable references:** Field identifiers don’t change when you add or remove other fields.
 
-
-- **Stable references** - field identifiers don't shift when other fields are added or removed
-- **Works everywhere** - same `api_name` in requests, responses, and filter criteria
+- **Consistent names:** The same `api_name` works in requests, responses, and filter criteria.
 
 For full details, see Custom Fields.
 
-## Request and Response Structure
+## Request and response structure
 
-The same field structure is used in both requests and responses. This improves predictability and reduces the need for transformation logic when handling API data.
+Requests and responses use the same field structure. This makes the API more predictable and reduces the need for transformation logic when you handle API data.
 
-|  Aspect    | V2/restapi | V3/api/v3 |
+|  Aspect    | Version 2 (/restapi) | Version 3 (/api/v3) |
 | :---        | :----  |      :---- |
 | Content Type     | *application/x-www-form-urlencoded*     | *application/json* |
 | Body Style   | Flat, form-encoded parameters      | SJSON body, nested objects     |
@@ -155,7 +152,7 @@ The same field structure is used in both requests and responses. This improves p
 | Related Data   | Flat fields *(person_responsible, assignee_name)*     | Grouped objects *(assignee, status)*    |
 | List Responses   | No pagination metadata      | *page_info* block with *has_next_page*     |
 
-**V3 Request (JSON)**
+**v3 Request (JSON):**
 ```
 POST /api/v3/portal/{portal_id}/projects/{project_id}/tasks
 Content-Type: application/json
@@ -167,7 +164,7 @@ Content-Type: application/json
   "priority": "High"
 }
 ```
-**V3 Response**
+**v3 Response:**
 ```
 {
   "page_info": {
@@ -196,48 +193,45 @@ Content-Type: application/json
   ]
 }
 ```
-
 ## Pagination
 
-Pagination is now page-based, making it easier to work with large datasets.
+Pagination is now page-based, which makes it easier to work with large datasets.
 
- - Use page and per_page to control results
- - has_next_page indicates if more records are available
- - Avoids duplicate or skipped records
- - No need for manual offset calculations
+ - Use `page` and `per_page` to control the results.
+ - The `has_next_page` parameter indicates whether more records are available.
+ - Pagination avoids duplicate or skipped records.
+ - You don’t need to calculate offsets manually.
  
- For full details and examples, see Pagination.
+For full details and examples, see Pagination.
  
 ## Base URL Structure
  
- All endpoints in v3 follow a consistent URL pattern. The base URL is simplified and standardized, and trailing slashes are no longer required. This makes it easier to construct and predict endpoint URLs across the API.
- 
-|      | V2 | V3 |
+All v3 endpoints follow a consistent URL pattern. The base URL is simplified and standardized, and trailing slashes aren’t required. This makes it easier to construct and predict endpoint URLs across the 
+API.
+|      | v2 | v3 |
 | :---        | :----  |      :---- |
 | Base URL    | */restapi/portal/{portal_id}/projects/*    | *api/v3/portal/{portal_id}/projects* |
 | Trailing slashes   | Some endpoints require trailing `/`      | No trailing slashes     |
 
-| Operation | V2 | V3 |
+| Operation | v2 | v3 |
 | :---        | :----  |      :---- |
 | List tasks   | *GET /restapi/portal/{portal_id}/projects/{project_id}/tasks/*    | *GET api/v3/portal/{portal_id}/projects/{project_id}/tasks* |
 
-**Note**
-
-- If you're migrating from V2, update all endpoint URLs - the `/restapi/` prefix is replaced with `/api/v3/`.
+**Note:**If you're migrating from v2, replace the `/restapi/` prefix with `/api/v3/` in all endpoint URLs.
 
 ## Quick Comparison
 
-|  Area    | V2(/restapi) | V3(/api/v3) |
+|  Area    | Version 2(/restapi) | Version 3(/api/v3) |
 | :---        | :----  |      :---- |
 | URL Pattern    | */restapi/portals/*    | */api/v3/portals* |
 | Date Format   | `"05-26-2014"` or `"May 26, 2014"` or `1399620397255`     | `"2024-05-26"` (date only) or `"2024-05-26T11:25:58.000Z"` (ISO 8601)     |
 | Pagination   | `index` + `range` (offset-based)   | `"page` + `per_page` with `has_next_page`     |
 | HTTP Method for Updates  | POST   | PATCH     |
 | Custom Fields  | `UDF_` prefix (for example, `UDF_CHAR1)` | `api_name` (for example, `"expected_date"`)    |
-| Request / Response Schema  | Fields sent in requests often differed from response field names | Request and response use the same field structure throughout    |
-| API Coverage | Limited modules and endpoints | Additional modules and endpoints, significantly expanding the overall API surface area   |
+| Request and response schema  | Fields sent in requests often differed from response field names. | Request and response use the same field structure throughout. |
+| API coverage | Limited modules and endpoints. | Additional modules and endpoints that expand the API.  |
 
-**V3 Update Task Example**
+**v3 Update Task Example**
 ```
 PATCH /api/v3/portal/{portal_id}/projects/{project_id}/tasks/{task_id}
 Content-Type: application/json
