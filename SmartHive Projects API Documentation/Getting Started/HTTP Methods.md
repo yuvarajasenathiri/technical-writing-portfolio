@@ -1,6 +1,6 @@
 # HTTP Methods
 
-Zoho Projects currently supports the following methods.
+SmartHive Projects supports the following methods.
 
 | Method     | Purpose |
 | :---        | :----  |      

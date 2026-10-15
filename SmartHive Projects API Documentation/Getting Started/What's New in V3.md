@@ -147,7 +147,7 @@ Requests and responses use the same field structure. This makes the API more pre
 |  Aspect    | Version 2 (/restapi) | Version 3 (/api/v3) |
 | :---        | :----  |      :---- |
 | Content Type     | *application/x-www-form-urlencoded*     | *application/json* |
-| Body Style   | Flat, form-encoded parameters      | SJSON body, nested objects     |
+| Body Style   | Flat, form-encoded parameters      | JSON body, nested objects     |
 | Dates   | Mixed formats (MM-DD-YYYY, epoch, text)     | ISO 8601 everywhere     |
 | Related Data   | Flat fields *(person_responsible, assignee_name)*     | Grouped objects *(assignee, status)*    |
 | List Responses   | No pagination metadata      | *page_info* block with *has_next_page*     |
