@@ -1,23 +1,23 @@
-# API Limits
+# API limits
 
-SmartHive Projects APIs are governed by rate limits to ensure fair usage and optimal performance of all users.
+SmartHive Projects APIs have rate limits to ensure fair usage and optimal performance for all users.
 
 **Request:** `GET /api/v3/portal/{portal_id}/projects`
 
 **Notes**
 
-- Each API can be invoked up to **200 times within a 2-minute window.**
-- The limit is applied **per API endpoint.**
+- You can call each API up to **200 times in a 2-minute window**.
+- The limit applies to **each API endpoint**.
 
-## Rate Limit Info
+## Rate limit info
 
-Each API response includes the following headers to help you monitor your usage:
+Each API response includes the following headers to help you monitor your usage: 
 
-- `RateLimit`: Total allowed requests in the current window (for example, 200).
-- `RateLimit-Remaining`: Remaining requests available in the current window.
-- `RateLimit-Window`: Duration of the rate limit window (for example, 120 seconds).
-- `RateLimit-Window-Unit`: Time unit for the rate limit window (for example, seconds).
-- `Retry-After`: Time (in seconds) to wait before retrying the request after the rate limit has been exceeded.
+- `RateLimit`: The total number of requests allowed in the current window, for example, 200.
+- `RateLimit-Remaining`: The number of requests remaining in the current window.
+- `RateLimit-Window`: The duration of the rate limit window, for example, 120 seconds.
+- `RateLimit-Window-Unit`: The time unit for the rate limit window, for example, seconds.
+- `Retry-After`: The time, in seconds, to wait before you retry the request after you exceed the rate limit.
 
 **Rate Limit Info**
 ```
@@ -27,30 +27,29 @@ RateLimit-Window = 120
 RateLimit-Window-Unit = seconds
 Retry-After = 540 (seconds remaining)
 
-**Note:** Retry-After key is returned only when the rate limit has been exceeded.
+**Note:** When the rate limit exceeds, only then the API returns Retry-After key. 
 ```
+## Rate limit exceeded
 
-## Rate Limit Exceeded
+If you exceed the allowed number of requests:
 
-If the number of requests exceeds the allowed limit:
+- SmartHive Projects **blocks** that **API for 10 minutes**.
+- During this period, all further requests to that API fail.
+- The response includes a `Retry-After` header that shows the remaining time, in seconds, before the API is available again.
 
-- The specific API will be **temporarily blocked for 10 minutes.**
-- During this period, all further requests to that API will fail.
-- A `Retry-After` header will be included in the response, indicating the remaining time (in seconds) before the API becomes available again.
+## Important notes
 
-## Important Notes
-
-- The restriction applies **only to the API that exceeds the limit**, not all APIs.
-- After the 10-minute cooldown, the API will become available automatically.
-- Continuous violations may impact application performance and reliability.
+- The restriction applies **only to the API that exceeds the limit**, not to all APIs.
+- After the 10-minute cooldown, the API becomes available automatically.
+- Repeated violations can affect app performance and reliability.
 
 ## Best Practices
 
-To avoid hitting rate limits:
+To avoid reaching rate limits:
 
-- Implement **retry mechanisms** using the `Retry-After` header.
-- Use **exponential backoff** instead of immediate retries.
+- Implement retry logic that uses the `Retry-After` header.
+- Use **exponential backoff** instead of immediate retries. Use **exponential backoff** instead of immediate retries.
 - Avoid sending unnecessary or duplicate requests.
-- Use **batch APIs (if available)** to reduce the number of calls.
-- Cache frequently used data whenever possible.
+- Use **batch APIs**, **if available**, to reduce the number of calls.
+- Cache frequently used data when possible.
 

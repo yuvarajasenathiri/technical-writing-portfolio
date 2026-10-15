@@ -1,4 +1,4 @@
-# HTTP Methods
+# HTTP methods
 
 SmartHive Projects supports the following methods.
 

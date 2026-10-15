@@ -1,9 +1,9 @@
-# Error Codes
+# Error codes
 
-SmartHive Projects uses HTTP status codes to indicate success or failure of API calls. Status codes 2xx indicate success, 4xx indicate error in the information provided, and 5xx indicate server side errors. 
-The following table lists some commonly used HTTP status codes.
+SmartHive Projects uses HTTP status codes to indicate whether an API call succeeded or failed. Status codes in the 2xx range indicate success, codes in the 4xx range indicate an error in the information 
+provided, and codes in the 5xx range indicate server-side errors. The following table lists some commonly used HTTP status codes:
 
-## Status Codes
+## Status codes
 
 | Status Code     | Description |
 | :---        | :----  |      
@@ -23,17 +23,17 @@ The following table lists some commonly used HTTP status codes.
 | 500   | Internal error     |
 | 501   | Not Supported      |
 
-## Other Error Responses
+## Other error responses
 
-Besides HTTP status codes and their corresponding error messages, error responses for SmartHive Projects APIs also include a machine-parsable errorCode param to simplify error handling.
+In addition to HTTP status codes and their error messages, error responses for SmartHive Projects APIs include a machine-parsable `errorCode` parameter to simplify error handling.
 
-The different errorCodes and their uses are described below.
+The following sections describe the error codes and their uses:
 
 ### URL_RULE_NOT_CONFIGURED 400
 
-Please check if the URL you are trying to access is correct.
+Check whether the URL you’re trying to access is correct.
 
-**Resolution:** The request URL specified is incorrect. Specify a valid request URL.
+**Resolution:** The request URL isn’t correct. Specify a valid request URL.
 
 **URL_RULE_NOT_CONFIGURED**
 ```
@@ -53,9 +53,9 @@ Please check if the URL you are trying to access is correct.
 ```
 ### INVALID_OAUTHTOKEN 400
 
-This errorCode appears if the OAuthToken is invalid or has expired.
+The OAuth token isn’t valid or has expired.
 
-**Resolution:** Regenerate OAuthToken and try again.
+**Resolution:** Generate a new OAuth token, and try again.
 
 **INVALID_OAUTHTOKEN**
 ```
@@ -75,9 +75,9 @@ This errorCode appears if the OAuthToken is invalid or has expired.
 ```
 ### INVALID_INPUTSTREAM 400
 
-The HTTP request specified has an invalid input parameter.
+The HTTP request has an input parameter that isn’t valid.
 
-**Resolution:** The request URL input parameter specified is incorrect. Specify a valid request input parameter URL.
+**Resolution:** The input parameter in the request URL isn’t correct. Specify a valid input parameter.
 
 **INVALID_INPUTSTREAM**
 ```
@@ -92,12 +92,11 @@ The HTTP request specified has an invalid input parameter.
   }
 }
 ```
-
 ### INVALID_METHOD 400
 
-The http request method type is not a valid one
+The HTTP request method isn’t valid.
 
-**Resolution:** You have specified an invalid HTTP method to access the API URL. Specify a valid request method.
+**Resolution:** You specified an HTTP method that isn’t valid for this API URL. Specify a valid request method.
 
 **INVALID_METHOD**
 ```
@@ -118,9 +117,9 @@ The http request method type is not a valid one
 ```
 ### INVALID_PARAMETER_VALUE 400
 
-The HTTP request specified has an invalid parameter value.
+The HTTP request has a parameter value that isn’t valid.
 
-**Resolution:** The request URL input parameter value specified is incorrect. Specify a valid request input parameter value.
+**Resolution:** The value of the input parameter in the request URL isn’t correct. Specify a valid parameter value.
 
 **INVALID_PARAMETER_VALUE**
 ```
@@ -142,9 +141,9 @@ The HTTP request specified has an invalid parameter value.
 ```
 ### INTERNAL_SERVER_ERROR 500
 
-Server encountered an unexpected error. Contact
+The server encountered an unexpected error.
 
-**Resolution:** support@smarthiveprojects.com
+**Resolution:** Contact support@smarthiveprojects.com
 
 **INTERNAL_SERVER_ERROR**
 ```

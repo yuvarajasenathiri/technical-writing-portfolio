@@ -204,7 +204,7 @@ Pagination is now page-based, which makes it easier to work with large datasets.
  
 For full details and examples, see Pagination.
  
-## Base URL Structure
+## Base URL structure
  
 All v3 endpoints follow a consistent URL pattern. The base URL is simplified and standardized, and trailing slashes aren’t required. This makes it easier to construct and predict endpoint URLs across the 
 API.
@@ -219,7 +219,7 @@ API.
 
 **Note:** If you're migrating from v2, replace the `/restapi/` prefix with `/api/v3/` in all endpoint URLs.
 
-## Quick Comparison
+## Quick comparison
 
 |  Area    | Version 2(/restapi) | Version 3(/api/v3) |
 | :---        | :----  |      :---- |

@@ -1,6 +1,6 @@
-# Getting Started
+# Getting started
 
-## Mandatory Headers
+## Mandatory headers
 
 SmartHive Projects APIs require the `Authorization` header. The header contains the OAuth access token that authenticates the user who accesses the data.
 
