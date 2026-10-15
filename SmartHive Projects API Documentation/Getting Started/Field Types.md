@@ -1,44 +1,48 @@
-# Field Types
+# Field types
 
-SmartHive Projects supports various custom field types, such as text, numeric, URL, date, and time. Below are the field types available in the Create and Update APIs.
+## Overview
+
+SmartHive Projects supports several custom field types, such as text, numeric, URL, date, and time. The following sections describe the field types available in the Create and Update APIs.
 
 **Note**
-- Send all inputs as an input stream (application/json).
+
+- Send all inputs as an input stream `(application/json)`.
 - Use API names for custom fields.
 
-## Single-Line Field
+## Single-line field
 
-Captures text in a single line. Maximum length: 200 characters
+Captures text on a single line. Maximum length: 200 characters.
 
-**JSON Schema:** `{ "key": "string"}`
+**JSON schema:** `{ "key": "string"}`
 **Example:** `{"title": "Project Ara"}`
 
-## Multi-Line Field
+## Multi-line field
 
-Captures text in multiple lines. Use "\n" to separate lines. Maximum length: 1,000 characters
+Captures text on multiple lines. Use `\n` to separate lines. Maximum length: 1,000 characters.
 
-**JSON Schema:** `{ "key": "string"}`
+**JSON schema:** `{ "key": "string"}`
 **Example:** `{"description": "The respective team\n is a prototype."}`
 
-## Pick List Field
+## Pick list field
 
-Allows selection of a single option from a predefined list. Maximum options: 50
+Captures a single option selected from a predefined list. Maximum options: 50.
 
-**JSON Schema:** `{ "key": "string"}`
+**JSON schema:** `{ "key": "string"}`
 **Example:** `{"Material": "Vinyl"}`
 
-## Multi-Select Field
+## Multi-select field
 
-Allows selection of multiple options from a predefined list. You can add or remove values dynamically, or replace the existing values. Maximum selectable options: 100
+Captures multiple options selected from a predefined list. You can add or remove values, or replace the existing values. Maximum selectable options: 100.
 
 **Note**
-- The add and remove options optimize the update process for Multi-Select fields, eliminating the additional GET call to retrieve existing values before updating.
-- You can directly add or remove values in an Update API request or use the Create API format.
 
-**Sample Input of Multi-Select Field in Create APIs:** `{ "key": [ "C", "D" ] }`
+- The add and remove options optimize the update process for multi-select fields. You don’t need an extra GET call to retrieve the existing values before you update.
+- You can add or remove values directly in an Update API request, or use the Create API format.
+
+**Sample input of multi-select field in create APIs:** `{ "key": [ "C", "D" ] }`
 **Example:** `{ "parts_required": [ "HDD", "CD" ] }`
 
-**Sample Input of Multi-Select Field in Create APIs:** 
+**Sample input of multi-select field in create APIs:** 
 
 ```
 { 
@@ -60,12 +64,11 @@ Allows selection of multiple options from a predefined list. You can add or remo
 }]}
 ```
 
-## User Pick List Field
+## User pick list field
 
-Allows selection of a single user.
+Captures a single selected user.
 
-**JSON Schema:** 
-
+**JSON schema:** 
 ```
 { 
 "key": { 
@@ -80,23 +83,22 @@ Allows selection of a single user.
 }}
 ```
 
-## Multi-User Field
+## Multi-user field
 
-Allows selection of multiple users from a predefined list. You can add or remove values dynamically, or replace the existing values. Maximum selectable users: 500
+Captures multiple users selected from a predefined list. You can add or remove values, or replace the existing values. Maximum selectable users: 500.
 
 **Note**
-- The add and remove options optimize the update process for Multi-User fields, eliminating the additional GET call to retrieve existing values before updating.
-- You can directly add or remove values in an Update API request or use the Create API format.
 
-**Sample Input of Multi-User Field in Create APIs:** 
+- The add and remove options optimize the update process for multi-user fields. You don’t need an extra GET call to retrieve the existing values before you update.
+- You can add or remove values directly in an Update API request, or use the Create API format.
 
+**Sample input of multi-user field in create APIs:** 
 ```
 { "key": [ 
 { "zpuid": "User Id 5" }, 
 { "zpuid": "User Id 6" } 
 ]}
 ```
-
 **Example:** 
 ```
 { 
@@ -105,9 +107,7 @@ Allows selection of multiple users from a predefined list. You can add or remove
 { "zpuid": "7876456433" } 
 ]}
 ```
-
-**Sample Input of Multi-User Field in Create APIs:** 
-
+**Sample input of multi-user field in create APIs:** 
 ```
 { "key": [ 
 { 
@@ -132,12 +132,11 @@ Allows selection of multiple users from a predefined list. You can add or remove
 { "zpuid": "71346753132" } 
 ]}]}
 ```
+## Date field
 
-## Date Field
+Captures a date in the `yyyy-MM-dd` format (ISO 8601).
 
-Captures date in the yyyy-MM-dd format (ISO 8601).
-
-**JSON Schema:** `{ "key": "string"}`
+**JSON schema:** `{ "key": "string"}`
 **Example:** 
 ```
 {
@@ -146,12 +145,11 @@ Captures date in the yyyy-MM-dd format (ISO 8601).
 "end_date": "2024-12-17"
 }
 ```
+## Time field
 
-## Time Field
+Captures the time in `HH:MM` format.
 
-Captures the time in HH:MM format.
-
-**JSON Schema:** `{ "key": "string"}`
+**JSON schema:** `{ "key": "string"}`
 **Example:** 
 ```
 {
@@ -159,26 +157,25 @@ Captures the time in HH:MM format.
 "end_time": "13:30"
 }
 ```
+## Time stamp field
 
-## Time Stamp Field
+Captures a date and time in ISO 8601 format. Use `yyyy-MM-dd'T'HH:mm:ss'Z'` for UTC, or `yyyy-MM-dd'T'HH:mm:ss[+|-]HH:mm` for other time zones. For details, see the ISO 8601 time stamp format.
 
-Captures date and time in ISO 8601 format. Use yyyy-MM-dd'T'HH:mm:ss'Z' for UTC or yyyy-MM-dd'T'HH:mm:ss[+|-]HH:mm for other time zones. (ISO 8601 Time Stamp format).
-
-**JSON Schema:** `{ "key": "string"}`
+**JSON schema:** `{ "key": "string"}`
 **Example:** `{"start_time": "2022-12-16T18:56:00.000Z"}`
 
-## Check Box Field
+## Check box field
 
-Captures boolean values (true or false) for a condition.
+Captures Boolean values (`true` or `false`) for a condition.
 
-**JSON Schema:** `{ "key": "boolean"}`
+**JSON schema:** `{ "key": "boolean"}`
 **Example:** `{"patent_applied": true}`
 
-## Currency Field
+## Currency field
 
-Captures currency values with currency code, formatted amount, currency ID, and raw amount. Maximum length: 100 characters
+Captures currency values with the currency code, formatted amount, currency ID, and raw amount. Maximum length: 100 characters.
 
-**JSON Schema:** 
+**JSON schema:** 
 ```
 { 
 "currency": { 
@@ -196,45 +193,44 @@ Captures currency values with currency code, formatted amount, currency ID, and 
 "amount": 325.50 
 }}
 ```
+## Percentage field
 
-## Percentage Field
+Captures percentage values as numbers. Maximum length: 20 characters.
 
-Captures percentage values as numbers. Maximum length: 20 characters
-
-**JSON Schema:** `{ "key": "number"}`
+**JSON schema:** `{ "key": "number"}`
 **Example:** `{"completion_percentage": 10}`
 
-## Number Field
+## Number field
 
-Captures whole numbers. Maximum length: 19 digits
+Captures whole numbers. Maximum length: 19 digits.
 
-**JSON Schema:** `{ "key": "number"}`
+**JSON schema:** `{ "key": "number"}`
 **Example:** `{"tests_passed": 35 }`
 
-## Decimal Field
+## Decimal field
 
-Captures decimal values. Maximum length: 17 digits
+Captures decimal values. Maximum length: 17 digits.
 
-**JSON Schema:** `{ "key": "number"}`
+**JSON schema:** `{ "key": "number"}`
 **Example:** `{"accuracy": 21.05}`
 
-## Email Field
+## Email field
 
-Captures email addresses. Maximum length: 200 characters
-
-**JSON Schema:** `{ "key": "string"}`
-**Example:** `{"email":"chris@zylker.com"}`
-
-## Phone Number Field
-
-Captures phone numbers (Maximum length: 15 characters, including + and ()).
+Captures email addresses. Maximum length: 200 characters.
 
 **JSON Schema:** `{ "key": "string"}`
+**Example:** `{"email":"chris@victa.com"}`
+
+## Phone number field
+
+Captures phone numbers. Maximum length: 15 characters, including `+` and `()`.
+
+**JSON schema:** `{ "key": "string"}`
 **Example:** `{"mobile":"1234567890"}`
 
-## URL Field
+## URL field
 
-Captures web links. If no protocol is specified, https:// is used by default. Maximum length: 200 characters
+Captures web links. If you don’t specify a protocol, the API uses `https://` by default. Maximum length: 200 characters.
 
-**JSON Schema:** `{ "key": "string"}`
+**JSON schema:** `{ "key": "string"}`
 **Example:** `{"link":"https://projects.smartHive.com"}`
