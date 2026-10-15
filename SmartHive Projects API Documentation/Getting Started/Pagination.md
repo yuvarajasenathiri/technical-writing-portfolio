@@ -1,6 +1,6 @@
 # Pagination
 
-v3 uses page-based pagination on all list endpoints. Pass `page` and `per_page` as query parameters to control which page of results is returned.
+The v3 API uses page-based pagination on all list endpoints. To control which page of results the API returns, pass `page` and `per_page` as query parameters.
 
 **Request:** `GET /api/v3/portal/{portal_id}/projects/{project_id}/tasks?page=2&per_page=50`
 
@@ -8,10 +8,10 @@ v3 uses page-based pagination on all list endpoints. Pass `page` and `per_page` 
 
 | Parameter     | Type | Description |
 | :---        | :----  |      :---- |
-| `page`    | Integer      | Page number (starting from 1). Defaults to 1 if omitted.  |
-| `per_page`   | Integer        | Number of records per page. Defaults to 100 if omitted. Supported values: `1-200`.    |
+| `page`    | Integer      | The page number, starting from 1. The default is 1.  |
+| `per_page`   | Integer   |  The number of records per page. The default is 100. Supported values: 1 to 200. |
 
-**page_info Response**
+**page_info Response:**
 ```
 {
   "page_info": {
@@ -24,11 +24,11 @@ v3 uses page-based pagination on all list endpoints. Pass `page` and `per_page` 
 ```
 ## Response
 
-Every list response includes a `page_info` block. The `has_next_page` flag tells your client precisely when to stop fetching — no offset calculations, no risk of duplicate or skipped records.
+Every list response includes a `page_info` object. The `has_next_page` field tells your client when to stop fetching. You don’t need to calculate offsets, and you avoid duplicate or skipped records.
 
 | Field     | Type | Description |
 | :---        | :----  |      :---- |
-| `page`    | Integer      | Current page number  |
-| `per_page`   | Integer        | Records per page    |
-| `page_count`   | Integer        | Total number of records in the result set    |
-| `has_next_page`   | Boolean      | `true` if more pages exist, `false` if this is the last page   |
+| `page`    | Integer      | The current page number.  |
+| `per_page`   | Integer        | The number of records per page.    |
+| `page_count`   | Integer        | The total number of records in the result set.   |
+| `has_next_page`   | Boolean      | The value is `true` if more pages exist and `false` if the current page is the last page.   |

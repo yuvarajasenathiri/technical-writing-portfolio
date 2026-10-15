@@ -27,7 +27,7 @@ RateLimit-Window = 120
 RateLimit-Window-Unit = seconds
 Retry-After = 540 (seconds remaining)
 
-**Note:** When the rate limit exceeds, only then the API returns Retry-After key. 
+**Note:** The API returns the Retry-After header only when you exceed the rate limit.
 ```
 ## Rate limit exceeded
 
@@ -50,6 +50,6 @@ To avoid reaching rate limits:
 - Implement retry logic that uses the `Retry-After` header.
 - Use **exponential backoff** instead of immediate retries. Use **exponential backoff** instead of immediate retries.
 - Avoid sending unnecessary or duplicate requests.
-- Use **batch APIs**, **if available**, to reduce the number of calls.
+- Use **batch APIs**, if available, to reduce the number of calls.
 - Cache frequently used data when possible.
 
