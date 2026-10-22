@@ -6,12 +6,29 @@ Get the list of all projects in the SmartHive Projects portal.
 
 **OAuth scope:** SmartHiveProjects.projects.READ
 
+**Path parameters**
+| Name |	Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- |
+|`portal_id` | String<br>*regex[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects. Get it from the Get All Portals API (the `id` field in the response). |
+
 **Request example**
 ```
 curl -X GET \
  'https://projects.smarthive.com/api/v3/portal/739121528/projects?page=1&per_page=10&%22filter%22=%7B%22criteria%22%3A%5B%7B%22cfid%22%3A%224000000000242%22%2C%22field_name%22%3A%22project%22%2C%22criteria_condition%22%3A%22contains%22%2C%22value%22%3A%5B%221752587000000097269%22%5D%2C%22relative_columns%22%3A%5B%7B%22cfid%22%3A%224000000000242%22%2C%22field_name%22%3A%22project%22%2C%22offset%22%3A%221%22%2C%22unit%22%3A%22days%22%2C%22prior%22%3A%22before%22%7D%5D%7D%5D%2C%22pattern%22%3A%221+AND+2%22%7D&sort_by=ASC%28last_modified_time%29&view_id=23806000074760021' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
 ```
+**Query parameters**
+
+| Name |	Data type | Required/Optional|	Description |
+| :---        | :----  |  :----  |     :---- |
+| `page` |	int<br>*default 1* | Optional |	The page number. |
+| `per_page` |	int<br> *limit 1-200* <br> *default 100* | Optional |	The number of entries to display on each page. |
+| `filter` |	JSONObject | Optional |	The filter criteria for retrieving specific projects.<br>The filter is a JSON object that contains a list of conditions (`criteria`) and a logical `pattern` that defines how the conditions are combined.|
+| `criteria` |	JSONArray <br>*Maximum length: 10,000.* <br> *Array size: 0 or greater.* | Optional | A list of filter conditions.<br> Each condition specifies a field, a condition type, and a value to match. You can combine multiple conditions by using the pattern property, which references each condition by its position, starting from 1. |
+| `pattern` |	String <br> *Maximum length: 300.* | Optional | The logical expression that defines how the criteria are combined. <br> Use condition numbers (starting from 1) with the `AND` and `OR` operators and parentheses for grouping. For example, use `1` for a single condition, `1` AND `2` for both conditions, `1` OR `2` for either condition, and `(1 OR 2) AND 3` for grouped logic.|
+| `sort_by`	| String	| Optional | The sort order for the results.<br>Wrap the field API name in `ASC()` for ascending order or `DESC()` for descending order. For example, `ASC(start_date)` sorts by start date in ascending order, and `DESC(created_time)` sorts by creation time in descending order. |
+| `view_id` |	String |	Optional | The ID of a saved custom view to apply.<br>When you include it, the API applies the saved view’s filter criteria, columns, and sort order. <br>If you also include a `filter`, the API combines the filter conditions (AND) with the custom view’s criteria.  |
+
 **Sample input**
 ```
 page : "1"
@@ -35,17 +52,6 @@ per_page : "10"
 sort_by : "ASC(last_modified_time)"
 view_id : "23806000074760021"
 ```
-**Query parameters**
-
-| Name |	Data type |	Description |
-| :---        | :----  |      :---- |
-| `page` |	int |	The page number. |
-| `per_page` |	int |	The number of entries to display on each page. |
-| `filter` |	JSONObject |	The filter criteria for retrieving specific projects.<br>The filter is a JSON object that contains a list of conditions (`criteria`) and a logical `pattern` that defines how the conditions are combined.|
-| `criteria` |	JSONArray <br>*Maximum length: 10,000.* <br> *Array size: 0 or greater.* | A list of filter conditions.<br> Each condition specifies a field, a condition type, and a value to match. You can combine multiple conditions by using the pattern property, which references each condition by its position, starting from 1. |
-| `pattern` |	String <br> *Maximum length: 300.* | The logical expression that defines how the criteria are combined. <br> Use condition numbers (starting from 1) with the `AND` and `OR` operators and parentheses for grouping. For example, use `1` for a single condition, `1` AND `2` for both conditions, `1` OR `2` for either condition, and `(1 OR 2) AND 3` for grouped logic.|
-| `sort_by`	| String	| The sort order for the results.<br>Wrap the field API name in `ASC()` for ascending order or `DESC()` for descending order. For example, `ASC(start_date)` sorts by start date in ascending order, and `DESC(created_time)` sorts by creation time in descending order. |
-| `view_id` |	long |	The ID of a saved custom view to apply.<br>When you include it, the API applies the saved view’s filter criteria, columns, and sort order. <br>If you also include a `filter`, the API combines the filter conditions (AND) with the custom view’s criteria.  |
 
 **Sample response**
  - 200 Ok
@@ -114,3 +120,19 @@ view_id : "23806000074760021"
   "modified_time" : "2025-01-15T14:20:00.000Z"
 } ]
 ```
+**Possible errors**
+- Internal_Server_Error_HTTP 500
+```
+{
+  "error" : {
+    "status_code" : "500",
+    "instance" : "/api/v3/portal/45528313/projects",
+    "method" : "GET",
+    "error_type" : "OPERATIONAL_VALIDATION_ERROR",
+    "details" : [ {
+      "message" : "Internal server error. Please contact support@smarthiveprojects.com for further details.",
+      "message_key" : "zp.general.error"
+    } ],
+    "title" : "INTERNAL_SERVER_ERROR"
+  }
+}

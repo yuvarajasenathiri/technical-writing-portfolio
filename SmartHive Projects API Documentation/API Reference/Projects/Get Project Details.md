@@ -2,17 +2,24 @@
 
 Get a project details in the SmartHive Projects portal.
 
-**Method and endpoint:** `/api/v3/portal/[PORTALID]/projects/[PROJECTID]`
+**Method and endpoint:** `GET /api/v3/portal/[PORTALID]/projects/[PROJECTID]`
 
 **OAuth scope:** SmartHiveProjects.projects.READ
+
+**Path parameters**
+| Name |	Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- |
+|`portal_id` | String<br>*regex[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects. Get it from the Get All Portals with Details API (the `id` field in the response). |
+|`project_id` | String<br>*regex[0-9]+* | Required | The unique, immutable identifier of the project in the sepcified portal. Get it from the Get All Projects API (the `id` field in the response). |
 
 **Request example**
 ```
 curl -X GET \
- 'https://projects.zoho.com/api/v3/portal/739121528/projects/1752587000000097024' \
+ 'https://projects.smarthive.com/api/v3/portal/739121528/projects/1752587000000097024' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
- **Sample response**
+**Sample response**
+- 200 Ok
  ```
  {
   "end_date" : "2029-01-01",

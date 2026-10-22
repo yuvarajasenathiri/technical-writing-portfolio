@@ -31,8 +31,7 @@ explains how to construct filter payloads, which conditions are available, and w
 The filter payload has two key components, `criteria` and `pattern`. Together, they define the conditions in a request and how those conditions are combined.
 
 ### Payload Properties
-| Property     | Data Type | Description |
-| :---        | :----  |      :---- |
+| Property     | Data Type | Description |	
 | `criteria`     | Array       | *required.*<br> The array of conditions. Each property of a condition represents a specific part of it and determines how the API interprets fields, operators, and values during filtering. |
 | `field_name`   | String        | *required.*<br> The API name of the field to filter, for example, `status`, `due_date`, or `name`. To get valid field names for a module, use the Get Field Info API.     |
 | `criteria_condition`  | String      | *required.*<br> The filter operation. The available conditions depend on the field type. See Conditions reference.   |
