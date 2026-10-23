@@ -9,7 +9,7 @@ Get the list of all projects in the SmartHive Projects portal.
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-|`portal_id` | String<br>*regex[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects. Get it from the Get All Portals API (the `id` field in the response). |
+|`portal_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects. Get it from the Get All Portals with Details API (the `id` field in the response). |
 
 **Request example**
 ```
@@ -21,8 +21,8 @@ curl -X GET \
 
 | Name |	Data type | Required/Optional|	Description |
 | :---        | :----  |  :----  |     :---- |
-| `page` |	int<br>*default 1* | Optional |	The page number. |
-| `per_page` |	int<br> *limit 1-200* <br> *default 100* | Optional |	The number of entries to display on each page. |
+| `page` |	Integer<br>*default 1* | Optional |	The page number. |
+| `per_page` |	Integer<br> *limit 1-200* <br> *default 100* | Optional |	The number of entries to display on each page. |
 | `filter` |	JSONObject | Optional |	The filter criteria for retrieving specific projects.<br>The filter is a JSON object that contains a list of conditions (`criteria`) and a logical `pattern` that defines how the conditions are combined.|
 | `criteria` |	JSONArray <br>*Maximum length: 10,000.* <br> *Array size: 0 or greater.* | Optional | A list of filter conditions.<br> Each condition specifies a field, a condition type, and a value to match. You can combine multiple conditions by using the pattern property, which references each condition by its position, starting from 1. |
 | `pattern` |	String <br> *Maximum length: 300.* | Optional | The logical expression that defines how the criteria are combined. <br> Use condition numbers (starting from 1) with the `AND` and `OR` operators and parentheses for grouping. For example, use `1` for a single condition, `1` AND `2` for both conditions, `1` OR `2` for either condition, and `(1 OR 2) AND 3` for grouped logic.|

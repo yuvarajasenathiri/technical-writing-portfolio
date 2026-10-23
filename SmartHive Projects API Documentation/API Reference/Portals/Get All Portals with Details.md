@@ -18,8 +18,8 @@ curl -X GET \
 **Query parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-|`status` | String<br>*regex: active, inactive* | Optional | The status of the portals to return. <br> Accepted values: `active` or `inactive`.<br> If you omit this parameter, the API returns portals of every status. |
-|`environment` | String<br>*regex: sandbox, production* | Optional| The environment of the portals to return.<br> Accepted values: `sandbox` or `production`.<br> If you omit this parameter, the API returns portals from every environment. |
+|`status` | String | Optional | The status of the portals to return. <br> Accepted values: `active` or `inactive`.<br> If you omit this parameter, the API returns portals of every status. |
+|`environment` | String | Optional| The environment of the portals to return.<br> Accepted values: `sandbox` or `production`.<br> If you omit this parameter, the API returns portals from every environment. |
 
 **Sample input**
 ```
