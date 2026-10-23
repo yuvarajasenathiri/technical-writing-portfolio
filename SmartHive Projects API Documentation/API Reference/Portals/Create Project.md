@@ -89,15 +89,15 @@ curl -X POST \
 | `start_date`	| String<br> *format:YYYY-MM-DD* | Optional |	The start date of the project.|
 | `end_date` |	String<br>*format:YYYY-MM-DD* |Optional |	The end date of the project. |
 | `status` | 	JSONObject<br>  *Maximum length: 1,000*| 	| The status of the project.| 
-| `status.id` | 	String<br>*Maximum length: 30* | Optional |	The identifier of the status.<br> Get it from the Get Global Statuses API.|
+| &emsp;&emsp;`status.id` | 	String<br>*Maximum length: 30* | Optional |	The identifier of the status.<br> Get it from the Get Global Statuses API.|
 | `layout`	| JSONObject<br>*Maximum length: 1,000*	| |The project layout details.|
-| `layout.id` |	String<br>*Maximum length: 30*| Optional |	The identifier of the layout.<br> Get it from the Get Layouts API (the `id` field in the response). |
+| &emsp;&emsp;`layout.id` |	String<br>*Maximum length: 30*| Optional |	The identifier of the layout.<br> Get it from the Get Layouts API (the `id` field in the response). |
 | `added_via` |	String | Optional |	The source of the project.<br> Accepted values: `web` or `api`. |
-| `is_rollup_project` | 	boolean	| Optional | Whether the project is a roll-up project.<br> Accepted values: `true` or `false`.  |
+| `is_rollu1p_project` | 	boolean	| Optional | Whether the project is a roll-up project.<br> Accepted values: `true` or `false`.  |
 | `budget_info` | 	JSONObject<br> *Maximum length: 80,000* | 	| The project budget details.|
-| `budget_info.billing_method` |	String | 	| The billing method.<br> Accepted values: `project_hours`, `staff_hours`, `fixed_cost`, `issue_hours`, or `task_or_issue_hours`.
-budget_info.budget_type	String	The budget type. Accepted values: none, based_on_project, based_on_milestone, based_on_task, or based_on_user.
-budget_info.tracking_method	String	The tracking method. Accepted values: project_hours, staff_hours, issue_hours, or task_or_issue_hours.
+| &emsp;&emsp;`budget_info.billing_method` |	String | Optional	| The billing method.<br> Accepted values: `project_hours`, `staff_hours`, `fixed_cost`, `issue_hours`, or `task_or_issue_hours`.|
+| &emsp;&emsp;`budget_info.budget_type`	| String | Optional	|The budget type.<br> Accepted values: `none`, `based_on_project`, `based_on_milestone`, `based_on_task`, or `based_on_user`.|
+| &emsp; `budget_info.tracking_method`	| String | Optional |	The tracking method.<br> Accepted values: `project_hours`, `staff_hours`, `issue_hours`, or `task_or_issue_hours`. |
 budget_info.currency	String	The currency.
 budget_info.cost_budget	JSONObject	The budget details for the project.
 budget_info.cost_budget.amount	double	The cost budget amount.
