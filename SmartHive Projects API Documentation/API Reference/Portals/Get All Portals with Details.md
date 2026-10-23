@@ -7,7 +7,7 @@ This is an enhanced version of the Get All Portals API. Each portal object inclu
 
 **Method and endpoint:** `GET /api/v3/portals`
 
-**OAuth scope:** SmartHiveProjects.portals.READ
+**OAuth scope:** *SmartHiveProjects.portals.READ*
 
 **Request example**
 ```

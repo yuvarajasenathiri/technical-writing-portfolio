@@ -4,7 +4,7 @@ Get the list of all projects in the SmartHive Projects portal.
 
 **Method and endpoint:** `GET /api/v3/portal/[PORTALID]/projects`
 
-**OAuth scope:** SmartHiveProjects.projects.READ
+**OAuth scope:** *SmartHiveProjects.projects.READ*
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
@@ -27,7 +27,7 @@ curl -X GET \
 | `criteria` |	JSONArray <br>*Maximum length: 10,000.* <br> *Array size: 0 or greater.* | Optional | A list of filter conditions.<br> Each condition specifies a field, a condition type, and a value to match. You can combine multiple conditions by using the pattern property, which references each condition by its position, starting from 1. |
 | `pattern` |	String <br> *Maximum length: 300.* | Optional | The logical expression that defines how the criteria are combined. <br> Use condition numbers (starting from 1) with the `AND` and `OR` operators and parentheses for grouping. For example, use `1` for a single condition, `1` AND `2` for both conditions, `1` OR `2` for either condition, and `(1 OR 2) AND 3` for grouped logic.|
 | `sort_by`	| String	| Optional | The sort order for the results.<br>Wrap the field API name in `ASC()` for ascending order or `DESC()` for descending order. For example, `ASC(start_date)` sorts by start date in ascending order, and `DESC(created_time)` sorts by creation time in descending order. |
-| `view_id` |	String |	Optional | The ID of a saved custom view to apply.<br>When you include it, the API applies the saved view’s filter criteria, columns, and sort order. <br>If you also include a `filter`, the API combines the filter conditions (AND) with the custom view’s criteria.  |
+| `view_id` |	String | Optional | The ID of a saved custom view to apply.<br>When you include it, the API applies the saved view’s filter criteria, columns, and sort order. <br>If you also include a `filter`, the API combines the filter conditions (AND) with the custom view’s criteria.  |
 
 **Sample input**
 ```

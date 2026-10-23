@@ -4,7 +4,7 @@ Get details of a specific SmartHive Projects portal.
 
 **Method and endpoint:** `GET /api/v3/portal/[PORTAL_ID]`
 
-**OAuth scope:** SmartHiveProjects.portals.READ
+**OAuth scope:** *SmartHiveProjects.portals.READ*
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
