@@ -118,7 +118,7 @@ curl -X POST \
 |`project_group`|	JSONObject<br>*Maximum length: 1,000*|	|The project group details.|
 |&emsp;`project_group.id` |	String<br>*Maximum length: 30*| Optional |	The identifier of the project group.<br> Get it from the Get Project Groups API (the `id` field in the response).|
 |`sub_module_settings` |	JSONObject |	| The sub-module settings, which declare sub-module configurations. |
-|&emsp;`sub_module_settings.sub_module_layouts_configuration`|	JSONObject| Optional |	The sub-module layouts.|
+|&emsp;`sub_module_settings.sub_module_layouts_configuration` |	JSONObject | Optional |	The sub-module layouts. |
 |`tags` |	JSONArray<br*Maximum length: 10,000* |	|The tags for the project.|
 |&emsp;`tags.add`	|JSONArray<br>*Array size: 0 to 5,000*| 	| The tags to add to the project.|
 |&emsp;&emsp;`tags.add[].id` |	String<br>*Maximum length: 30* | Optional |The identifier of the tag to add.<br> Get it from the `Get Tags API` (the `id` field in the response). |
@@ -126,5 +126,5 @@ curl -X POST \
 |&emsp;&emsp;`tags.remove[].id` |	String<br>*Maximum length: 30* |Optional |	The identifier of the tag to remove.<br> Get it from the Get Tags API (the `id` field in the response). |
 |&emsp;`tags[].id`	| String<br>*Maximum length: 30* |	Optional | The identifier of the tag.<br> Get it from the `Get Tags API` (the `id` field in the response). |
 | `copy_from` | 	Integer | 	Optional | The ID of the template or existing project to copy the new project from.<br> Get it from the Get `All Projects API` (the `id` field in the response). |
-| `business_hours_id` |	String	| The business hours ID.<br>  Get it from the `Get Business Hours API` (the `id` field in the response). |
-| `<field_name>` |	String	| The value of a project custom field.<br> Replace `<field_name>` with the custom field’s API name in snake_case, as listed in the Custom Fields Guide.<br> **Note:** The type shows as `String` by default because most basic custom fields accept string values. The value format and input structure depend on the custom field type. For details, see the Custom Fields Guide.|
+| `business_hours_id` |	String	| Optional | The business hours ID.<br>  Get it from the `Get Business Hours API` (the `id` field in the response). |
+| `<field_name>` |	String	| Optional |  The value of a project custom field.<br> Replace `<field_name>` with the custom field’s API name in snake_case, as listed in the Custom Fields Guide.<br> **Note:** The type shows as `String` by default because most basic custom fields accept string values. The value format and input structure depend on the custom field type. For details, see the Custom Fields Guide.|
