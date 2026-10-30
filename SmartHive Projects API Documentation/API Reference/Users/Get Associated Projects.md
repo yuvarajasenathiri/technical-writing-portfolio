@@ -9,8 +9,8 @@ Use this API to retrieve all projects associated with a specific user in a porta
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects. Get it from the Get All Portals with Details API (the `id` field in the response).|
-| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user. Get it from the Get Users API. The `id` field in the response is the `user_id`. |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the Get All Portals with Details API (the `id` field in the response).|
+| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br> Get it from the Get Users API.<br>The `id` field in the response is the `user_id`. |
 
 **Request example**
 ```
@@ -60,7 +60,7 @@ per_page : "10"
   }
 }
 ```
-**Possible Errors**
+**Possible errors**
 - RESOURCE_NOT_FOUND `HTTP 404`
 ```
 {

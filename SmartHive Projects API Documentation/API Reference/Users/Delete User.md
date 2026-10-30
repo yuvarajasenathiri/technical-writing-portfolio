@@ -9,8 +9,8 @@ Remove a specific user from a portal. Use this API to permanently revoke a userâ
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects. Get it from the Get All Portals with Details API (the `id` field in the response).|
-| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user. Get it from the Get Users API. The `id` field in the response is the `user_id`. |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the Get All Portals with Details API (the `id` field in the response).|
+| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br>Get it from the Get Users API.<br>The `id` field in the response is the `user_id`. |
 
 **Request example**
 ```
@@ -32,7 +32,7 @@ reporting_manager : "8000000002411"
 reporting_to : "8000000002411"
 ```
 **Sample response**
-- 204 No Content
+- 204 No content
 
 **Possible errors**
 - UNAUTHORIZED_ACCESS `HTTP 401`
