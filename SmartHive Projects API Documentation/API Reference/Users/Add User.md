@@ -56,14 +56,13 @@ curl -X POST \
 
 | Name	| Data type |	Required/Optional  | Description |
 | :---        | :----  |  :----  |     :---- |	
-| Name	| Data type | Required/Optional | 	Description |
 | `userdetails`	| JSONArray| 	Required | The details of the users to add to the portal. |
 | &emsp; userdetails[].`email_id` |	String |	| The email ID of the user. |
 | &emsp; userdetails[].`email_template` |	Integer |	| The ID of the email template for the invitation email. |
 | &emsp; userdetails[].`role_id`	| String | |	The ID of the role to assign to the user.|
 | &emsp; userdetails[].`profile_id` |	String |	| The ID of the profile to assign to the user. |
-| &emsp; userdetails[].`project_ids` |	JSONArray<br>*Maximum length: 600,000*<br>*Array size: 0 to 3,000* |	The IDs of the projects to assign to the user. |
-| &emsp; userdetails[].`bulk_projects`	| JSONObject<br>*Maximum length: 200,000* |	The project assignment details for the user. |
+| &emsp; userdetails[].`project_ids` |	JSONArray<br>*Maximum length: 600,000*<br>*Array size: 0 to 3,000* |	| The IDs of the projects to assign to the user. |
+| &emsp; userdetails[].`bulk_projects`	| JSONObject<br>*Maximum length: 200,000* |	| The project assignment details for the user. |
 | &emsp; &emsp; userdetails[].bulk_projects.`select_all` |	Boolean | 	| Whether to select all projects.<br> Accepted values: `true` or `false`. |
 | &emsp; &emsp; userdetails[].bulk_projects.`selected` |	JSONObject<br>*Maximum length: 200,000* |	| The details of the projects to assign to the user. |
 | &emsp; &emsp;&emsp; userdetails[].bulk_projects.selected.`group_ids` |	JSONArray<br> * Maximum length: 200,000*<br>*Array size: 0 to 10,000 |	|The IDs of the project groups to assign to the user.|
@@ -340,6 +339,7 @@ userdetails : [ {
     "title" : "FORBIDDEN"
   }
 }
+```
 - USER_INVITE_REJECTED `HTTP 403`
 ```
 {
