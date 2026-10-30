@@ -121,7 +121,7 @@ view_id : "23806000074760021"
 } ]
 ```
 **Possible errors**
-- Internal_Server_Error_HTTP 500
+- Internal_Server_Error `HTTP 500`
 ```
 {
   "error" : {
@@ -136,3 +136,4 @@ view_id : "23806000074760021"
     "title" : "INTERNAL_SERVER_ERROR"
   }
 }
+```

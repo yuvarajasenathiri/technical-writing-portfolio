@@ -18,6 +18,5 @@ curl -X DELETE \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/projects/23806000097545166' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
-
 **Sample response**
 - 204 No content

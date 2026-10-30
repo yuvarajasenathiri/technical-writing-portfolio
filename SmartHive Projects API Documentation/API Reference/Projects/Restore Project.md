@@ -1,4 +1,4 @@
-# Restore project
+# Restore a project
 
 Retore a project from the trash in the SmartHive Projects portal.
 
@@ -18,6 +18,5 @@ curl -X POST \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/projects/23806000097545166/restore' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
 ```
-
 **Sample response**
 - 204 No content
