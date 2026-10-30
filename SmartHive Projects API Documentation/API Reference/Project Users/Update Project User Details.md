@@ -28,7 +28,7 @@ curl -X POST \
 | :---        | :----  |  :----  |     :---- |	
 | `invoice` |	String | Optional	| The invoice rate.<br> For example, $30 per hour. |
 | `costrate` |	String	| Optional | The cost per hour.<br> For example, $15 per hour. |
-| `profile_id` |	Integer |	| The profile ID of the user.<br> Get it from the Get Profiles API (the id field in the response). |
+| `profile_id` |	Integer |	Optional | The profile ID of the user.<br> Get it from the Get Profiles API (the id field in the response). |
 
 **Sample input**
 > *Content-Type: application/json
@@ -121,6 +121,7 @@ profile_id : "2223806000000022149"
     "title" : "UNAUTHORIZED_ACCESS"
   }
 }
+```
 - RESOURCE_NOT_FOUND `HTTP 404`
 ```
 {
