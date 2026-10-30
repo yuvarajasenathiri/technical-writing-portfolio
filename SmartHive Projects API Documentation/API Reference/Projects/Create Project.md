@@ -4,7 +4,7 @@ Create a project in the SmartHive Projects portal.
 
 **Method and endpoint:** `POST /api/v3/portal/[PORTAL_ID]/projects`
 
-**OAuth scope:** SmartHiveProjects.projects.CREATE
+**OAuth scope:** *SmartHiveProjects.projects.CREATE*
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |

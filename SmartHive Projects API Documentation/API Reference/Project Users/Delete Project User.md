@@ -4,7 +4,7 @@ Remove a specific user from a project. Use this API to revoke a user’s access 
 
 **Method and endpoint:** `DELETE /api/v3/portal/[PORTAL_ID]/projects/[PROJECT_ID]/users/[USER_ID]`
 
-**OAuth scope:** SmartHiveProjects.users.DELETE
+**OAuth scope:** *SmartHiveProjects.users.DELETE*
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |

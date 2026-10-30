@@ -4,7 +4,7 @@ Add a user to a specific project. Use this API to grant a portal user access to 
 
 **Method and endpoint:** `POST /api/v3/portal/[PORTAL_ID]/projects/[PROJECT_ID]/projectusers`
 
-**OAuth scope:** SmartHiveProjects.users.CREATE
+**OAuth scope:** *SmartHiveProjects.users.CREATE*
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |

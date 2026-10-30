@@ -4,7 +4,7 @@ Update an existing project in the SmartHive Projects portal.
 
 **Method and endpoint:** `PATCH /api/v3/portal/[PORTAL_ID]/projects/[PROJECT_ID]`
 
-**OAuth scope:** SmartHiveProjects.projects.UPDATE
+**OAuth scope:** *SmartHiveProjects.projects.UPDATE*
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |

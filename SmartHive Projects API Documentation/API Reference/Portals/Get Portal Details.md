@@ -9,7 +9,7 @@ Get details of a specific SmartHive Projects portal.
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-|`portal_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects. Get it from the Get All Portals with Details API (the `id` field in the response). |
+|`portal_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the Get All Portals with Details API (the `id` field in the response). |
 
 **Request example**
 ```
@@ -17,7 +17,7 @@ curl -X GET \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
-**Sample Response**
+**Sample response**
 - 200 Ok
 ```
 {

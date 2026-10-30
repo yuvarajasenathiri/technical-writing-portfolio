@@ -1,4 +1,4 @@
-# Update project usr details
+# Update project user details
 
 Update the details of a specific user within a project using their ZPUID, ZUID, or email address.
 
