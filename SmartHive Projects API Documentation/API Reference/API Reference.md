@@ -1,11 +1,23 @@
-# Portals
+# REST API references - SmartHive Projects
+
+**Version:** 3.0  
+**Last updated:** August 2026  
+**Applies to:** SmartHive Projects Cloud API v3 
+ 
+---
+
+## Table of contents
+
+1. [Portals](#1-portals)
+
+## 1. Portals
 
 This module handles portal-related operations in SmartHive Projects. Use the Portals API to create a portal, export portal data, manage portal settings, and get details such as portal license data 
 and allowed features.
 
 ----
 
-## Get all portals with details
+### Get all portals with details
 
 Get all portals that the current user can access, along with their details.
 
@@ -67,7 +79,7 @@ environment : "production"
 }
 ```
 
-## Get portal details
+### Get portal details
 
 Get details of a specific SmartHive Projects portal.
 
@@ -127,14 +139,14 @@ curl -X GET \
 
 ----
 
-# Users
+## Users
 
 This module covers user-related operations in SmartHive Projects. Use the Users API to manage portal users and resources. You can get user details, add or deactivate users, update user profiles, 
 and view the projects a user is associated with.
 
 ----
 
-## Add a user
+### Add a user
 
 Add a user to the SmartHive Projects portal. Use this API to invite a user to a portal and grant the user access.
 
@@ -507,7 +519,7 @@ userdetails : [ {
 }
 ```
 
-## Activate a user
+### Activate a user
 
 Activate a specific user in a portal. Use this API to restore a deactivated user’s access to the portal.
 
@@ -592,7 +604,7 @@ notify : "true"
 }
 ```
 
-## Deactivate a user
+### Deactivate a user
 
 Deactivate a specific user in a portal. Use this API to revoke a user’s access to the portal without permanently removing the user’s account.
 
@@ -693,7 +705,7 @@ notify : "true"
 ```
 ----
 
-## Delete a user
+### Delete a user
 
 Remove a specific user from a portal. Use this API to permanently revoke a user’s access to a portal.
 
@@ -806,7 +818,7 @@ reporting_to : "8000000002411"
 }
 ```
 
-## Get associated projects
+### Get associated projects
 
 Use this API to retrieve all projects associated with a specific user in a portal.
 
@@ -887,14 +899,14 @@ per_page : "10"
 
 -----
 
-# Project users
+## Project users
 
 This module covers operations related to project users in SmartHive Projects. Use the Project Users API to get, add, and delete users associated with a project. You can also view specific user details in 
 the context of a project.
 
 ----
 
-## Add a project user
+### Add a project user
 
 Add a user to a specific project. Use this API to grant a portal user access to a project.
 
@@ -1078,7 +1090,7 @@ notify : "true"
 }
 ```
 
-## Update project user details
+### Update project user details
 
 Update the details of a specific user within a project using their ZPUID, ZUID, or email address.
 
@@ -1218,7 +1230,7 @@ profile_id : "2223806000000022149"
 }
 ```
 
-## Delete project user
+### Delete project user
 
 Remove a specific user from a project. Use this API to revoke a user’s access to a project in a portal.
 
@@ -1329,7 +1341,7 @@ notify : "true"
 ```
 ------
 
-# Projects API
+## Projects API
 
 This module covers project-related operations in SmartHive Projects. Use the Projects API to:
 
@@ -1344,7 +1356,7 @@ This module covers project-related operations in SmartHive Projects. Use the Pro
 
 ----
 
-## Get all projects
+### Get all projects
 
 Get the list of all projects in the SmartHive Projects portal.
 
@@ -1484,7 +1496,7 @@ view_id : "23806000074760021"
 }
 ```
 
-## Get project details
+### Get project details
 
 Get a project details in the SmartHive Projects portal.
 
@@ -1629,7 +1641,7 @@ curl -X GET \
 }
 ```
 
-## Create project
+### Create project
 
 Create a project in the SmartHive Projects portal.
 
@@ -1949,7 +1961,7 @@ curl -X POST \
 }
 ```
 
-## Update project
+### Update project
 
 Update an existing project in the SmartHive Projects portal.
 
@@ -2353,7 +2365,7 @@ curl -X PATCH \
 }
 ```
 
-## Trash project
+### Trash project
 
 Move an existing project in the SmartHive Projects portal to the trash.
 
@@ -2376,7 +2388,7 @@ curl -X POST \
 **Sample response**
 - 204 No content
 
-## # Restore a project
+### Restore a project
 
 Retore a project from the trash in the SmartHive Projects portal.
 
@@ -2399,7 +2411,7 @@ curl -X POST \
 **Sample response**
 - 204 No content
 
-## Delete a project
+### Delete a project
 
 Remove a project from the trash permanently.
 
