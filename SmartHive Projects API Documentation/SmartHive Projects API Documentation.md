@@ -37,7 +37,7 @@ SmartHive Projects provides REST APIs to manage your projects, connect third-par
 
 **Mandatory headers**
 
-SmartHive Projects APIs require the `Authorization` header. The header contains the OAuth access token that authenticates the user who accesses the data.
+SmartHive Projects APIs require the `Authorization` header. The header contains the [OAuth](#OAuth-authentication) access token that authenticates the user who accesses the data.
 
 **Example:**
 ```
@@ -151,7 +151,7 @@ You can define multiple conditions in a single request by using a structured fil
 - **Pattern logic:** Combine conditions by using `AND`, `OR`, and grouping, for example, `"(1 OR 2) AND 3"`.
 - **Custom field support:** Use the `api_name` of any custom field as the criteria `field_name`.
 
-For the complete syntax reference, see the Filter Guide.
+For the complete syntax reference, see the [Filter guide](#filter-guide).
 
 #### Standardized custom fields
 
@@ -182,9 +182,9 @@ Custom fields now use clear, consistent `api_name` values. You can reference the
 ```
 - **Stable references:** Field identifiers don’t change when you add or remove other fields.
 
-- **Consistent names:** The same `api_name` works in requests, responses, and filter criteria.
+- **Consistent names:** The same `api_name` works in requests, responses, and `filter criteria`.
 
-For full details, see Custom Fields.
+For full details, see [Custom fields](#custom-fields).
 
 #### Request and response structure
 
@@ -248,7 +248,7 @@ Pagination is now page-based, which makes it easier to work with large datasets.
  - Pagination avoids duplicate or skipped records.
  - You don’t need to calculate offsets manually.
  
-For full details and examples, see Pagination.
+For full details and examples, see [Pagination](#pagination).
  
 #### Base URL structure
  
@@ -495,9 +495,9 @@ RateLimit-Remaining = 199
 RateLimit-Window = 120
 RateLimit-Window-Unit = seconds
 Retry-After = 540 (seconds remaining)
-
-**Note:** The API returns the Retry-After header only when you exceed the rate limit.
 ```
+> **Note:** The API returns the Retry-After header only when you exceed the rate limit.
+
 #### Rate limit exceeded
 
 If you exceed the allowed number of requests:
@@ -601,8 +601,8 @@ The **Fields** section in SmartHive Projects shows the API names for custom fiel
 The Modules API returns metadata for all modules in a portal, including their API names. The Fields API returns metadata for all fields in a module, including API names, data types, and whether each field 
 is custom. Together, they give you a complete reference of the available modules and fields.
 
-- For the list of modules and their API names, see Get Modules.
-- For field-level details, including API names, see Get Fields Info.
+- For the list of modules and their API names, see [Get Modules API](#get-modules).
+- For field-level details, including API names, see [Get field info for a custom module API](#Get-field-info-for-a-custom-module).
 
 ### Custom fields
 
@@ -615,7 +615,7 @@ For example, you can use a checkbox custom field to track a project condition an
 **Note:***
 
 - Custom field API names are currently supported only in the Tasks and Projects APIs.
-- Before you pass values, use the Custom Fields metadata API to get field details such as API names and field types.
+- Before you pass values, use the [Get field info for a custom module API](#Get-field-info-for-a-custom-module) to get field details such as API names and field types.
 
 #### Field types
 
@@ -893,8 +893,8 @@ The filter payload has two key components, `criteria` and `pattern`. Together, t
 | Property     | Data Type | Description |	
 | :---        | :----  | :---- |
 | `criteria`     | Array       | *required.*<br> The array of conditions. Each property of a condition represents a specific part of it and determines how the API interprets fields, operators, and values during filtering. |
-| &emsp; criteria.`field_name`   | String        | *required.*<br> The API name of the field to filter, for example, `status`, `due_date`, or `name`. To get valid field names for a module, use the Get Field Info API.     |
-| &emsp; criteria.`criteria_condition`  | String      | *required.*<br> The filter operation. The available conditions depend on the field type. See Conditions reference.   |
+| &emsp; criteria.`field_name`   | String        | *required.*<br> The API name of the field to filter, for example, `status`, `due_date`, or `name`. To get valid field names for a module, use the [Get field info for a custom module API](#Get-field-info-for-a-custom-module).     |
+| &emsp; criteria.`criteria_condition`  | String      | *required.*<br> The filter operation. The available conditions depend on the field type. See [Conditions reference](#conditions-reference).   |
 | &emsp; criteria.`value`   | Array<String>    | *optional.*<br> Required for most conditions. Always an array. Omit it for presets (`today`, `is_empty`). `between` requires exactly 2 values. |
 | `pattern`   | String        | *required.*<br> The logic that combines the criteria by using `AND` and `OR`. Reference each criterion by its 1-based index in the array order, for example, `1` for the first criterion and `2` for the second. Example: `"(1 AND 2) OR 3"`      |
 
