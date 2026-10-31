@@ -23,7 +23,7 @@
 5. [Error codes](#error-codes)
    - [Status codes](#status-codes)
 6. [Other error responses](#other-error-responses)
-   - [URL_RULE_NOT_CONFIGURED 400](#URL-RULE-NOT-CONFIGURED 400)
+   - [URL_RULE_NOT_CONFIGURED 400](#URL-RULE-NOT-CONFIGURED-400)
 
 ## Introduction
 
