@@ -11,7 +11,7 @@
 1.  [Introduction to OAuth 2.0](#introduction-to-OAuth-2.0)
 2.  [Glossary](#glossary)
 3.  [OAuth scope](#OAuth-scope)
-4.  [Register your application](#Client registration)
+4.  [Register your application](#Client-registration)
 5.  [Self client](#self-client)
 	  - [Set up a self client](#set-up-a-self-client)
 	  - [Get an access token using authorization code flow](#self-client-authorization-code-flow)
