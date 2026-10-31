@@ -25,11 +25,11 @@ curl -X GET \
 | :---        | :----  |   :----  |   :---- |
 | `type`	| String | Optional |	The user type.<br> Accepted values: `portal_user`, `client_user`, or `client_contact`. |
 | `view_type` |	String | Optional |	The view type.<br> Accepted values: `active`, `inactive`, `active_read_only`, `inactive_read_only`, `subordinates_active`, `direct_reporters_active`, `activate_user_request`, `sandboxdevelopers`, `inactive_lite_user`, or `active_lite_user`. |
-| `page` |	Integer<br>Default: 1 |	Optional |The page number.|
-| `per_page` |	Integer<br>Default: 100 | Optional	| The number of entries to display on each page. |
+| `page` |	Integer<br>*Default: 1* |	Optional |The page number.|
+| `per_page` |	Integer<br>*Default: 100* | Optional	| The number of entries to display on each page. |
 | filter |	JSONObject | Optional	| The filter criteria.|
-| &emsp; filter.`criteria` | JSONArray<br>Maximum length: 10,000<br> Array size: 0 or greater |   | The criteria information.|
-| &emsp; filter.`pattern` | String<br>Maximum length: 300 |   | The filter pattern.|
+| &emsp; filter.`criteria` | JSONArray<br>*Maximum length: 10,000*<br> *Array size: 0 or greater* |   | The criteria information.|
+| &emsp; filter.`pattern` | String<br>*Maximum length: 300* |   | The filter pattern.|
 | `sort_by`	| String |	The sort criteria.<br> Accepted values: `ASC(field_name)` or `DESC(field_name)`.<br> Available fields: `first_name`, `last_name`, `portal_profile`, `role`, `rate_per_hour`, `cost_rate_per_hour`, `business_hours`, `added_time`, `updated_time`, `last_accessed_on`, and the `api_name` of a custom field. |
 
 **Sample input**

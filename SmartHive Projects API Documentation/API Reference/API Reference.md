@@ -17,11 +17,12 @@
    - [Deactivate a user](#deactivate-a-user)
    - [Delete a user](#delete-a-user)
    - [Get associated projects](#get-associated-projects)
-   - [Deactivate a user](#deactivate-a-user)
+   - [Get all portal users and contacts](#get-all-portal-users-and-contacts)
 3. [Project users](#project-users)
+   - [Get all users](#Get-all-users)
    - [Add a project user](#add-a-project-user)
-   - [Update project user details](#update-project-user-details)
-   - [Delete project user](#delete-project-user)
+   - [Update a project user details](#update-a-project-user-details)
+   - [Delete a project user](#delete-a-project-user)
 4. [Projects](#projects)
    - [Get all projects](#get-all-projects)
    - [Get a project details](#get-a-project-details)
@@ -30,7 +31,20 @@
    - [Trash a project](#trash-a-project)
    - [Restore a project](#restore-a-project)
    - [Delete a project](#delete-a-project)
-  
+5. [Profiles] (#profiles)
+   - [Get all portal profiles](#get-all-portal-profiles)
+6. [Modules](#modules)
+   - [Get Modules](#get-modules)
+   - [Get Global Statuses](#get-global-statuses)
+7. [Module layouts](#module-layouts)
+   - [Get a layout list](#get-a-module-list)
+8. [Project groups](#project-groups)
+   - [Get a user’s project groups](#get-a-user’s-project-groups)
+9. [Tags](#tags)
+   - [Get all tags](#get-all-tags)
+9. [Business hours](#business-hours)
+   - [Get business hours](#get-business-hours)
+
 --------
 
 ## Portals
@@ -108,7 +122,7 @@ Use this endpoint to retrieve details of a specific SmartHive Projects portal.
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-|`portal_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response). |
+|`portal_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response). |
 
 **Request example**
 ```
@@ -143,7 +157,7 @@ curl -X GET \
     },
     "logo_url" : "/images/svg/zps-logo-default.svg",
     "timezone" : "Europe/Dublin",
-    "name" : "zylker",
+    "name" : "victa",
     "id" : 26828068,
     "plan_details" : {
       "projects_service_plan" : "Free",
@@ -168,12 +182,12 @@ Use this endpoint to add a user to the SmartHive Projects portal and to invite a
 
 **Method and endpoint:** `POST /api/v3/portal/[PORTAL_ID]/users`
 
-**OAuth scope:** SmartHiveProjects.users.CREATE
+**OAuth scope:** *SmartHiveProjects.users.CREATE*
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response).|
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
 ```
@@ -541,13 +555,13 @@ Use this endpoint to activate a specific user in a portal and to restore a deact
 
 **Method and endpoint:** `POST /api/v3/portal/[PORTAL_ID]/users/[USER_ID]/activate`
 
-**OAuth scope:** SmartHiveProjects.users.UPDATE
+**OAuth scope:** *SmartHiveProjects.users.UPDATE*
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects. Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response).|
-| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user. Get it from the Get Users API. The `id` field in the response is the `user_id`. |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects. Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
+| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user. Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts). The `id` field in the response is the `user_id`. |
 
 **Request example**
 ```
@@ -622,17 +636,17 @@ notify : "true"
 
 ### Deactivate a user
 
-Deactivate a specific user in a portal. Use this API to revoke a user’s access to the portal without permanently removing the user’s account.
+Use this endpoint to deactivate a specific user in a portal and to revoke a user’s access to the portal without permanently removing the user’s account.
 
 **Method and endpoint:** `POST /api/v3/portal/[PORTAL_ID]/users/[USER_ID]/deactivate`
 
-**OAuth scope:** SmartHiveProjects.users.UPDATE
+**OAuth scope:** *SmartHiveProjects.users.UPDATE*
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects. Get it from the Get All Portals with Details API (the `id` field in the response).|
-| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user. Get it from the Get Users API. The `id` field in the response is the `user_id`. |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects. Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
+| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user. Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts). The `id` field in the response is the `user_id`. |
 
 **Request example**
 ```
@@ -722,17 +736,17 @@ notify : "true"
 
 ### Delete a user
 
-Remove a specific user from a portal. Use this API to permanently revoke a user’s access to a portal.
+Use this endpoint to remove a specific user from a portal and to permanently revoke a user’s access to a portal.
 
 **Method and endpoint:** `DELETE /api/v3/portal/[PORTAL_ID]/users/[USER_ID]`
 
-**OAuth scope:** SmartHiveProjects.users.DELETE
+**OAuth scope:** *SmartHiveProjects.users.DELETE*
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the Get All Portals with Details API (the `id` field in the response).|
-| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br>Get it from the Get Users API.<br>The `id` field in the response is the `user_id`. |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
+| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br>Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts).<br>The `id` field in the response is the `user_id`. |
 
 **Request example**
 ```
@@ -745,7 +759,7 @@ curl -X DELETE \
 | :---        | :----  |   :----  |   :---- |
 | `notify`	| String |	Required | Whether to notify the user.<br> Accepted values: `true` or `false`. |
 | `reporting_manager` |	Integer | Optional | 	The reporting manager of the user. |
-| `reporting_to` |	Integer |	Optional | The reporting manager of the user.<br>  Get it from the Get All Portals with Details API (the `id` field in the response). |
+| `reporting_to` |	Integer |	Optional | The reporting manager of the user.<br>  Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts) (the `id` field in the response). |
 
 **Sample input **
 ```
@@ -835,17 +849,17 @@ reporting_to : "8000000002411"
 
 ### Get associated projects
 
-Use this API to retrieve all projects associated with a specific user in a portal.
+Use this endpoint to retrieve all projects associated with a specific user in a portal.
 
 **Method and endpoint:** `GET /api/v3/portal/[PORTAL_ID]/users/[USER_ID]/projects`
 
-**OAuth scope:** SmartHIveProjects.users.READ
+**OAuth scope:** *SmartHIveProjects.users.READ*
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the Get All Portals with Details API (the `id` field in the response).|
-| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br> Get it from the Get Users API.<br>The `id` field in the response is the `user_id`. |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
+| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br> Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts).<br>The `id` field in the response is the `user_id`. |
 
 **Request example**
 ```
@@ -923,7 +937,7 @@ Use this endpoint to retrieve all users and contacts in the SmartHive Projects p
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the Get All Portals with Details API (the `id` field in the response).|
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
 ```
@@ -1037,14 +1051,13 @@ sort_by : "ASC(first_name)"
     "method" : "GET",
     "error_type" : "OPERATIONAL_VALIDATION_ERROR",
     "details" : [ {
-      "message" : "Internal server error. Please contact support@zohoprojects.com for further details.",
+      "message" : "Internal server error. Please contact support@smarthiveprojects.com for further details.",
       "message_key" : "zp.general.error"
     } ],
     "title" : "INTERNAL_SERVER_ERROR"
   }
 }
 ```
-
 -----
 
 ## Project users
@@ -1052,9 +1065,132 @@ sort_by : "ASC(first_name)"
 This module covers operations related to project users in SmartHive Projects. Use the Project Users API to get, add, and delete users associated with a project. You can also view specific user details in 
 the context of a project.
 
+### Get all users
+
+Use this endpoint to retrieve all users in a project.
+
+**Method and endpoint:** `GET /api/v3.1/portal/[PORTAL_ID]/projects/[PROJECT_ID]/users`
+
+**OAuth scope:** *SmartHiveProjects.users.READ*
+
+**Path parameters**
+| Name |	Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).| 
+| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br> Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
+
+**Request example**
+```
+curl -X GET \
+ 'https://projects.smarthive.com/api/v3.1/portal/[PORTAL_ID]/projects/23806000097545166/users?type=portal_user&view_type=active&page=1&per_page=10&filter=%7B%22criteria%22%3A%5B%7B%22module%22%3A%22-%22%2C%22field_name%22%3A%22name%22%2C%22module_name%22%3A%22task%22%2C%22criteria_condition%22%3A%22contains%22%2C%22value%22%3A%5B%22Monica%22%5D%7D%5D%2C%22pattern%22%3A%221%22%7D&sort_by=ASC%28first_name%29' \
+ -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
+```
+**Query parameters**
+
+> In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
+
+|Name	| Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- |
+| `type`	| String	| Optional | The user type.<br> Accepted values: `portal_user`, `client_user`, or `client_contact`. |
+| `view_type`	| String| Optional |	The view type.<br> Accepted values: `active`, `inactive`, `active_read_only`, `inactive_read_only`, `subordinates_active`, `direct_reporters_active`, `activate_user_request`, `sandboxdevelopers`, `inactive_lite_user`, `active_lite_user`, or `project_viewers_active`. |
+| `page` |	Integer<br>*Default: 1* |	Optional | The page number. |
+| `per_page` |	Integer<br>*Default: 100* | Optional |	The number of entries to display on each page. |
+| `filter` |	JSONObject | Optional |	The filter criteria. |
+| &emsp; filter.`criteria` | 	JSONArray<br>*Maximum length: 10,000*<br>*Array size: 0 or greater* |Optional	| The criteria information.
+| &emsp;&emsp; filter.criteria.`module` | String | | The field module. |
+| &emsp;&emsp; filter.criteria.`field_name` | String | | The field name. |
+| &emsp;&emsp; filter.criteria.`module_name` | String | | The module name. |
+| &emsp;&emsp; filter.criteria.`criteria_condition` | String<br>*Maximum length: 25* |  | The criteria condition.|
+| &emsp;&emsp; filter.criteria.`value`| JSONArray<br>* Maximum length: 10,000*<br>*Array size: 0 or greater*	| | The criteria value. |
+| &emsp; filter.`pattern` |	String<br>* Maximum length: 300* |	| The filter pattern.|
+|`sort_by`	|String|	| The sort criteria.<br> Accepted values: `ASC(field_name)` or `DESC(field_name)`.<br> Available fields: `first_name`, `last_name`, `portal_profile`, `role`, `project_rate`, `project_cost_rate`, `business_hours`, `added_to_project_time`, `updated_in_project_time`, and `last_accessed_on`. |
+
+**Sample input**
+```
+type : "portal_user"
+view_type : "active"
+page : "1"
+per_page : "10"
+filter : {
+  "criteria" : [ {
+    "module" : "-",
+    "field_name" : "name",
+    "module_name" : "task",
+    "criteria_condition" : "contains",
+    "value" : [ "Monica" ]
+  } ],
+  "pattern" : "1"
+}
+sort_by : "ASC(first_name)"
+```
+**Sample response**
+- 200 Ok
+```
+{
+  "page_info" : {
+    "per_page" : 50,
+    "has_next_page" : false,
+    "count" : 1,
+    "page" : 1
+  },
+  "users" : [ {
+    "business_hours" : {
+      "name" : "Standard Business Hours",
+      "id" : "4000000006095"
+    },
+    "project_profile" : {
+      "name" : "Portal Owner",
+      "is_customized" : false,
+      "id" : "4000000003455",
+      "type" : "1"
+    },
+    "updated_in_project_time" : "2026-06-16T05:59:04.588Z",
+    "role" : {
+      "name" : "Administrator",
+      "id" : "4000000002963",
+      "type" : 1
+    },
+    "added_to_project_time" : "2026-06-16T05:59:04.588Z",
+    "is_confirmed" : true,
+    "last_name" : "Cavendish",
+    "reporting_to" : {
+      "full_name" : "Monica Hemsworth",
+      "last_name" : "Hemsworth",
+      "id" : "4000000548001",
+      "first_name" : "Monica",
+      "zuid" : "66295825"
+    },
+    "zuid" : "45524228",
+    "last_accessed_on" : "2026-06-16T14:39:49.390Z",
+    "is_resend_invite" : false,
+    "full_name" : "Katya Cavendish",
+    "user_type" : "portal_user",
+    "portal_profile" : {
+      "name" : "Portal Owner",
+      "id" : "4000000003455",
+      "type" : "1",
+      "is_default" : true
+    },
+    "id" : "4000000002961",
+    "first_name" : "Katya",
+    "email" : "katya.cavendish@victa.com",
+    "status" : "active",
+    "budget" : {
+      "project_rate" : {
+        "amount" : 0,
+        "formatted_amount" : "$ 0.00",
+        "currency_code" : "USD",
+        "currency_id" : "4000000082030"
+      },
+      "hourly_budget" : "0:00"
+    }
+  } ]
+}
+```
+
 ### Add a project user
 
-Add a user to a specific project. Use this API to grant a portal user access to a project.
+Use this endpoint to add a user to a specific project and to grant a portal user access to a project.
 
 **Method and endpoint:** `POST /api/v3/portal/[PORTAL_ID]/projects/[PROJECT_ID]/projectusers`
 
@@ -1063,8 +1199,8 @@ Add a user to a specific project. Use this API to grant a portal user access to 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the Get All Portals with Details API (the `id` field in the response).|
-| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the Get All Projects API (the `id` field in the response). |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
+| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
 **Request example**
 ```
@@ -1238,18 +1374,18 @@ notify : "true"
 
 ### Update a project user details
 
-Update the details of a specific user within a project using their ZPUID, ZUID, or email address.
+Use this endpoint to modify the details of a specific user within a project using their ZPUID, ZUID, or email address.
 
 **Method and endpoint:** `POST /api/v3/portal/[PORTAL_ID]/projects/[PROJECT_ID]/users/[USER_ID]`
 
-**OAuth scope:** SmartHiveProjects.users.UPDATE
+**OAuth scope:** *SmartHiveProjects.users.UPDATE*
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the Get All Portals with Details API (the `id` field in the response).|
-| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal. <br> Get it from the Get All Projects API (the `id` field in the response). |
-| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br> Get it from the Get Users API.<br>The `id` field in the response is the `user_id`. |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
+| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal. <br> Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
+| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br> Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts).<br>The `id` field in the response is the `user_id`. |
 
 **Request example**
 ```
@@ -1266,7 +1402,7 @@ curl -X POST \
 | :---        | :----  |  :----  |     :---- |	
 | `invoice` |	String | Optional	| The invoice rate.<br> For example, $30 per hour. |
 | `costrate` |	String	| Optional | The cost per hour.<br> For example, $15 per hour. |
-| `profile_id` |	Integer |	Optional | The profile ID of the user.<br> Get it from the Get Profiles API (the id field in the response). |
+| `profile_id` |	Integer |	Optional | The profile ID of the user.<br> Get it from the [Get all portal profiles API](#get-all-portal-profiles) (the `id` field in the response). |
 
 **Sample input**
 > *Content-Type: application/json
@@ -1378,7 +1514,7 @@ profile_id : "2223806000000022149"
 
 ### Delete a project user
 
-Remove a specific user from a project. Use this API to revoke a user’s access to a project in a portal.
+Use this endpoint to remove a specific user from a project and to revoke a user’s access to a project in a portal.
 
 **Method and endpoint:** `DELETE /api/v3/portal/[PORTAL_ID]/projects/[PROJECT_ID]/users/[USER_ID]`
 
@@ -1387,9 +1523,9 @@ Remove a specific user from a project. Use this API to revoke a user’s access 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the Get All Portals with Details API (the `id` field in the response).|
-| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal. <br> Get it from the Get All Projects API (the `id` field in the response). |
-| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br> Get it from the Get Users API.<br>The `id` field in the response is the `user_id`. |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
+| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal. <br> Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
+| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br> Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts).<br>The `id` field in the response is the `user_id`. |
 
 **Request example**
 ```
@@ -1489,20 +1625,11 @@ notify : "true"
 
 ## Projects
 
-This module covers project-related operations in SmartHive Projects. Use the Projects API to:
-
-- Get project activity.
-- View or update project edits.
-- Get recent projects.
-- Manage issues and tasks.
-- Get or add default visibility settings.
-- Access favorite templates and gallery templates.
-- Add projects from templates.
-- Export custom status timelines.
+This module covers project-related operations in SmartHive Projects. Use the Projects API to get project activity, view or update project edits, get recent projects, and manage issues and tasks.
 
 ### Get all projects
 
-Get the list of all projects in the SmartHive Projects portal.
+Use this end point to retrieve the list of all projects in the SmartHive Projects portal.
 
 **Method and endpoint:** `GET /api/v3/portal/[PORTALID]/projects`
 
@@ -1511,7 +1638,7 @@ Get the list of all projects in the SmartHive Projects portal.
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-|`portal_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the Get All Portals with Details API (the `id` field in the response). |
+|`portal_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response). |
 
 **Request example**
 ```
@@ -1578,7 +1705,7 @@ view_id : "23806000074760021"
     "id" : "6000000002069",
     "zpuid" : "7000000002083",
     "name" : "John Doe",
-    "email" : "john@zylker.com"
+    "email" : "john@victa.com"
   },
   "status" : {
     "id" : "7000000000361",
@@ -1610,14 +1737,14 @@ view_id : "23806000074760021"
     "id" : "6000000002069",
     "zpuid" : "7000000002083",
     "name" : "John Doe",
-    "email" : "john@zylker.com"
+    "email" : "john@victa.com"
   },
   "created_time" : "2024-09-30T10:30:00.000Z",
   "updated_by" : {
     "id" : "6000000002069",
     "zpuid" : "7000000002083",
     "name" : "John Doe",
-    "email" : "john@zylker.com"
+    "email" : "john@victa.com"
   },
   "modified_time" : "2025-01-15T14:20:00.000Z"
 } ]
@@ -1642,17 +1769,17 @@ view_id : "23806000074760021"
 
 ### Get a project details
 
-Get a project details in the SmartHive Projects portal.
+Use this endpoint to retrieve a project details in the SmartHive Projects portal.
 
 **Method and endpoint:** `GET /api/v3/portal/[PORTALID]/projects/[PROJECTID]`
 
-**OAuth scope:** SmartHiveProjects.projects.READ
+**OAuth scope:** *SmartHiveProjects.projects.READ*
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-|`portal_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the Get All Portals with Details API (the `id` field in the response). |
-|`project_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the Get All Projects API (the `id` field in the response). |
+|`portal_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response). |
+|`project_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
 **Request example**
 ```
@@ -1787,7 +1914,7 @@ curl -X GET \
 
 ### Create a project
 
-Create a project in the SmartHive Projects portal.
+Use this endpoint to create a project in the SmartHive Projects portal.
 
 **Method and endpoint:** `POST /api/v3/portal/[PORTAL_ID]/projects`
 
@@ -1796,7 +1923,7 @@ Create a project in the SmartHive Projects portal.
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the Get All Portals with Details API (the `id` field in the response).| 
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).| 
 
 **Request example**
 ```
@@ -1874,14 +2001,14 @@ curl -X POST \
 | `description` |	String<br>*Maximum length: 80,000* | Optional |	The project description. | 
 | `project_type` |	String | Optional |	The project type.<br> Accepted values: `active` or `template`.| 
 | `owner`| 	JSONObject| 	| The project owner.|
-|&emsp;owner.`zpuid`|	String|	Required | The user ID of the project owner.<br> Get it from the Get Portal Users API (the `id` field in the response).
+|&emsp;owner.`zpuid`|	String|	Required | The user ID of the project owner.<br> Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts)(the `id` field in the response).
 | `is_public_project` | 	Boolean	| Optional | Whether the project is public.<br> Accepted values: `true` or `false`. |
 | `start_date`	| String<br> *format:YYYY-MM-DD* | Optional |	The start date of the project.|
 | `end_date` |	String<br>*format:YYYY-MM-DD* |Optional |	The end date of the project. |
 | `status` | 	JSONObject<br>  *Maximum length: 1,000*| 	| The status of the project.| 
-|&emsp;status.`id` | 	String<br>*Maximum length: 30* | Optional |	The identifier of the status.<br> Get it from the Get Global Statuses API.|
+|&emsp;status.`id` | 	String<br>*Maximum length: 30* | Optional |	The identifier of the status.<br> Get it from the [Get Global Statuses API](#get-global-statuses).|
 | `layout`	| JSONObject<br>*Maximum length: 1,000*	| |The project layout details.|
-|&emsp;layout.`id` |	String<br>*Maximum length: 30*| Optional |	The identifier of the layout.<br> Get it from the Get Layouts API (the `id` field in the response). |
+|&emsp;layout.`id` |	String<br>*Maximum length: 30*| Optional |	The identifier of the layout.<br> Get it from the [Get a layout list API](#get-a-module-list) (the `id` field in the response). |
 | `added_via` |	String | Optional |	The source of the project.<br> Accepted values: `web` or `api`. |
 | `is_rollu1p_project` | 	Boolean	| Optional | Whether the project is a roll-up project.<br> Accepted values: `true` or `false`.  |
 | `budget_info` | 	JSONObject<br> *Maximum length: 80,000* | 	| The project budget details.|
@@ -1906,17 +2033,17 @@ curl -X POST \
 |&emsp; budget_info.`budget_threshold`	|JSONObject|   |	The budget threshold details.|
 |&emsp;&emsp; budget_info.budget_threshold.`amount`|	double | Optional |	The budget threshold amount. |
 |`project_group`|	JSONObject<br>*Maximum length: 1,000*|	|The project group details.|
-|&emsp; project_group.`id` |	String<br>*Maximum length: 30*| Optional |	The identifier of the project group.<br> Get it from the Get Project Groups API (the `id` field in the response).|
+|&emsp; project_group.`id` |	String<br>*Maximum length: 30*| Optional |	The identifier of the project group.<br> Get it from the [Get a user’s project groups API](#get-a-user’s-project-groups) (the `id` field in the response).|
 |`sub_module_settings` |	JSONObject |	| The sub-module settings, which declare sub-module configurations. |
 |&emsp; sub_module_settings.`sub_module_layouts_configuration` |	JSONObject | Optional |	The sub-module layouts. |
 |`tags` |	JSONArray<br*Maximum length: 10,000* |	|The tags for the project.|
 |&emsp; tags.`add`	|JSONArray<br>*Array size: 0 to 5,000*| 	| The tags to add to the project.|
-|&emsp;&emsp; tags.add[].`id` |	String<br>*Maximum length: 30* | Optional |The identifier of the tag to add.<br> Get it from the Get Tags API (the `id` field in the response). |
+|&emsp;&emsp; tags.add[].`id` |	String<br>*Maximum length: 30* | Optional |The identifier of the tag to add.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
 |&emsp; tags.`remove` |	JSONArray<br>*Array size: 0 to 5,000* |	| The tags to remove from the project.|
-|&emsp;&emsp; tags.remove[].`id` |	String<br>*Maximum length: 30* |Optional |	The identifier of the tag to remove.<br> Get it from the Get Tags API (the `id` field in the response). |
-|&emsp; tags[].`id`	| String<br>*Maximum length: 30* |	Optional | The identifier of the tag.<br> Get it from the Get Tags API (the `id` field in the response). |
-| `copy_from` | 	Integer | 	Optional | The ID of the template or existing project to copy the new project from.<br> Get it from the Get All Projects API (the `id` field in the response). |
-| `business_hours_id` |	String	| Optional | The business hours ID.<br>  Get it from the Get Business Hours API (the `id` field in the response). |
+|&emsp;&emsp; tags.remove[].`id` |	String<br>*Maximum length: 30* |Optional |	The identifier of the tag to remove.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
+|&emsp; tags[].`id`	| String<br>*Maximum length: 30* |	Optional | The identifier of the tag.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
+| `copy_from` | 	Integer | 	Optional | The ID of the template or existing project to copy the new project from.<br> Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
+| `business_hours_id` |	String	| Optional | The business hours ID.<br>  Get it from the [Get business hours API](#get-business-hours) (the `id` field in the response). |
 | `<field_name>` |	String	| Optional |  The value of a project custom field.<br> Replace `<field_name>` with the custom field’s API name in snake_case, as listed in the Custom Fields Guide.<br> **Note:** The type shows as `String` by default because most basic custom fields accept string values. The value format and input structure depend on the custom field type. For details, see the Custom Fields Guide.|
 
 **Sample input**
@@ -2107,7 +2234,7 @@ curl -X POST \
 
 ### Update a project
 
-Update an existing project in the SmartHive Projects portal.
+Use this endpoint to modify an existing project in the SmartHive Projects portal.
 
 **Method and endpoint:** `PATCH /api/v3/portal/[PORTAL_ID]/projects/[PROJECT_ID]`
 
@@ -2116,8 +2243,8 @@ Update an existing project in the SmartHive Projects portal.
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the Get All Portals with Details API (the `id` field in the response).| 
-| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br> Get it from the Get All Projects API (the `id` field in the response). |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the`id` field in the response).| 
+| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br> Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
 **Request example**
 ```
@@ -2197,15 +2324,15 @@ curl -X PATCH \
 | `description` |	String<br>*Maximum length: 80,000* | Optional |	The project description. | 
 | `project_type` |	String | Optional |	The project type.<br> Accepted values: `active` or `template`.| 
 | `owner`| 	JSONObject| 	| The project owner.|
-|&emsp; owner.`zpuid`|	String|	Required | The user ID of the project owner.<br> Get it from the Get Portal Users API (the `id` field in the response).
+|&emsp; owner.`zpuid`|	String|	Required | The user ID of the project owner.<br> Get it from the [Get all users API](#Get-all-users) (the `id` field in the response).
 | `is_public_project` | 	Boolean	| Optional | Whether the project is public.<br> Accepted values: `true` or `false`. |
 | `start_date`	| String<br> *format:YYYY-MM-DD* | Optional |	The start date of the project.|
 | `end_date` |	String<br>*format:YYYY-MM-DD* |Optional |	The end date of the project. |
 | `completed_time`| String<br> *format: YYYY-MM-DDThh:mm:ssz (ISO-8601) * | Optional | The completed time of the project. |
 | `status` | 	JSONObject<br>  *Maximum length: 1,000*| 	| The status of the project.| 
-|&emsp; status.`id` | 	String<br>*Maximum length: 30* | Optional |	The identifier of the status.<br> Get it from the Get Global Statuses API.|
+|&emsp; status.`id` | 	String<br>*Maximum length: 30* | Optional |	The identifier of the status.<br> Get it from the [Get Global Statuses API](#get-global-statuses).|
 | `layout`	| JSONObject<br>*Maximum length: 1,000*	| |The project layout details.|
-|&emsp; layout.`id` |	String<br>*Maximum length: 30*| Optional |	The identifier of the layout.<br> Get it from the Get Layouts API (the `id` field in the response). |
+|&emsp; layout.`id` |	String<br>*Maximum length: 30*| Optional |	The identifier of the layout.<br> Get it from the [Get a layout list API](#get-a-module-list) (the `id` field in the response). |
 | `added_via` |	String | Optional |	The source of the project.<br> Accepted values: `web` or `api`. |
 | `is_rollu1p_project` | 	Boolean	| Optional | Whether the project is a roll-up project.<br> Accepted values: `true` or `false`.  |
 |  `budget_info` | 	JSONObject<br> *Maximum length: 80,000* | 	| The project budget details.|
@@ -2227,20 +2354,16 @@ curl -X PATCH \
 |&emsp;&emsp; budget_info.cost_per_hour.`amount`|	double| Optional |	The amount of the cost per hour.|
 |&emsp; budget_info.`revenue_budget` |	JSONObject |	|The revenue budget.|
 |&emsp;&emsp; budget_info.revenue_budget.`amount`	|double| Optional |	The revenue budget amount.|
-~~|&emsp; budget_info.`budget_threshold`	|JSONObject|   |	The budget threshold details.|~~
-~~|&emsp;&emsp; budget_info.budget_threshold.`amount`|	double | Optional |	The budget threshold amount. |~~
 |`project_group`|	JSONObject<br>*Maximum length: 1,000*|	|The project group details.|
-|&emsp; project_group.`id` |	String<br>*Maximum length: 30*| Optional |	The identifier of the project group.<br> Get it from the Get Project Groups API (the `id` field in the response).|
-~~|`sub_module_settings` |	JSONObject |	| The sub-module settings, which declare sub-module configurations. |~~
-~~|&emsp; sub_module_settings.`sub_module_layouts_configuration` |	JSONObject | Optional |	The sub-module layouts. |~~
+|&emsp; project_group.`id` |	String<br>*Maximum length: 30*| Optional |	The identifier of the project group.<br> Get it from the Get a user’s project groups API](#get-a-user’s-project-groups) (the `id` field in the response).|
 |`tags` |	JSONArray<br*Maximum length: 10,000* |	|The tags for the project.|
 |&emsp; tags.`add`	|JSONArray<br>*Array size: 0 to 5,000*| 	| The tags to add to the project.|
-|&emsp;&emsp; tags.add[].`id` |	String<br>*Maximum length: 30* | Optional |The identifier of the tag to add.<br> Get it from the Get Tags API (the `id` field in the response). |
+|&emsp;&emsp; tags.add[].`id` |	String<br>*Maximum length: 30* | Optional |The identifier of the tag to add.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
 |&emsp;  tags.`remove` |	JSONArray<br>*Array size: 0 to 5,000* |	| The tags to remove from the project.|
-|&emsp;&emsp; tags.remove[].`id` |	String<br>*Maximum length: 30* |Optional |	The identifier of the tag to remove.<br> Get it from the Get Tags API (the `id` field in the response). |
-|&emsp; tags[].`id`	| String<br>*Maximum length: 30* |	Optional | The identifier of the tag.<br> Get it from the Get Tags API (the `id` field in the response). |
+|&emsp;&emsp; tags.remove[].`id` |	String<br>*Maximum length: 30* |Optional |	The identifier of the tag to remove.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
+|&emsp; tags[].`id`	| String<br>*Maximum length: 30* |	Optional | The identifier of the tag.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
 | `color` | 	String | 	Optional | The project color. |
-| `business_hours_id` |	String	| Optional | The business hours ID.<br> Get it from the Get Business Hours API (the `id` field in the response). |
+| `business_hours_id` |	String	| Optional | The business hours ID.<br> Get it from the [Get business hours API](#get-business-hours) (the `id` field in the response). |
 | `<field_name>` |	String	| Optional |  The value of a project custom field.<br> Replace `<field_name>` with the custom field’s API name in snake_case, as listed in the Custom Fields Guide.<br> **Note:** The type shows as `String` by default because most basic custom fields accept string values. The value format and input structure depend on the custom field type. For details, see the Custom Fields Guide.|
 
 **Sample input**
@@ -2508,10 +2631,9 @@ curl -X PATCH \
   "check_box_19sep_cview_lay" : false
 }
 ```
-
 ### Trash a project
 
-Move an existing project in the SmartHive Projects portal to the trash.
+Use this endpoint to move an existing project in the SmartHive Projects portal to the trash.
 
 **Method and endpoint:** `POST /api/v3/portal/[PORTAL_ID]/projects/[PROJECT_ID]/trash`
 
@@ -2520,8 +2642,8 @@ Move an existing project in the SmartHive Projects portal to the trash.
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the Get All Portals with Details API (the `id` field in the response).| 
-| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the Get All Projects API (the `id` field in the response). |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).| 
+| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
 **Request example**
 ```
@@ -2534,7 +2656,7 @@ curl -X POST \
 
 ### Restore a project
 
-Retore a project from the trash in the SmartHive Projects portal.
+Use this endpoint to Restore a project from the trash in the SmartHive Projects portal.
 
 **Method and endpoint:** `POST /api/v3/portal/[PORTAL_ID]/projects/[PROJECT_ID]/restore`
 
@@ -2543,8 +2665,8 @@ Retore a project from the trash in the SmartHive Projects portal.
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the Get All Portals with Details API (the `id` field in the response).| 
-| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the Get All Projects API (the `id` field in the response). |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).| 
+| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
 **Request example**
 ```
@@ -2557,7 +2679,7 @@ curl -X POST \
 
 ### Delete a project
 
-Remove a project from the trash permanently.
+Use this endpoint to remove a project from the trash permanently.
 
 **Method and endpoint:** `DELETE /api/v3/portal/[PORTAL_ID]/projects/[PROJECT_ID]`
 
@@ -2566,8 +2688,8 @@ Remove a project from the trash permanently.
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the Get All Portals with Details API (the `id` field in the response).| 
-| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the Get All Projects API (the `id` field in the response). |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).| 
+| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
 **Request example**
 ```
@@ -2580,7 +2702,938 @@ curl -X DELETE \
 
 -------
 
+## Profiles
 
+This module covers profile-related operations in Smarthive Projects. Use the Profiles API to manage portal profiles, update profile permissions, and set default profiles for your users.
+
+### Get all portal profiles
+
+Use this endpoint to retrieve all profiles in a specific portal and their configurations.
+
+**Method and endpoint:** `GET /api/v3/portal/[PORTAL_ID]/profiles`
+
+**OAuth scope:** *SmartHiveProjects.portals.READ*
+
+**Path parameters**
+| Name |	Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).|
+
+**Request example**
+```
+curl -X GET \
+ 'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/profiles?sort_by=ASC%28last_updated_time%29&page=1&per_page=10&filter=%7B%22criteria%22%3A%5B%7B%22module%22%3A%22-%22%2C%22field_name%22%3A%22project%22%2C%22module_name%22%3A%22task%22%2C%22criteria_condition%22%3A%22contains%22%2C%22value%22%3A%5B1752587000000097269%5D%7D%5D%2C%22pattern%22%3A%221%22%7D&ids=4000000029001' \
+ -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
+```
+**Query parameters**
+
+> In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
+
+|Name	| Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- |
+| `sort_by`	| String | Optional |	The sort order.<br> Accepted values: `ASC(field_name)` or `DESC(field_name)`.<br> Available fields: `name`, `type`, `created_by`, `created_time`, `last_updated_by`, `last_updated_time`, `default_profile`, and system_defined`. |
+| `page`	| Integer<br>*Default: 1* | Optional |	The page number.|
+| `per_page` |	Integer<br>*Default: 25* | Optional |	| The number of entries to display on each page.|
+| `filter`	| JSONObject |	Optional | The filter criteria for narrowing the profile results.|
+| &emsp; filter.`criteria`|	JSONArray<br> *Maximum length: 10,000*<br>*Array size: 0 or greater* | |	The list of filter conditions.<br> The API combines the conditions by using the pattern property.|
+| &emsp;&emsp; filter.criteria[].`module`|	String| 	|The module of the field.|
+| &emsp;&emsp; filter.criteria[].`field_name`|	String | 	| The field name.|
+| &emsp;&emsp; filter.criteria[].`module_name`|	String |	The module name. |
+| &emsp;&emsp; filter.criteria[].`criteria_condition` |	String<br>*Maximum length: 25* |	| The condition for the criteria.<br> For example, `is`, `contains`, or `greater_than`. | 
+| &emsp;&emsp; filter.criteria[].`value` |	JSONArray<br>*Maximum length: 10,000*<br>*Array size: 0 or greater* |	The values for the criteria condition. You can provide multiple values. |
+| &emsp; filter.`pattern`|	String<br> Maximum length: 300.|	| The logical pattern that combines the filter conditions. For example, `1` AND `2`.| 
+| `ids` |	String| 	| The profile IDs. |
+
+**Sample input**
+```
+sort_by : "ASC(last_updated_time)"
+page : 1
+per_page : 10
+filter : {
+  "criteria" : [ {
+    "module" : "-",
+    "field_name" : "project",
+    "module_name" : "task",
+    "criteria_condition" : "contains",
+    "value" : [ 1752587000000097269 ]
+  } ],
+  "pattern" : "1"
+}
+ids : 4000000029001
+```
+**Sample response**
+- 200 Ok
+```
+{
+  "page_info" : {
+    "page" : 1,
+    "per_page" : 25,
+    "count" : 12,
+    "page_count" : 1,
+    "has_next_page" : false
+  },
+  "profiles" : [ {
+    "is_primary" : true,
+    "name" : "Manager",
+    "id" : "7000000002347",
+    "type" : "6",
+    "is_default" : true
+  } ]
+}
+```
+-----
+
+## Modules
+
+This module covers operations for managing modules in Smarthive Projects. Use the Modules API to get lists of modules and their configuration details.
+
+### Get modules
+
+Use this endpoint:
+
+- To retrieve a list of modules in the portal, along with their configuration details. 
+- To identify module API names, IDs, and types before you perform module-level operations.
+
+**Method and endpoint:** `GET /api/v3/portal/[PORTAL_ID]/settings/modules`
+
+**OAuth scope:** *SmartHiveProjects.custom_fields.READ*
+
+**Path parameters**
+| Name |	Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).|
+
+**Request example**
+```
+curl -X GET \
+ 'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/settings/modules?filter=%7B%22is_customized%22%3Atrue%2C%22is_default%22%3Atrue%2C%22is_web_tab%22%3Atrue%7D&page=1&per_page=10' \
+ -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
+```
+**Query parameters**
+
+> In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
+
+|Name	| Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- |
+| `filter`	| JSONObject | Optional |	The filter criteria for refining the results.<br> You can combine multiple filter conditions. |
+| &emsp; filter.is_`customized` |	Boolean |	| Whether to include only customized modules. |
+| &emsp; filter.is_`default`	| Boolean	| | Whether to include only default modules.|
+| &emsp; filter.`is_web_tab` | 	Boolean | |Whether to include only web tab modules.| 
+| `page` |	Integer<br>*Default: 1* |	|The page number.|
+| `per_page` |	Integer<br> *Limit: 1 to 200*<br>*Default: 1,000*| 	| The number of entries to display on each page.|
+
+**Sample input**
+```
+filter : {
+  "is_customized" : true,
+  "is_default" : true,
+  "is_web_tab" : true
+}
+page : "1"
+per_page : "10"
+```
+**Sample response**
+- 200 Ok
+```
+[ {
+  "id" : "4000000000152",
+  "api_name" : "tasks",
+  "singular_name" : "Task",
+  "icon_class" : "smarthive-task",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Task",
+  "module_name" : "Task",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "search_module_id" : "5",
+    "is_indexed_module" : true,
+    "default_layout_type" : "private"
+  }
+}, {
+  "id" : "4000000000155",
+  "api_name" : "issues",
+  "singular_name" : "zp.general.issue",
+  "plural_name" : "zp.general.issues",
+  "icon_class" : "smarthive-bugs2",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Issue",
+  "module_name" : "Issue",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "search_module_id" : "6",
+    "is_indexed_module" : true,
+    "default_layout_type" : "private"
+  }
+}, {
+  "id" : "4000000000158",
+  "api_name" : "timelogs",
+  "singular_name" : "zp.tab.timelog",
+  "plural_name" : "zp.tab.timelogs",
+  "icon_class" : "smarthive-timesheet",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Timesheet",
+  "module_name" : "Timesheet",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "is_indexed_module" : false,
+    "default_layout_type" : "private"
+  }
+}, {
+  "id" : "4000000000521",
+  "api_name" : "projects",
+  "singular_name" : "Projects",
+  "icon_class" : "smarthive-projects",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Projects",
+  "module_name" : "Projects",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "search_module_id" : "2",
+    "is_indexed_module" : true,
+    "default_layout_type" : "public"
+  }
+}, {
+  "id" : "4000000000776",
+  "api_name" : "phases",
+  "singular_name" : "zp.module.rename.phase",
+  "plural_name" : "zp.module.rename.phases",
+  "icon_class" : "smarthive-milestone",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Milestone",
+  "module_name" : "Milestone",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "search_module_id" : "3",
+    "is_indexed_module" : true,
+    "default_layout_type" : "private"
+  }
+}, {
+  "id" : "4000000002061",
+  "api_name" : "tasklists",
+  "singular_name" : "zp.module.tasklist",
+  "plural_name" : "zp.module.tasklists",
+  "icon_class" : "smarthive-tasklist",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : false,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Tasklist",
+  "module_name" : "Tasklist",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "search_module_id" : "4",
+    "is_indexed_module" : true,
+    "default_layout_type" : "public"
+  }
+}, {
+  "id" : "4000000002064",
+  "api_name" : "forums",
+  "singular_name" : "zp.forum.tab",
+  "plural_name" : "zp.profileform.forum",
+  "icon_class" : "smarthive-ext-icon1",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Forum",
+  "module_name" : "Forum",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "search_module_id" : "7",
+    "is_indexed_module" : true,
+    "default_layout_type" : "public"
+  }
+}, {
+  "id" : "4000000002067",
+  "api_name" : "statuses",
+  "singular_name" : "zp.reports.status",
+  "plural_name" : "zp.customfields.statuses",
+  "icon_class" : "smarthive-ext-icon1",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Status",
+  "module_name" : "Status",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "search_module_id" : "8",
+    "is_indexed_module" : true,
+    "default_layout_type" : "public"
+  }
+}, {
+  "id" : "4000000002070",
+  "api_name" : "events",
+  "singular_name" : "zp.notification.event",
+  "plural_name" : "zp.todo.events",
+  "icon_class" : "smarthive-ext-icon1",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Events",
+  "module_name" : "Events",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "search_module_id" : "9",
+    "is_indexed_module" : true,
+    "default_layout_type" : "public"
+  }
+}, {
+  "id" : "4000000002073",
+  "api_name" : "pages",
+  "singular_name" : "zp.planacc.wikis",
+  "plural_name" : "zp.planacc.wikis",
+  "icon_class" : "smarthive-ext-icon1",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Pages",
+  "module_name" : "Pages",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "is_indexed_module" : false,
+    "default_layout_type" : "public"
+  }
+}, {
+  "id" : "4000000002076",
+  "api_name" : "documents",
+  "singular_name" : "zp.doc.tab",
+  "plural_name" : "zp.doc.tab",
+  "icon_class" : "smarthive-ext-icon1",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Documents",
+  "module_name" : "Documents",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "is_indexed_module" : false,
+    "default_layout_type" : "public"
+  }
+}, {
+  "id" : "4000000002079",
+  "api_name" : "users",
+  "singular_name" : "zp.general.user",
+  "plural_name" : "zp.general.users",
+  "icon_class" : "smarthive-ext-icon1",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Users",
+  "module_name" : "Users",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "is_indexed_module" : false,
+    "default_layout_type" : "public"
+  }
+}, {
+  "id" : "4000000002082",
+  "api_name" : "clients",
+  "singular_name" : "zp.client.clientcompuser",
+  "plural_name" : "zp.planaccount.clients",
+  "icon_class" : "smarthive-ext-icon1",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Clients",
+  "module_name" : "Clients",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "is_indexed_module" : false,
+    "default_layout_type" : "public"
+  }
+}, {
+  "id" : "4000000002085",
+  "api_name" : "resources",
+  "singular_name" : "zp.resources.resource",
+  "plural_name" : "zp.tasklistexport.resource",
+  "icon_class" : "smarthive-ext-icon1",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Resources",
+  "module_name" : "Resources",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "is_indexed_module" : false,
+    "default_layout_type" : "public"
+  }
+}, {
+  "id" : "4000000002088",
+  "api_name" : "timeloggroup",
+  "singular_name" : "zp.tsheet.tab",
+  "plural_name" : "zp.invoice.timesheets",
+  "icon_class" : "smarthive-timesheet-new",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "TimelogGroup",
+  "module_name" : "TimelogGroup",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "is_indexed_module" : false,
+    "default_layout_type" : "public"
+  }
+}, {
+  "id" : "4000000002091",
+  "api_name" : "recyclebin",
+  "singular_name" : "zp.module.recyclebin",
+  "plural_name" : "zp.module.recyclebin",
+  "icon_class" : "smarthive-ext-icon1",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Recyclebin",
+  "module_name" : "Recyclebin",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "is_indexed_module" : false,
+    "default_layout_type" : "public"
+  }
+}, {
+  "id" : "4000000002094",
+  "api_name" : "customers",
+  "singular_name" : "zp.client.clientcompname",
+  "plural_name" : "zp.client.companies",
+  "icon_class" : "smarthive-ext-icon1",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : false,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Customers",
+  "module_name" : "Customers",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "is_indexed_module" : false,
+    "default_layout_type" : "public"
+  }
+}, {
+  "id" : "4000000060007",
+  "api_name" : "tags",
+  "singular_name" : "zp.links.tag",
+  "plural_name" : "zp.tag.tags1",
+  "icon_class" : "smarthive-ext-icon1",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Tag",
+  "module_name" : "Tag",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "is_indexed_module" : false,
+    "default_layout_type" : "public"
+  }
+}, {
+  "id" : "4000000060016",
+  "api_name" : "profiles",
+  "singular_name" : "zp.userfilter.profile",
+  "plural_name" : "zp.settings.profiles",
+  "icon_class" : "smarthive-ext-icon1",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Profile",
+  "module_name" : "Profile",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "is_indexed_module" : false,
+    "default_layout_type" : "public"
+  }
+}, {
+  "id" : "4000000060025",
+  "api_name" : "roles",
+  "singular_name" : "zp.userfilter.role",
+  "plural_name" : "zp.settings.roles",
+  "icon_class" : "smarthive-ext-icon1",
+  "type" : "default",
+  "status" : "active",
+  "is_global_module" : true,
+  "is_all_projects" : true,
+  "is_all_profiles" : true,
+  "overviewNeeded" : true,
+  "tabName" : "Role",
+  "module_name" : "Role",
+  "is_overview_needed" : true,
+  "module_property" : {
+    "is_indexed_module" : false,
+    "default_layout_type" : "public"
+  }
+} ]
+```
+### Get global statuses
+
+Use this endpoint:
+- To retrieve the list of global statuses configured for a module, along with their metadata, such as status ID, name, color, type, and sequence order. 
+- To identify status IDs before you perform status-based operations.
+
+**Method and endpoint:** `GET /api/v3/portal/[PORTAL_ID]/settings/global-statuses`
+
+**OAuth scope:** *SmartHiveProjects.custom_fields.READ*
+
+**Path parameters**
+| Name |	Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).|
+
+**Request example**
+```
+curl -X GET \
+ 'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/settings/global-statuses?module=-&filter=%7B%22status_ids%22%3A%22-%22%2C%22status_names%22%3A%22-%22%2C%22search_term%22%3A%22smarthive+Projects%22%7D&page=-&per_page=-' \
+ -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
+```
+**Query parameters**
+
+> In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
+
+|Name	| Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- |
+| module |	String |	Required | The API name or ID of the module.<br> Get it from the [Get Modules API](#get-modules) (the `id` field in the response). |
+| filter	| JSONObject	|Optional  |The filter criteria for refining the results.<br> Use only one filter property per request. |
+| &emsp; filter.`status_ids` |	JSONArray| 	| The IDs of the statuses to get.|
+| &emsp; filter.`status_names` |	JSONArray|	| The names of the statuses to get. |
+| &emsp; filter.`search_term` |	String<br>*Maximum length: 100*| 	| The search term for filtering statuses by name. |
+| `page` |	Integer | Optional |	The page number. |
+| `per_page` |	Integer | Optional |	The number of entries to display on each page.|
+
+**Sample input**
+```
+module :  - 
+filter : {
+  "status_ids" : "-",
+  "status_names" : "-",
+  "search_term" : "Smarthive Projects"
+}
+page :  - 
+per_page :  -
+```
+**Sample response**
+- 200 Ok
+```
+[ {
+  "id" : "5000000000500",
+  "name" : "Open",
+  "color" : "transparent",
+  "color_hexcode" : "transparent"
+}, {
+  "id" : "5000000000521",
+  "name" : "Cancelled",
+  "color" : "transparent",
+  "color_hexcode" : "transparent"
+} ]
+```
+**Possible errors**
+- INVALID_PARAMETER_VALUE `HTTP 400`
+```
+{
+  "error" : {
+    "status_code" : "400",
+    "instance" : "/api/v3/portal/25450296/settings/global-statuses",
+    "method" : "GET",
+    "error_type" : "FIELDS_VALIDATION_ERROR",
+    "details" : [ {
+      "message" : "Invalid module",
+      "field_name" : "module"
+    } ],
+    "title" : "INVALID_PARAMETER_VALUE"
+  }
+}
+```
+-----
+
+## Module layouts
+
+### Get a layout list
+
+Use this endpoint to:
+- Retrieve the list of layouts in a module. 
+- Identify layout IDs before you perform layout-level operations, such as updating layouts, adding fields, or managing sections.
+
+**Method and endpoint:** `GET /api/v3/portal/[PORTAL_ID]/settings/layouts`
+
+**OAuth scope:** *SmartHiveProjects.custom_fields.READ*
+
+**Path parameters**
+| Name |	Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).|
+
+**Request example**
+```
+curl -X GET \
+ 'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/settings/layouts?module=projects&index=1&range=100&page=1&per_page=10&filter=%7B%22is_association_info_needed%22%3A%22true%22%2C%22is_current_user_profile_associated%22%3A%22true%22%2C%22search_term%22%3A%22smarthive+Projects%22%2C%22search_by%22%3A%22project%22%7D' \
+ -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
+```
+**Query parameters**
+
+> In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
+
+|Name	| Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- |
+| `module` |	String |	Required | The API name or ID of the module.<br> Get it from the [Get Modules API](#get-modules)(the `id` field in the response).|
+| `index` |	Integer | Optional |	The index of the layouts. |
+| `range` |	Integer | Optional |	The range of the layouts. |
+| `page`	| Integer<br>*Default: 1* |	Required | The page number. |
+| `per_page` |	Integer<br>*Limit: 1 to 200*<br> *Default: 100* |	Required | The number of entries to display on each page. |
+| `filter`	| JSONObject | Optional |	The filter criteria for refining the results.<br> You can combine multiple filter conditions. |
+| &emsp; filter.`is_association_info_needed` | 	Boolean |	| Whether to include the association details.<br> Accepted values: `true` or `false`. |
+| &emsp; filter.`is_current_user_profile_associated` |	Boolean	| | Whether the current user’s profile is associated.<br> Accepted values: `true` or `false`. |
+| &emsp; filter.`search_term` |	String |	| The search term. |
+| &emsp; filter.`search_by`	| String | | The field to search by.<br> Accepted values: `project`, `layout`, or `id`.
+
+**Sample input**
+```
+module : "projects"
+index : 1
+range : 100
+page : 1
+per_page : 10
+filter : {
+  "is_association_info_needed" : "true",
+  "is_current_user_profile_associated" : "true",
+  "search_term" : "Smarthive Projects",
+  "search_by" : "project"
+}
+```
+** Sample Response**
+- 200 Ok
+```
+[ {
+  "associated_entities_count" : 2,
+  "associated_entities" : [ {
+    "name" : "Admin",
+    "id" : "9000000002510"
+  }, {
+    "name" : "Manager",
+    "id" : "9000000002513"
+  } ],
+  "name" : "New Layout 1",
+  "id" : "9000000071079",
+  "is_default" : false,
+  "type" : "PUBLIC"
+}, {
+  "associated_entities_count" : 2,
+  "associated_entities" : [ {
+    "name" : "Admin",
+    "id" : "9000000002510"
+  }, {
+    "name" : "Manager",
+    "id" : "9000000002513"
+  } ],
+  "name" : "New Layout 2",
+  "id" : "9000000054069",
+  "is_default" : false,
+  "type" : "PUBLIC"
+} ]
+```
+**Possible errors**
+- InVALID_PARAMETER_VALUE `HTTP 400`
+```
+{
+  "error" : {
+    "status_code" : 400,
+    "instance" : "/api/v3/portal/25450296/settings/layouts",
+    "method" : "GET",
+    "error_type" : "FIELDS_VALIDATION_ERROR",
+    "details" : [ {
+      "message" : "Invalid module",
+      "field_name" : "module"
+    } ],
+    "title" : "INVALID_PARAMETER_VALUE"
+  }
+}
+```
+----
+
+## Project groups
+
+This module covers operations related to project groups in SmartHive Projects.
+
+### Get a user’s project groups
+
+Use this endpoint to retrieve the project groups associated with a user.
+
+**Method and endpoint:** `GET /api/v3/portal/[PORTAL_ID]/my-project-groups`
+
+**OAuth scope:** *SmartHiveProjects.projectgroups.READ*
+
+**Path parameters**
+| Name |	Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response).|
+
+**Request example**
+```
+curl -X GET \
+ 'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/my-project-groups?page=1&per_page=10' \
+ -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
+```
+**Query parameters**
+
+|Name	| Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- |
+| `page` |	Integer<br>*Default: 1*| Optional |	The page number. |
+| `per_page` |	Integer<br>*Limit: 1 to 200*<br>*Default: 100* | Optional |	The number of entries to display on each page.| 
+
+**Sample input**
+```
+page : "1"
+per_page : "10"
+```
+**Sample response**
+- 200 Ok
+```
+{
+  "project-groups" : [ {
+    "name" : "Ungrouped Projects",
+    "id" : "4000000005417"
+  } ]
+}
+```
+----
+
+## Tags
+
+This module covers operations related to tags in SmartHive Projects. Use the Tags API to create and update tags, associate tags with modules and projects, and delete tags.
+
+### Get all tags
+
+Use this endpoint to retrieve all tags in the SmartHive Projects portal.
+
+**Method and endpoint:** `GET /api/v3/portal/[PORTAL_ID]/tags`
+
+**OAuth scope:** *SmartHiveProjects.tags.READ*
+
+**Path parameters**
+| Name |	Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response).|
+
+**Request example**
+```
+curl -X GET \
+ 'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/tags?page=1&per_page=10&filter=%7B%22criteria%22%3A%5B%7B%22field_name%22%3A%22project%22%2C%22criteria_condition%22%3A%22contains%22%2C%22value%22%3A%5B%221752587000000097269%22%5D%7D%5D%2C%22pattern%22%3A%221%22%7D' \
+ -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
+ ```
+**Query parameters**
+
+> In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
+
+|Name	| Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- | 
+| `page`	| Integer<br>*Default: 1* |	Optional | The page number. |
+| `per_page` |	Integer<br>*Limit: 1 to 200*<br>*Default: 100*| Optional |	The number of entries to display on each page.|
+| `filter` |	JSONObject| Optional |	The filter criteria.|
+| &emsp; filter.`criteria`	| JSONArray<br>*Maximum length: 10,000<br>*Array size: 0 or greater* | Optional 	| The criteria information.|
+| &emsp;&emsp; filter.criteria.`field_name` | String | | The field name. |
+| &emsp;&emsp; filter.criteria.`criteria_condition` | String<br>*Maximum length: 25*|  | The criteria condition. |
+| &emsp;&emsp; filter.criteria.`value` | String<br>*Maximum length: 10,000*<br>*Array size: 0 or greater* |  | The  criteria value. |
+| &emsp; filter.`pattern`	| String<br>*Maximum length: 300* |	| The filter pattern |
+
+**Sample input**
+```
+page : "1"
+per_page : "10"
+filter : {
+  "criteria" : [ {
+    "field_name" : "project",
+    "criteria_condition" : "contains",
+    "value" : [ "1752587000000097269" ]
+  } ],
+  "pattern" : "1"
+}
+```
+**Sample response**
+- 200 Ok
+```
+{
+  "page_info" : {
+    "per_page" : 100,
+    "has_next_page" : false,
+    "count" : 1,
+    "page" : 1
+  },
+  "tags" : [ {
+    "usage_count" : 0,
+    "name" : "tag129",
+    "id" : "170876000008279193",
+    "created_by" : {
+      "zpuid" : "4000000002239",
+      "full_name" : "Hector",
+      "name" : "Hector",
+      "last_name" : "",
+      "id" : "21761641",
+      "first_name" : "Hector",
+      "email" : "hector@victa.com"
+    },
+    "color_hexcode" : "#7dcf7b"
+  } ]
+}
+```
+----
+
+## Business hours
+
+This module covers operations related to business hours in SmartHive Projects. Use the Business Hours API to create, update, and delete business hours.
+
+### Get business hours
+
+Use this endpoint to retrieve the list of business hours in the SmartHive Projects portal.
+
+**Method and endpoint:** `GET /api/v3/portal/[PORTAL_ID]/business-hours`
+
+**OAuth scope:** *SmartHiveProjects.portals.READ*
+
+**Path parameters**
+| Name |	Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response).|
+
+**Request example**
+```
+curl -X GET \
+ 'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/business-hours?filter=%7B%22criteria%22%3A%5B%7B%22cfid%22%3A%224000000000242%22%2C%22field_name%22%3A%22project%22%2C%22criteria_condition%22%3A%22contains%22%2C%22value%22%3A%5B%221752587000000097269%22%5D%7D%5D%2C%22pattern%22%3A%221%22%7D&sort_by=ASC%28last_modified_time%29&page=1&per_page=10' \
+ -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
+ ```
+**Query parameters**
+
+> In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
+
+|Name	| Data type | Required/Optional |	Description |
+| :---        | :----  |   :----  |   :---- |
+| filter| 	JSONObject| Optional |	The filter criteria. |
+| &emsp; filter.`criteria`	| JSONArray<br>*Maximum length: 10,000*<br>*Array size: 0 or greater* | Optional | The criteria information.|
+| &emsp;&emsp; filter.criteria[].`cfid` | 	Integer |	| The custom field ID. |
+| &emsp;&emsp; filter.criteria[].`field_name`|	String| 	| The field name. |
+| &emsp;&emsp; filter.criteria[].`criteria_condition`	| String<br>*Maximum length: 25*| |	The criteria condition.| 
+| &emsp;&emsp; filter.criteria[].`value`	| JSONArray<br>* Maximum length: 10,000*<br>*Array size: 0 or greater*	| | The criteria values.| 
+| &emsp; filter.`pattern`	| String<br>*Maximum length: 300*| 	| The filter pattern.| 
+| `sort_by`	| String	| Optional | The sort order.<br> Accepted values: `ASC(field_name)` or `DESC(field_name)`.
+| `page`	| Integer<br>*Default: 1* | Optional |	The page number. | 
+| `per_page` |	Integer<br>*Limit: 1 to 200*<br>*Default: 100* |	Optional | The number of entries to display on each page. |
+
+**Sample input**
+```
+filter : {
+  "criteria" : [ {
+    "cfid" : "4000000000242",
+    "field_name" : "project",
+    "criteria_condition" : "contains",
+    "value" : [ "1752587000000097269" ]
+  } ],
+  "pattern" : "1"
+}
+sort_by : "ASC(last_modified_time)"
+page : "1"
+per_page : "10"
+```
+**Sample response**
+- 200 Ok
+```
+{
+  "business_hours" : [ {
+    "created_time" : "2024-10-04T06:52:16.246Z",
+    "updated_time" : "2024-10-04T06:52:16.246Z",
+    "working_hours_type" : "same_hours",
+    "working_hours" : [ {
+      "start_time" : "09:00",
+      "end_time" : "18:00",
+      "break_hours" : [ ],
+      "id" : "4000000066055",
+      "day" : "1"
+    } ],
+    "name" : "US Shift",
+    "updated_by" : {
+      "zpuid" : "4000000002379",
+      "full_name" : "Matthew Hayes",
+      "email" : "matthew.hayes@victa.com",
+      "zuid" : 22823316
+    },
+    "id" : "4000000066053",
+    "is_default" : false,
+    "created_by" : {
+      "zpuid" : "4000000002379",
+      "full_name" : "Matthew Hayes",
+      "email" : "matthew.hayes@victa.com",
+      "zuid" : 22823316
+    },
+    "version" : "1",
+    "effective_from" : "2022-10-01"
+  } ],
+  "page_info" : {
+    "per_page" : 50,
+    "has_next_page" : false,
+    "page" : 1,
+    "sort_by" : [ {
+      "field_names" : [ "name" ],
+      "order_by" : "ASCENDING"
+    } ]
+  }
+}
+```
+----
 
 
 
