@@ -204,7 +204,7 @@ see Authorization code flow for self clients.
 Provide your client credentials to get an access token. SmartHive doesn’t provide a refresh token, so when the access token expires, send the same request again to get a new one. For details, 
 see Client credentials flow for self clients.
 
-### Self Client - Authorization code flow
+### Self client - Authorization code flow
 
 #### Step 1: Generate an authorization code
 
