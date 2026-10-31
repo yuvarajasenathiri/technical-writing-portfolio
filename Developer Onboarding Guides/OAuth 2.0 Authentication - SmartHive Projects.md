@@ -8,7 +8,7 @@
 
 ## Table of contents
 
-1.  [Introduction to OAuth 2.0](#introduction-to-OAuth-2.0)
+1.  [Introduction to OAuth 2.0](#introduction-to-OAuth-20)
 2.  [Glossary](#glossary)
 3.  [OAuth scope](#OAuth-scope)
 4.  [Register your application](#Client-registration)
