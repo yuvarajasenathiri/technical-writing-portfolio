@@ -23,12 +23,12 @@
 5.  [Error codes](#error-codes)
      - [Status codes](#status-codes)
      - [Other error responses](#other-error-responses)
-		- [URL RULE NOT CONFIGURED 400](#URL-rule-not-configured-400)
-		- [INVALID OAUTHTOKEN 400](#invalid-oauthtoken-400)
-		- [INVALID INPUTSTREAM 400](#invalid-inputstream-400)
-		- [INVALID METHOD 400](#invalid-method-400)
-		- [INVALID PARAMETER VALUE 400](#invalid-parameter-value-400)
-		- [INTERNAL SERVER ERROR 500](#internal-server-error-500)
+		- [URL rule not configured 400](#URL-rule-not-configured-400)
+		- [Invalid OAuth Token 400](#invalid-oauthtoken-400)
+		- [Invalid Inputstream 400](#invalid-inputstream-400)
+		- [Invalid method 400](#invalid-method-400)
+		- [Invalid parameter value 400](#invalid-parameter-value-400)
+		- [Internal Server error 500](#internal-server-error-500)
 6.  [API limits](#api-limits)
      - [Rate limit info](#rate-limit-info)
      - [Rate limit exceeded](#rate-limit-exceeded)
@@ -352,7 +352,7 @@ In addition to HTTP status codes and their error messages, error responses for S
 
 The following sections describe the error codes and their uses:
 
-#### URL RULE NOT CONFIGURED 400
+#### URL rule not configured 400
 
 Check whether the URL you’re trying to access is correct.
 
@@ -374,7 +374,7 @@ Check whether the URL you’re trying to access is correct.
   }
 }
 ```
-#### INVALID OAUTHTOKEN 400
+#### Invalid OAuth token 400
 
 The OAuth token isn’t valid or has expired.
 
@@ -396,7 +396,7 @@ The OAuth token isn’t valid or has expired.
   }
 }
 ```
-#### INVALID INPUTSTREAM 400
+#### Invalid Inputstream 400
 
 The HTTP request has an input parameter that isn’t valid.
 
@@ -415,7 +415,7 @@ The HTTP request has an input parameter that isn’t valid.
   }
 }
 ```
-#### INVALID METHOD 400
+#### Invalid method 400
 
 The HTTP request method isn’t valid.
 
@@ -438,7 +438,7 @@ The HTTP request method isn’t valid.
   }
 }
 ```
-#### INVALID PARAMETER VALUE 400
+#### Invalid Parameter Value 400
 
 The HTTP request has a parameter value that isn’t valid.
 
@@ -462,7 +462,7 @@ The HTTP request has a parameter value that isn’t valid.
   }
 }
 ```
-#### INTERNAL SERVER ERROR 500
+#### Internal server error 500
 
 The server encountered an unexpected error.
 
