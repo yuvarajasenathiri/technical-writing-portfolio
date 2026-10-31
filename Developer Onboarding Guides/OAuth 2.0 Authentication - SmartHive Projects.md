@@ -881,7 +881,7 @@ https://www.victa.com/oauthredirect#
 
 Send requests to the service you want to access through the `api_domain` value from the access token response.
 
-## Incremental authorization overview
+## Incremental authorization
 
 ### What is incremental authorization
 
