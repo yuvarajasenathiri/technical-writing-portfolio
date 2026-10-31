@@ -22,13 +22,13 @@
 4.  [HTTP methods](#http-methods)
 5.  [Error codes](#error-codes)
      - [Status codes](#status-codes)
-6.  [Other error responses](#other-error-responses)
-     - [URL_RULE_NOT_CONFIGURED 400](#URL-RULE-NOT-CONFIGURED-400)
-     - [INVALID_OAUTHTOKEN 400](#INVALID-OAUTHTOKEN-400)
-     - [INVALID_INPUTSTREAM 400](#INVALID-INPUTSTREAM-400)
-     - [INVALID_METHOD 400](#INVALID-METHOD-400)
-     - [INVALID_PARAMETER_VALUE 400](#INVALID-PARAMETER-VALUE-400)
-     - [INTERNAL_SERVER_ERROR 500](#INTERNAL-SERVER-ERROR-500)
+6.   - [Other error responses](#other-error-responses)
+		- [URL_RULE_NOT_CONFIGURED 400](#URL-RULE-NOT-CONFIGURED-400)
+		- [INVALID_OAUTHTOKEN 400](#INVALID-OAUTHTOKEN-400)
+		- [INVALID_INPUTSTREAM 400](#INVALID-INPUTSTREAM-400)
+		- [INVALID_METHOD 400](#INVALID-METHOD-400)
+		- [INVALID_PARAMETER_VALUE 400](#INVALID-PARAMETER-VALUE-400)
+		- [INTERNAL_SERVER_ERROR 500](#INTERNAL-SERVER-ERROR-500)
 7.  [API limits](#api-limits)
      - [Rate limit info](#rate-limit-info)
      - [Rate limit exceeded](#rate-limit-exceeded)
@@ -42,8 +42,8 @@
 10. [Usage](#usage)
      - [Requests and responses](#requests-and-responses)
 11. [Retrieve API names](#retrieve-API-names)
-     - [Method 1: Use the product](#method-1:-use-the-product)
-     - [Method 2: Use the APIs](#method-1:-use-the-APIs)	
+     - [Method 1: Use the product](#method-1-use-the-product)
+     - [Method 2: Use the APIs](#method-2-use-the-APIs)	
 12. [Custom fields](#custom-fields)	 
    
 ## Introduction
@@ -346,13 +346,13 @@ provided, and codes in the 5xx range indicate server-side errors. The following 
 | 500   | Internal error     |
 | 501   | Not Supported      |
 
-## Other error responses
+### Other error responses
 
 In addition to HTTP status codes and their error messages, error responses for SmartHive Projects APIs include a machine-parsable `errorCode` parameter to simplify error handling.
 
 The following sections describe the error codes and their uses:
 
-### URL_RULE_NOT_CONFIGURED 400
+#### URL_RULE_NOT_CONFIGURED 400
 
 Check whether the URL you’re trying to access is correct.
 
@@ -374,7 +374,7 @@ Check whether the URL you’re trying to access is correct.
   }
 }
 ```
-### INVALID_OAUTHTOKEN 400
+#### INVALID_OAUTHTOKEN 400
 
 The OAuth token isn’t valid or has expired.
 
@@ -396,7 +396,7 @@ The OAuth token isn’t valid or has expired.
   }
 }
 ```
-### INVALID_INPUTSTREAM 400
+#### INVALID_INPUTSTREAM 400
 
 The HTTP request has an input parameter that isn’t valid.
 
@@ -415,7 +415,7 @@ The HTTP request has an input parameter that isn’t valid.
   }
 }
 ```
-### INVALID_METHOD 400
+#### INVALID_METHOD 400
 
 The HTTP request method isn’t valid.
 
@@ -438,7 +438,7 @@ The HTTP request method isn’t valid.
   }
 }
 ```
-### INVALID_PARAMETER_VALUE 400
+#### INVALID_PARAMETER_VALUE 400
 
 The HTTP request has a parameter value that isn’t valid.
 
@@ -462,7 +462,7 @@ The HTTP request has a parameter value that isn’t valid.
   }
 }
 ```
-### INTERNAL_SERVER_ERROR 500
+#### INTERNAL_SERVER_ERROR 500
 
 The server encountered an unexpected error.
 
