@@ -9,7 +9,7 @@
 ## Table of contents
 
 1.  [Introduction to OAuth 2.0](#introduction-to-OAuth-2.0)
-2.  [Glossary: OAuth 2.0](#glossary:-Oauth-2.0)
+2.  [Glossary: OAuth 2.0](#glossary-:-Oauth-2.0)
 3.  [OAuth scope](#OAuth-scope)
 
 
