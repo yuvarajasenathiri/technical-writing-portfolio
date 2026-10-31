@@ -11,9 +11,29 @@
 1.  [Introduction to OAuth 2.0](#introduction-to-OAuth-2.0)
 2.  [Glossary](#glossary)
 3.  [OAuth scope](#OAuth-scope)
+4.  [Register your application](#Client registration)
+5.  [Self client](#self-client)
+	  - [Set up a self client](#set-up-a-self-client)
+	  - [Get an access token using authorization code flow](#self-client-authorization-code-flow)
+	  - [Get an access token using client credentials flow](#self-client-client-credentials-flow)
+6.	[Server-based applications](#server-based-applications)
+      - [Overview](#what-are-server-based-apps)
+	  - [Get authorization code](#get-authorization-code)
+	  - [Get access token](#get-access-token)
+	  - [Refresh access token](#refresh-access-token)
+7.  [Client-based applications](#client-based-applications)
+      - [Overview](#what-are-client-based-apps)	  
+	  - [Get access token](#get-access-token)
+	  - [Refresh access token](#refresh-access-token)
+8.  [Multi DC support](#multi-dc-support)
+9.  [Incremnetal authorization](#incremental-authorization)
+      - [Overview](#what-is-incremental-authorization)
+	  - [Get scope enhancement token](#Get-scope-enhancement-token)
+	  - [Enhance scope](#enhance-scope)
+10. [Revoke OAuth tokens](#revoke-Oauth-tokens)
+11. [OAuth token limits](#OAuth-token-limits)
 
-
-
+----
 
 ## Introduction to OAuth 2.0
 
@@ -48,7 +68,7 @@ To learn about the workflows for each client type, see the following pages:
 
 - Server-based apps
 - Client-based apps
-- Self client
+- [Self client](#self-client)
 
 #### Step 3: Access the resource using the access token
 
@@ -114,5 +134,966 @@ You can generate an access token with multiple scopes. Separate the scopes with 
 
 - **Example:** `SmartHiveAssetMaster.users.CREATE,SmartHiveProduct.configure.UPDATE`
 
+## Client registration
+
+To access SmartHive resources by using SmartHive APIs, first register your application with SmartHive. You can register your application as one of the following client types:
+
+- Server-based application
+- Client-based application
+- Self client
+
+After you register your application, you receive a client ID and client secret. Use them to get the access token that you need to make API calls to SmartHive.
+
+### To register your application
+
+1. Go to the SmartHive API console, then select **GET STARTED**.
+
+2. Point to your application’s client type, and then select CREATE NOW. If you previously added an application, select **ADD CLIENT** in the upper-right corner.
+
+3. Enter the required details, and then select **CREATE**. The required details vary by client type.
+
+| Details required | Server-based | Client-based | Self client |
+| :---        | :----  |      :---- | :---- |
+| Client Name    | Y    | Y  | Y|
+| Homepage URL   | Y       | Y  | N |
+| Authorized Redirect URI  | Y       | Y   | N |
+| Javascript Domain  | N       | Y   | N |
 
 
+**INFO:**
+
+| Label | Description |
+| :---        | :----  |
+| Homepage URL    | The full URL of your application’s home page.| 
+| Authorized Redirect URI       | The URI of the application that the authorization server (SmartHive Accounts) sends the response to. The response includes the authorization code, or the access token for a client-based application, after the user grants consent. The URI must begin with https:// or http://. To add more redirect URIs, select [plus]. Example: https://www.panacim.com/oauthredirect  |
+| JavaScript Domain       | If your application is a client-based JavaScript application, specify its JavaScript domain. The domain must begin with https:// or http://. To add more JavaScript domains, select [plus].  |
+
+
+You can find the client ID and client secret on the Client Secret tab of your application in the console.
+
+To learn more about self client, see Self client.
+
+## Self client
+
+If you want your app to fetch data from your own SmartHive account, or to set up app-to-app communication in the back end without user interaction, use the Self Client option. In this scenario, you’re the 
+resource owner, and no end-user authorization is required. The client requests access permission on its own behalf, not on behalf of an end user.
+
+### Set up a self client
+
+#### Create a self client in the API Console
+
+1. Go to the SmartHive API Console.
+2. Select **GET STARTED**.
+3. Point to Self Client, and then select **CREATE NOW**.
+4. Select **CREATE**, and then select **OK**. The console creates a client ID and client secret and displays them on the Client Secret tab. Copy them.
+
+#### Get an access token
+
+You can get an access token for your self client by using one of these grant flows:
+
+- Authorization code grant flow
+- Client credentials grant flow
+
+**Authorization code grant flow**
+
+Generate an authorization code in the API Console, and then exchange it for an access token and a refresh token. When the access token expires, use the refresh token to get a new access token. For details, 
+see Authorization code flow for self clients.
+
+**Client credentials grant flow**
+
+Provide your client credentials to get an access token. SmartHive doesn’t provide a refresh token, so when the access token expires, send the same request again to get a new one. For details, 
+see Client credentials flow for self clients.
+
+### Self Client - Authorization code flow
+
+#### Step 1: Generate an authorization code
+
+1. Go to your self client in the API Console.
+2. Select the **Generate Code** tab.<br>
+	a. In the **Scope** field, enter the scopes that your app needs. Separate multiple scopes with commas. For the required scopes, see the API documentation for the module.<br>
+	b. In the **Time Duration** field , select how long the authorization code is valid. The default is 3 minutes.<br>
+	c. In the **Scope Description** field, enter a description for the scopes.
+3. Select **CREATE**.
+4. If prompted, select the SmartHive app, and then select the portal that the app needs to access.
+5. Select **CREATE**. The console generates and displays an authorization code.
+6. Copy or download the authorization code.
+
+#### Step 2: Get an access token and a refresh token
+
+Exchange the authorization code for an access token and a refresh token.
+
+**Endpoint:** `POST {accounts-server-url}/oauth/v2/token`
+
+> **Note:** The accounts-server-url value depends on the data center where you registered the client. For a list of server-specific URLs, see SmartHive Accounts server information.
+
+**Query parameters**
+
+| Parameter |	Description |
+| :---        | :----  |    
+| `client_id` |	*Required*.<br> The unique ID that appears on the **Client Secret** tab of your self client. |
+| `client_secret` |	*Required*.<br> The unique, confidential secret that appears on the **Client Secret** tab of your self client. |
+|`grant_type` |	*Required*.<br> Pass the value `authorization_code`. |
+| `code` |	*Required*.<br> The authorization code that you generated in Step 1. |
+
+**Request example**
+```
+https://accounts.smarthive.in/oauth/v2/token
+?client_id=1000.XMDEG1KBDO9SE2IFTMDFSRPYYJ5L0U
+&client_secret=1632308b34e2cf614fed922c5d6c4193c7778a5f13
+&grant_type=authorization_code
+&code=1000.406a3b53bad3f6824d4fb43108604cd7.a74aef3010243f0fae78111e2a673847
+```
+**Response parameters**
+
+| Parameter |	Description |
+| :---        | :----  | 
+| `access_token` |	The key that your app uses to access the resource specified in the scope. Valid for 1 hour. |
+| `refresh_token` |	A token that your app uses to get a new access token after the current one expires. This token doesn’t expire. |
+| `api_domain` |	The domain that your app sends service API requests to. |
+| `token_type` |	The type of access token that SmartHive generates. SmartHive OAuth uses the `Bearer` token type. |
+| `expires_in` |	The number of seconds until the access token expires. |
+
+**Response example**
+```
+{
+    "access_token": "1000.875cf8ea310ae70c6fb26e25a5a48df0.be3bc88ab282cd58c6fd32f110c53c61",
+    "refresh_token": "1000.ce79a5110c4097744b17aecbb95dcfeb.db3167fy73ca0082fa4f6182474fc80e",
+    "api_domain": "https://www.smarthiveapis.in",
+    "token_type": "Bearer",
+    "expires_in": 3600
+}
+```
+#### Step 3: Use the access token to make API calls
+
+Send API requests to the service that you want to access by using the `api_domain` value from the access token response. An access token is valid for 1 hour. After that, it expires. To get a new access token, 
+use the refresh token, as described in Step 4.
+
+#### Step 4: Refresh the access token
+
+When an access token expires, use the refresh token to get a new one.
+
+**Endpoint:** `POST	{accounts-server-url}/oauth/v2/token`
+
+> **Note:** The accounts-server-url value depends on the data center where you registered the client. For a list of server-specific URLs, see SmartHive Accounts server information.
+
+**Query parameters**
+
+| Parameter |	Description |
+| :---        | :----  |    
+| `client_id` |	*Required*.<br> The unique ID that appears on the **Client Secret** tab of your self client. |
+| `client_secret` |	*Required*.<br> The unique, confidential secret that appears on the **Client Secret** tab of your self client. |
+|`grant_type` |	*Required*.<br> Pass the value `refresh_token`. |
+| `refresh_token` |	*Required*.<br> The refresh token that you got in Step 2. |
+
+**Request example**
+```
+https://accounts.smarthive.in/oauth/v2/token
+?client_id=1000.GMB0YULZHJK411248S8I5GZ4CHUEX0
+&grant_type=refresh_token
+&client_secret=122c324d3496d5d777ceeebc129470715fbb856b7
+&refresh_token=1000.18e983526f0ca8575ea9c53b0cd5bb58.1bd83a6f2e22c3a7e1309d96ae439cc1
+```
+**Response parameters**
+
+| Parameter |	Description |
+| :---        | :----  | 
+| `access_token` |	The key that your app uses to access the resource specified in the scope. Valid for 1 hour. |
+| `api_domain` |	The domain that your app sends service API requests to. |
+| `token_type` |	The type of access token that SmartHive generates. SmartHive OAuth uses the `Bearer` token type. |
+| `expires_in` |	The number of seconds until the access token expires. |
+
+**Response example**
+```
+{
+    "access_token": "1000.875cf8ea310ae70c6fb26e25a5a48df0.be3bc88ab282cd58c6fd32f110c53c61",
+    "api_domain": "https://www.smarthiveapis.in",
+    "token_type": "Bearer",
+    "expires_in": 3600
+}
+```
+### Self client - Client credentials flow
+
+#### Step 1: Use the client credentials to get an access token
+
+**Endpoint:** `POST {accounts-server-url}/oauth/v2/token`
+
+> **Note:** The accounts-server-url value depends on the data center where you registered the client. For a list of server-specific URLs, see SmartHive Accounts server information.
+
+**Query parameters**
+
+| Parameter |	Description |
+| :---        | :----  |    
+| `client_id` |	*Required*.<br> The unique ID that appears on the **Client Secret** tab of your self client. |
+| `client_secret` |	*Required*.<br> The unique, confidential secret that appears on the **Client Secret** tab of your self client. |
+|`grant_type` |	*Required*.<br> Pass the value `client_credentials`. |
+| `scope` |	*Required*.<br> The scope for the resource that you want to access by using the access token. Example: `SmartHiveProductMaster.settings.READ` |
+| `soid` | *Required for some SmartHive apps*.<br> Use this parameter only for apps that let you create multiple products or assets. To find out whether the parameter is required, see the API documentation for the module.<br> **Tip:** If a request without this parameter returns the `missing_org_info` error, include the parameter.<br> **Syntax:** `{servicename}.{ssoid}`<br> • `servicename`: The name of the service that the client makes API calls to. Every SmartHive pmodule has a unique service name, such as `SmartHiveAssetMaster` or `SmartHiveProductMaster`.<br> • `ssoid`: The unique ID of the app’s instance, also called theproduct ID or asset ID. To find this ID, see the API documentation for the module.<br> **Example:** `SmartHiveProductMaster.600*****434` |
+
+**Request example**
+```
+https://accounts.smarthive.com/oauth/v2/token
+?client_id=1000.O1xxxxxxxxxx5Q91NTGH
+&client_secret=74xxxxxxxxxxxx180
+&grant_type=client_credentials
+&scope=SmartHiveProductMaster.settings.READ
+&soid=SmartHiveProductMaster.600*****434
+```
+**Response parameters**
+
+| Parameter |	Description |
+| :---        | :----  |    
+| `access_token` |	The key that your app uses to access the resource specified in the scope. Valid for 1 hour. |
+| `api_domain` | The domain that your app sends service API requests to. |
+|`token_type` |	The type of access token that SmartHive generates. SmartHive OAuth uses the `Bearer` token type. |
+| `expires_in` | The number of seconds until the access token expires. |
+
+**Response example**
+```
+{
+    "access_token": "1000.875cf8ea310ae70c6fb26e25a5a48df0.be3bc88ab282cd58c6fd32f110c53c61",
+    "api_domain": "https://www.smarthiveapis.in",
+    "token_type": "Bearer",
+    "expires_in": 3600
+}
+```
+#### Step 2: Use the access token to make API calls
+
+Send API requests to the service that you want to access by using the `api_domain` value from the access token response. An access token is valid for 1 hour. After that, it expires. To get a new access token, 
+repeat Step 1.
+
+## Server-based applications 
+
+### What are server-based apps
+
+Server-based apps typically separate the front-end (client-side) and back-end (server-side) components. The server runs the application logic and sends the rendered content to the browser for display.
+
+These apps can securely store credentials, such as client secrets, on the server. In OAuth terminology, they’re called “confidential clients.”
+
+For these apps, use the Authorization Code Flow to get access tokens. In this flow, you exchange an authorization code (from the authorization server) for access tokens. You can also get refresh tokens, so 
+your app can get new access tokens without user intervention.
+
+#### Authorization code flow
+
+First, register your app in the API console as a “server-based app.” You get a client ID and client secret, which you need to make the API calls that return OAuth tokens. After you receive an access token, 
+you can use it to access protected SmartHive resources.
+
+> For added security, you can use the authorization code flow with the **Proof Key for Code Exchange (PKCE)** extension. PKCE is required for mobile apps and recommended for server-based apps. Learn more 
+about PKCE.
+
+**To get an access token:**
+
+1. Step 1:<br> Make a GET request to the `oauth/v2/auth endpoint`, and specify the required scopes. The permissions you’re requesting appear to the user. If the user grants access, the authorization server 
+returns an authorization code to the redirection URL. The code is valid for 2 minutes. For details, see the API reference.
+2. Step 2:<br> Make a POST request to the `oauth/v2/token` endpoint, using the authorization code you received. The authorization server returns an access token and an optional refresh token. The access 
+token is valid for 1 hour. For details, see the API reference.
+3. Step 3:<br> Use the access token to call SmartHiveAPIs and access protected resources. When the access token expires, send a POST request to the `oauth/v2/token` endpoint with the refresh token to get a 
+new access token. For details, see the API reference.
+
+#### Multi DC support
+
+SmartHive stores users’ information in different data centers (DCs). This information isn’t shared between data centers. Learn more about data centers.
+
+If your app is registered in one DC and needs to access data for users in other DCs, turn on multi DC support for your app. After you turn it on, change your endpoint URL to match the user’s DC when you 
+make API calls.
+
+- Turn on multi DC support
+- Workflow for server-based apps
+
+#### Incremental authorization
+
+With incremental authorization, your app requests permission from the user only when it needs it, not up front. For example, your app might need profile information for basic functionality and extra 
+permission for certain features. Without incremental authorization, your app has to request all permissions up front when the user grants access. That’s a bad experience, because people have to grant 
+permissions for features they aren’t using yet. Incremental authorization avoids this and gives users a better experience.
+
+- Implement incremental authorization
+
+#### Revoking refresh tokens
+
+You can revoke refresh tokens programmatically, and users can revoke them too.
+
+Users can revoke refresh tokens in two ways:
+
+- Users can go to Connected Apps in `accounts.smarthive.com` and revoke the access they’ve granted to an app.
+- Users can choose to revoke access for connected apps when they change their password or turn on multifactor authentication.
+
+To revoke a refresh token programmatically, make a POST request to the `oauth/v2/revoke/token endpoint`. For details, see the API reference.
+
+> **Note:** You can also revoke access tokens programmatically. If you revoke an access token that was issued from a refresh token, the refresh token is also revoked.
+
+### Get authorization code
+
+Request an authorization code from the authorization server. Specify the scopes you need permission for. The user sees the permissions you’re requesting. If the user grants permission, the authorization 
+server sends an authorization code to the redirect URL. The code is valid for 2 minutes.
+
+**Endpoint:** `GET {accounts-server-url}/oauth/v2/auth`
+
+> **Note:** The accounts-server-url depends on the datacenter where your app is registered.
+
+** Query parameters**
+| Parameter |	Description |
+| :---        | :----  | 
+| `client_id` |	*Required*.<br> The unique ID of your app. You can find it in the API console.
+| `response_type` |	*Required*.<br> Set this parameter to `code`.
+| `redirect_uri` |	*Required*.<br> The URI that the authorization server redirects the browser to with the authorization code. It must match the URI that you provided when you registered the app in the API console, and it must start with http:// or https://.<br> For example: `https://www.victa.com/oauthredirect`
+| `scope` |	*Required*.<br> The scope of the resource you want to access from the user’s account. The user sees the scopes when your app asks for consent.<br> For example: `SmartHiveProductMaster.settings.READ`
+| `access_type` |	*Optional*.<br>  Specifies whether your app can refresh the access token on its own after it expires, without user intervention. If the value is `online`, the app gets only an access token and can’t refresh it after it expires. If the value is `offline`, the app also gets a refresh token the first time it requests an access token. The app can store the refresh token and use it to refresh the access token when needed.<br> Default value: `online`
+| `prompt` |	*Optional*.<br> If you include this parameter, your app asks the user for consent every time it requests access to the resource. If you don’t include it, the app asks only the first time. The value must be `consent`.
+
+**Request example**
+```
+https://accounts.smarthive.com/oauth/v2/auth
+?response_type=code
+&client_id=1000.GMB0YULZHJK411284S8I5GZ4CHUEX0
+&scope=SmartHiveProductMaster.settings.READ
+&redirect_uri=https://www.victa.com/oauthredirect
+&access_type=offline
+&prompt=consent
+```
+**Response parameters**
+
+After the authorization server authenticates the user, it shows the user the permissions your app is requesting. When the user grants permission, the server sends the authorization code to the `redirect_uri`.
+
+| Parameter |	Description |
+| :---        | :----  |
+| `code` |	The authorization code that you can exchange for an access token. The code is valid for 2 minutes and can be used only once. |
+| `location` |	The datacenter (DC) where the user’s account is stored. If the user’s DC is different from your app’s DC, turn on multi DC support and make the access token request to the user’s DC.|
+
+**Response example**
+```
+https://oauth.pstmn.io/v1/browser-callback
+?code=1000.a1110799eac53c491fee9efef8246535.df7da86ff64daa66413e2899e9b7fad7
+&location=in
+&accounts-server=https://accounts.smarthive.in
+```
+**Error codes**
+| Error	| Reasons |
+| :---        | :----  |
+| `access_denied` |	The user rejected the request for access. |
+| `Invalid Client` | The `client_id` value isn’t valid.<br> The `response_type` value isn’t correct. It must be `code`. |
+| `Invalid response type` |	The `client_id` parameter is missing.<br> The `response_type` parameter is missing.|
+| `Invalid OAuth scope` |	The `scope` parameter is missing, or the scope doesn’t exist. |
+| `Invalid Redirect Uri` |	The `redirect_uri` parameter is missing, or the URI doesn’t match the one configured in the API console. |
+| `An error occurred/500 server error` |	The `response_type` value isn’t valid. It must be `code`.
+| `400 not found` |	The `HTTP` method isn’t correct. It must be `GET`. |
+
+### Get access token
+
+Exchange the authorization code for an access token from the authorization server.
+
+**Endpoint:** `POST {accounts-server-url}/oauth/v2/token`
+
+> **Note:** The accounts-server-url depends on the datacenter where the user’s account is stored. This value is the `location` parameter in the response to the authorization request.
+
+**Query parameters**
+| Parameter |	Description |
+| :---        | :----  | 
+| `client_id` |	*Required*.<br> The unique ID of your app. You can find it in the API console. |
+| `client_secret` |	*Required*.<br> The unique secret for your app, known only to your app and SmartHive. You can find it in the API console. |
+| `grant_type`	| *Required*. <br> Set this parameter to `authorization_code`.|
+| `code`	| *Required*.<br> The authorization code you received in response to the authorization code request. |
+| `redirect_uri` |	*Required*.<br> The redirect URI. It must match the URI that you provided when you registered the app in the API console, and it must start with http:// or https://.<br> For example: https://www.victa.com/oauthredirect
+
+**Request example**
+```
+https://accounts.smarthive.com/oauth/v2/token
+?client_id=1000.GMB0YULZHJK411248S8I5GZ4CHUEX0
+&client_secret=122c324d3496d5d777ceeebc129470715fbb856b7
+&grant_type=authorization_code
+&redirect_uri=https://www.victa.com/oauthredirect
+&code=1000.86a03ca5dbfccb7445b1889b8215efb0.cad9e1ae4989a1196fe05aa729fcb4e1
+```
+**Response parameters**
+| Parameter	| Description |
+| :---        | :----  | 
+| `access_token` |	The token your app uses to access the resources defined by the requested scopes. The token is valid for 1 hour. |
+| `refresh_token` |	A token your app can use to refresh the access token after it expires. The response includes the refresh token if you set the `access_type` parameter to `offline` in the authorization code request (the first time you make it). |
+| `api_domain`	| The domain your app sends API requests to when it accesses protected resources. |
+| `token_type` | The type of access token that’s generated. SmartHive issues `Bearer` tokens. When your app makes API requests to access protected resources, send the access token in the `Authorization header`. **Syntax:** `Authorization: Bearer {access token}`
+| `expires_in` |	The time, in seconds, until the access token expires. An access token lasts 1 hour (3,600 seconds). |
+
+**Response example**
+```
+{   
+"access_token":"1000.2deaf8d0c268e3c85daa2a013a843b10.703adef2bb337b8ca36cfc5d7b83cf24",
+"refresh_token":"1000.18e983526f0ca8575ea9c53b0cd5bb58.1bd83a6f2e22c3a7e1309d96ae439cc1",
+"api_domain":"https://api.smarthive.com",
+"token_type":"Bearer",
+"expires_in":3600
+}
+```
+**Error codes**
+| Error |	Reasons |
+| :---        | :----  | 
+| `invalid_client` |	The accounts-server URL isn’t valid. Check whether the URL matches the user’s datacenter location. See all accounts-server URLs.<br> The `client_id` parameter is missing, or its value isn’t valid.<br>The `grant_type` value isn’t valid. It must be `authorization_code`.
+| `invalid_client_secret` |	The `client_secret` parameter is missing, or its value isn’t valid. |
+| `invalid_redirect_uri` |	The `redirect_uri` parameter is missing, or the URI doesn’t match the one configured in the API console.|
+| `invalid_code` |	The `code` parameter is missing, or its value isn’t valid or was already used.<br> The `grant_type` value isn’t correct. It must be `authorization_code`.
+| `400 Bad Request` |	The `HTTP` method isn’t correct. It must be `POST`.<br> The `grant_type` parameter is missing. |
+
+### Refresh access token
+
+Use the refresh token to generate another access token for the same scopes.		
+
+With a refresh token, your app can create up to 10 access tokens in 10 minutes. If your app reaches the limit, SmartHive blocks access token creation for the rest of the 10 minutes. For more information, 
+see Token limits.
+
+**Endpoint**: `POST {accounts-server-url}/oauth/v2/token`
+
+> **Note:** The accounts-server-url depends on the datacenter where the user’s account is stored. This value is the `location` parameter in the response to the authorization request.
+
+**Query parameters**
+| Parameter |	Description |
+| :---        | :----  | 
+| `client_id` |	*Required*.<br> The unique ID of your app. You can find it in the API console.|
+| `client_secret` |	*Required*.<br> The unique secret for your app, known only to your app and SmartHive. You can find it in the API console.|
+| `grant_type`	| *Required*.<br> Set this parameter to `refresh_token`.|
+| `refresh_token` |	*Required*.<br> The refresh token you received in response to the access token request.|
+
+**Request example**
+```
+https://accounts.smarthive.com/oauth/v2/token
+?client_id=1000.GMB0YULZHJK411248S8I5GZ4CHUEX0
+&client_secret=122c324d3496d5d777ceeebc129470715fbb856b7
+&grant_type=refresh_token
+&refresh_token=1000.86a03ca5dbfccb7445b1889b8215efb0.cad9e1ae4989a1196fe05aa729fcb4e1
+```
+**Response parameters**
+| Parameter	| Description |
+| :---        | :----  | 
+| `access_token` | The token your app uses to access the resources defined by the requested scopes. The token is valid for 1 hour. |
+| `api_domain` | The domain your app sends API requests to when it accesses protected resources. |
+| `token_type` | The type of access token that’s generated. SmartHive issues `Bearer` tokens. When your app makes API requests to access protected resources, send the access token in the `Authorization header`.<br> **Syntax:** `Authorization: Bearer {access token}` |
+| `expires_in`| The time, in seconds, until the access token expires. An access token lasts 1 hour (3,600 seconds). |
+
+**Response example**
+```
+{   
+"access_token":"1000.2deaf8d0c268e3c85daa2a013a843b10.703adef2bb337b8ca36cfc5d7b83cf24",
+"api_domain":"https://api.smarthive.com",
+"token_type":"Bearer",
+"expires_in":3600
+}
+```
+**Error codes**
+| Error |	Reasons |
+| :---        | :----  |
+| `invalid_client` | The accounts-server URL isn’t valid. Check whether the URL matches the user’s datacenter location. See all accounts-server URLs.<br> The `client_id` parameter is missing, or its value isn’t valid.<br>The `grant_type` value isn’t valid. It must be `refresh_token`.|
+| `invalid_client_secret` |	The `client_secret` parameter is missing, or its value isn’t valid. |
+| `invalid_code` |	The `refresh_token` parameter is missing, or its value isn’t valid.<br>The `grant_type` value isn’t correct. It must be `refresh_token`.<br> The refresh token was already revoked. Learn more about revoking refresh tokens.|
+| `400 Bad Request` |	The `HTTP` method isn’t correct. It must be `POST`.<br> The `grant_type` parameter is missing. |
+
+#### Send the request parameters
+
+You can send the parameters in one of the following formats:
+
+1. Query string: Send all parameters in the request URL as a query string.
+
+**Example:**<br>
+```
+https://accounts.smarthive.com/oauth/v2/token?
+client_id=1000.QVF8O5MXFUYATAQGJKEWUXJKZH7OOE
+&grant_type=refresh_token
+&client_secret=31a99ae27deff7fr34e419fe321b712a02cdedted7
+&refresh_token=1000.3421ad0e1a6fe44663ea112b8b1c4fdf.cd38e645e3d7423651d17368855bc1c5
+```
+2. Request body: Send all parameters in the request body, using the form-data or x-www-form-urlencoded data type.
+
+**Example:**<br>
+```
+client_id: 
+"1000.QVF8O5MXFUYATAQGJKEWUXJKZH7OOE"
+client_secret: 
+"31a99ae27deff7fr34e419fe321b712a02cdedted7
+"grant_type: 
+"refresh_token"
+refresh_token: 
+"1000.3421ad0e1a6fe44663ea112b8b1c4fdf.cd38e645e3d7423651d17368855bc1c5"
+```
+3. Basic authentication header: Send only client_id and client_secret this way. Base64-encode the credentials before you send them.
+
+**Encoding format:** `Base64encode(client_id:client_secret)`
+
+**Header format:** `Authorization: Basic {Base64 encoded credentials}`
+
+**Example:** 
+```
+Authorization: Basic 
+MTAwMC5RVkY4TzVNWEZVWUFUQVFHSktFV1VYSktaSDdPT0U6MzFhOTlhZTI3ZGVmZjdmcjM0ZTQxOWZlMzIxYjcxMmEwMmNkZWR0ZWQ3
+```
+## Client-based applications 
+
+### What are client-based apps
+
+Client-based apps, such as single-page JavaScript apps, run the application logic directly in the browser through JavaScript.
+
+These apps typically can’t securely store credentials, including client secrets, on the client side because the credentials might be exposed or compromised. In OAuth, client-based apps are often called “public clients” because they can’t keep credentials confidential.
+
+For these apps, use the implicit flow to get access tokens. This flow returns the access token directly to the client-side environment as part of the redirection process. The implicit flow doesn’t provide refresh tokens, but the app might be able to get new access tokens without user intervention if the user granted permission for the session.
+
+#### Implicit flow
+
+First, register your app in the API console as a “client-based app.” You get a client ID, which you need to make the API calls that return access tokens. After you receive an access token, you can use it to access protected SmartHive resources.
+
+**To get an access token:**
+
+1. Step 1:<br>
+Make a GET request to the `oauth/v2/auth` endpoint, and specify the required scopes. The permissions you’re requesting appear to the user. If the user grants access, the authorization server returns an access token to the redirection URL. The access token is valid for 1 hour. For details, see the API reference.
+
+2. Step 2:<br>
+Use the access token to call SmartHive APIs and access protected resources. When the access token expires, you can get another one if the user granted access for the entire session in step 1. To get another access token, send a GET request to the `oauth/v2/auth/refresh` endpoint. For details, see the API reference.
+
+#### Multi DC support
+
+SmartHive stores users’ information in different datacenters (DCs). This information isn’t shared between datacenters. Learn more about datacenters.
+
+If your app is registered in one DC and needs to access data for users in other DCs, turn on multi DC support for your app. After you turn it on, change your endpoint URL to match the user’s DC when you make API calls.
+
+- Turn on multi DC support
+- Workflow for client-based apps
+
+#### Revoking access tokens
+
+You can revoke access tokens programmatically, and users can revoke them too. Users can go to Connected Apps in accounts.smarthive.com and revoke the access they’ve granted to an app, which also revokes the access tokens.
+
+To revoke an access token programmatically, make a POST request to the `oauth/v2/revoke/token` endpoint. For details, see the API reference.
+
+### Get access token
+
+Request an access token from the authorization server. Specify the scopes you need permission for. The user sees the permissions you’re requesting. If the user grants permission, the authorization server 
+sends an access token to the redirect URL. The access token is valid for 1 hour.
+
+**Endpoint:** `GET {accounts-server-url}/oauth/v2/auth`
+
+> **Note:** The accounts-server-url depends on the datacenter where your app is registered.
+
+**Query parameters**
+| Parameter |	Description |
+| :---        | :----  | 
+| `client_id` |	*Required*.<br> The unique ID of your app. You can find it in the API console.|
+| `response_type` |	*Required*.<br> Set this parameter to `token`.|
+| `redirect_uri` |	*Required*.<br> The URI that the authorization server redirects the browser to with the access token. It must match the URI that you provided when you registered the app in the API console, and it must start with http:// or https://.<br> For example: `https://www.victa.com/oauthredirect`
+| `scope` |	*Required*.<br> The scope of the resource you want to access from the user’s account. The user sees the scopes when your app asks for consent.<br>For example: `SmartHiveProductMaster.settings.READ` |
+
+**Request example**
+```
+https://accounts.smarthive.com/oauth/v2/auth
+?response_type=token
+&client_id=1000.GMB0YULZHJK411284S8I5GZ4CHUEX0
+&scope=SmartHiveProductMaster.settings.READ
+&redirect_uri=https://www.victa.com/oauthredirect
+```
+**Response parameters**
+
+After the authorization server authenticates the user, it shows the user the permissions your app is requesting. When the user grants permission, the server sends the access token to the `redirect_uri`.
+
+| Parameter |	Description |
+| :---        | :----  | 
+| `access_token` |	The token your app uses to access the resources defined by the requested scopes. The token is valid for 1 hour. |
+| `api_domain` |	The domain your app sends API requests to when it accesses protected resources.|
+| `location`| 	The datacenter (DC) where the user’s account is stored. |
+| `expires_in` |	The time, in seconds, until the access token expires. An access token lasts 1 hour (3,600 seconds). |
+| `granted_for_session` |	Whether the user granted permission for your app to refresh the access token. The value is `true` if the user granted permission.<br>If the user doesn’t grant permission, the response doesn’t include this parameter. In that case, your app must prompt the user to authenticate again to get a new access token. |
+
+**Response example**
+```
+https://www.victa.com/oauthredirect 
+#access_token=1000.2350e7afbb173426e5fe3e5977db2f69.0cddd2403ee2e6309d44e7007bf21c05 
+&expires_in=3600 
+&location=in 
+&api_domain=https://www.smarthiveapis.in
+&granted_for_session=true
+```
+**Error codes**
+|Error	| Reasons |
+| :---        | :----  | 
+| `access_denied` |	The user rejected the request for access. |
+| `Invalid Client` |	The `client_id` value isn’t valid.<br>The `response_type` value isn’t correct. It must be `token`.|
+| `Invalid response type` |	The `client_id` parameter is missing.<br>The `response_type` parameter is missing. |
+| `Invalid OAuth scope` |	The `scope` parameter is missing, or the scope doesn’t exist.|
+| `Invalid Redirect URI` |	The `redirect_uri` parameter is missing, or the URI doesn’t match the one configured in the API console. |
+| `An error occurred/400 Bad Request` |	The `response_type value` isn’t valid. It must be `token`.|
+| `400 Bad Request` |	The `HTTP` method isn’t correct. It must be `GET`.|
+
+### Refresh access token
+
+When the access token expires, your app can get a new one without user intervention if the session is active and the user granted permission for the app to refresh the token.
+
+If the user grants permission, the response to the access token request includes the `granted_for_session` parameter with the value `true`. Otherwise, the response doesn’t include this parameter.
+
+**Endpoint:** `GET {accounts-server-url}/oauth/v2/auth/refresh`
+
+> **Note:** The accounts-server-url depends on the datacenter where your app is registered.
+
+**Token refresh behavior:**
+
+- If the user granted permission and the session is active, send a request to the `oauth/v2/auth/refresh` endpoint to get a new access token.
+- If the user didn’t grant permission, or the session expired or ended, prompt the user to authenticate again to get a new access token.
+
+**Query parameters**
+| Parameter	| Description |
+| :---        | :----  |
+| `client_id` |	*Required*.<br> The unique ID of your app. You can find it in the API console. |
+| `response_type` |	*Required*.<br> Set this parameter to `token`. |
+| `redirect_uri` |	*Required*.<br> The URI that the authorization server redirects the browser to with the access token. It must match the URI that you provided when you registered the app in the API console, and it must start with http:// or https://.<br> For example:`https://www.victa.com/oauthredirect` |
+| `scope` |	*Required*.<br> The scopes to include in the new access token. You can include only scopes that the user granted in the `oauth/v2/auth` request. You can’t add new scopes. |
+
+**Request example**
+```
+https://accounts.smarthive.com/oauth/v2/auth/refresh
+?response_type=token
+&client_id=1000.GMB0YULZHJK411284S8I5GZ4CHUEX0
+&redirect_uri=https://www.victa.com/oauthredirect
+&scope=SmartHiveProductMaster.settings.READ
+```
+**Response parameters**
+
+After the authorization server verifies your app, it sends the access token to the redirect_uri.
+
+| Parameter |	Description |
+| :---        | :----  |
+| `access_token` |	The token your app uses to access the resources defined by the requested scopes. The token is valid for 1 hour. |
+| `api_domain` |	The domain your app sends API requests to when it accesses protected resources. |
+| `location` |	The datacenter (DC) where the user’s account is stored. |
+| `expires_in` | The time, in seconds, until the access token expires. An access token lasts 1 hour (3,600 seconds). |
+
+**Response example**
+```
+https://www.victa.com/oauthredirect
+#access_token=1000.2350e7afbb173426e5fe3e5977db2f69.0cddd2403ee2e6309d44e7007bf21c05
+&expires_in=3600
+&location=in
+&api_domain=https://www.smarthiveapis.in
+```
+**Error codes**
+| Error |	Reasons |
+| :---        | :----  |
+| `client_not_granted` |	The user didn’t grant permission for the entire session, so the access token can’t be refreshed.<br> The session ended.|
+| `prompt_required` |	At least one scope in this request wasn’t granted in the initial `oauth/v2/auth` request. In a refresh request, you can include only scopes that the user already approved. |
+| `OAuthErrorCode.invalid_scope` |	The `scope` parameter is missing. |
+| `general_error` |	At least one of the included scopes doesn’t exist. |
+| `An error occurred/40 Bad Request` |	The `client_id` parameter is misspelled.<br> The `response_type` value isn’t valid.<br>The `redirect_uri` parameter is misspelled.<br>The `HTTP` method isn’t correct. It must be `GET`.|
+| `OAuthErrorCode.invalid_client` |	The `client_id` parameter is missing, or its value isn’t valid.<br> The `response_type parameter` is missing, or its value isn’t correct. It must be `token`. |
+| `OAuthErrorCode.invlid_redirect_uri` |	The `redirect_uri` parameter is missing, or the URI doesn’t match the one configured in the API console. |
+
+## Multi DC support
+
+Data protection and privacy laws in many countries require that user data be stored only in datacenters located in that country. To comply, SmartHive has set up datacenters in multiple countries. Each datacenter holds only the data of users who registered at that domain. 
+See the available datacenters.
+
+### When multi DC support is required
+
+Clients need user data to run their business logic. Clients such as extensions and plugins have users in all datacenters (DCs) and need to reach all SmartHive users. These clients must turn on multi DC support in the SmartHive API console to access SmartHive’s global user base.
+
+If your app is in the US datacenter and users in the EU datacenter use it, turn on EU DC support for your app. The response to the initial request includes the user’s location. Use the location to send further API calls to the server URL for that user’s datacenter.
+
+The following table lists the datacenters and their server URLs:
+
+| Datacenter	| Server URL |
+| :---        | :----  |
+| United States (US)	 | https://accounts.smarthive.com |
+| Europe (EU) |	https://accounts.smarthive.eu |
+| India (IN)	| https://accounts.smarthive.in |
+| Australia (AU) |	https://accounts.smarthive.com.au |
+| Japan (JP) 	| https://accounts.smarthive.jp |
+| Canada (CA)	| https://accounts.smarthive.ca |
+| Saudi Arabia (SA) |	https://accounts.smarthive.sa |
+| United Kingdom (UK) |	https://accounts.smarthive.uk |
+
+> Get the server URLs for all datacenters in JSON format.
+
+The `client ID` is the same for all DCs. The `client secret` can be the same for all DCs or unique for each DC, depending on your preference.
+
+See how the multi DC flow works in server-based apps and client-based apps.
+
+### Turn on multi DC support
+
+When you turn on multi DC support, you can use a separate client secret for each DC or the same client secret for all enabled DCs.
+
+1. In the SmartHive API Console, select your client from the list of applications.
+2. Go to the **Settings** tab.
+3. Turn on the toggle next to each DC you need.
+4. By default, each enabled DC has a unique client secret. To view and copy the client secret for a DC, select **SHOW CODE**.
+5. To use the same client secret for all DCs instead:<br> a) Select **Use the same OAuth credentials for all data centers**.<br> b) Select **OK**. You can use the default client secret to make requests in all DCs.
+	
+### Server-based applications
+
+The multi DC flow for server-based apps has these steps:
+
+1. Identify the user’s location in the authorization request
+
+Send the authorization request to the domain https://accounts.smarthive.com. The response includes the user’s DC in the `location` parameter. To view the server URL for this location, go to https://accounts.smarthive.com/oauth/serverinfo.
+
+**Sample authorization response:**
+```
+https://oauth.pstmn.io/v1/browser-callback
+?code=1000.abbb4c9e0902704b90cc556f32ec0336.5ff4478926a43657280d5cbe1af1917a
+&location=in
+&accounts-server=https://accounts.smarthive.in
+```
+In this example, the `location=in`.
+
+2. Make the access token request to the server URL for the user’s location
+
+After you identify the user’s datacenter, send the access token request to the server URL for that location. For example, if `location=eu`, send the request to https://accounts.smarthive.eu.
+
+**Example request:**
+```
+https://accounts.smarthive.eu/oauth/v2/token
+?client_id=1000.GMB0YULZHJK411248S8I5GZ4CHUEX0
+&grant_type=authorization_code
+&client_secret=122c324d3496d5d777ceeebc129470715fbb856b7
+&redirect_uri=https://www.victa.com/oauthredirect
+&code=1000.86a03ca5dbfccb7445b1889b8215efb0.cad9e1ae4989a1196fe05aa729fcb4e1
+```
+**Example response:**
+```
+{
+"access_token":"1000.2deaf8d0c268e3c85daa2a013a843b10.703adef2bb337b 8ca36cfc5d7b83cf24",
+"refresh_token":"1000.18e983526f0ca8575ea9c53b0cd5bb58.1bd83a6f2e22c3a7e1309d96ae439cc1",
+"api_domain":"https://api.smarthive.eu",
+"token_type":"Bearer",
+"expires_in":3600
+}
+```
+The response includes `api_domain`, the domain where you make service API requests.
+
+3. Send service API requests to the api_domain for the user’s location
+
+Send requests to the service you want to access through the `api_domain` value from the access token response.
+
+### Client-based applications
+
+The multi DC flow for client-based apps has these steps:
+
+1. Identify the user’s location in the access token request
+
+Send the access token request to the domain https://accounts.smarthive.com. The response includes the user’s DC in the `location` parameter. To view the server URL for this location, go to https://accounts.smarthive.com/oauth/serverinfo. The response also includes `api_domain`, the domain where you make service API requests.
+
+**Sample access token response:**
+```
+https://www.victa.com/oauthredirect#
+&access_token=1000.835d578e9a2103d2e87994ae8752074d.4496b74ddde6413f83fe615e8388e488
+&expires_in=3600
+&location=in
+&api_domain=https://www.smarthiveapis.in
+```
+2. Send service API requests to the api_domain for the user’s location
+
+Send requests to the service you want to access through the `api_domain` value from the access token response.
+
+## Incremental authorization overview
+
+### What is incremental authorization
+
+Incremental authorization is an OAuth implementation strategy. Your app requests a permission from the user only when it needs it, not up front. This improves your app’s user experience.
+
+Incremental authorization has these advantages:
+
+- Users don’t have to grant permission for scopes they don’t need, such as scopes for features they don’t use.
+- Your app doesn’t have to repeatedly ask for permissions that the user already granted.
+
+For example, suppose you’re developing an app that integrates with SmartHive Mail. When the user signs in, your app needs only the user’s basic profile information and permission to display the user’s inbox and 
+email messages. Later, the user might choose to send email from your app, which your app supports. At that point, your app requests permission to send email. The user is asked only for that permission, not 
+for the ones already granted, such as basic profile information and permission to view email.
+
+#### How it works
+
+Your app initially gets the basic permissions it needs up front. When your app later needs more permissions from the user, follow these steps:
+
+1. Make a POST request to the `oauth/v2/token/scopeenhance` endpoint to get a scope enhancement token from SmartHive. Include a `refresh token` as a parameter. For details, see the API reference.
+2. Make a scope enhancement request to the `oauth/v2/token/addextrascope` endpoint, and include the scope enhancement token and the additional scopes you need. For details, see the API reference.
+
+The user sees a consent screen that asks for the newly required permissions. If the user approves, SmartHive adds the additional scopes to the refresh token (sent in step 1) and its associated access tokens,
+and returns a success response.
+
+### Get scope enhancement token
+
+Get a scope enhancement token from the authorization server. Send the refresh token that you want to add the additional scopes to.
+
+**Endpoint:** `POST {accounts-server-url}/oauth/v2/token/scopeenhance`
+
+> **Note:** The accounts-server-url depends on the datacenter where your app is registered.
+
+**Query parameters**
+| Parameter	| Description |
+| :---        | :----  | 
+|`client_id` |	*Required*.<br> The unique ID of your app. You can find it in the API console.|
+| `client_secret` |	*Required*.<br> The unique secret for your app, known only to your app and SmartHive. You can find it in the API console. |
+| `grant_type`	| *Required*.<br> Set this parameter to `update_scopes_token`.|
+| `refresh_token` |	*Required*.<br> The refresh token that you want to add the additional scopes to.|
+
+**Request example**
+```
+https://accounts.smarthive.in/oauth/v2/token/scopeenhance
+?grant_type=update_scopes_token
+&client_id=1000.HRLOVZ0U6LSAZ14OQHYZYTZBTL3SGR
+&client_secret=fa10d952be6bd6654cbb6b5fe271042de9546541e781
+&refresh_token=1000.0d50a4d6a383005cc1f899968b9f9d97.2183743f8798bea2f71e193e34e37ef0d
+```
+**Response parameters**
+| Parameter |	Description |
+| :---        | :----  | 
+| `access_token` |	The scope enhancement token. Use it to add additional scopes to a refresh token. |
+| `token_type` |	The type of token that’s generated. |
+| `expires_in` |	The time, in seconds, until the scope enhancement token expires. |
+
+**Response example**
+```
+{
+"access_token": "1000.f95a0db717f52b825e3f94654f651.ced2cf4e786cf04c0e91daee545jh51cd",
+"token_type": "update_scope",
+"expires_in": 600
+}
+```
+**Error codes**
+| Error	| Reasons |
+| :---        | :----  | 
+| `invalid_client`	 | The accounts-server URL isn’t valid. Check whether the URL matches the user’s datacenter location. See all accounts-server URLs.<br> The `client_id` parameter is missing, or its value isn’t valid.<br> The `grant_type` value isn’t valid. It must be `update_scopes_token`.<br>The `grant_type` parameter is missing.|
+| `invalid_client_secret` |	The `client_secret` parameter is missing, or its value isn’t valid. |
+| `invalid_code` |	The `refresh_token` parameter is missing, or its value isn’t valid or was already used.<br> The `grant_type` value isn’t correct. It must be `update_scopes_token`.|
+| `400 Bad Request` |	The `HTTP` method isn’t correct. It must be `POST`.|
+
+### Enhance scope
+
+Use the scope enhancement request to add additional scopes to a refresh token.
+
+**Endpoint:** `GET {accounts-server-url}/oauth/v2/token/addextrascope`
+
+> **Note:** The accounts-server-url depends on the datacenter where your app is registered.
+
+**Query parameters**
+| Parameter	| Description |
+| :---        | :----  |
+| `client_id`	| *Required*.<br> The unique ID of your app. You can find it in the API console. |
+| `response_type` |	*Required*.<br> Set this parameter to `update_scopes`. |
+| `redirect_uri`	| *Required*.<br> The URI that the authorization server redirects the browser to with a success or failure response. It must match the URI that you provided when you registered the app in the API console, and it must start with http:// or https://.<br> For example: `https://www.victa.com/oauthredirect` |
+| `scope` | *Required*.<br> The list of additional scopes for the resource you want to access from the user’s account. The user sees the scopes when your app asks for consent.<br> For example: `SmartHiveProductMaster.settings.READ` |
+| `enhance_token` |	*Required*.<br> The scope enhancement token you received in response to the previous request (step 1). |
+| `logout` | *Required*.<br> If you want the user’s session to end after the user grants or rejects the permission, set this parameter to `true`. |
+
+**Request example**
+```
+https://accounts.smarthive.in/oauth/v2/token/addextrascope
+?response_type=update_scopes
+&client_id=1000.HRLOVZ0544JSAZ14OQ1NHYHZBTL3SGR
+&redirect_uri=https://victa.com/oauthredirect
+&scope=SmartHiveProductMaster.settings.READ,SmartHiveAssetMaster.settings.READ,SmartHiveStationTracker.settings.READ.users.READ
+&enhance_token=1000.e3b9859da1d36faf1e299889f6354da75.d83c513417fdfsdg514fb9ee38a6775fd50
+&logout=true
+```
+**Response parameters**
+
+After the authorization server authenticates the user, it shows the user the permissions your app is requesting. When the user grants permission, the server adds the additional scopes to the refresh token 
+and returns a success response. If the user rejects the permissions, the server returns a failure response.
+
+**Response example**
+
+Success Response: `https://www.victa.com/oauthredirect?status=success&scope_enhanced=true`
+
+failure Response: `https://www.victa.com/oauthredirect?error=access_denied`
+
+## Revoke OAuth tokens
+
+You can revoke OAuth tokens in two ways:
+
+- Users can revoke them.
+- Your app can revoke them programmatically.
+
+### Users: 
+
+Users can remove the tokens for apps they’ve granted permission to. To revoke a token:
+
+1. Sign in at accounts.smarthive.com.
+2. In the left menu, select **Sessions**, and then go to **Connected Apps**.
+3. Hover over the app whose token you want to revoke, and select **Revoke Access**.
+4. Select **Yes**, **Proceed**.
+
+### Programmatically: 
+
+Make a POST request to the `oauth/v2/revoke/token` endpoint. You can revoke both access tokens and refresh tokens. When you revoke a refresh token, all the access tokens generated from it are also revoked.
+
+**Endpoint:** `POST {accounts-server-url}/oauth/v2/revoke/token`
+
+> **Note:** The accounts-server-url depends on the datacenter where your app is registered.
+
+**Headers**
+| Header |	Description |
+| :---        | :----  | 
+| `Authorization` |	*Required*.<br> Your app’s Base64-encoded credentials (the client ID and client secret), sent with the `Basic` scheme.<br> Syntax: `Authorization: Basic {Base64Encoded(client_id:client_secret)}`<br>Example: `Authorization: Basic MTAwMC5IVUZBV0xBO.......`<br> If your app is a client-based app, you don’t need to include `client_secret`. Otherwise, `client_secret` is required. |
+
+**Parameters**
+| Parameter	 | Description |
+| :---        | :----  | 
+| `token` |	*Required*.<br> The refresh token or access token to revoke. |
+| `token_type` |	*Optional*.<br> The type of token to revoke. Accepted values: `refresh_token` and `access_token`.<br> If you don’t include this parameter, the default is `refresh_token`. To revoke an access token, you must set `token_type=access_token`. |
+
+**Request example:**
+```
+curl --location --request POST 'https://accounts.smarthive.com/oauth/v2/revoke/token' \
+--header 'Authorization: Basic MTAwMC5IVUZBV0xBODdXQVg2VzIyUDIwRzhXNE1aWEhNTUwNjE2ODExYTMxN2QwZGI0MTdl' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'token=1000.18e983526f0ca8575ea9c53b0cd5bb58.1bd83a6f2e22c3a7e1309d96ae439cc1' \
+--data-urlencode 'token_type=refresh_token'
+```
+**Response**
+| Status code |	Description |
+| :---        | :----  | 
+| `200` | 	The token was revoked. |
+| `400 Bad Request` |	The token in the request isn’t valid, the `token_type` doesn’t match the token, or the token isn’t associated with the provided client credentials.|
+
+## OAuth token limits
+
+SmartHive limits how many OAuth tokens (access tokens and refresh tokens) a client can store and how many token requests a client can send at one time.
+
+These limits have the following purposes:
+
+- They make it easier for clients to store and maintain OAuth tokens.
+- They prevent a malicious client from using resources that genuine clients need.
+- They keep unnecessary requests from overloading our servers.
+
+The limits differ for access tokens, refresh tokens, authorization codes, and device tokens.
+
+### Limits for access tokens
+
+Two types of limits apply to access tokens.
+
+**1. Maximum tokens per refresh token**
+
+A client can store a maximum of 10 active access tokens per refresh token at one time. When a client requests another token after reaching 10, SmartHive provides a new token and invalidates the oldest one, 
+so only 10 tokens remain at a time. If a client uses an invalidated access token, SmartHive throws the `INVALID_OAUTHTOKEN` exception.
+
+**2. Time-specific throttle limit**
+
+A throttle limit also applies to how many times an app can request an access token in a specific period. A client can make a total of 10 access token requests within 10 minutes.
+
+If your app reaches the throttle limit, SmartHive shows the following error message:
+
+**JSON response**
+```
+{
+"error_description": "You have made too many requests continuously. Please try again after some time.",
+"error": "Access Denied"
+}
+```
+**Roadblock error page**
+
+`Access Denied: Maximum request limit reached for your account. Please try again after some time or contact the app’s developer.`
+
+To avoid this error, reuse each access token until it expires, instead of using a different token for each request.
+
+### Limit for refresh tokens
+
+A client can store a maximum of 20 active refresh tokens for each user at one time. When a client requests another token after reaching 20 for a user, SmartHive provides a new token and invalidates the 
+oldest one, so only 20 tokens remain at a time.
+
+### Limit for authorization codes
+
+Within 10 minutes, a client can generate a maximum of 10 authorization codes for each user. If a client reaches the limit, SmartHive throws the `access_denied` exception for the rest of that period. Each 
+authorization code is valid for 2 minutes.
+
+### Limit for device tokens
+
+SmartHive applies a throttle limit based on the IP address that the requests come from. A client can request and generate a maximum of 30 device tokens from a specific IP address within 10 minutes. If a 
+client reaches the limit, SmartHive throws the `access_denied` exception for the rest of that period. Each device token is valid for 5 minutes.
+
+----
