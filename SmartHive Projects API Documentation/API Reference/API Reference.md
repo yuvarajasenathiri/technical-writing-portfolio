@@ -2,7 +2,7 @@
 
 **Version:** 3.0  
 **Last updated:** August 2026  
-**Applies to:** SmartHive Projects Cloud API v3 
+**Applies to:** SmartHive Projects API v3 
  
 ---
 
@@ -18,6 +18,18 @@
    - [Delete a user](#delete-a-user)
    - [Get associated projects](#get-associated-projects)
    - [Deactivate a user](#deactivate-a-user)
+3. [Project users](#project-users)
+   - [Add a project user](#add-a-project-user)
+   - [Update project user details](#update-project-user-details)
+   - [Delete project user](#delete-project-user)
+4. [Projects](#projects)
+   - [Get all projects](#get-all-projects)
+   - [Get project details](#get-project-details)
+   - [Deactivate a user](#deactivate-a-user)
+   - [Delete a user](#delete-a-user)
+   - [Get associated projects](#get-associated-projects)
+   - [Deactivate a user](#deactivate-a-user)
+   - 
   
 
 - - 
@@ -1102,7 +1114,7 @@ notify : "true"
 }
 ```
 
-### Update project user details
+### Update a project user details
 
 Update the details of a specific user within a project using their ZPUID, ZUID, or email address.
 
@@ -1242,7 +1254,7 @@ profile_id : "2223806000000022149"
 }
 ```
 
-### Delete project user
+### Delete a project user
 
 Remove a specific user from a project. Use this API to revoke a user’s access to a project in a portal.
 
@@ -1353,7 +1365,7 @@ notify : "true"
 ```
 ------
 
-## Projects API
+## Projects
 
 This module covers project-related operations in SmartHive Projects. Use the Projects API to:
 
@@ -1508,7 +1520,7 @@ view_id : "23806000074760021"
 }
 ```
 
-### Get project details
+### Get a project details
 
 Get a project details in the SmartHive Projects portal.
 
@@ -1653,7 +1665,7 @@ curl -X GET \
 }
 ```
 
-### Create project
+### Create a project
 
 Create a project in the SmartHive Projects portal.
 
@@ -1973,7 +1985,7 @@ curl -X POST \
 }
 ```
 
-### Update project
+### Update a project
 
 Update an existing project in the SmartHive Projects portal.
 
@@ -2377,7 +2389,7 @@ curl -X PATCH \
 }
 ```
 
-### Trash project
+### Trash a project
 
 Move an existing project in the SmartHive Projects portal to the trash.
 
