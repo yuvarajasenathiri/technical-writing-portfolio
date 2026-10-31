@@ -31,7 +31,7 @@
    - [Trash a project](#trash-a-project)
    - [Restore a project](#restore-a-project)
    - [Delete a project](#delete-a-project)
-5. [Profiles] (#profiles)
+5. [Profiles](#profiles)
    - [Get all portal profiles](#get-all-portal-profiles)
 6. [Modules](#modules)
    - [Get Modules](#get-modules)
@@ -958,7 +958,7 @@ curl -X GET \
 | filter |	JSONObject | Optional	| The filter criteria.|
 | &emsp; filter.`criteria` | JSONArray<br>Maximum length: 10,000<br> Array size: 0 or greater |   | The criteria information.|
 | &emsp; filter.`pattern` | String<br>Maximum length: 300 |   | The filter pattern.|
-| `sort_by`	| String |	The sort criteria.<br> Accepted values: `ASC(field_name)` or `DESC(field_name)`.<br> Available fields: `first_name`, `last_name`, `portal_profile`, `role`, `rate_per_hour`, `cost_rate_per_hour`, `business_hours`, `added_time`, `updated_time`, `last_accessed_on`, and the `api_name` of a custom field. |
+| `sort_by`	| String | Optional	| The sort criteria.<br> Accepted values: `ASC(field_name)` or `DESC(field_name)`.<br> Available fields: `first_name`, `last_name`, `portal_profile`, `role`, `rate_per_hour`, `cost_rate_per_hour`, `business_hours`, `added_time`, `updated_time`, `last_accessed_on`, and the `api_name` of a custom field. |
 
 **Sample input**
 ```
@@ -1096,14 +1096,14 @@ curl -X GET \
 | `page` |	Integer<br>*Default: 1* |	Optional | The page number. |
 | `per_page` |	Integer<br>*Default: 100* | Optional |	The number of entries to display on each page. |
 | `filter` |	JSONObject | Optional |	The filter criteria. |
-| &emsp; filter.`criteria` | 	JSONArray<br>*Maximum length: 10,000*<br>*Array size: 0 or greater* |Optional	| The criteria information.
+| &emsp; filter.`criteria` | 	JSONArray<br>*Maximum length: 10,000*<br>*Array size: 0 or greater* |	| The criteria information.
 | &emsp;&emsp; filter.criteria.`module` | String | | The field module. |
 | &emsp;&emsp; filter.criteria.`field_name` | String | | The field name. |
 | &emsp;&emsp; filter.criteria.`module_name` | String | | The module name. |
 | &emsp;&emsp; filter.criteria.`criteria_condition` | String<br>*Maximum length: 25* |  | The criteria condition.|
 | &emsp;&emsp; filter.criteria.`value`| JSONArray<br>* Maximum length: 10,000*<br>*Array size: 0 or greater*	| | The criteria value. |
 | &emsp; filter.`pattern` |	String<br>* Maximum length: 300* |	| The filter pattern.|
-|`sort_by`	|String|	| The sort criteria.<br> Accepted values: `ASC(field_name)` or `DESC(field_name)`.<br> Available fields: `first_name`, `last_name`, `portal_profile`, `role`, `project_rate`, `project_cost_rate`, `business_hours`, `added_to_project_time`, `updated_in_project_time`, and `last_accessed_on`. |
+|`sort_by`	|String | Optional	| The sort criteria.<br> Accepted values: `ASC(field_name)` or `DESC(field_name)`.<br> Available fields: `first_name`, `last_name`, `portal_profile`, `role`, `project_rate`, `project_cost_rate`, `business_hours`, `added_to_project_time`, `updated_in_project_time`, and `last_accessed_on`. |
 
 **Sample input**
 ```
@@ -1240,7 +1240,7 @@ curl -X POST \
 | &emsp; userdetails[].`budget_threshold`	| String|   |	The project budget threshold. <br> For example, $10,000. |
 | &emsp;userdetails[].`hourly_budget`	| String|   |	The hourly budget for the user. |
 | &emsp; userdetails[].`hourly_budget_threshold`	| String|   |	The hourly budget threshold for the user.| 
-| `notify`	| Boolean	|   | Whether to notify the users.<br> Accepted values: `true` or `false`.|
+| `notify`	| Boolean	| Required  | Whether to notify the users.<br> Accepted values: `true` or `false`.|
 
 **Sample input**
 > *Content-Type: application/json
@@ -2000,48 +2000,48 @@ curl -X POST \
 | `name` |	String<br> *Maximum length: 200*|	Required | The project name. |
 | `description` |	String<br>*Maximum length: 80,000* | Optional |	The project description. | 
 | `project_type` |	String | Optional |	The project type.<br> Accepted values: `active` or `template`.| 
-| `owner`| 	JSONObject| 	| The project owner.|
-|&emsp;owner.`zpuid`|	String|	Required | The user ID of the project owner.<br> Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts)(the `id` field in the response).
+| `owner`| 	JSONObject| Required 	| The project owner.|
+|&emsp;owner.`zpuid`|	String|	| The user ID of the project owner.<br> Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts)(the `id` field in the response).
 | `is_public_project` | 	Boolean	| Optional | Whether the project is public.<br> Accepted values: `true` or `false`. |
 | `start_date`	| String<br> *format:YYYY-MM-DD* | Optional |	The start date of the project.|
 | `end_date` |	String<br>*format:YYYY-MM-DD* |Optional |	The end date of the project. |
-| `status` | 	JSONObject<br>  *Maximum length: 1,000*| 	| The status of the project.| 
-|&emsp;status.`id` | 	String<br>*Maximum length: 30* | Optional |	The identifier of the status.<br> Get it from the [Get Global Statuses API](#get-global-statuses).|
-| `layout`	| JSONObject<br>*Maximum length: 1,000*	| |The project layout details.|
-|&emsp;layout.`id` |	String<br>*Maximum length: 30*| Optional |	The identifier of the layout.<br> Get it from the [Get a layout list API](#get-a-module-list) (the `id` field in the response). |
+| `status` | 	JSONObject<br>  *Maximum length: 1,000*| Optional	| The status of the project.| 
+|&emsp;status.`id` | 	String<br>*Maximum length: 30* |  |	The identifier of the status.<br> Get it from the [Get Global Statuses API](#get-global-statuses).|
+| `layout`	| JSONObject<br>*Maximum length: 1,000*	| Optional |The project layout details.|
+|&emsp;layout.`id` |	String<br>*Maximum length: 30*|  |	The identifier of the layout.<br> Get it from the [Get a layout list API](#get-a-module-list) (the `id` field in the response). |
 | `added_via` |	String | Optional |	The source of the project.<br> Accepted values: `web` or `api`. |
 | `is_rollu1p_project` | 	Boolean	| Optional | Whether the project is a roll-up project.<br> Accepted values: `true` or `false`.  |
-| `budget_info` | 	JSONObject<br> *Maximum length: 80,000* | 	| The project budget details.|
-|&emsp; budget_info.`billing_method` |	String | Optional	| The billing method.<br> Accepted values: `project_hours`, `staff_hours`, `fixed_cost`, `issue_hours`, or `task_or_issue_hours`.|
-|&emsp; budget_info.`budget_type`	| String | Optional	|The budget type.<br> Accepted values: `none`, `based_on_project`, `based_on_milestone`, `based_on_task`, or `based_on_user`.|
-|&emsp; budget_info.`tracking_method`	| String | Optional |	The tracking method.<br> Accepted values: `project_hours`, `staff_hours`, `issue_hours`, or `task_or_issue_hours`. |
-|&emsp; budget_info.`currency` |	String | Optional |	The currency type. |
+| `budget_info` | 	JSONObject<br> *Maximum length: 80,000* | Optional	| The project budget details.|
+|&emsp; budget_info.`billing_method` |	String | 	| The billing method.<br> Accepted values: `project_hours`, `staff_hours`, `fixed_cost`, `issue_hours`, or `task_or_issue_hours`.|
+|&emsp; budget_info.`budget_type`	| String | 	|The budget type.<br> Accepted values: `none`, `based_on_project`, `based_on_milestone`, `based_on_task`, or `based_on_user`.|
+|&emsp; budget_info.`tracking_method`	| String | |	The tracking method.<br> Accepted values: `project_hours`, `staff_hours`, `issue_hours`, or `task_or_issue_hours`. |
+|&emsp; budget_info.`currency` |	String |  |	The currency type. |
 |&emsp; budget_info.`cost_budget`|	JSONObject|	| The budget details for the project. |
-|&emsp;&emsp; budget_info.cost_budget.`amount` |	double|Optional |	The cost budget amount.|
-|&emsp; budget_info.`hourly_budget`	|String| Optional |	The hourly budget details.|
-|&emsp; budget_info.`rate_per_hour` |	JSONObject| |	The rate per hour. |
-|&emsp;&emsp; budget_info.`rate_per_hour.amount` |	double| Optional |	The amount of the rate per hour. |
+|&emsp;&emsp; budget_info.cost_budget.`amount` |	double |  |	The cost budget amount.|
+|&emsp; budget_info.`hourly_budget`	|String|  |	The hourly budget details.|
+|&emsp; budget_info.`rate_per_hour` |	JSONObject | |	The rate per hour. |
+|&emsp;&emsp; budget_info.`rate_per_hour.amount` |	double| |	The amount of the rate per hour. |
 |&emsp;budget_info.`cost_budget_threshold`|	JSONObject|  |	The budget threshold details. |
-|&emsp;&emsp; budget_info.cost_budget_threshold.`amount`| double | Optional |	The cost budget threshold amount. |
-|&emsp; budget_info.`hourly_budget_threshold`|	String | Optional |	The hourly budget threshold details. |
+|&emsp;&emsp; budget_info.cost_budget_threshold.`amount`| double |  |	The cost budget threshold amount. |
+|&emsp; budget_info.`hourly_budget_threshold`|	String |  |	The hourly budget threshold details. |
 |&emsp; budget_info.`fixed_cost`|	JSONObject| |	The fixed cost.|
-|&emsp;&emsp; budget_info.fixed_cost.`amount`|	double |Optional|	The fixed cost amount.|
+|&emsp;&emsp; budget_info.fixed_cost.`amount`|	double ||	The fixed cost amount.|
 |&emsp; budget_info.`cost_per_hour` |	JSONObject| |	The cost per hour for the project.|
-|&emsp;&emsp; budget_info.cost_per_hour.`amount`|	double| Optional |	The amount of the cost per hour.|
+|&emsp;&emsp; budget_info.cost_per_hour.`amount`|	double|  |	The amount of the cost per hour.|
 |&emsp; budget_info.`revenue_budget` |	JSONObject |	|The revenue budget.|
-|&emsp;&emsp; budget_info.revenue_budget.`amount`	|double| Optional |	The revenue budget amount.|
+|&emsp;&emsp; budget_info.revenue_budget.`amount`	|double|  |	The revenue budget amount.|
 |&emsp; budget_info.`budget_threshold`	|JSONObject|   |	The budget threshold details.|
-|&emsp;&emsp; budget_info.budget_threshold.`amount`|	double | Optional |	The budget threshold amount. |
-|`project_group`|	JSONObject<br>*Maximum length: 1,000*|	|The project group details.|
-|&emsp; project_group.`id` |	String<br>*Maximum length: 30*| Optional |	The identifier of the project group.<br> Get it from the [Get a user’s project groups API](#get-a-user’s-project-groups) (the `id` field in the response).|
+|&emsp;&emsp; budget_info.budget_threshold.`amount`|	double |  |	The budget threshold amount. |
+|`project_group`|	JSONObject<br>*Maximum length: 1,000*|	Optional |The project group details.|
+|&emsp; project_group.`id` |	String<br>*Maximum length: 30*|  |	The identifier of the project group.<br> Get it from the [Get a user’s project groups API](#get-a-user’s-project-groups) (the `id` field in the response).|
 |`sub_module_settings` |	JSONObject |	| The sub-module settings, which declare sub-module configurations. |
-|&emsp; sub_module_settings.`sub_module_layouts_configuration` |	JSONObject | Optional |	The sub-module layouts. |
-|`tags` |	JSONArray<br*Maximum length: 10,000* |	|The tags for the project.|
+|&emsp; sub_module_settings.`sub_module_layouts_configuration` |	JSONObject |  |	The sub-module layouts. |
+|`tags` |	JSONArray<br*Maximum length: 10,000* | Optional 	|The tags for the project.|
 |&emsp; tags.`add`	|JSONArray<br>*Array size: 0 to 5,000*| 	| The tags to add to the project.|
-|&emsp;&emsp; tags.add[].`id` |	String<br>*Maximum length: 30* | Optional |The identifier of the tag to add.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
+|&emsp;&emsp; tags.add[].`id` |	String<br>*Maximum length: 30* |  |The identifier of the tag to add.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
 |&emsp; tags.`remove` |	JSONArray<br>*Array size: 0 to 5,000* |	| The tags to remove from the project.|
-|&emsp;&emsp; tags.remove[].`id` |	String<br>*Maximum length: 30* |Optional |	The identifier of the tag to remove.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
-|&emsp; tags[].`id`	| String<br>*Maximum length: 30* |	Optional | The identifier of the tag.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
+|&emsp;&emsp; tags.remove[].`id` |	String<br>*Maximum length: 30* | |	The identifier of the tag to remove.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
+|&emsp; tags[].`id`	| String<br>*Maximum length: 30* |	 | The identifier of the tag.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
 | `copy_from` | 	Integer | 	Optional | The ID of the template or existing project to copy the new project from.<br> Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 | `business_hours_id` |	String	| Optional | The business hours ID.<br>  Get it from the [Get business hours API](#get-business-hours) (the `id` field in the response). |
 | `<field_name>` |	String	| Optional |  The value of a project custom field.<br> Replace `<field_name>` with the custom field’s API name in snake_case, as listed in the Custom Fields Guide.<br> **Note:** The type shows as `String` by default because most basic custom fields accept string values. The value format and input structure depend on the custom field type. For details, see the Custom Fields Guide.|
@@ -2323,45 +2323,45 @@ curl -X PATCH \
 | `name` |	String<br> *Maximum length: 200*|	Required | The project name. |
 | `description` |	String<br>*Maximum length: 80,000* | Optional |	The project description. | 
 | `project_type` |	String | Optional |	The project type.<br> Accepted values: `active` or `template`.| 
-| `owner`| 	JSONObject| 	| The project owner.|
-|&emsp; owner.`zpuid`|	String|	Required | The user ID of the project owner.<br> Get it from the [Get all users API](#Get-all-users) (the `id` field in the response).
+| `owner`| 	JSONObject | Required	| The project owner.|
+|&emsp; owner.`zpuid`|	String|	 | The user ID of the project owner.<br> Get it from the [Get all users API](#Get-all-users) (the `id` field in the response).
 | `is_public_project` | 	Boolean	| Optional | Whether the project is public.<br> Accepted values: `true` or `false`. |
 | `start_date`	| String<br> *format:YYYY-MM-DD* | Optional |	The start date of the project.|
 | `end_date` |	String<br>*format:YYYY-MM-DD* |Optional |	The end date of the project. |
 | `completed_time`| String<br> *format: YYYY-MM-DDThh:mm:ssz (ISO-8601) * | Optional | The completed time of the project. |
-| `status` | 	JSONObject<br>  *Maximum length: 1,000*| 	| The status of the project.| 
-|&emsp; status.`id` | 	String<br>*Maximum length: 30* | Optional |	The identifier of the status.<br> Get it from the [Get Global Statuses API](#get-global-statuses).|
-| `layout`	| JSONObject<br>*Maximum length: 1,000*	| |The project layout details.|
-|&emsp; layout.`id` |	String<br>*Maximum length: 30*| Optional |	The identifier of the layout.<br> Get it from the [Get a layout list API](#get-a-module-list) (the `id` field in the response). |
+| `status` | 	JSONObject<br>  *Maximum length: 1,000*| Optional	| The status of the project.| 
+|&emsp; status.`id` | 	String<br>*Maximum length: 30* |  |	The identifier of the status.<br> Get it from the [Get Global Statuses API](#get-global-statuses).|
+| `layout`	| JSONObject<br>*Maximum length: 1,000*	| Optional |The project layout details.|
+|&emsp; layout.`id` |	String<br>*Maximum length: 30*|  |	The identifier of the layout.<br> Get it from the [Get a layout list API](#get-a-module-list) (the `id` field in the response). |
 | `added_via` |	String | Optional |	The source of the project.<br> Accepted values: `web` or `api`. |
 | `is_rollu1p_project` | 	Boolean	| Optional | Whether the project is a roll-up project.<br> Accepted values: `true` or `false`.  |
-|  `budget_info` | 	JSONObject<br> *Maximum length: 80,000* | 	| The project budget details.|
-|&emsp; budget_info.`billing_method` |	String | Optional	| The billing method.<br> Accepted values: `project_hours`, `staff_hours`, `fixed_cost`, `issue_hours`, or `task_or_issue_hours`.|
-|&emsp; budget_info.`budget_type`	| String | Optional	|The budget type.<br> Accepted values: `none`, `based_on_project`, `based_on_milestone`, `based_on_task`, or `based_on_user`.|
-|&emsp; budget_info.`tracking_method`	| String | Optional |	The tracking method.<br> Accepted values: `project_hours`, `staff_hours`, `issue_hours`, or `task_or_issue_hours`. |
-|&emsp; budget_info.`currency` |	String | Optional |	The currency type. |
+|  `budget_info` | 	JSONObject<br> *Maximum length: 80,000* | Optional	| The project budget details.|
+|&emsp; budget_info.`billing_method` |	String | 	| The billing method.<br> Accepted values: `project_hours`, `staff_hours`, `fixed_cost`, `issue_hours`, or `task_or_issue_hours`.|
+|&emsp; budget_info.`budget_type`	| String | 	|The budget type.<br> Accepted values: `none`, `based_on_project`, `based_on_milestone`, `based_on_task`, or `based_on_user`.|
+|&emsp; budget_info.`tracking_method`	| String |  |	The tracking method.<br> Accepted values: `project_hours`, `staff_hours`, `issue_hours`, or `task_or_issue_hours`. |
+|&emsp; budget_info.`currency` |	String |  |	The currency type. |
 |&emsp; budget_info.`cost_budget`|	JSONObject|	| The budget details for the project. |
-|&emsp;&emsp; budget_info.cost_budget.`amount` |	double|Optional |	The cost budget amount.|
-|&emsp; budget_info.`hourly_budget`	|String| Optional |	The hourly budget details.|
+|&emsp;&emsp; budget_info.cost_budget.`amount` |	double| |	The cost budget amount.|
+|&emsp; budget_info.`hourly_budget`	|String|  |	The hourly budget details.|
 |&emsp; budget_info.`rate_per_hour` |	JSONObject| |	The rate per hour. |
-|&emsp;&emsp; budget_info.rate_per_hour.`amount` |	double| Optional |	The amount of the rate per hour. |
+|&emsp;&emsp; budget_info.rate_per_hour.`amount` |	double|  |	The amount of the rate per hour. |
 |&emsp; budget_info.`cost_budget_threshold`|	JSONObject|  |	The budget threshold details. |
-|&emsp;&emsp; budget_info.cost_budget_threshold.`amount`| double | Optional |	The cost budget threshold amount. |
-|&emsp; budget_info.`hourly_budget_threshold`|	String | Optional |	The hourly budget threshold details. |
+|&emsp;&emsp; budget_info.cost_budget_threshold.`amount`| double |  |	The cost budget threshold amount. |
+|&emsp; budget_info.`hourly_budget_threshold`|	String |  |	The hourly budget threshold details. |
 |&emsp; budget_info.`fixed_cost`|	JSONObject| |	The fixed cost.|
-|&emsp;&emsp; budget_info.fixed_cost.`amount`|	double | Optional|	The fixed cost amount.|
+|&emsp;&emsp; budget_info.fixed_cost.`amount`|	double | |	The fixed cost amount.|
 |&emsp; budget_info.`cost_per_hour` |	JSONObject| |	The cost per hour for the project.|
-|&emsp;&emsp; budget_info.cost_per_hour.`amount`|	double| Optional |	The amount of the cost per hour.|
+|&emsp;&emsp; budget_info.cost_per_hour.`amount`|	double|  |	The amount of the cost per hour.|
 |&emsp; budget_info.`revenue_budget` |	JSONObject |	|The revenue budget.|
-|&emsp;&emsp; budget_info.revenue_budget.`amount`	|double| Optional |	The revenue budget amount.|
-|`project_group`|	JSONObject<br>*Maximum length: 1,000*|	|The project group details.|
-|&emsp; project_group.`id` |	String<br>*Maximum length: 30*| Optional |	The identifier of the project group.<br> Get it from the Get a user’s project groups API](#get-a-user’s-project-groups) (the `id` field in the response).|
-|`tags` |	JSONArray<br*Maximum length: 10,000* |	|The tags for the project.|
+|&emsp;&emsp; budget_info.revenue_budget.`amount`	|double|  |	The revenue budget amount.|
+|`project_group`|	JSONObject<br>*Maximum length: 1,000*|	Optional |The project group details.|
+|&emsp; project_group.`id` |	String<br>*Maximum length: 30*|  |	The identifier of the project group.<br> Get it from the Get a user’s project groups API](#get-a-user’s-project-groups) (the `id` field in the response).|
+|`tags` |	JSONArray<br*Maximum length: 10,000* |	Optional |The tags for the project.|
 |&emsp; tags.`add`	|JSONArray<br>*Array size: 0 to 5,000*| 	| The tags to add to the project.|
-|&emsp;&emsp; tags.add[].`id` |	String<br>*Maximum length: 30* | Optional |The identifier of the tag to add.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
+|&emsp;&emsp; tags.add[].`id` |	String<br>*Maximum length: 30* |  |The identifier of the tag to add.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
 |&emsp;  tags.`remove` |	JSONArray<br>*Array size: 0 to 5,000* |	| The tags to remove from the project.|
-|&emsp;&emsp; tags.remove[].`id` |	String<br>*Maximum length: 30* |Optional |	The identifier of the tag to remove.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
-|&emsp; tags[].`id`	| String<br>*Maximum length: 30* |	Optional | The identifier of the tag.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
+|&emsp;&emsp; tags.remove[].`id` |	String<br>*Maximum length: 30* | |	The identifier of the tag to remove.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
+|&emsp; tags[].`id`	| String<br>*Maximum length: 30* |	 | The identifier of the tag.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
 | `color` | 	String | 	Optional | The project color. |
 | `business_hours_id` |	String	| Optional | The business hours ID.<br> Get it from the [Get business hours API](#get-business-hours) (the `id` field in the response). |
 | `<field_name>` |	String	| Optional |  The value of a project custom field.<br> Replace `<field_name>` with the custom field’s API name in snake_case, as listed in the Custom Fields Guide.<br> **Note:** The type shows as `String` by default because most basic custom fields accept string values. The value format and input structure depend on the custom field type. For details, see the Custom Fields Guide.|
@@ -2738,11 +2738,11 @@ curl -X GET \
 | &emsp; filter.`criteria`|	JSONArray<br> *Maximum length: 10,000*<br>*Array size: 0 or greater* | |	The list of filter conditions.<br> The API combines the conditions by using the pattern property.|
 | &emsp;&emsp; filter.criteria[].`module`|	String| 	|The module of the field.|
 | &emsp;&emsp; filter.criteria[].`field_name`|	String | 	| The field name.|
-| &emsp;&emsp; filter.criteria[].`module_name`|	String |	The module name. |
+| &emsp;&emsp; filter.criteria[].`module_name`|	String |	| The module name. |
 | &emsp;&emsp; filter.criteria[].`criteria_condition` |	String<br>*Maximum length: 25* |	| The condition for the criteria.<br> For example, `is`, `contains`, or `greater_than`. | 
-| &emsp;&emsp; filter.criteria[].`value` |	JSONArray<br>*Maximum length: 10,000*<br>*Array size: 0 or greater* |	The values for the criteria condition. You can provide multiple values. |
+| &emsp;&emsp; filter.criteria[].`value` |	JSONArray<br>*Maximum length: 10,000*<br>*Array size: 0 or greater* |	| The values for the criteria condition. You can provide multiple values. |
 | &emsp; filter.`pattern`|	String<br> Maximum length: 300.|	| The logical pattern that combines the filter conditions. For example, `1` AND `2`.| 
-| `ids` |	String| 	| The profile IDs. |
+| `ids` |	String | 	| The profile IDs. |
 
 **Sample input**
 ```
@@ -2819,8 +2819,8 @@ curl -X GET \
 | &emsp; filter.is_`customized` |	Boolean |	| Whether to include only customized modules. |
 | &emsp; filter.is_`default`	| Boolean	| | Whether to include only default modules.|
 | &emsp; filter.`is_web_tab` | 	Boolean | |Whether to include only web tab modules.| 
-| `page` |	Integer<br>*Default: 1* |	|The page number.|
-| `per_page` |	Integer<br> *Limit: 1 to 200*<br>*Default: 1,000*| 	| The number of entries to display on each page.|
+| `page` |	Integer<br>*Default: 1* | Optional	|The page number.|
+| `per_page` |	Integer<br> *Limit: 1 to 200*<br>*Default: 1,000*| Optional 	| The number of entries to display on each page.|
 
 **Sample input**
 ```
@@ -3486,7 +3486,7 @@ curl -X GET \
 | `page`	| Integer<br>*Default: 1* |	Optional | The page number. |
 | `per_page` |	Integer<br>*Limit: 1 to 200*<br>*Default: 100*| Optional |	The number of entries to display on each page.|
 | `filter` |	JSONObject| Optional |	The filter criteria.|
-| &emsp; filter.`criteria`	| JSONArray<br>*Maximum length: 10,000<br>*Array size: 0 or greater* | Optional 	| The criteria information.|
+| &emsp; filter.`criteria`	| JSONArray<br>*Maximum length: 10,000<br>*Array size: 0 or greater* | 	| The criteria information.|
 | &emsp;&emsp; filter.criteria.`field_name` | String | | The field name. |
 | &emsp;&emsp; filter.criteria.`criteria_condition` | String<br>*Maximum length: 25*|  | The criteria condition. |
 | &emsp;&emsp; filter.criteria.`value` | String<br>*Maximum length: 10,000*<br>*Array size: 0 or greater* |  | The  criteria value. |
@@ -3564,7 +3564,7 @@ curl -X GET \
 |Name	| Data type | Required/Optional |	Description |
 | :---        | :----  |   :----  |   :---- |
 | filter| 	JSONObject| Optional |	The filter criteria. |
-| &emsp; filter.`criteria`	| JSONArray<br>*Maximum length: 10,000*<br>*Array size: 0 or greater* | Optional | The criteria information.|
+| &emsp; filter.`criteria`	| JSONArray<br>*Maximum length: 10,000*<br>*Array size: 0 or greater* |  | The criteria information.|
 | &emsp;&emsp; filter.criteria[].`cfid` | 	Integer |	| The custom field ID. |
 | &emsp;&emsp; filter.criteria[].`field_name`|	String| 	| The field name. |
 | &emsp;&emsp; filter.criteria[].`criteria_condition`	| String<br>*Maximum length: 25*| |	The criteria condition.| 
