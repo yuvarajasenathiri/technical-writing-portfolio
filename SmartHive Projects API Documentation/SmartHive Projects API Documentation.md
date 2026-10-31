@@ -352,7 +352,7 @@ In addition to HTTP status codes and their error messages, error responses for S
 
 The following sections describe the error codes and their uses:
 
-#### URL_RULE_NOT_CONFIGURED 400
+#### URL RULE NOT CONFIGURED 400
 
 Check whether the URL you’re trying to access is correct.
 
@@ -374,7 +374,7 @@ Check whether the URL you’re trying to access is correct.
   }
 }
 ```
-#### INVALID_OAUTHTOKEN 400
+#### INVALID OAUTHTOKEN 400
 
 The OAuth token isn’t valid or has expired.
 
@@ -396,7 +396,7 @@ The OAuth token isn’t valid or has expired.
   }
 }
 ```
-#### INVALID_INPUTSTREAM 400
+#### INVALID INPUTSTREAM 400
 
 The HTTP request has an input parameter that isn’t valid.
 
@@ -415,7 +415,7 @@ The HTTP request has an input parameter that isn’t valid.
   }
 }
 ```
-#### INVALID_METHOD 400
+#### INVALID METHOD 400
 
 The HTTP request method isn’t valid.
 
@@ -438,7 +438,7 @@ The HTTP request method isn’t valid.
   }
 }
 ```
-#### INVALID_PARAMETER_VALUE 400
+#### INVALID PARAMETER VALUE 400
 
 The HTTP request has a parameter value that isn’t valid.
 
@@ -462,7 +462,7 @@ The HTTP request has a parameter value that isn’t valid.
   }
 }
 ```
-#### INTERNAL_SERVER_ERROR 500
+#### INTERNAL SERVER ERROR 500
 
 The server encountered an unexpected error.
 
