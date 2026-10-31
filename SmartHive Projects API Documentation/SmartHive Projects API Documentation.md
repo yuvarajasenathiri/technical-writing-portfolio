@@ -12,7 +12,18 @@
 2. [Getting started](#getting-started)
 3. [What's new in v3](#what's-new-in-v3)
    - [Enhancements in the v3 API](#enhancements-in-the-v3-API)
-4. [Consistent date and time Format](#consistent-date-and-time-format)
+   - [Consistent date and time format](#consistent-date-and-time-format)
+   - [Advanced filtering](#advanced-filtering)
+   - [Standardized custom fields](#standardized-custom-fields)
+   - [Request and response structure](#Request-and-response-structure)
+   - [Pagination](#pagination)
+   - [Base URL structure](#base-URL-structure)
+   - [Quick comparison](#quick-comparison)
+4. [HTTP methods](#http-methods)
+5. [Error codes](#error-codes)
+   - [Status codes](#status-codes)
+6. [Other error responses](#other-error-responses)
+   - [URL_RULE_NOT_CONFIGURED 400](#URL-RULE-NOT-CONFIGURED 400)
 
 ## Introduction
 
@@ -22,7 +33,7 @@ SmartHive Projects provides REST APIs to manage your projects, connect third-par
 
 ## Getting started
 
-** Mandatory headers**
+**Mandatory headers**
 
 SmartHive Projects APIs require the `Authorization` header. The header contains the OAuth access token that authenticates the user who accesses the data.
 
@@ -101,7 +112,7 @@ All date and time values follow a single ISO 8601 format across endpoints. This 
 
 The `*_long` epoch fields are removed because ISO 8601 timestamps are widely supported.
 
-## Advanced filtering
+### Advanced filtering
 
 You can define multiple conditions in a single request by using a structured filter object. The server does all the filtering, so the response contains only the relevant records.
 
@@ -140,7 +151,7 @@ You can define multiple conditions in a single request by using a structured fil
 
 For the complete syntax reference, see the Filter Guide.
 
-## Standardized custom fields
+### Standardized custom fields
 
 Custom fields now use clear, consistent `api_name` values. You can reference them across requests, filters, and responses without additional mapping.
 
@@ -173,7 +184,7 @@ Custom fields now use clear, consistent `api_name` values. You can reference the
 
 For full details, see Custom Fields.
 
-## Request and response structure
+### Request and response structure
 
 Requests and responses use the same field structure. This makes the API more predictable and reduces the need for transformation logic when you handle API data.
 
@@ -226,7 +237,7 @@ Content-Type: application/json
   ]
 }
 ```
-## Pagination
+### Pagination
 
 Pagination is now page-based, which makes it easier to work with large datasets.
 
@@ -237,7 +248,7 @@ Pagination is now page-based, which makes it easier to work with large datasets.
  
 For full details and examples, see Pagination.
  
-## Base URL structure
+### Base URL structure
  
 All v3 endpoints follow a consistent URL pattern. The base URL is simplified and standardized, and trailing slashes aren’t required. This makes it easier to construct and predict endpoint URLs across the 
 API.
@@ -252,7 +263,7 @@ API.
 
 **Note:** If you're migrating from v2, replace the `/restapi/` prefix with `/api/v3/` in all endpoint URLs.
 
-## Quick comparison
+### Quick comparison
 
 |  Area    | Version 2(/restapi) | Version 3(/api/v3) |
 | :---        | :----  |      :---- |
@@ -277,7 +288,7 @@ Content-Type: application/json
   "cf_priority_level": "High"
 }
 ```
-# HTTP methods
+## HTTP methods
 
 SmartHive Projects supports the following methods.
 
@@ -289,12 +300,12 @@ SmartHive Projects supports the following methods.
 | PATCH   | Partial updates     |
 | DELETE   | Delete data      |
 
-# Error codes
+## Error codes
 
 SmartHive Projects uses HTTP status codes to indicate whether an API call succeeded or failed. Status codes in the 2xx range indicate success, codes in the 4xx range indicate an error in the information 
 provided, and codes in the 5xx range indicate server-side errors. The following table lists some commonly used HTTP status codes:
 
-## Status codes
+### Status codes
 
 | Status Code     | Description |
 | :---        | :----  |      
