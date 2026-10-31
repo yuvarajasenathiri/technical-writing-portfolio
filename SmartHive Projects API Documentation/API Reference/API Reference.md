@@ -8,9 +8,21 @@
 
 ## Table of contents
 
-1. [Portals](#1-portals)
+1. [Portals](#portals)
+   - [Get all portals with details](#get-all-portals-with-details)
+   - [Get portal details](#get-portal-details)
+2. [Users](#users)
+   - [Add a user](#add-a-user)
+   - [Activate a user](#activate-a-user)
+   - [Deactivate a user](#deactivate-a-user)
+   - [Delete a user](#delete-a-user)
+   - [Get associated projects](#get-associated-projects)
+   - [Deactivate a user](#deactivate-a-user)
+  
 
-## 1. Portals
+- - 
+
+## Portals
 
 This module handles portal-related operations in SmartHive Projects. Use the Portals API to create a portal, export portal data, manage portal settings, and get details such as portal license data 
 and allowed features.
