@@ -24,7 +24,22 @@
    - [Status codes](#status-codes)
 6. [Other error responses](#other-error-responses)
    - [URL_RULE_NOT_CONFIGURED 400](#URL-RULE-NOT-CONFIGURED-400)
-
+   - [INVALID_OAUTHTOKEN 400](#INVALID-OAUTHTOKEN-400)
+   - [INVALID_INPUTSTREAM 400](#INVALID-INPUTSTREAM-400)
+   - [INVALID_METHOD 400](#INVALID-METHOD-400)
+   - [INVALID_PARAMETER_VALUE 400](#INVALID-PARAMETER-VALUE-400)
+   - [INTERNAL_SERVER_ERROR 500](#INTERNAL-SERVER-ERROR-500)
+7. [API limits](#api-limits)
+   - [Rate limit info](#rate-limit-info)
+   - [Rate limit exceeded](#rate-limit-exceeded)
+   - [Important notes](#important-notes)
+   - [Best practices](#best-pratices)
+8. [Pagination](#pagination)
+   - [Query parameters](#query-parameters)
+   - [Response](#response)
+9. [API names](#api-names)
+   - [Display name vs.API name](#display-name-vs.-API-name)
+   
 ## Introduction
 
 SmartHive Projects provides REST APIs to manage your projects, connect third-party apps, and send data to or get data from SmartHive Projects.
@@ -465,7 +480,7 @@ The server encountered an unexpected error.
   }
 }
 ```
-# API limits
+## API limits
 
 SmartHive Projects APIs have rate limits to ensure fair usage and optimal performance for all users.
 
@@ -476,7 +491,7 @@ SmartHive Projects APIs have rate limits to ensure fair usage and optimal perfor
 - You can call each API up to **200 times in a 2-minute window**.
 - The limit applies to **each API endpoint**.
 
-## Rate limit info
+### Rate limit info
 
 Each API response includes the following headers to help you monitor your usage: 
 
@@ -496,7 +511,7 @@ Retry-After = 540 (seconds remaining)
 
 **Note:** The API returns the Retry-After header only when you exceed the rate limit.
 ```
-## Rate limit exceeded
+### Rate limit exceeded
 
 If you exceed the allowed number of requests:
 
@@ -504,13 +519,13 @@ If you exceed the allowed number of requests:
 - During this period, all further requests to that API fail.
 - The response includes a `Retry-After` header that shows the remaining time, in seconds, before the API is available again.
 
-## Important notes
+### Important notes
 
 - The restriction applies **only to the API that exceeds the limit**, not to all APIs.
 - After the 10-minute cooldown, the API becomes available automatically.
 - Repeated violations can affect app performance and reliability.
 
-## Best Practices
+### Best practices
 
 To avoid reaching rate limits:
 
@@ -520,13 +535,13 @@ To avoid reaching rate limits:
 - Use **batch APIs**, if available, to reduce the number of calls.
 - Cache frequently used data when possible.
 
-# Pagination
+## Pagination
 
 The v3 API uses page-based pagination on all list endpoints. To control which page of results the API returns, pass `page` and `per_page` as query parameters.
 
 **Request:** `GET /api/v3/portal/{portal_id}/projects/{project_id}/tasks?page=2&per_page=50`
 
-## Query Parameters
+### Query Parameters
 
 | Parameter     | Type | Description |
 | :---        | :----  |      :---- |
@@ -544,7 +559,7 @@ The v3 API uses page-based pagination on all list endpoints. To control which pa
   }
 }
 ```
-## Response
+### Response
 
 Every list response includes a `page_info` object. The `has_next_page` field tells your client when to stop fetching. You don’t need to calculate offsets, and you avoid duplicate or skipped records.
 
@@ -555,7 +570,7 @@ Every list response includes a `page_info` object. The `has_next_page` field tel
 | `page_count`   | Integer        | The total number of records in the result set.   |
 | `has_next_page`   | Boolean      | The value is `true` if more pages exist and `false` if the current page is the last page.   |
 
-# API names
+## API names
 
 Understand, locate, and use API names for modules, fields, and related APIs in SmartHive Projects.
 
