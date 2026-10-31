@@ -399,7 +399,7 @@ make API calls.
 - Turn on multi DC support
 - Workflow for server-based apps
 
-#### Incremental authorization
+#### Incremental authorization - 
 
 With incremental authorization, your app requests permission from the user only when it needs it, not up front. For example, your app might need profile information for basic functionality and extra 
 permission for certain features. Without incremental authorization, your app has to request all permissions up front when the user grants access. That’s a bad experience, because people have to grant 
