@@ -44,8 +44,51 @@
 10. [Retrieve API names](#retrieve-API-names)
      - [Method 1: Use the product](#method-1-use-the-product)
      - [Method 2: Use the APIs](#method-2-use-the-APIs)	
-11. [Custom fields](#custom-fields)	 
-   
+11. [Custom fields](#custom-fields)	
+12. [Field types](#field-types)
+     - [Overview](#overview)
+	 - [Single-line field](#single-line-field)
+     - [Multi-line field](#multi-line-field)
+	 - [Pick list field](#pick-list-field)
+	 - [Multi-select field](#multi-select-field)
+	 - [User pick list field](#user-pick-list-field)
+	 - [Multi-user field](#multi-user-field)
+	 - [Data field](#data-field)
+	 - [Time field](#time-field)
+	 - [Time stamp field](#time-stamp-field)
+	 - [Check box field](#check-box-field)
+	 - [Currency field](#currency-field)
+	 - [Percentage field](#percentage-field)
+	 - [Number field](#number-field)
+	 - [Decimal field](#decimal-field)
+	 - [Email field](#email-field)
+	 - [Phone number field](#phone-number-field)
+	 - [URL field](#URL-field)
+13. [Filter guide](#filter-guide)
+	 - [Filter payload structure](#filter-payload-structure)
+	   - [Payload properties](#payload-properties)
+	   - [Pattern syntax](#pattern-syntax)
+       - [Value format rules](#value-format-rules)
+     - [Condition reference](#condition-reference)
+	   - [Text conditions](#text-conditions)
+	   - [Comparison conditions](#comparison-conditions)
+       - [User conditions](#user-conditions)
+	   - [Empty condition](#empty-condition)
+14. [Frequently used filters](#frequently-used-filters)
+	 - [Common filters](#common-filters)
+	   - [Filter by open status](#filter-by-open-status)
+	   - [Filter by closed status](#filter-by-closed-status)
+	   - [Filter by status](#filter-by-status)
+	   - [Filter by owner](#filter-by-owner)
+	   - [Filter by name](#filter-by-name)
+	   - [Filter by created time](#filter-by-created-time)
+	   - [Filter by last modified time](#filter-by-last-modified-time)
+	 - [Task filters](#task-filters)
+	   - [Filter by subtask](#filter-by-subtask)
+	   - [Filter by parent task](#filter-by-parent-task)
+	   - [Filter by task list](#filter-by-task-list)
+----
+
 ## Introduction
 
 SmartHive Projects provides REST APIs to manage your projects, connect third-party apps, and send data to or get data from SmartHive Projects.
@@ -623,7 +666,7 @@ is custom. Together, they give you a complete reference of the available modules
 - For the list of modules and their API names, see Get Modules.
 - For field-level details, including API names, see Get Fields Info.
 
-# Custom fields
+## Custom fields
 
 Send custom field values when you create or update records through the SmartHive Projects APIs.
 
@@ -636,9 +679,9 @@ For example, you can use a checkbox custom field to track a project condition an
 - Custom field API names are currently supported only in the Tasks and Projects APIs.
 - Before you pass values, use the Custom Fields metadata API to get field details such as API names and field types.
 
-# Field types
+## Field types
 
-## Overview
+### Overview
 
 SmartHive Projects supports several custom field types, such as text, numeric, URL, date, and time. The following sections describe the field types available in the Create and Update APIs.
 
@@ -647,28 +690,28 @@ SmartHive Projects supports several custom field types, such as text, numeric, U
 - Send all inputs as an input stream `(application/json)`.
 - Use API names for custom fields.
 
-## Single-line field
+### Single-line field
 
 Captures text on a single line. Maximum length: 200 characters.
 
 **JSON schema:** `{ "key": "string"}`
 **Example:** `{"title": "Project Ara"}`
 
-## Multi-line field
+### Multi-line field
 
 Captures text on multiple lines. Use `\n` to separate lines. Maximum length: 1,000 characters.
 
 **JSON schema:** `{ "key": "string"}`
 **Example:** `{"description": "The respective team\n is a prototype."}`
 
-## Pick list field
+### Pick list field
 
 Captures a single option selected from a predefined list. Maximum options: 50.
 
 **JSON schema:** `{ "key": "string"}`
 **Example:** `{"Material": "Vinyl"}`
 
-## Multi-select field
+### Multi-select field
 
 Captures multiple options selected from a predefined list. You can add or remove values, or replace the existing values. Maximum selectable options: 100.
 
@@ -702,7 +745,7 @@ Captures multiple options selected from a predefined list. You can add or remove
 }]}
 ```
 
-## User pick list field
+### User pick list field
 
 Captures a single selected user.
 
@@ -721,7 +764,7 @@ Captures a single selected user.
 }}
 ```
 
-## Multi-user field
+### Multi-user field
 
 Captures multiple users selected from a predefined list. You can add or remove values, or replace the existing values. Maximum selectable users: 500.
 
@@ -770,7 +813,7 @@ Captures multiple users selected from a predefined list. You can add or remove v
 { "zpuid": "71346753132" } 
 ]}]}
 ```
-## Date field
+### Date field
 
 Captures a date in the `yyyy-MM-dd` format (ISO 8601).
 
@@ -783,7 +826,7 @@ Captures a date in the `yyyy-MM-dd` format (ISO 8601).
 "end_date": "2024-12-17"
 }
 ```
-## Time field
+### Time field
 
 Captures the time in `HH:MM` format.
 
@@ -795,21 +838,21 @@ Captures the time in `HH:MM` format.
 "end_time": "13:30"
 }
 ```
-## Time stamp field
+### Time stamp field
 
 Captures a date and time in ISO 8601 format. Use `yyyy-MM-dd'T'HH:mm:ss'Z'` for UTC, or `yyyy-MM-dd'T'HH:mm:ss[+|-]HH:mm` for other time zones. For details, see the ISO 8601 time stamp format.
 
 **JSON schema:** `{ "key": "string"}`
 **Example:** `{"start_time": "2022-12-16T18:56:00.000Z"}`
 
-## Check box field
+### Check box field
 
 Captures Boolean values (`true` or `false`) for a condition.
 
 **JSON schema:** `{ "key": "boolean"}`
 **Example:** `{"patent_applied": true}`
 
-## Currency field
+### Currency field
 
 Captures currency values with the currency code, formatted amount, currency ID, and raw amount. Maximum length: 100 characters.
 
@@ -831,49 +874,49 @@ Captures currency values with the currency code, formatted amount, currency ID, 
 "amount": 325.50 
 }}
 ```
-## Percentage field
+### Percentage field
 
 Captures percentage values as numbers. Maximum length: 20 characters.
 
 **JSON schema:** `{ "key": "number"}`
 **Example:** `{"completion_percentage": 10}`
 
-## Number field
+### Number field
 
 Captures whole numbers. Maximum length: 19 digits.
 
 **JSON schema:** `{ "key": "number"}`
 **Example:** `{"tests_passed": 35 }`
 
-## Decimal field
+### Decimal field
 
 Captures decimal values. Maximum length: 17 digits.
 
 **JSON schema:** `{ "key": "number"}`
 **Example:** `{"accuracy": 21.05}`
 
-## Email field
+### Email field
 
 Captures email addresses. Maximum length: 200 characters.
 
 **JSON Schema:** `{ "key": "string"}`
 **Example:** `{"email":"chris@victa.com"}`
 
-## Phone number field
+### Phone number field
 
 Captures phone numbers. Maximum length: 15 characters, including `+` and `()`.
 
 **JSON schema:** `{ "key": "string"}`
 **Example:** `{"mobile":"1234567890"}`
 
-## URL field
+### URL field
 
 Captures web links. If you don’t specify a protocol, the API uses `https://` by default. Maximum length: 200 characters.
 
 **JSON schema:** `{ "key": "string"}`
 **Example:** `{"link":"https://projects.smartHive.com"}`
 
-# Filter guide
+## Filter guide
 
 Use the filter query parameter in SmartHive Projects v3 to retrieve only the records that match the conditions you define. This approach avoids fetching all records and filtering them on the client. This guide 
 explains how to construct filter payloads, which conditions are available, and which value formats are supported.
@@ -901,19 +944,23 @@ explains how to construct filter payloads, which conditions are available, and w
 - Combine one or more conditions by using a pattern expression.
 - Status and date presets are currently supported only on specific modules. Support for other modules isn’t available yet.
 
-## Filter payload structure
+### Filter payload structure
 
 The filter payload has two key components, `criteria` and `pattern`. Together, they define the conditions in a request and how those conditions are combined.
 
-### Payload Properties
+#### Payload Properties
+
+> In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
+
 | Property     | Data Type | Description |	
+| :---        | :----  | :---- |
 | `criteria`     | Array       | *required.*<br> The array of conditions. Each property of a condition represents a specific part of it and determines how the API interprets fields, operators, and values during filtering. |
-| `field_name`   | String        | *required.*<br> The API name of the field to filter, for example, `status`, `due_date`, or `name`. To get valid field names for a module, use the Get Field Info API.     |
-| `criteria_condition`  | String      | *required.*<br> The filter operation. The available conditions depend on the field type. See Conditions reference.   |
-| `value`   | Array<String>    | *optional.*<br> Required for most conditions. Always an array. Omit it for presets (`today`, `is_empty`). `between` requires exactly 2 values. |
+| &emsp; criteria.`field_name`   | String        | *required.*<br> The API name of the field to filter, for example, `status`, `due_date`, or `name`. To get valid field names for a module, use the Get Field Info API.     |
+| &emsp; criteria.`criteria_condition`  | String      | *required.*<br> The filter operation. The available conditions depend on the field type. See Conditions reference.   |
+| &emsp; criteria.`value`   | Array<String>    | *optional.*<br> Required for most conditions. Always an array. Omit it for presets (`today`, `is_empty`). `between` requires exactly 2 values. |
 | `pattern`   | String        | *required.*<br> The logic that combines the criteria by using `AND` and `OR`. Reference each criterion by its 1-based index in the array order, for example, `1` for the first criterion and `2` for the second. Example: `"(1 AND 2) OR 3"`      |
 
-### Pattern syntax
+#### Pattern syntax
 
 The `pattern` defines how the criteria are combined and evaluated together. Reference each condition by its position in the list, starting from 1, and use operators such as `AND` and `OR` to define the relationship between conditions. Use parentheses `()` to group conditions and control how they’re applied. The pattern is always required. When there’s only one condition, use `"1"`.
 
@@ -983,7 +1030,7 @@ The `pattern` defines how the criteria are combined and evaluated together. Refe
   "pattern": "(1 AND 2) OR 3"
 }
 ```
-### Value format rules
+#### Value format rules
 
 The `value` field holds the input that the API uses to evaluate a condition. It’s always an array of strings. Most conditions require it, but presets don’t include a value. Range-based conditions such as 
 `between` use exactly 2 values. The format varies by field type.
@@ -1006,9 +1053,9 @@ The `value` field holds the input that the API uses to evaluate a condition. It�
 - All other conditions accept a single value, or exactly 2 values for `between` and `not_between`.
 - Preset conditions, such as `today` and `is_empty`, don’t require a value array.
 
-## Conditions reference
+### Conditions reference
 
-### Text conditions
+#### Text conditions
 
 Use these conditions for text-based fields such as `name`, `email`, and custom fields, where matching is based on keywords or exact values. All comparisons are case-insensitive.
 
@@ -1050,7 +1097,7 @@ Use these conditions for text-based fields such as `name`, `email`, and custom f
 **Tip**
 - `contains`, `not_contains`, `starts_with`, and `ends_with` accept only a single value. Only `is` and `is_not` support multiple values in the array.
 
-### Comparison Conditions
+#### Comparison Conditions
 
 Use these conditions for numeric and date fields, where the API compares values by using operators such as greater than, less than, or within a range.
 
@@ -1094,7 +1141,7 @@ Use these conditions for numeric and date fields, where the API compares values 
 **Tip**
 - For date fields, use the `YYYY-MM-DD` format. Single value: `["2024-11-01"]`. Range: `["2024-11-01", "2024-11-30"]`.
 
-### User conditions
+#### User conditions
 
 Use these conditions for fields related to users, including assignments, reporting structure, and user-specific states. These conditions require a ZPUID in the value array.
 
@@ -1134,7 +1181,7 @@ Use these conditions for fields related to users, including assignments, reporti
   "pattern": "1 AND 2"
 }
 ```
-### Empty condition
+#### Empty condition
 
 Use this condition to find fields that don’t have a value.
 
@@ -1162,11 +1209,11 @@ Use this condition to find fields that don’t have a value.
 
 This section provides ready-made filter payloads for common requests. Copy a payload, URL-encode it, and pass it as the `filter` query parameter.
 
-## Common filters
+### Common filters
 
 These filters work across modules such as tasks, issues, and custom modules.
 
-### Filter by open status
+#### Filter by open status
 
 Returns all open tasks in a single request.
 
@@ -1185,7 +1232,7 @@ Use `status` with the `custom_condition` operator and the `${ALL_OPEN}` value.
   "pattern": "1"
 }
 ```
-### Filter by closed status
+#### Filter by closed status
 
 Returns all closed tasks in a single request.
 
@@ -1204,7 +1251,7 @@ Use `status` with the `custom_condition` operator and the `${ALL_CLOSED}` value.
   "pattern": "1"
 }
 ```
-### Filter by status
+#### Filter by status
 
 Returns tasks in a specific status.
 
@@ -1223,7 +1270,7 @@ Use `status` with the `is` condition and the status ID as the value.
   "pattern": "1"
 }
 ```
-### Filter by Owner
+#### Filter by Owner
 
 Returns tasks owned by a specific user.
 
@@ -1242,7 +1289,7 @@ Use `owner` with the `is` condition and the user’s ZPUID as the value.
   "pattern": "1"
 }
 ```
-### Filter by name
+#### Filter by name
 
 Returns tasks whose name contains the given text.
 
@@ -1261,7 +1308,7 @@ Use `name` with the `contains` condition and the search text as the value.
   "pattern": "1"
 }
 ```
-### Filter by created time
+#### Filter by created time
 
 Returns tasks created after a specific time.
 
@@ -1280,7 +1327,7 @@ Use `created_time` with the `greater_than` condition and a `YYYY-MM-DD` value.
   "pattern": "1"
 }
 ```
-### Filter by last modified time
+#### Filter by last modified time
 
 Returns tasks last updated after a specific date.
 
@@ -1299,11 +1346,11 @@ Use `last_updated_time` with the `greater_than` condition and a `YYYY-MM-DD` val
   "pattern": "1"
 }
 ```
-## Task filters
+### Task filters
 
 These filters are available only in the Tasks module.
 
-### Filter by subtask
+#### Filter by subtask
 
 Returns only subtasks (tasks that have a parent task). 
 
@@ -1322,7 +1369,7 @@ Use `has_parents` with the value `true`. To return only top-level tasks, set the
   "pattern": "1"
 }
 ```
-### Filter by parent task
+#### Filter by parent task
 
 Returns the subtasks of a specific parent task. 
 
@@ -1341,7 +1388,7 @@ Use `parent_task` with the `is` condition and the parent task ID as the value.
   "pattern": "1"
 }
 ```
-### Filter by task list
+#### Filter by task list
 
 Returns tasks that belong to a task list whose name contains the given text. 
 
@@ -1361,5 +1408,5 @@ Set `module_name` to `tasklist` to filter on the related module’s `name` field
   "pattern": "1"
 }
 ```
-
+-----
 
