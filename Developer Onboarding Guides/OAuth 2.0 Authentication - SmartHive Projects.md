@@ -26,7 +26,7 @@
 	  - [Get access token](#get-access-token)
 	  - [Refresh access token](#refresh-access-token)
 8.  [Multi DC support](#multi-dc-support)
-9.  [Incremnetal authorization](#incremental-authorization)
+9.  [Incremental authorization](#incremental-authorization)
       - [Overview](#what-is-incremental-authorization)
 	  - [Get scope enhancement token](#Get-scope-enhancement-token)
 	  - [Enhance scope](#enhance-scope)
