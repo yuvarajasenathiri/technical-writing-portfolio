@@ -2824,7 +2824,6 @@ curl -X PATCH \
   "check_box_19sep_cview_lay" : false
 }
 ```
-
 ### Trash a project
 
 Use this endpoint to move an existing project in the SmartHive Projects portal to the trash.
@@ -2933,13 +2932,12 @@ curl -X GET \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/profiles?sort_by=ASC%28last_updated_time%29&page=1&per_page=10&filter=%7B%22criteria%22%3A%5B%7B%22module%22%3A%22-%22%2C%22field_name%22%3A%22project%22%2C%22module_name%22%3A%22task%22%2C%22criteria_condition%22%3A%22contains%22%2C%22value%22%3A%5B1752587000000097269%5D%7D%5D%2C%22pattern%22%3A%221%22%7D&ids=4000000029001' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
 ```
-
 **Query parameters**
 
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
 
-|Name	| Data type | Required/Optional |	Description |
-|---|---|---|---| 
+| Name	| Data type | Required/Optional |	Description |
+|---|---|---|---|
 | `sort_by`	| String | Optional |	The sort order.<br> Accepted values: `ASC(field_name)` or `DESC(field_name)`.<br> Available fields: `name`, `type`, `created_by`, `created_time`, `last_updated_by`, `last_updated_time`, `default_profile`, and system_defined`. |
 | `page`	| Integer<br>*Default: 1* | Optional |	The page number.|
 | `per_page` |	Integer<br>*Default: 25* | Optional |	| The number of entries to display on each page.|
@@ -3539,6 +3537,7 @@ per_page :  -
 ### Get a layout list
 
 Use this endpoint to:
+
 - Retrieve the list of layouts in a module. 
 - Identify layout IDs before you perform layout-level operations, such as updating layouts, adding fields, or managing sections.
 
@@ -3559,7 +3558,6 @@ curl -X GET \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/settings/layouts?module=projects&index=1&range=100&page=1&per_page=10&filter=%7B%22is_association_info_needed%22%3A%22true%22%2C%22is_current_user_profile_associated%22%3A%22true%22%2C%22search_term%22%3A%22smarthive+Projects%22%2C%22search_by%22%3A%22project%22%7D' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
 ```
-
 **Query parameters**
 
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
@@ -3578,7 +3576,6 @@ curl -X GET \
 | &emsp; filter.`search_by`	| String | | The field to search by.<br> Accepted values: `project`, `layout`, or `id`.
 
 **Sample input**
-
 ```
 module : "projects"
 index : 1
@@ -3592,7 +3589,6 @@ filter : {
   "search_by" : "project"
 }
 ```
-
 ** Sample Response**
 
 - 200 Ok
@@ -3969,6 +3965,7 @@ filter : {
 }
 page : 1
 per_page : 10
+
 ```
 
 **Sample response**
@@ -3999,8 +3996,7 @@ per_page : 10
   "is_deactivated" : false
 } ]
 ```
-
------
+----
 
 *This document is part of the [technical-writing-portfolio](./README.md). SmartHive Projects is a fictional product created for the [technical-writing-portfolio](./README.md) repository.*
 
