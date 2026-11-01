@@ -79,11 +79,14 @@ curl -X GET \
 |`environment` | String | Optional| The environment of the portals to return.<br> Accepted values: `sandbox` or `production`.<br> If you omit this parameter, the API returns portals from every environment. |
 
 **Sample input**
+
 ```
 status : "active"
 environment : "production"
 ``` 
+
 **Sample response**
+
 - 200 Ok
 
 ```
@@ -117,6 +120,7 @@ environment : "production"
   } ]
 }
 ```
+
 ### Get portal details
 
 Use this endpoint to retrieve details of a specific SmartHive Projects portal.
@@ -138,6 +142,7 @@ curl -X GET \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
 **Sample response**
+
 - 200 Ok
 
 ```
@@ -176,7 +181,6 @@ curl -X GET \
   }
 }
 ```
-
 ----
 
 ## Users
@@ -199,6 +203,7 @@ Use this endpoint to add a user to the SmartHive Projects portal and to invite a
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
+
 ```
 curl -X POST \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/users' \
@@ -274,7 +279,9 @@ curl -X POST \
 | &emsp; userdetails[].`business_hours_id`	| String |   | 	The business hours ID of the user. |
 
 **Sample input**
+
 > *Content-Type: application/json
+
 ```
 userdetails : [ {
   "email_id" : "mark@victa.com",
@@ -309,9 +316,11 @@ userdetails : [ {
   "business_hours_id" : "-"
 } ]
 ```
+
 **Sample response**
 
 - 201 Created
+
 ```
 {
   "is_upgrade" : "false",
@@ -379,6 +388,7 @@ userdetails : [ {
 **Possible errors**
 
 - INPUT_PARAMETER_MISSING `HTTP 400`
+
 ```
 {
   "error" : {
@@ -394,7 +404,9 @@ userdetails : [ {
   }
 }
 ```
+
 - INVALID_PARAMETER_VALUE `HTTP 401`
+
 ```
 {
   "error" : {
@@ -410,7 +422,9 @@ userdetails : [ {
   }
 }
 ```
+
 - UNAUTHORIZED_ACCESS `HTTP 401`
+
 ```
 {
   "error" : {
@@ -425,7 +439,9 @@ userdetails : [ {
   }
 }
 ```
+
 - LITE_USER_LIMIT_REACHED ` HTTP 403`
+
 ```
 {
   "error" : {
@@ -440,7 +456,9 @@ userdetails : [ {
   }
 }
 ```
+
 - READONLY_USER_LIMIT_REACHED `HTTP 403`
+
 ```
 {
   "error" : {
@@ -455,7 +473,9 @@ userdetails : [ {
   }
 }
 ```
+
 - USER_ACCOUNT_NOT_CONFIRMED `HTTP 403`
+
 ```
 {
   "error" : {
@@ -470,7 +490,9 @@ userdetails : [ {
   }
 }
 ```
+
 - USER_ADDED_IN_OTHER_DEPLOYMENT `HTTP 403`
+
 ```
 {
   "error" : {
@@ -485,7 +507,9 @@ userdetails : [ {
   }
 }
 ```
+
 - USER_ADD_GENERAL_ERROR `HTTP 403`
+
 ```
 {
   "error" : {
@@ -500,7 +524,9 @@ userdetails : [ {
   }
 }
 ```
+
 - USER_ALREADY_ADDED_IN_ORG `HTTP 403`
+
 ```
 {
   "error" : {
@@ -515,7 +541,9 @@ userdetails : [ {
   }
 }
 ```
+
 - USER_INVALID_EMAIL `HTTP 403`
+
 ```
 {
   "error" : {
@@ -530,7 +558,9 @@ userdetails : [ {
   }
 }
 ```
+
 - USER_INVITE_REJECTED `HTTP 403`
+
 ```
 {
   "error" : {
@@ -545,7 +575,9 @@ userdetails : [ {
   }
 }
 ```
+
 - USER_LIMIT_REACHED `HTTP 403`
+
 ```
 {
   "error" : {
@@ -584,6 +616,7 @@ curl -X POST \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa' \
  --form-string 'notify=true'
 ```
+
 **Query parameters**
 
 |Name	| Data type | Required/Optional |	Description |
@@ -591,10 +624,13 @@ curl -X POST \
 |`notify` |	String |	Required | Whether to notify the user about the activation.<br> Accepted values: `true` or `false`. |
 
 **Sample input **
+
 ```
 notify : "true"
 ```
+
 **Sample response**
+
 - 200 Ok
 
 ```
@@ -605,6 +641,7 @@ notify : "true"
 **Possible errors**
 
 - ACTIVATE_ERROR `HTTP 403`
+
 ```
 {
   "error" : {
@@ -619,7 +656,9 @@ notify : "true"
   }
 }
 ```
+
 - USER_LIMIT_REACHED `HTTP 403`
+
 ```
 {
   "error" : {
@@ -634,7 +673,9 @@ notify : "true"
   }
 }
 ```
+
 - RESOURCE_NOT_FOUND `HTTP 404`
+
 ```
 {
   "error" : {
@@ -666,12 +707,14 @@ Use this endpoint to deactivate a specific user in a portal and to revoke a user
 | `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user. Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts). The `id` field in the response is the `user_id`. |
 
 **Request example**
+
 ```
 curl -X POST \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/users/[USER_ID]/deactivate' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa' \
  --form-string 'notify=true'
 ```
+
 **Query parameters**
 
 |Name	| Data type | Required/Optional |	Description |
@@ -679,20 +722,25 @@ curl -X POST \
 |`notify` |	String |	Required | Whether to notify the user about the activation.<br> Accepted values: `true` or `false`. |
 
 **Sample input **
+
 ```
 notify : "true"
 ```
+
 **Sample response**
 
 - 200 Ok
+
 ```
 {
   "response" : "User Deactivated Successfully"
 }
 ```
+
 **Possible errors**
 
 - UNAUTHORIZED_ACCESS `HTTP 401`
+
 ```
 {
   "error" : {
@@ -707,7 +755,9 @@ notify : "true"
   }
 }
 ```
+
 - CANNOT_UPDATE_UNCONFIRMED_USER `HTTP 402`
+
 ```
 {
   "error" : {
@@ -722,7 +772,9 @@ notify : "true"
   }
 }
 ```
+
 - DEACTIVATE_ERROR `HTTP 403`
+
 ```
 {
   "error" : {
@@ -737,7 +789,9 @@ notify : "true"
   }
 }
 ```
+
 - RESOURCE_NOT_FOUND `HTTP 404`
+
 ```
 {
   "error" : {
@@ -769,11 +823,13 @@ Use this endpoint to remove a specific user from a portal and to permanently rev
 | `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br>Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts).<br>The `id` field in the response is the `user_id`. |
 
 **Request example**
+
 ```
 curl -X DELETE \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/users/[USER_ID]?notify=true&reporting_manager=8000000002411&reporting_to=8000000002411' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
+ 
 **Query parameters**
 
 | Name | 	Data type | Required/Optional |	Description |
@@ -783,11 +839,13 @@ curl -X DELETE \
 | `reporting_to` |	Integer |	Optional | The reporting manager of the user.<br>  Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts) (the `id` field in the response). |
 
 **Sample input **
+
 ```
 notify : "true"
 reporting_manager : "8000000002411"
 reporting_to : "8000000002411"
 ```
+
 **Sample response**
 
 - 204 No content
@@ -795,6 +853,7 @@ reporting_to : "8000000002411"
 **Possible errors**
 
 - UNAUTHORIZED_ACCESS `HTTP 401`
+
 ```
 {
   "error" : {
@@ -809,7 +868,9 @@ reporting_to : "8000000002411"
   }
 }
 ```
+
 - CANNOT_UPDATE_UNCONFIRMED_USER `HTTP 402`
+
 ```
 {
   "error" : {
@@ -824,7 +885,9 @@ reporting_to : "8000000002411"
   }
 }
 ```
+
 - ERROR_WHILE_DELETE `HTTP 403`
+
 ```
 {
   "error" : {
@@ -839,7 +902,9 @@ reporting_to : "8000000002411"
   }
 }
 ```
+
 - ERROR_WHILE_DELETE_ADDED_VIA_TEAM `HTTP 403`
+
 ```
 {
   "error" : {
@@ -854,7 +919,9 @@ reporting_to : "8000000002411"
   }
 }
 ```
+
 - RESOURCE_NOT_FOUND `HTTP 404`
+
 ```
 {
   "error" : {
@@ -886,11 +953,13 @@ Use this endpoint to retrieve all projects associated with a specific user in a 
 | `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br> Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts).<br>The `id` field in the response is the `user_id`. |
 
 **Request example**
+
 ```
 curl -X GET \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/users/[USER_ID]/projects?status=active&search_term=smarthive+Projects&page=1&per_page=10' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
+ 
 **Query parameters**
 
 |Name	| Data type | Required/Optional |	Description |
@@ -901,15 +970,18 @@ curl -X GET \
 | `per_page` |	Integer<br>Limit: 1 to 200. Default: 100 | Optional |	The number of entries to display on each page.|
 
 **Sample input **
+
 ```
 status : "active"
 search_term : "SmartHive Projects"
 page : "1"
 per_page : "10"
 ```
+
 **Sample response**
 
 - 200 Ok
+
 ```
 {
   "projects" : [ {
@@ -934,9 +1006,11 @@ per_page : "10"
   }
 }
 ```
+
 **Possible errors**
 
 - RESOURCE_NOT_FOUND `HTTP 404`
+
 ```
 {
   "error" : {
@@ -967,11 +1041,13 @@ Use this endpoint to retrieve all users and contacts in the SmartHive Projects p
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
+
 ```
 curl -X GET \
  'https://projects.smarthive.com/api/v3.1/portal/[PORTAL_ID]/users?type=portal_user&view_type=active&page=1&per_page=10&filter=%7B%22criteria%22%3A%5B%7B%22module%22%3A%22-%22%2C%22field_name%22%3A%22name%22%2C%22module_name%22%3A%22task%22%2C%22criteria_condition%22%3A%22contains%22%2C%22value%22%3A%5B%22Monica%22%5D%7D%5D%2C%22pattern%22%3A%221%22%7D&sort_by=ASC%28first_name%29' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
+ 
 **Query parameters**
 
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
@@ -988,6 +1064,7 @@ curl -X GET \
 | `sort_by`	| String | Optional	| The sort criteria.<br> Accepted values: `ASC(field_name)` or `DESC(field_name)`.<br> Available fields: `first_name`, `last_name`, `portal_profile`, `role`, `rate_per_hour`, `cost_rate_per_hour`, `business_hours`, `added_time`, `updated_time`, `last_accessed_on`, and the `api_name` of a custom field. |
 
 **Sample input**
+
 ```
 type : "portal_user"
 view_type : "active"
@@ -1005,9 +1082,11 @@ filter : {
 }
 sort_by : "ASC(first_name)"
 ```
+
 **Sample response**
 
 - 200 Ok
+
 ```
 {
   "page_info" : {
@@ -1069,9 +1148,11 @@ sort_by : "ASC(first_name)"
   } ]
 }
 ```
+
 **Possible errors**
 
 - INTERNAL_SERVER_ERROR `HTTP 500`
+
 ```
 {
   "error" : {
@@ -1087,6 +1168,7 @@ sort_by : "ASC(first_name)"
   }
 }
 ```
+
 -----
 
 ## Project users
@@ -1110,11 +1192,13 @@ Use this endpoint to retrieve all users in a project.
 | `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br> Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
 **Request example**
+
 ```
 curl -X GET \
  'https://projects.smarthive.com/api/v3.1/portal/[PORTAL_ID]/projects/23806000097545166/users?type=portal_user&view_type=active&page=1&per_page=10&filter=%7B%22criteria%22%3A%5B%7B%22module%22%3A%22-%22%2C%22field_name%22%3A%22name%22%2C%22module_name%22%3A%22task%22%2C%22criteria_condition%22%3A%22contains%22%2C%22value%22%3A%5B%22Monica%22%5D%7D%5D%2C%22pattern%22%3A%221%22%7D&sort_by=ASC%28first_name%29' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
 ```
+
 **Query parameters**
 
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
@@ -1136,6 +1220,7 @@ curl -X GET \
 |`sort_by`	|String | Optional	| The sort criteria.<br> Accepted values: `ASC(field_name)` or `DESC(field_name)`.<br> Available fields: `first_name`, `last_name`, `portal_profile`, `role`, `project_rate`, `project_cost_rate`, `business_hours`, `added_to_project_time`, `updated_in_project_time`, and `last_accessed_on`. |
 
 **Sample input**
+
 ```
 type : "portal_user"
 view_type : "active"
@@ -1153,9 +1238,11 @@ filter : {
 }
 sort_by : "ASC(first_name)"
 ```
+
 **Sample response**
 
 - 200 Ok
+
 ```
 {
   "page_info" : {
@@ -1235,6 +1322,7 @@ Use this endpoint to add a user to a specific project and to grant a portal user
 | `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
 **Request example**
+
 ```
 curl -X POST \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/projects/23806000097545166/projectusers' \
@@ -1275,6 +1363,7 @@ curl -X POST \
 | `notify`	| Boolean	| Required  | Whether to notify the users.<br> Accepted values: `true` or `false`.|
 
 **Sample input**
+
 > *Content-Type: application/json
 ```
 userdetails : [ {
@@ -1294,6 +1383,7 @@ notify : "true"
 **Sample response**
 
 - 201 Created
+
 ```
 {
   "is_upgrade" : "false",
@@ -1358,9 +1448,11 @@ notify : "true"
   "success_zpuid" : [ "\"103368000002484141\"" ]
 }
 ```
+
 **Possible errors**
 
 - UNAUTHORIZED_ACCESS `HTTP 401`
+
 ```
 {
   "error" : {
@@ -1375,7 +1467,9 @@ notify : "true"
   }
 }
 ```
+
 - USER_ALREADY_ADDED_IN_PROJECT `HTTP 403`
+
 ```
 {
   "error" : {
@@ -1390,7 +1484,9 @@ notify : "true"
   }
 }
 ```
+
 - RESOURCE_NOT_FOUND `HTTP 404`
+
 ```
 {
   "error" : {
@@ -1423,6 +1519,7 @@ Use this endpoint to modify the details of a specific user within a project usin
 | `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br> Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts).<br>The `id` field in the response is the `user_id`. |
 
 **Request example**
+
 ```
 curl -X POST \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/projects/23806000097545166/users/[USER_ID]' \
@@ -1441,15 +1538,20 @@ curl -X POST \
 | `profile_id` |	Integer |	Optional | The profile ID of the user.<br> Get it from the [Get all portal profiles API](#get-all-portal-profiles) (the `id` field in the response). |
 
 **Sample input**
+
 > *Content-Type: application/json
+
 ```
 invoice : "30.00"
 costrate : "15.00"
 profile_id : "2223806000000022149"
 ```
+
 **Sample response**
 
+
 - 200 Ok
+
 ```
 {
   "CURR_PROJID" : "4000000008005",
@@ -1501,9 +1603,11 @@ profile_id : "2223806000000022149"
   "ISDEMOUSER" : false
 }
 ```
+
 **Possible errors**
 
 - INVALID_PARAMETER_VALUE `HTTP 400`
+
 ```
 {
   "error" : {
@@ -1519,7 +1623,9 @@ profile_id : "2223806000000022149"
   }
 }
 ```
+
 - UNAUTHORIZED_ACCESS `HTTP 401`
+
 ```
 {
   "error" : {
@@ -1534,7 +1640,9 @@ profile_id : "2223806000000022149"
   }
 }
 ```
+
 - RESOURCE_NOT_FOUND `HTTP 404`
+
 ```
 {
   "error" : {
@@ -1567,11 +1675,13 @@ Use this endpoint to remove a specific user from a project and to revoke a user�
 | `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br> Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts).<br>The `id` field in the response is the `user_id`. |
 
 **Request example**
+
 ```
 curl -X DELETE \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/projects/23806000097545166/users/[USER_ID]?notify=true' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
+ 
 **Query parameters**
 
 | Name | 	Data type | Required/Optional |	Description |
@@ -1579,9 +1689,11 @@ curl -X DELETE \
 | `notify`	| String |	Required | Whether to notify the user.<br> Accepted values: `true` or `false`. |
 
 **Sample input **
+
 ```
 notify : "true"
 ```
+
 **Sample response**
 
 - 204 No content
@@ -1589,6 +1701,7 @@ notify : "true"
 **Possible errors**
 
 - CANNOT_REMOVE_ADMIN_FROM_PROJECT `HTTP 403`
+
 ```
 {
   "error" : {
@@ -1603,7 +1716,9 @@ notify : "true"
   }
 }
 ```
+
 - CANNOT_REMOVE_CRM_ASSPCIATED_USER `HTTP 403`
+
 ```
 {
   "error" : {
@@ -1618,7 +1733,9 @@ notify : "true"
   }
 }
 ```
+
 - CANNOT_REMOVE_PROJECTOWNER_FROM_PROJECT `HTTP 403`
+
 ```
 {
   "error" : {
@@ -1633,7 +1750,9 @@ notify : "true"
   }
 }
 ```
+
 - ERROR_WHILE_DELETE_ADDED_VIA_TEAM `HTTP 403`
+
 ```
 {
   "error" : {
@@ -1648,7 +1767,9 @@ notify : "true"
   }
 }
 ```
+
 - RESOURCE_NOT_FOUND `HTTP 404`
+
 ```
 {
   "error" : {
@@ -1663,6 +1784,7 @@ notify : "true"
   }
 }
 ```
+
 ------
 
 ## Projects
@@ -1684,11 +1806,13 @@ Use this end point to retrieve the list of all projects in the SmartHive Project
 |`portal_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response). |
 
 **Request example**
+
 ```
 curl -X GET \
  'https://projects.smarthive.com/api/v3/portal/739121528/projects?page=1&per_page=10&%22filter%22=%7B%22criteria%22%3A%5B%7B%22cfid%22%3A%224000000000242%22%2C%22field_name%22%3A%22project%22%2C%22criteria_condition%22%3A%22contains%22%2C%22value%22%3A%5B%221752587000000097269%22%5D%2C%22relative_columns%22%3A%5B%7B%22cfid%22%3A%224000000000242%22%2C%22field_name%22%3A%22project%22%2C%22offset%22%3A%221%22%2C%22unit%22%3A%22days%22%2C%22prior%22%3A%22before%22%7D%5D%7D%5D%2C%22pattern%22%3A%221+AND+2%22%7D&sort_by=ASC%28last_modified_time%29&view_id=23806000074760021' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
 ```
+
 **Query parameters**
 
 | Name |	Data type | Required/Optional|	Description |
@@ -1702,6 +1826,7 @@ curl -X GET \
 | `view_id` |	String | Optional | The ID of a saved custom view to apply.<br>When you include it, the API applies the saved view’s filter criteria, columns, and sort order. <br>If you also include a `filter`, the API combines the filter conditions (AND) with the custom view’s criteria.  |
 
 **Sample input**
+
 ```
 page : "1"
 per_page : "10"
@@ -1728,6 +1853,7 @@ view_id : "23806000074760021"
 **Sample response**
 
  - 200 Ok
+ 
 ```
 [ {
   "id" : "7000000082003",
@@ -1796,6 +1922,7 @@ view_id : "23806000074760021"
 **Possible errors**
 
 - Internal_Server_Error `HTTP 500`
+
 ```
 {
   "error" : {
@@ -1828,14 +1955,17 @@ Use this endpoint to retrieve a project details in the SmartHive Projects portal
 |`project_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
 **Request example**
+
 ```
 curl -X GET \
  'https://projects.smarthive.com/api/v3/portal/739121528/projects/1752587000000097024' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
+ 
 **Sample response**
 
 - 200 Ok
+
  ```
  {
   "end_date" : "2029-01-01",
@@ -1974,6 +2104,7 @@ Use this endpoint to create a project in the SmartHive Projects portal.
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).| 
 
 **Request example**
+
 ```
 curl -X POST \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/projects' \
@@ -2040,7 +2171,7 @@ curl -X POST \
  }'
  ```
  
-**Body parameters**
+ **Body parameters**
 
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
 
@@ -2096,7 +2227,9 @@ curl -X POST \
 | `<field_name>` |	String	| Optional |  The value of a project custom field.<br> Replace `<field_name>` with the custom field’s API name in snake_case, as listed in the Custom Fields Guide.<br> **Note:** The type shows as `String` by default because most basic custom fields accept string values. The value format and input structure depend on the custom field type. For details, see the Custom Fields Guide.|
 
 **Sample input**
+
 > *Content-Type: application/json
+
 ```
 {
   "name" : "Website Redesign",
@@ -2157,9 +2290,11 @@ curl -X POST \
   "business_hours_id" : "7000000197013"
 }
 ```
+
 **Sample response**
 
 - 200 Ok
+
 ```
 {
   "end_date" : "2029-01-01",
@@ -2298,6 +2433,7 @@ Use this endpoint to modify an existing project in the SmartHive Projects portal
 | `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br> Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
 **Request example**
+
 ```
 curl -X PATCH \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/projects/23806000097545166' \
@@ -2419,7 +2555,9 @@ curl -X PATCH \
 | `<field_name>` |	String	| Optional |  The value of a project custom field.<br> Replace `<field_name>` with the custom field’s API name in snake_case, as listed in the Custom Fields Guide.<br> **Note:** The type shows as `String` by default because most basic custom fields accept string values. The value format and input structure depend on the custom field type. For details, see the Custom Fields Guide.|
 
 **Sample input**
+
 > *Content-Type: application/json
+
 ```
 {
   "name" : "Website Redesign",
@@ -2482,9 +2620,11 @@ curl -X PATCH \
   "business_hours_id" : "7000000197013"
 }
 ```
+
 **Sample response**
 
 - 200 Ok
+
 ```
 {
   "id" : "7000000278041",
@@ -2684,6 +2824,7 @@ curl -X PATCH \
   "check_box_19sep_cview_lay" : false
 }
 ```
+
 ### Trash a project
 
 Use this endpoint to move an existing project in the SmartHive Projects portal to the trash.
@@ -2700,11 +2841,13 @@ Use this endpoint to move an existing project in the SmartHive Projects portal t
 | `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
 **Request example**
+
 ```
 curl -X POST \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/projects/23806000097545166/trash' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
+ 
 **Sample response**
 
 - 204 No content
@@ -2725,11 +2868,13 @@ Use this endpoint to Restore a project from the trash in the SmartHive Projects 
 | `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
 **Request example**
+
 ```
 curl -X POST \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/projects/23806000097545166/restore' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
 ```
+
 **Sample response**
 
 - 204 No content
@@ -2750,11 +2895,13 @@ Use this endpoint to remove a project from the trash permanently.
 | `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
 **Request example**
+
 ```
 curl -X DELETE \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/projects/23806000097545166' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
+ 
 **Sample response**
 
 - 204 No content
@@ -2780,11 +2927,13 @@ Use this endpoint to retrieve all profiles in a specific portal and their config
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
+
 ```
 curl -X GET \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/profiles?sort_by=ASC%28last_updated_time%29&page=1&per_page=10&filter=%7B%22criteria%22%3A%5B%7B%22module%22%3A%22-%22%2C%22field_name%22%3A%22project%22%2C%22module_name%22%3A%22task%22%2C%22criteria_condition%22%3A%22contains%22%2C%22value%22%3A%5B1752587000000097269%5D%7D%5D%2C%22pattern%22%3A%221%22%7D&ids=4000000029001' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
 ```
+
 **Query parameters**
 
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
@@ -2805,6 +2954,7 @@ curl -X GET \
 | `ids` |	String | 	| The profile IDs. |
 
 **Sample input**
+
 ```
 sort_by : "ASC(last_updated_time)"
 page : 1
@@ -2821,9 +2971,11 @@ filter : {
 }
 ids : 4000000029001
 ```
+
 **Sample response**
 
 - 200 Ok
+
 ```
 {
   "page_info" : {
@@ -2842,6 +2994,7 @@ ids : 4000000029001
   } ]
 }
 ```
+
 -----
 
 ## Modules
@@ -2866,11 +3019,13 @@ Use this endpoint:
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
+
 ```
 curl -X GET \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/settings/modules?filter=%7B%22is_customized%22%3Atrue%2C%22is_default%22%3Atrue%2C%22is_web_tab%22%3Atrue%7D&page=1&per_page=10' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
 ```
+
 **Query parameters**
 
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
@@ -2885,6 +3040,7 @@ curl -X GET \
 | `per_page` |	Integer<br> *Limit: 1 to 200*<br>*Default: 1,000*| Optional 	| The number of entries to display on each page.|
 
 **Sample input**
+
 ```
 filter : {
   "is_customized" : true,
@@ -2894,9 +3050,11 @@ filter : {
 page : "1"
 per_page : "10"
 ```
+
 **Sample response**
 
 - 200 Ok
+
 ```
 [ {
   "id" : "4000000000152",
@@ -3304,11 +3462,13 @@ Use this endpoint:
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
+
 ```
 curl -X GET \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/settings/global-statuses?module=-&filter=%7B%22status_ids%22%3A%22-%22%2C%22status_names%22%3A%22-%22%2C%22search_term%22%3A%22smarthive+Projects%22%7D&page=-&per_page=-' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
 ```
+
 **Query parameters**
 
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
@@ -3324,6 +3484,7 @@ curl -X GET \
 | `per_page` |	Integer | Optional |	The number of entries to display on each page.|
 
 **Sample input**
+
 ```
 module :  - 
 filter : {
@@ -3334,9 +3495,11 @@ filter : {
 page :  - 
 per_page :  -
 ```
+
 **Sample response**
 
 - 200 Ok
+
 ```
 [ {
   "id" : "5000000000500",
@@ -3353,6 +3516,7 @@ per_page :  -
 **Possible errors**
 
 - INVALID_PARAMETER_VALUE `HTTP 400`
+
 ```
 {
   "error" : {
@@ -3389,11 +3553,13 @@ Use this endpoint to:
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
+
 ```
 curl -X GET \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/settings/layouts?module=projects&index=1&range=100&page=1&per_page=10&filter=%7B%22is_association_info_needed%22%3A%22true%22%2C%22is_current_user_profile_associated%22%3A%22true%22%2C%22search_term%22%3A%22smarthive+Projects%22%2C%22search_by%22%3A%22project%22%7D' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
 ```
+
 **Query parameters**
 
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
@@ -3412,6 +3578,7 @@ curl -X GET \
 | &emsp; filter.`search_by`	| String | | The field to search by.<br> Accepted values: `project`, `layout`, or `id`.
 
 **Sample input**
+
 ```
 module : "projects"
 index : 1
@@ -3425,9 +3592,11 @@ filter : {
   "search_by" : "project"
 }
 ```
+
 ** Sample Response**
 
 - 200 Ok
+
 ```
 [ {
   "associated_entities_count" : 2,
@@ -3457,9 +3626,11 @@ filter : {
   "type" : "PUBLIC"
 } ]
 ```
+
 **Possible errors**
 
 - InVALID_PARAMETER_VALUE `HTTP 400`
+
 ```
 {
   "error" : {
@@ -3475,6 +3646,7 @@ filter : {
   }
 }
 ```
+
 ----
 
 ## Project groups
@@ -3496,11 +3668,13 @@ Use this endpoint to retrieve the project groups associated with a user.
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response).|
 
 **Request example**
+
 ```
 curl -X GET \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/my-project-groups?page=1&per_page=10' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
 ```
+
 **Query parameters**
 
 |Name	| Data type | Required/Optional |	Description |
@@ -3509,13 +3683,16 @@ curl -X GET \
 | `per_page` |	Integer<br>*Limit: 1 to 200*<br>*Default: 100* | Optional |	The number of entries to display on each page.| 
 
 **Sample input**
+
 ```
 page : "1"
 per_page : "10"
 ```
+
 **Sample response**
 
 - 200 Ok
+
 ```
 {
   "project-groups" : [ {
@@ -3545,11 +3722,13 @@ Use this endpoint to retrieve all tags in the SmartHive Projects portal.
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response).|
 
 **Request example**
+
 ```
 curl -X GET \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/tags?page=1&per_page=10&filter=%7B%22criteria%22%3A%5B%7B%22field_name%22%3A%22project%22%2C%22criteria_condition%22%3A%22contains%22%2C%22value%22%3A%5B%221752587000000097269%22%5D%7D%5D%2C%22pattern%22%3A%221%22%7D' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
+ 
 **Query parameters**
 
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
@@ -3566,6 +3745,7 @@ curl -X GET \
 | &emsp; filter.`pattern`	| String<br>*Maximum length: 300* |	| The filter pattern |
 
 **Sample input**
+
 ```
 page : "1"
 per_page : "10"
@@ -3578,9 +3758,11 @@ filter : {
   "pattern" : "1"
 }
 ```
+
 **Sample response**
 
 - 200 Ok
+
 ```
 {
   "page_info" : {
@@ -3627,11 +3809,13 @@ Use this endpoint to retrieve the list of business hours in the SmartHive Projec
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response).|
 
 **Request example**
+
 ```
 curl -X GET \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/business-hours?filter=%7B%22criteria%22%3A%5B%7B%22cfid%22%3A%224000000000242%22%2C%22field_name%22%3A%22project%22%2C%22criteria_condition%22%3A%22contains%22%2C%22value%22%3A%5B%221752587000000097269%22%5D%7D%5D%2C%22pattern%22%3A%221%22%7D&sort_by=ASC%28last_modified_time%29&page=1&per_page=10' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
+ 
 **Query parameters**
 
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
@@ -3650,6 +3834,7 @@ curl -X GET \
 | `per_page` |	Integer<br>*Limit: 1 to 200*<br>*Default: 100* |	Optional | The number of entries to display on each page. |
 
 **Sample input**
+
 ```
 filter : {
   "criteria" : [ {
@@ -3664,9 +3849,11 @@ sort_by : "ASC(last_modified_time)"
 page : "1"
 per_page : "10"
 ```
+
 **Sample response**
 
 - 200 Ok
+
 ```
 {
   "business_hours" : [ {
@@ -3719,6 +3906,7 @@ with layouts.
 ### Get field info for a custom module
 
 Use this endpoint:
+
 - To retrieve the list of fields in a module, along with their metadata, such as API name, display name, and field type. 
 - To understand the structure of a module before you create or update records.
 
@@ -3733,11 +3921,13 @@ Use this endpoint:
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response).|
 
 **Request example**
+
 ```
 curl -X GET \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/settings/fields?module=projects&filter=%7B%22is_mandatory%22%3A%22-%22%2C%22is_renamed%22%3A%22-%22%2C%22is_default%22%3A%22-%22%2C%22is_unassociated%22%3A%22-%22%2C%22is_association_info_needed%22%3A%22-%22%2C%22is_formula_based_list%22%3A%22-%22%2C%22layout_id%22%3A%22-%22%2C%22project_id%22%3A%2223806000097545166%22%2C%22field_ids%22%3A%22-%22%2C%22fields%22%3A%22-%22%2C%22search_term%22%3A%22-%22%7D&page=1&per_page=10' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
 ```
+
 **Query parameters**
 
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
@@ -3761,6 +3951,7 @@ curl -X GET \
 | per_page |	Integer<br>*Limit: 1 to 200*<br>*Default: 1,000* |	| The number of entries to display on each page. |
 
 **Sample input**
+
 ```
 module : "projects"
 filter : {
@@ -3779,9 +3970,11 @@ filter : {
 page : 1
 per_page : 10
 ```
+
 **Sample response**
 
 - 200 Ok
+
 ```
 [ {
   "id" : "7000000309482",
@@ -3806,7 +3999,8 @@ per_page : 10
   "is_deactivated" : false
 } ]
 ```
-----
+
+-----
 
 *This document is part of the [technical-writing-portfolio](./README.md). SmartHive Projects is a fictional product created for the [technical-writing-portfolio](./README.md) repository.*
 
