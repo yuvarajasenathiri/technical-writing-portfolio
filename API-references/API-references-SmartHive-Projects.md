@@ -623,7 +623,7 @@ curl -X POST \
 | :---        | :----  |   :----  |   :---- |
 |`notify` |	String |	Required | Whether to notify the user about the activation.<br> Accepted values: `true` or `false`. |
 
-**Sample input **
+**Sample input**
 
 ```
 notify : "true"
@@ -721,7 +721,7 @@ curl -X POST \
 |---|---|---|---| 
 |`notify` |	String |	Required | Whether to notify the user about the activation.<br> Accepted values: `true` or `false`. |
 
-**Sample input **
+**Sample input**
 
 ```
 notify : "true"
@@ -838,7 +838,7 @@ curl -X DELETE \
 | `reporting_manager` |	Integer | Optional | 	The reporting manager of the user. |
 | `reporting_to` |	Integer |	Optional | The reporting manager of the user.<br>  Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts) (the `id` field in the response). |
 
-**Sample input **
+**Sample input**
 
 ```
 notify : "true"
@@ -1364,7 +1364,6 @@ curl -X POST \
 
 **Sample input**
 
-> *Content-Type: application/json
 ```
 userdetails : [ {
   "email_id" : "mark@victa.com",
@@ -1539,8 +1538,6 @@ curl -X POST \
 
 **Sample input**
 
-> *Content-Type: application/json
-
 ```
 invoice : "30.00"
 costrate : "15.00"
@@ -1688,7 +1685,7 @@ curl -X DELETE \
 |---|---|---|---| 
 | `notify`	| String |	Required | Whether to notify the user.<br> Accepted values: `true` or `false`. |
 
-**Sample input **
+**Sample input**
 
 ```
 notify : "true"
@@ -2171,7 +2168,7 @@ curl -X POST \
  }'
  ```
  
- **Body parameters**
+**Body parameters**
 
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
 
@@ -2228,7 +2225,7 @@ curl -X POST \
 
 **Sample input**
 
-> *Content-Type: application/json
+> *Content-Type: application/json*
 
 ```
 {
@@ -2556,7 +2553,7 @@ curl -X PATCH \
 
 **Sample input**
 
-> *Content-Type: application/json
+> *Content-Type: application/json*
 
 ```
 {
@@ -2824,6 +2821,7 @@ curl -X PATCH \
   "check_box_19sep_cview_lay" : false
 }
 ```
+
 ### Trash a project
 
 Use this endpoint to move an existing project in the SmartHive Projects portal to the trash.
