@@ -64,12 +64,15 @@ and the plan information is grouped in the `plan_details object`.
 **OAuth scope:** *SmartHiveProjects.portals.READ*
 
 **Request example**
+
 ```
 curl -X GET \
  'https://projects.smarthive.com/api/v3/portals?status=active&environment=production' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
+ 
 **Query parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 |`status` | String | Optional | The status of the portals to return. <br> Accepted values: `active` or `inactive`.<br> If you omit this parameter, the API returns portals of every status. |
@@ -82,6 +85,7 @@ environment : "production"
 ``` 
 **Sample response**
 - 200 Ok
+
 ```
 {
   "portals" : [ {
@@ -113,6 +117,7 @@ environment : "production"
   } ]
 }
 ```
+
 ### Get portal details
 
 Use this endpoint to retrieve details of a specific SmartHive Projects portal.
@@ -122,6 +127,7 @@ Use this endpoint to retrieve details of a specific SmartHive Projects portal.
 **OAuth scope:** *SmartHiveProjects.portals.READ*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 |`portal_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response). |
@@ -134,6 +140,7 @@ curl -X GET \
  ```
 **Sample response**
 - 200 Ok
+
 ```
 {
   "portal_details" : {
@@ -187,6 +194,7 @@ Use this endpoint to add a user to the SmartHive Projects portal and to invite a
 **OAuth scope:** *SmartHiveProjects.users.CREATE*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
@@ -230,6 +238,7 @@ curl -X POST \
 		"business_hours_id":"-"
 		}]'
 ```
+
 **Body parameters**
 
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
@@ -302,6 +311,7 @@ userdetails : [ {
 } ]
 ```
 **Sample response**
+
 - 201 Created
 ```
 {
@@ -368,6 +378,7 @@ userdetails : [ {
 }
 ```
 **Possible errors**
+
 - INPUT_PARAMETER_MISSING `HTTP 400`
 ```
 {
@@ -560,12 +571,14 @@ Use this endpoint to activate a specific user in a portal and to restore a deact
 **OAuth scope:** *SmartHiveProjects.users.UPDATE*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects. Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 | `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user. Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts). The `id` field in the response is the `user_id`. |
 
 **Request example**
+
 ```
 curl -X POST \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/users/[USER_ID]/activate' \
@@ -584,12 +597,14 @@ notify : "true"
 ```
 **Sample response**
 - 200 Ok
+
 ```
 {
   "response" : "User Activated Successfully"
 }
 ```
 **Possible errors**
+
 - ACTIVATE_ERROR `HTTP 403`
 ```
 {
@@ -645,6 +660,7 @@ Use this endpoint to deactivate a specific user in a portal and to revoke a user
 **OAuth scope:** *SmartHiveProjects.users.UPDATE*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects. Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
@@ -668,6 +684,7 @@ curl -X POST \
 notify : "true"
 ```
 **Sample response**
+
 - 200 Ok
 ```
 {
@@ -675,6 +692,7 @@ notify : "true"
 }
 ```
 **Possible errors**
+
 - UNAUTHORIZED_ACCESS `HTTP 401`
 ```
 {
@@ -745,6 +763,7 @@ Use this endpoint to remove a specific user from a portal and to permanently rev
 **OAuth scope:** *SmartHiveProjects.users.DELETE*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
@@ -757,6 +776,7 @@ curl -X DELETE \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
 **Query parameters**
+
 | Name | 	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `notify`	| String |	Required | Whether to notify the user.<br> Accepted values: `true` or `false`. |
@@ -770,9 +790,11 @@ reporting_manager : "8000000002411"
 reporting_to : "8000000002411"
 ```
 **Sample response**
+
 - 204 No content
 
 **Possible errors**
+
 - UNAUTHORIZED_ACCESS `HTTP 401`
 ```
 {
@@ -858,6 +880,7 @@ Use this endpoint to retrieve all projects associated with a specific user in a 
 **OAuth scope:** *SmartHIveProjects.users.READ*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
@@ -886,6 +909,7 @@ page : "1"
 per_page : "10"
 ```
 **Sample response**
+
 - 200 Ok
 ```
 {
@@ -912,6 +936,7 @@ per_page : "10"
 }
 ```
 **Possible errors**
+
 - RESOURCE_NOT_FOUND `HTTP 404`
 ```
 {
@@ -937,6 +962,7 @@ Use this endpoint to retrieve all users and contacts in the SmartHive Projects p
 **OAuth scope:** *SmartHiveProjects.users.READ*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
@@ -981,6 +1007,7 @@ filter : {
 sort_by : "ASC(first_name)"
 ```
 **Sample response**
+
 - 200 Ok
 ```
 {
@@ -1044,6 +1071,7 @@ sort_by : "ASC(first_name)"
 }
 ```
 **Possible errors**
+
 - INTERNAL_SERVER_ERROR `HTTP 500`
 ```
 {
@@ -1076,6 +1104,7 @@ Use this endpoint to retrieve all users in a project.
 **OAuth scope:** *SmartHiveProjects.users.READ*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).| 
@@ -1126,6 +1155,7 @@ filter : {
 sort_by : "ASC(first_name)"
 ```
 **Sample response**
+
 - 200 Ok
 ```
 {
@@ -1199,6 +1229,7 @@ Use this endpoint to add a user to a specific project and to grant a portal user
 **OAuth scope:** *SmartHiveProjects.users.CREATE*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
@@ -1262,6 +1293,7 @@ userdetails : [ {
 notify : "true"
 ```
 **Sample response**
+
 - 201 Created
 ```
 {
@@ -1328,6 +1360,7 @@ notify : "true"
 }
 ```
 **Possible errors**
+
 - UNAUTHORIZED_ACCESS `HTTP 401`
 ```
 {
@@ -1383,6 +1416,7 @@ Use this endpoint to modify the details of a specific user within a project usin
 **OAuth scope:** *SmartHiveProjects.users.UPDATE*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
@@ -1400,6 +1434,7 @@ curl -X POST \
  ```
  
 **Body parameters**
+
 | Name	| Data type |	Required/Optional  | Description |
 |---|---|---|---| 
 | `invoice` |	String | Optional	| The invoice rate.<br> For example, $30 per hour. |
@@ -1414,6 +1449,7 @@ costrate : "15.00"
 profile_id : "2223806000000022149"
 ```
 **Sample response**
+
 - 200 Ok
 ```
 {
@@ -1467,6 +1503,7 @@ profile_id : "2223806000000022149"
 }
 ```
 **Possible errors**
+
 - INVALID_PARAMETER_VALUE `HTTP 400`
 ```
 {
@@ -1523,6 +1560,7 @@ Use this endpoint to remove a specific user from a project and to revoke a userâ
 **OAuth scope:** *SmartHiveProjects.users.DELETE*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
@@ -1536,6 +1574,7 @@ curl -X DELETE \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
 **Query parameters**
+
 | Name | 	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `notify`	| String |	Required | Whether to notify the user.<br> Accepted values: `true` or `false`. |
@@ -1545,9 +1584,11 @@ curl -X DELETE \
 notify : "true"
 ```
 **Sample response**
+
 - 204 No content
 
 **Possible errors**
+
 - CANNOT_REMOVE_ADMIN_FROM_PROJECT `HTTP 403`
 ```
 {
@@ -1638,6 +1679,7 @@ Use this end point to retrieve the list of all projects in the SmartHive Project
 **OAuth scope:** *SmartHiveProjects.projects.READ*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 |`portal_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response). |
@@ -1685,6 +1727,7 @@ view_id : "23806000074760021"
 ```
 
 **Sample response**
+
  - 200 Ok
 ```
 [ {
@@ -1752,6 +1795,7 @@ view_id : "23806000074760021"
 } ]
 ```
 **Possible errors**
+
 - Internal_Server_Error `HTTP 500`
 ```
 {
@@ -1778,6 +1822,7 @@ Use this endpoint to retrieve a project details in the SmartHive Projects portal
 **OAuth scope:** *SmartHiveProjects.projects.READ*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 |`portal_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response). |
@@ -1790,6 +1835,7 @@ curl -X GET \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
 **Sample response**
+
 - 200 Ok
  ```
  {
@@ -1923,6 +1969,7 @@ Use this endpoint to create a project in the SmartHive Projects portal.
 **OAuth scope:** *SmartHiveProjects.projects.CREATE*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).| 
@@ -1993,6 +2040,7 @@ curl -X POST \
 	"business_hours_id":"7000000197013"
  }'
  ```
+ 
 **Body parameters**
 
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
@@ -2111,6 +2159,7 @@ curl -X POST \
 }
 ```
 **Sample response**
+
 - 200 Ok
 ```
 {
@@ -2243,6 +2292,7 @@ Use this endpoint to modify an existing project in the SmartHive Projects portal
 **OAuth scope:** *SmartHiveProjects.projects.UPDATE*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the`id` field in the response).| 
@@ -2316,6 +2366,7 @@ curl -X PATCH \
 	"business_hours_id":"7000000197013"
  }'
 ```
+
 **Body parameters**
 
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
@@ -2433,6 +2484,7 @@ curl -X PATCH \
 }
 ```
 **Sample response**
+
 - 200 Ok
 ```
 {
@@ -2642,6 +2694,7 @@ Use this endpoint to move an existing project in the SmartHive Projects portal t
 **OAuth scope:** *SmartHiveProjects.projects.UPDATE*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).| 
@@ -2654,6 +2707,7 @@ curl -X POST \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
 **Sample response**
+
 - 204 No content
 
 ### Restore a project
@@ -2665,6 +2719,7 @@ Use this endpoint to Restore a project from the trash in the SmartHive Projects 
 **OAuth scope:** *SmartHiveProjects.projects.UPDATE*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).| 
@@ -2677,6 +2732,7 @@ curl -X POST \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
 ```
 **Sample response**
+
 - 204 No content
 
 ### Delete a project
@@ -2688,6 +2744,7 @@ Use this endpoint to remove a project from the trash permanently.
 **OAuth scope:** *SmartHiveProjects.projects.UPDATE*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).| 
@@ -2700,6 +2757,7 @@ curl -X DELETE \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
  ```
 **Sample response**
+
 - 204 No content
 
 -------
@@ -2717,6 +2775,7 @@ Use this endpoint to retrieve all profiles in a specific portal and their config
 **OAuth scope:** *SmartHiveProjects.portals.READ*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).|
@@ -2764,6 +2823,7 @@ filter : {
 ids : 4000000029001
 ```
 **Sample response**
+
 - 200 Ok
 ```
 {
@@ -2801,6 +2861,7 @@ Use this endpoint:
 **OAuth scope:** *SmartHiveProjects.custom_fields.READ*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).|
@@ -2835,6 +2896,7 @@ page : "1"
 per_page : "10"
 ```
 **Sample response**
+
 - 200 Ok
 ```
 [ {
@@ -3225,6 +3287,7 @@ per_page : "10"
   }
 } ]
 ```
+
 ### Get global statuses
 
 Use this endpoint:
@@ -3236,6 +3299,7 @@ Use this endpoint:
 **OAuth scope:** *SmartHiveProjects.custom_fields.READ*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).|
@@ -3272,6 +3336,7 @@ page :  -
 per_page :  -
 ```
 **Sample response**
+
 - 200 Ok
 ```
 [ {
@@ -3287,6 +3352,7 @@ per_page :  -
 } ]
 ```
 **Possible errors**
+
 - INVALID_PARAMETER_VALUE `HTTP 400`
 ```
 {
@@ -3318,6 +3384,7 @@ Use this endpoint to:
 **OAuth scope:** *SmartHiveProjects.custom_fields.READ*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).|
@@ -3360,6 +3427,7 @@ filter : {
 }
 ```
 ** Sample Response**
+
 - 200 Ok
 ```
 [ {
@@ -3391,6 +3459,7 @@ filter : {
 } ]
 ```
 **Possible errors**
+
 - InVALID_PARAMETER_VALUE `HTTP 400`
 ```
 {
@@ -3422,6 +3491,7 @@ Use this endpoint to retrieve the project groups associated with a user.
 **OAuth scope:** *SmartHiveProjects.projectgroups.READ*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response).|
@@ -3445,6 +3515,7 @@ page : "1"
 per_page : "10"
 ```
 **Sample response**
+
 - 200 Ok
 ```
 {
@@ -3469,6 +3540,7 @@ Use this endpoint to retrieve all tags in the SmartHive Projects portal.
 **OAuth scope:** *SmartHiveProjects.tags.READ*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response).|
@@ -3508,6 +3580,7 @@ filter : {
 }
 ```
 **Sample response**
+
 - 200 Ok
 ```
 {
@@ -3549,6 +3622,7 @@ Use this endpoint to retrieve the list of business hours in the SmartHive Projec
 **OAuth scope:** *SmartHiveProjects.portals.READ*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response).|
@@ -3592,6 +3666,7 @@ page : "1"
 per_page : "10"
 ```
 **Sample response**
+
 - 200 Ok
 ```
 {
@@ -3653,6 +3728,7 @@ Use this endpoint:
 **OAuth scope:** *SmartHiveProjects.custom_fields.READ*
 
 **Path parameters**
+
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response).|
@@ -3705,6 +3781,7 @@ page : 1
 per_page : 10
 ```
 **Sample response**
+
 - 200 Ok
 ```
 [ {
