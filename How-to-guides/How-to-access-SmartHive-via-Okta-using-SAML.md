@@ -7,7 +7,7 @@ You can configure SAML-based single sign-on (SSO) with Okta as your identity pro
 ## Table of contents
 
 1.  [Items you need from Okta](#items-you-need-from-Okta)
-2.  [Configure SAML-based SSO](#configure-SAML-based SSO)
+2.  [Configure SAML-based SSO](#configure-SAML-based-SSO)
 	  - [Get the Entity ID and ACS URL from SmartHive](#get-the-Entity-ID-and-ACS-URL-from-SmartHive)
       - [Create the SAML app in Okta](#create-the-SAML-app-in-Okta)
       - [Get the IdP details from Okta](#get-the-IdP-details-from-Okta)
@@ -15,10 +15,10 @@ You can configure SAML-based single sign-on (SSO) with Okta as your identity pro
 3.  [Assign users to the app in Okta](#assign-users-to-the-app-in-Okta)
 4.  [Test the SAML configuration](#test-the-SAML-configuration)
 	  - [Test the service provider-initiated (SP-initiated) flow](#test-the-service-provider-initiated-(SP-initiated)-flow)
-	  - [Test the IdP-initiated flow](#test-the-IdP-initiated flow)
+	  - [Test the IdP-initiated flow](#test-the-IdP-initiated-flow)
 5.  [Turn on single logout (SLO)](#turn-on-single-logout-(SLO))
 	  - [Turn on single logout in SmartHive](#turn-on-single-logout-in-SmartHive)
-	  - [Turn on single logout in Okta](#turn on single logout in Okta)
+	  - [Turn on single logout in Okta](#turn-on-single-logout-in-Okta)
 	  
 ## Items you need from Okta
 
