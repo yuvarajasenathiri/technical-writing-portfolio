@@ -105,7 +105,7 @@ and maintain. These updates also make it clearer how to work with filters, custo
 All date and time values follow a single ISO 8601 format across endpoints. This makes parsing consistent, so you don’t need to handle multiple formats.
 
 | Type     | v2 | v3 |
-| :---        | :----  |      :---- |
+|---|---|---|
 | Date only     | `"05-26-2014"` (MM-DD-YYYY)      | `"2024-05-26"` (YYYY-MM-DD)  |
 | Datetime   | `"05-13-2014 05:57 PM"` (12-hour)        | `"2024-05-26T11:25:58.000Z"` (ISO 8601)     |
 | Human-readable   | `"May 26, 2014"`     | **removed**      |
@@ -158,7 +158,7 @@ For the complete syntax reference, see the [Filter guide](#filter-guide).
 Custom fields now use clear, consistent `api_name` values. You can reference them across requests, filters, and responses without additional mapping.
 
 |      | v2 | v3 |
-| :---        | :----  |      :---- |
+|---|---|---|
 | In requests     | `UDF_CHAR1`, `UDF_LONG2`      | `expected_date`, `priority_level` |
 | In responses   | Same **UDF_** keys, no context      | Same **api_name**, consistent everywhere     |
 
@@ -191,7 +191,7 @@ For full details, see [Custom fields](#custom-fields).
 Requests and responses use the same field structure. This makes the API more predictable and reduces the need for transformation logic when you handle API data.
 
 |  Aspect    | Version 2 (/restapi) | Version 3 (/api/v3) |
-| :---        | :----  |      :---- |
+|---|---|---|
 | Content Type     | *application/x-www-form-urlencoded*     | *application/json* |
 | Body Style   | Flat, form-encoded parameters      | JSON body, nested objects     |
 | Dates   | Mixed formats (MM-DD-YYYY, epoch, text)     | ISO 8601 everywhere     |
@@ -255,7 +255,7 @@ For full details and examples, see [Pagination](#pagination).
 All v3 endpoints follow a consistent URL pattern. The base URL is simplified and standardized, and trailing slashes aren’t required. This makes it easier to construct and predict endpoint URLs across the 
 API.
 |      | v2 | v3 |
-| :---        | :----  |      :---- |
+|---|---|---|
 | Base URL    | */restapi/portal/{portal_id}/projects/*    | *api/v3/portal/{portal_id}/projects* |
 | Trailing slashes   | Some endpoints require trailing `/`      | No trailing slashes     |
 
@@ -268,7 +268,7 @@ API.
 #### Quick comparison
 
 |  Area    | Version 2(/restapi) | Version 3(/api/v3) |
-| :---        | :----  |      :---- |
+|---|---|---|
 | URL Pattern    | */restapi/portals/*    | */api/v3/portals* |
 | Date Format   | `"05-26-2014"` or `"May 26, 2014"` or `1399620397255`     | `"2024-05-26"` (date only) or `"2024-05-26T11:25:58.000Z"` (ISO 8601)     |
 | Pagination   | `index` + `range` (offset-based)   | `"page` + `per_page` with `has_next_page`     |
@@ -310,7 +310,7 @@ provided, and codes in the 5xx range indicate server-side errors. The following 
 #### Status codes
 
 | Status Code     | Description |
-| :---        | :----  |      
+|---|---|   
 | 200     | Ok      |
 | 201   | Created |
 | 202   | Accepted     |
@@ -531,7 +531,7 @@ The v3 API uses page-based pagination on all list endpoints. To control which pa
 #### Query Parameters
 
 | Parameter     | Type | Description |
-| :---        | :----  |      :---- |
+|---|---|---|
 | `page`    | Integer      | The page number, starting from 1. The default is 1.  |
 | `per_page`   | Integer   |  The number of records per page. The default is 100. Supported values: 1 to 200. |
 
@@ -551,7 +551,7 @@ The v3 API uses page-based pagination on all list endpoints. To control which pa
 Every list response includes a `page_info` object. The `has_next_page` field tells your client when to stop fetching. You don’t need to calculate offsets, and you avoid duplicate or skipped records.
 
 | Field     | Type | Description |
-| :---        | :----  |      :---- |
+|---|---|---|
 | `page`    | Integer      | The current page number.  |
 | `per_page`   | Integer        | The number of records per page.    |
 | `page_count`   | Integer        | The total number of records in the result set.   |
@@ -568,7 +568,7 @@ Display names, the labels shown in the UI, can change and can include spaces or 
 #### Display name vs. API name
 
 | Aspect	| Display name |	API name |
-| :---        | :----  |      :---- |
+|---|---|---|
 | Purpose	| A label shown in the UI |	An identifier used in APIs |
 | Example	 | Start Date	| `start_date` |
 | Stability |	Can change	| Stays constant |
@@ -974,7 +974,7 @@ The `value` field holds the input that the API uses to evaluate a condition. It�
 `between` use exactly 2 values. The format varies by field type.
 
 | Data Type     | Format | Example | Notes |
-| :---        | :----  |      :---- | :---- |
+|---|---|---|---|
 | Text    | String     | `["review"]`  | A single value for most conditions. |
 | Date (specific)   | `YYYY-MM-DD`       | `["2024-11-04"]`  | A single date value. |
 | Date (range)  | `YYYY-MM-DD`       | `["2024-11-01", "2024-11-30"]`    | Exactly 2 values for `between` / `not_between` |
@@ -998,7 +998,7 @@ The `value` field holds the input that the API uses to evaluate a condition. It�
 Use these conditions for text-based fields such as `name`, `email`, and custom fields, where matching is based on keywords or exact values. All comparisons are case-insensitive.
 
 | Condition    | API Value | What it does | Value |
-| :---        | :----  |      :---- | :---- |
+|---|---|---|---|
 | Contains    | `contains`     | Matches if the field contains the substring anywhere. | `["review"]` |
 | Doesn't contain   | `not_contains`       | Excludes records that contain the substring.  | `["test"]` |
 | Starts with  | `starts_with`       | Matches the beginning of the field value.   | `["API"]` |
@@ -1040,7 +1040,7 @@ Use these conditions for text-based fields such as `name`, `email`, and custom f
 Use these conditions for numeric and date fields, where the API compares values by using operators such as greater than, less than, or within a range.
 
 | Condition    | API Value | What it does | Value |
-| :---        | :----  |      :---- | :---- |
+|---|---|---|---|
 | Is  | `is`      | Matches exactly. With multiple values, uses OR logic.  | `["100"]` or `["100", "200"]` |
 | Is not  | `is_not`      | Excludes exact matches. With multiple values, uses AND logic.  | `["0"]` |
 | Less than    | `less_than`     | The field value is less than the given value.  | `["50"]` |
@@ -1084,7 +1084,7 @@ Use these conditions for numeric and date fields, where the API compares values 
 Use these conditions for fields related to users, including assignments, reporting structure, and user-specific states. These conditions require a ZPUID in the value array.
 
 | Condition |	API value |	What it does |
-| :---        | :----  |      :---- |
+|---|---|---|
 | Is |	`is` |	Matches records assigned to the given users. With multiple values, uses OR logic. |
 | Is not |	`is_not` |	Excludes records assigned to the given users. |
 
@@ -1124,7 +1124,7 @@ Use these conditions for fields related to users, including assignments, reporti
 Use this condition to find fields that don’t have a value.
 
 | Condition |	Description |
-| :---        | :----  |   
+|---|---|  
 | `is_empty` |	The field has no value. |
 
 **Tip:**
@@ -1394,7 +1394,7 @@ SmartHive Projects APIs require OAuth scopes to define the level of access your 
 These will be displayed to the users when asking for consent.
 
 | Scope    | Description |
-| :---        | :----  |      
+|---|---|     
 | SmartHiveProjects.projects.READ    | Access project data (read-only)      |
 | SmartHiveProjects.projects.ALL   | Full access to projects |
 | SmartHiveProjects.tasks.ALL   | Full access to tasks     |
@@ -1436,7 +1436,7 @@ When making API calls, you must use the base URL corresponding to your user's da
 values - use it to pick the matching SmartHive Projects base URL from the table below.
 
 | Data center   | API base URL |
-| :---        | :----  |      
+|---|---|     
 | United States (US)    | https://projects.smarthive.com      |
 | European Union (EU)   | https://projects.smarthive.eu |
 | India (IN)   | https://projects.smarthive.in     |
