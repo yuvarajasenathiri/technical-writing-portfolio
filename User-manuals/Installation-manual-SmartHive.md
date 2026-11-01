@@ -1,8 +1,8 @@
-# Victa installation manual
+# SmartHive installation manual
 
 - Version: 1.0
 - Last updated: May 2026
-- Applies to: Victa Cloud and Victa Self-Hosted
+- Applies to: SmartHive Cloud and SmartHive Self-Hosted
 
 ---
 
@@ -17,7 +17,7 @@
       - [Cloud requirements](#cloud-requirements)
       - [Self-hosted requirements](#self-hosted-requirements)
 3.  [Cloud deployment](#cloud-deployment)
-      - [Create your Victa account](#create-your-Victa-account)
+      - [Create your SmartHive account](#create-your-SmartHive-account)
       - [Configure your workspace](#configure-your-workspace)
       - [Set up your domain](#set-up-your-domain)
       - [Connect your support channels](#connect-your-support-channels)
@@ -28,17 +28,17 @@
       - [Install on Windows Server](#install-on-windows-server)
       - [Configure the database](#configure-the-database)
       - [Configure environment variables](#configure-environment-variables)
-      - [Start Victa services](#start-Victa-services)
+      - [Start SmartHive services](#start-SmartHive-services)
       - [Verify the installation](#verify-the-installation)
 5.  [Post-installation setup](#post-installation-setup)
       - [Configure SSL](#configure-ssl)
       - [Set up email](#set-up-email)
       - [Configure single sign-on](#configure-single-sign-on)
       - [Set up backups](#set-up-backups)
-6.  [Upgrade Victa](#upgrade-Victa)
+6.  [Upgrade SmartHive](#upgrade-SmartHive)
       - [Upgrade a cloud deployment](#upgrade-a-cloud-deployment)
       - [Upgrade a self-hosted deployment](#upgrade-a-self-hosted-deployment)
-7.   [Uninstall Victa](#uninstall-Victa)
+7.   [Uninstall SmartHive](#uninstall-SmartHive)
       - [Delete a cloud workspace](#delete-a-cloud-workspace)
       - [Uninstall from Linux](#uninstall-from-linux)
       - [Uninstall from Windows Server](#uninstall-from-windows-server)
@@ -50,7 +50,7 @@
 
 ### Who this manual is for
 
-This manual is for system administrators and developers who deploy, configure, and maintain Victa for their organization.
+This manual is for system administrators and developers who deploy, configure, and maintain SmartHive for their organization.
 
 You should be familiar with:
 
@@ -59,33 +59,33 @@ You should be familiar with:
 - Database management (PostgreSQL)
 - Network configuration and DNS management
 
-If you're an end user, see the [Victa User manual](#) to set up your account after your admin deploys Victa.
+If you're an end user, see the [SmartHive User manual](#) to set up your account after your admin deploys SmartHive.
 
 ### Deployment options
 
-Victa supports two deployment models:
+SmartHive supports two deployment models:
 
 | Deployment | Description | Best for |
 |---|---|---|
-| Cloud | Victa hosts and manages the infrastructure. You access Victa through a browser or mobile app. | Teams that want a fast setup with no infrastructure overhead |
-| Self-hosted | You deploy Victa on your own servers. You control the infrastructure, data, and configuration. | Organizations with data residency requirements, security policies, or custom infrastructure needs |
+| Cloud | SmartHive hosts and manages the infrastructure. You access SmartHive through a browser or mobile app. | Teams that want a fast setup with no infrastructure overhead |
+| Self-hosted | You deploy SmartHive on your own servers. You control the infrastructure, data, and configuration. | Organizations with data residency requirements, security policies, or custom infrastructure needs |
 
-Both deployment models provide the same Victa features. The difference is who manages the infrastructure.
+Both deployment models provide the same SmartHive features. The difference is who manages the infrastructure.
 
 ### How to use this manual
 
-- To set up Victa Cloud, follow [Cloud deployment](#cloud-deployment).
-- To set up Victa Self-Hosted, review [System requirements](#system-requirements), and then follow [Self-hosted deployment](#self-hosted-deployment).
+- To set up SmartHive Cloud, follow [Cloud deployment](#cloud-deployment).
+- To set up SmartHive Self-Hosted, review [System requirements](#system-requirements), and then follow [Self-hosted deployment](#self-hosted-deployment).
 - For all deployments, complete [Post-installation setup](#post-installation-setup).
 
 ### Related documentation
 
 | Document | Description |
 |---|---|
-| [Victa User manual](#) | End-to-end manual for support agents and team leads |
-| [Victa Developer's manual](#) | Technical manual for developers who build on Victa |
-| [Victa API Documentation](#) | Complete reference for the Victa API |
-| [Victa Release Notes](#) | Summary of changes in each Victa release |
+| [SmartHive User manual](#) | End-to-end manual for support agents and team leads |
+| [SmartHive Developer's manual](#) | Technical manual for developers who build on SmartHive |
+| [SmartHive API Documentation](#) | Complete reference for the SmartHive API |
+| [SmartHive Release Notes](#) | Summary of changes in each SmartHive release |
 
 ---
 
@@ -93,7 +93,7 @@ Both deployment models provide the same Victa features. The difference is who ma
 
 ### Cloud requirements
 
-Victa Cloud doesn't require server infrastructure. The devices that access Victa must meet the following requirements.
+SmartHive Cloud doesn't require server infrastructure. The devices that access SmartHive must meet the following requirements.
 
 #### Web app
 
@@ -142,17 +142,17 @@ Victa Cloud doesn't require server infrastructure. The devices that access Victa
 | Outbound ports | 25, 465, and 587 (email), and 443 (HTTPS for external services) |
 | DNS | A valid domain name that points to your server |
 
-> **Important:** Victa requires a publicly accessible domain name and a valid SSL certificate for production deployments. Don't deploy Victa in production without SSL.
+> **Important:** SmartHive requires a publicly accessible domain name and a valid SSL certificate for production deployments. Don't deploy SmartHive in production without SSL.
 
 ---
 
 ## Cloud deployment
 
-### Create your Victa account
+### Create your SmartHive account
 
-1. Go to [https://Victa.io/signup](https://Victa.io/signup).
+1. Go to [https://SmartHive.io/signup](https://SmartHive.io/signup).
 2. Enter your work email address, and then select **Get started**.
-3. Check your inbox for the verification email from Victa, and then select **Verify email**.
+3. Check your inbox for the verification email from SmartHive, and then select **Verify email**.
 4. On the account setup page, enter:
    - Your full name
    - Your company name
@@ -164,35 +164,35 @@ Victa Cloud doesn't require server infrastructure. The devices that access Victa
 After you create your account, the setup wizard starts.
 
 1. Enter a workspace name. This is the internal name that your team sees.
-2. Enter a subdomain for your Victa instance (for example, `acmesupport.Victa.io`). You can change it later.
-3. Select your time zone. Victa uses the time zone for service level agreement (SLA) calculations, report scheduling, and time stamps.
+2. Enter a subdomain for your SmartHive instance (for example, `acmesupport.SmartHive.io`). You can change it later.
+3. Select your time zone. SmartHive uses the time zone for service level agreement (SLA) calculations, report scheduling, and time stamps.
 4. Select a subscription plan. You can start with a 14-day free trial.
 5. Select **Finish setup**.
 
-Victa creates your workspace and opens the admin dashboard.
+SmartHive creates your workspace and opens the admin dashboard.
 
 ### Set up your domain
 
-By default, you can access your Victa instance at `yourworkspace.Victa.io`. To use a custom domain (for example, `support.yourcompany.com`):
+By default, you can access your SmartHive instance at `yourworkspace.SmartHive.io`. To use a custom domain (for example, `support.yourcompany.com`):
 
 1. Select **Settings** > **Workspace** > **Custom domain**.
 2. Enter your custom domain, and then select **Save**.
-3. Victa displays two DNS records for domain verification: a CNAME record and a TXT record.
+3. SmartHive displays two DNS records for domain verification: a CNAME record and a TXT record.
 4. Sign in to your DNS provider, and add both records.
-5. Return to Victa, and then select **Verify domain**.
+5. Return to SmartHive, and then select **Verify domain**.
 
-> **Note:** DNS changes can take up to 48 hours to propagate. Victa sends you an email when verification is complete.
+> **Note:** DNS changes can take up to 48 hours to propagate. SmartHive sends you an email when verification is complete.
 
 ### Connect your support channels
 
-Victa receives cases from email, live chat, web forms, and phone. Connect at least one channel before you invite your team.
+SmartHive receives cases from email, live chat, web forms, and phone. Connect at least one channel before you invite your team.
 
 #### Email
 
 1. Select **Settings** > **Channels** > **Email**.
 2. Select **Add email channel**.
 3. Enter a name for the channel (for example, `Support`) and the email address you want to use (for example, `support@yourcompany.com`).
-4. Follow the on-screen instructions to set up email forwarding from your email provider to Victa.
+4. Follow the on-screen instructions to set up email forwarding from your email provider to SmartHive.
 5. Select **Verify and save**.
 
 #### Live chat
@@ -219,7 +219,7 @@ Victa receives cases from email, live chat, web forms, and phone. Connect at lea
 4. Assign a role to each user: **Admin**, **Team Lead**, **Agent**, or **Viewer**.
 5. Select **Send invitations**.
 
-Victa sends an invitation email to each person. Invitation links expire after 72 hours.
+SmartHive sends an invitation email to each person. Invitation links expire after 72 hours.
 
 ---
 
@@ -227,7 +227,7 @@ Victa sends an invitation email to each person. Invitation links expire after 72
 
 ### Before you begin
 
-Before you install Victa, make sure that:
+Before you install SmartHive, make sure that:
 
 - Your server meets the [system requirements](#self-hosted-requirements).
 - You have root or sudo access on the server.
@@ -235,7 +235,7 @@ Before you install Victa, make sure that:
 - You have an SSL certificate for your domain.
 - PostgreSQL, Redis, and Node.js are installed, or you're ready to install them.
 
-> **Warning:** Don't install Victa on a production server that's already running other services without first consulting your infrastructure team. Victa requires dedicated ports 80 and 443.
+> **Warning:** Don't install SmartHive on a production server that's already running other services without first consulting your infrastructure team. SmartHive requires dedicated ports 80 and 443.
 
 ### Install on Linux
 
@@ -267,25 +267,25 @@ These instructions apply to Ubuntu 20.04 LTS and Ubuntu 22.04 LTS.
    npm --version
    ```
 
-5. Download Victa:
+5. Download SmartHive:
 
    ```bash
    cd /opt
-   sudo git clone https://github.com/Victa/Victa.git
-   cd Victa
+   sudo git clone https://github.com/SmartHive/SmartHive.git
+   cd SmartHive
    ```
 
-6. Install the Victa dependencies:
+6. Install the SmartHive dependencies:
 
    ```bash
    sudo npm install --omit=dev
    ```
 
-7. Create the Victa system user:
+7. Create the SmartHive system user:
 
    ```bash
-   sudo useradd --system --shell /bin/false Victa
-   sudo chown -R Victa:Victa /opt/Victa
+   sudo useradd --system --shell /bin/false SmartHive
+   sudo chown -R SmartHive:SmartHive /opt/SmartHive
    ```
 
 ### Install on Windows Server
@@ -302,15 +302,15 @@ These instructions apply to Windows Server 2019 and Windows Server 2022.
    npm --version
    ```
 
-5. Open PowerShell as an administrator, and download Victa:
+5. Open PowerShell as an administrator, and download SmartHive:
 
    ```powershell
    cd C:\
-   git clone https://github.com/Victa/Victa.git
-   cd Victa
+   git clone https://github.com/SmartHive/SmartHive.git
+   cd SmartHive
    ```
 
-6. Install the Victa dependencies:
+6. Install the SmartHive dependencies:
 
    ```powershell
    npm install --omit=dev
@@ -334,12 +334,12 @@ These instructions apply to Windows Server 2019 and Windows Server 2022.
    psql
    ```
 
-3. Create the Victa database and user:
+3. Create the SmartHive database and user:
 
    ```sql
-   CREATE DATABASE Victa;
-   CREATE USER Victauser WITH ENCRYPTED PASSWORD 'your_password';
-   GRANT ALL PRIVILEGES ON DATABASE Victa TO Victauser;
+   CREATE DATABASE SmartHive;
+   CREATE USER SmartHiveuser WITH ENCRYPTED PASSWORD 'your_password';
+   GRANT ALL PRIVILEGES ON DATABASE SmartHive TO SmartHiveuser;
    \q
    ```
 
@@ -354,25 +354,25 @@ These instructions apply to Windows Server 2019 and Windows Server 2022.
 1. Open pgAdmin (installed with PostgreSQL).
 2. Connect to your PostgreSQL server.
 3. Right-click **Databases**, and then select **Create** > **Database**.
-4. Name the database `Victa`, and then select **Save**.
+4. Name the database `SmartHive`, and then select **Save**.
 5. Open **Query Tool**, and run:
 
    ```sql
-   CREATE USER Victauser WITH ENCRYPTED PASSWORD 'your_password';
-   GRANT ALL PRIVILEGES ON DATABASE Victa TO Victauser;
+   CREATE USER SmartHiveuser WITH ENCRYPTED PASSWORD 'your_password';
+   GRANT ALL PRIVILEGES ON DATABASE SmartHive TO SmartHiveuser;
    ```
 
 ### Configure environment variables
 
-Victa uses a `.env` file for all configuration. Copy the example file, and then edit the copy.
+SmartHive uses a `.env` file for all configuration. Copy the example file, and then edit the copy.
 
 #### Linux
 
 1. Copy the example file, and open the copy in an editor:
 
    ```bash
-   sudo cp /opt/Victa/.env.example /opt/Victa/.env
-   sudo nano /opt/Victa/.env
+   sudo cp /opt/SmartHive/.env.example /opt/SmartHive/.env
+   sudo nano /opt/SmartHive/.env
    ```
 
 #### Windows Server
@@ -380,8 +380,8 @@ Victa uses a `.env` file for all configuration. Copy the example file, and then 
 1. Copy the example file, and open the copy in an editor:
 
    ```powershell
-   Copy-Item C:\Victa\.env.example C:\Victa\.env
-   notepad C:\Victa\.env
+   Copy-Item C:\SmartHive\.env.example C:\SmartHive\.env
+   notepad C:\SmartHive\.env
    ```
 
 #### Set the variables
@@ -390,73 +390,73 @@ Update the following variables in the `.env` file, and then save and close the f
 
 | Variable | Description | Example |
 |---|---|---|
-| `APP_URL` | The full URL of your Victa instance | `https://support.yourcompany.com` |
-| `APP_PORT` | The port that Victa runs on | `3000` |
+| `APP_URL` | The full URL of your SmartHive instance | `https://support.yourcompany.com` |
+| `APP_PORT` | The port that SmartHive runs on | `3000` |
 | `DB_HOST` | The PostgreSQL server host | `localhost` |
 | `DB_PORT` | The PostgreSQL port | `5432` |
-| `DB_NAME` | The database name | `Victa` |
-| `DB_USER` | The database user name | `Victauser` |
+| `DB_NAME` | The database name | `SmartHive` |
+| `DB_USER` | The database user name | `SmartHiveuser` |
 | `DB_PASSWORD` | The database password | `your_password` |
 | `REDIS_HOST` | The Redis server host | `localhost` |
 | `REDIS_PORT` | The Redis port | `6379` |
 | `SECRET_KEY` | A random secret key for session encryption | Generate the key by running `openssl rand -hex 32` |
-| `MAIL_FROM` | The email address that Victa sends mail from | `support@yourcompany.com` |
+| `MAIL_FROM` | The email address that SmartHive sends mail from | `support@yourcompany.com` |
 | `MAIL_HOST` | Your SMTP server host | `smtp.yourcompany.com` |
 | `MAIL_PORT` | Your SMTP server port | `587` |
 | `MAIL_USER` | Your SMTP user name | `support@yourcompany.com` |
 | `MAIL_PASSWORD` | Your SMTP password | `your_mail_password` |
 
-### Start Victa services
+### Start SmartHive services
 
 #### Linux
 
 1. Initialize the database:
 
    ```bash
-   cd /opt/Victa
-   sudo -u Victa npm run db:migrate
+   cd /opt/SmartHive
+   sudo -u SmartHive npm run db:migrate
    ```
 
 2. Create a systemd service file:
 
    ```bash
-   sudo nano /etc/systemd/system/Victa.service
+   sudo nano /etc/systemd/system/SmartHive.service
    ```
 
 3. Add the following content to the file:
 
    ```ini
    [Unit]
-   Description=Victa
+   Description=SmartHive
    After=network.target postgresql.service redis-server.service
 
    [Service]
    Type=simple
-   User=Victa
-   WorkingDirectory=/opt/Victa
+   User=SmartHive
+   WorkingDirectory=/opt/SmartHive
    ExecStart=/usr/bin/node server.js
    Restart=on-failure
    RestartSec=10
    StandardOutput=syslog
    StandardError=syslog
-   SyslogIdentifier=Victa
+   SyslogIdentifier=SmartHive
 
    [Install]
    WantedBy=multi-user.target
    ```
 
-4. Set Victa to start at boot, and then start the service:
+4. Set SmartHive to start at boot, and then start the service:
 
    ```bash
    sudo systemctl daemon-reload
-   sudo systemctl enable Victa
-   sudo systemctl start Victa
+   sudo systemctl enable SmartHive
+   sudo systemctl start SmartHive
    ```
 
 5. Create the Nginx configuration file to set up Nginx as a reverse proxy:
 
    ```bash
-   sudo nano /etc/nginx/sites-available/Victa
+   sudo nano /etc/nginx/sites-available/SmartHive
    ```
 
 6. Add the following configuration to the file:
@@ -481,7 +481,7 @@ Update the following variables in the `.env` file, and then save and close the f
 7. Link the configuration into the enabled sites, test it, and restart Nginx:
 
    ```bash
-   sudo ln -s /etc/nginx/sites-available/Victa /etc/nginx/sites-enabled/
+   sudo ln -s /etc/nginx/sites-available/SmartHive /etc/nginx/sites-enabled/
    sudo nginx -t
    sudo systemctl restart nginx
    ```
@@ -494,12 +494,12 @@ Update the following variables in the `.env` file, and then save and close the f
    npm run db:migrate
    ```
 
-2. Install Victa as a Windows service by using NSSM:
+2. Install SmartHive as a Windows service by using NSSM:
 
    ```powershell
-   nssm install Victa "C:\Program Files\nodejs\node.exe" "C:\Victa\server.js"
-   nssm set Victa AppDirectory C:\Victa
-   nssm start Victa
+   nssm install SmartHive "C:\Program Files\nodejs\node.exe" "C:\SmartHive\server.js"
+   nssm set SmartHive AppDirectory C:\SmartHive
+   nssm start SmartHive
    ```
 
 3. Download Nginx 1.22 or later for Windows from [https://nginx.org/en/download.html](https://nginx.org/en/download.html), and extract it to `C:\nginx`.
@@ -538,25 +538,25 @@ Update the following variables in the `.env` file, and then save and close the f
 
 ### Verify the installation
 
-After you start Victa, verify that it's running correctly.
+After you start SmartHive, verify that it's running correctly.
 
-1. Open a browser, and go to your Victa URL (for example, `http://support.yourcompany.com`).
-2. Confirm that the Victa sign-in page appears.
+1. Open a browser, and go to your SmartHive URL (for example, `http://support.yourcompany.com`).
+2. Confirm that the SmartHive sign-in page appears.
 3. Sign in with the default admin credentials:
-   - Email: `admin@Victa.local`
-   - Password: `Victa@Admin123`
+   - Email: `admin@SmartHive.local`
+   - Password: `SmartHive@Admin123`
 4. Check the service status.
 
    On Linux, run:
 
    ```bash
-   sudo systemctl status Victa
+   sudo systemctl status SmartHive
    ```
 
    On Windows Server, run:
 
    ```powershell
-   nssm status Victa
+   nssm status SmartHive
    nssm status Nginx
    ```
 
@@ -632,9 +632,9 @@ After you start Victa, verify that it's running correctly.
 
 ### Set up email
 
-Victa sends email for case notifications, invitations, and password resets.
+SmartHive sends email for case notifications, invitations, and password resets.
 
-1. Sign in to Victa as an admin.
+1. Sign in to SmartHive as an admin.
 2. Select **Settings** > **Email** > **SMTP configuration**.
 3. Enter your SMTP server details:
 
@@ -644,8 +644,8 @@ Victa sends email for case notifications, invitations, and password resets.
    | **SMTP port** | Typically 587 (TLS) or 465 (SSL) |
    | **Username** | Your SMTP authentication user name |
    | **Password** | Your SMTP authentication password |
-   | **From address** | The email address that Victa sends mail from |
-   | **From name** | The display name for outgoing email (for example, `Victa Support`) |
+   | **From address** | The email address that SmartHive sends mail from |
+   | **From name** | The display name for outgoing email (for example, `SmartHive Support`) |
    | **Encryption** | TLS or SSL |
 
 4. Select **Send test email** to verify the configuration.
@@ -653,15 +653,15 @@ Victa sends email for case notifications, invitations, and password resets.
 
 ### Configure single sign-on
 
-With single sign-on (SSO), your team members can sign in to Victa by using their existing company credentials. Victa supports SSO through SAML 2.0 and OAuth 2.0. This section describes how to configure SAML 2.0.
+With single sign-on (SSO), your team members can sign in to SmartHive by using their existing company credentials. SmartHive supports SSO through SAML 2.0 and OAuth 2.0. This section describes how to configure SAML 2.0.
 
-> **Important:** Test SSO in a separate browser session before you turn it on. If SSO is misconfigured and you turn it on, you might be locked out of Victa.
+> **Important:** Test SSO in a separate browser session before you turn it on. If SSO is misconfigured and you turn it on, you might be locked out of SmartHive.
 
 #### SAML 2.0
 
 1. Select **Settings** > **Security** > **Single sign-on**.
 2. Select **SAML 2.0**.
-3. Copy the **Victa ACS URL** and **Entity ID**, and give them to your identity provider (for example, Okta, Microsoft Entra ID, or Google Workspace).
+3. Copy the **SmartHive ACS URL** and **Entity ID**, and give them to your identity provider (for example, Okta, Microsoft Entra ID, or Google Workspace).
 4. Enter the following details from your identity provider:
 
    | Field | Description |
@@ -675,24 +675,24 @@ With single sign-on (SSO), your team members can sign in to Victa by using their
 
 ### Set up backups
 
-For self-hosted deployments, set up regular backups of your Victa database.
+For self-hosted deployments, set up regular backups of your SmartHive database.
 
 #### Database backup (Linux)
 
 1. Create the backup script file:
 
    ```bash
-   sudo nano /opt/Victa/scripts/backup.sh
+   sudo nano /opt/SmartHive/scripts/backup.sh
    ```
 
 2. Add the following content to the file:
 
    ```bash
    #!/bin/bash
-   BACKUP_DIR="/var/backups/Victa"
+   BACKUP_DIR="/var/backups/SmartHive"
    DATE=$(date +%Y%m%d_%H%M%S)
    mkdir -p "$BACKUP_DIR"
-   sudo -u postgres pg_dump Victa | gzip > "$BACKUP_DIR/Victa_$DATE.sql.gz"
+   sudo -u postgres pg_dump SmartHive | gzip > "$BACKUP_DIR/SmartHive_$DATE.sql.gz"
    find "$BACKUP_DIR" -name "*.sql.gz" -mtime +30 -delete
    ```
 
@@ -701,14 +701,14 @@ For self-hosted deployments, set up regular backups of your Victa database.
 3. Make the script executable, and open the crontab:
 
    ```bash
-   sudo chmod +x /opt/Victa/scripts/backup.sh
+   sudo chmod +x /opt/SmartHive/scripts/backup.sh
    sudo crontab -e
    ```
 
 4. Add the following line to run the backup every day at 2:00 AM:
 
    ```
-   0 2 * * * /opt/Victa/scripts/backup.sh
+   0 2 * * * /opt/SmartHive/scripts/backup.sh
    ```
 
 #### Database backup (Windows Server)
@@ -718,36 +718,36 @@ For self-hosted deployments, set up regular backups of your Victa database.
 1. Create the backup script file:
 
    ```powershell
-   New-Item -ItemType Directory -Force C:\Victa\scripts
-   notepad C:\Victa\scripts\backup.ps1
+   New-Item -ItemType Directory -Force C:\SmartHive\scripts
+   notepad C:\SmartHive\scripts\backup.ps1
    ```
 
-2. Add the following content to the file. Replace `your_password` with the password that you set for `Victauser`.
+2. Add the following content to the file. Replace `your_password` with the password that you set for `SmartHiveuser`.
 
    ```powershell
-   $BackupDir = "C:\Backups\Victa"
+   $BackupDir = "C:\Backups\SmartHive"
    $Date = Get-Date -Format "yyyyMMdd_HHmmss"
    New-Item -ItemType Directory -Force -Path $BackupDir | Out-Null
    $env:PGPASSWORD = "your_password"
-   & "C:\Program Files\PostgreSQL\14\bin\pg_dump.exe" -U Victauser -h localhost -F c -f "$BackupDir\Victa_$Date.backup" Victa
+   & "C:\Program Files\PostgreSQL\14\bin\pg_dump.exe" -U SmartHiveuser -h localhost -F c -f "$BackupDir\SmartHive_$Date.backup" SmartHive
    Get-ChildItem $BackupDir -Filter "*.backup" | Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-30) } | Remove-Item
    ```
 
 3. Schedule the script to run every day at 2:00 AM:
 
    ```powershell
-   schtasks /create /tn "Victa backup" /tr "powershell.exe -ExecutionPolicy Bypass -File C:\Victa\scripts\backup.ps1" /sc daily /st 02:00 /ru SYSTEM
+   schtasks /create /tn "SmartHive backup" /tr "powershell.exe -ExecutionPolicy Bypass -File C:\SmartHive\scripts\backup.ps1" /sc daily /st 02:00 /ru SYSTEM
    ```
 
-> **Tip:** Store backups in a different location from your Victa server, such as an offsite storage service like Amazon S3 or Azure Blob Storage.
+> **Tip:** Store backups in a different location from your SmartHive server, such as an offsite storage service like Amazon S3 or Azure Blob Storage.
 
 ---
 
-## Upgrade Victa
+## Upgrade SmartHive
 
 ### Upgrade a cloud deployment
 
-Victa Cloud updates automatically, so you don't need to take any action. Victa publishes release notes for all updates in the [Victa Release Notes](#).
+SmartHive Cloud updates automatically, so you don't need to take any action. SmartHive publishes release notes for all updates in the [SmartHive Release Notes](#).
 
 ### Upgrade a self-hosted deployment
 
@@ -755,49 +755,49 @@ Victa Cloud updates automatically, so you don't need to take any action. Victa p
 
 #### Linux
 
-1. Stop the Victa service:
+1. Stop the SmartHive service:
 
    ```bash
-   sudo systemctl stop Victa
+   sudo systemctl stop SmartHive
    ```
 
 2. Get the latest version:
 
    ```bash
-   cd /opt/Victa
+   cd /opt/SmartHive
    sudo git pull origin main
    ```
 
 3. Install the updated dependencies:
 
    ```bash
-   sudo -u Victa npm install --omit=dev
+   sudo -u SmartHive npm install --omit=dev
    ```
 
 4. Run the database migrations:
 
    ```bash
-   sudo -u Victa npm run db:migrate
+   sudo -u SmartHive npm run db:migrate
    ```
 
-5. Start the Victa service:
+5. Start the SmartHive service:
 
    ```bash
-   sudo systemctl start Victa
+   sudo systemctl start SmartHive
    ```
 
 #### Windows Server
 
-1. Stop the Victa service:
+1. Stop the SmartHive service:
 
    ```powershell
-   nssm stop Victa
+   nssm stop SmartHive
    ```
 
 2. Get the latest version:
 
    ```powershell
-   cd C:\Victa
+   cd C:\SmartHive
    git pull origin main
    ```
 
@@ -813,19 +813,19 @@ Victa Cloud updates automatically, so you don't need to take any action. Victa p
    npm run db:migrate
    ```
 
-5. Start the Victa service:
+5. Start the SmartHive service:
 
    ```powershell
-   nssm start Victa
+   nssm start SmartHive
    ```
 
 ---
 
-## Uninstall Victa
+## Uninstall SmartHive
 
 ### Delete a cloud workspace
 
-> **Warning:** Deleting your Victa workspace permanently removes all cases, contacts, projects, and configuration. You can't undo this action. Export your data before you delete the workspace.
+> **Warning:** Deleting your SmartHive workspace permanently removes all cases, contacts, projects, and configuration. You can't undo this action. Export your data before you delete the workspace.
 
 1. Select **Settings** > **Workspace** > **Danger zone**.
 2. Select **Delete workspace**.
@@ -834,58 +834,58 @@ Victa Cloud updates automatically, so you don't need to take any action. Victa p
 
 ### Uninstall from Linux
 
-1. Stop and disable the Victa service:
+1. Stop and disable the SmartHive service:
 
    ```bash
-   sudo systemctl stop Victa
-   sudo systemctl disable Victa
-   sudo rm /etc/systemd/system/Victa.service
+   sudo systemctl stop SmartHive
+   sudo systemctl disable SmartHive
+   sudo rm /etc/systemd/system/SmartHive.service
    sudo systemctl daemon-reload
    ```
 
-2. Remove the Victa files:
+2. Remove the SmartHive files:
 
    ```bash
-   sudo rm -rf /opt/Victa
+   sudo rm -rf /opt/SmartHive
    ```
 
-3. Drop the Victa database and user:
+3. Drop the SmartHive database and user:
 
    ```bash
-   sudo -i -u postgres psql -c "DROP DATABASE Victa;"
-   sudo -i -u postgres psql -c "DROP USER Victauser;"
+   sudo -i -u postgres psql -c "DROP DATABASE SmartHive;"
+   sudo -i -u postgres psql -c "DROP USER SmartHiveuser;"
    ```
 
 4. Remove the Nginx configuration:
 
    ```bash
-   sudo rm /etc/nginx/sites-enabled/Victa
-   sudo rm /etc/nginx/sites-available/Victa
+   sudo rm /etc/nginx/sites-enabled/SmartHive
+   sudo rm /etc/nginx/sites-available/SmartHive
    sudo systemctl restart nginx
    ```
 
-5. Remove the Victa system user:
+5. Remove the SmartHive system user:
 
    ```bash
-   sudo userdel Victa
+   sudo userdel SmartHive
    ```
 
 ### Uninstall from Windows Server
 
-1. Stop and remove the Victa service:
+1. Stop and remove the SmartHive service:
 
    ```powershell
-   nssm stop Victa
-   nssm remove Victa confirm
+   nssm stop SmartHive
+   nssm remove SmartHive confirm
    ```
 
-2. Remove the Victa files:
+2. Remove the SmartHive files:
 
    ```powershell
-   Remove-Item -Recurse -Force C:\Victa
+   Remove-Item -Recurse -Force C:\SmartHive
    ```
 
-3. Drop the Victa database by using pgAdmin or the PostgreSQL command line.
+3. Drop the SmartHive database by using pgAdmin or the PostgreSQL command line.
 4. Stop and remove the Nginx service, and then remove the Nginx files:
 
    ```powershell
@@ -898,22 +898,22 @@ Victa Cloud updates automatically, so you don't need to take any action. Victa p
 
 ## Troubleshooting
 
-### Victa doesn't start
+### SmartHive doesn't start
 
-The Victa service fails to start or returns an error. To fix the problem:
+The SmartHive service fails to start or returns an error. To fix the problem:
 
-1. Check the Victa service logs.
+1. Check the SmartHive service logs.
 
    On Linux, run:
 
    ```bash
-   sudo journalctl -u Victa -n 100
+   sudo journalctl -u SmartHive -n 100
    ```
 
    On Windows Server, run:
 
    ```powershell
-   Get-EventLog -LogName Application -Source Victa -Newest 50
+   Get-EventLog -LogName Application -Source SmartHive -Newest 50
    ```
 
 2. Verify that PostgreSQL and Redis are running.
@@ -937,21 +937,21 @@ The Victa service fails to start or returns an error. To fix the problem:
 
 ### Can't connect to the database
 
-Victa starts but displays a database connection error. To fix the problem:
+SmartHive starts but displays a database connection error. To fix the problem:
 
 1. Verify that the database credentials in your `.env` file match the credentials you set in PostgreSQL.
 2. Confirm that PostgreSQL is running and accepting connections on the configured host and port.
-3. Check that the `Victauser` user has the correct privileges by running:
+3. Check that the `SmartHiveuser` user has the correct privileges by running:
 
    ```sql
-   GRANT ALL PRIVILEGES ON DATABASE Victa TO Victauser;
+   GRANT ALL PRIVILEGES ON DATABASE SmartHive TO SmartHiveuser;
    ```
 
 ---
 
 ### SSL certificate errors
 
-Browsers display a security warning when you access Victa. To fix the problem:
+Browsers display a security warning when you access SmartHive. To fix the problem:
 
 1. Verify that your SSL certificate is valid and hasn't expired.
 2. Confirm that the certificate is issued for the correct domain.
@@ -966,7 +966,7 @@ Browsers display a security warning when you access Victa. To fix the problem:
 
 ### Email notifications aren't sending
 
-Victa isn't sending invitation emails, case notifications, or password reset emails. To fix the problem:
+SmartHive isn't sending invitation emails, case notifications, or password reset emails. To fix the problem:
 
 1. Select **Settings** > **Email** > **SMTP configuration**.
 2. Select **Send test email**, and check whether the email is delivered.
@@ -978,12 +978,12 @@ Victa isn't sending invitation emails, case notifications, or password reset ema
 
 ### Can't sign in after you turn on SSO
 
-You're locked out of Victa after you turn on SSO. To fix the problem:
+You're locked out of SmartHive after you turn on SSO. To fix the problem:
 
 1. Go to the emergency admin URL:
 
    ```
-   https://yourworkspace.Victa.io/admin/login
+   https://yourworkspace.SmartHive.io/admin/login
    ```
 
 2. Sign in with your admin email and password. This sign-in bypasses SSO.
@@ -992,4 +992,4 @@ You're locked out of Victa after you turn on SSO. To fix the problem:
 
 ---
 
-*This document is part of the [Victa Sample Portfolio](./README.md). Victa is a fictional product created for the [Awesome Tech Writing](../README.md) repository.*
+*This document is part of the [SmartHive Sample Portfolio](./README.md). SmartHive is a fictional product created for the [Awesome Tech Writing](../README.md) repository.*

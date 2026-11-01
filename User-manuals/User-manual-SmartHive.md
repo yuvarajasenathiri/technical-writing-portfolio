@@ -1,8 +1,8 @@
-# Victa user manual
+# SmartHive user manual
 
 - Version: 1.0
 - Last updated: May 2026
-- Applies to: Victa web app and mobile app
+- Applies to: SmartHive web app and mobile app
 
 ---
 
@@ -14,15 +14,15 @@
      - [How to use this manual](#how-to-use-this-manual)
      - [Related documentation](#related-documentation)
 2.  [Overview](#overview)
-     - [About Victa](#about-Victa)
+     - [About SmartHive](#about-SmartHive)
      - [Key features](#key-features)
-     - [How Victa works](#how-Victa-works)
+     - [How SmartHive works](#how-SmartHive-works)
      - [Core concepts](#core-concepts)
      - [User roles and permissions](#user-roles-and-permissions)
      - [System requirements](#system-requirements)
 3.  [Getting started](#getting-started)
      - [Create your account](#create-your-account)
-     - [Sign in to Victa](#sign-in-to-Victa)
+     - [Sign in to SmartHive](#sign-in-to-SmartHive)
      - [Set up your profile](#set-up-your-profile)
      - [Navigate the dashboard](#navigate-the-dashboard)
      - [Install the mobile app](#install-the-mobile-app)
@@ -34,16 +34,16 @@
 
 ### Who this manual is for
 
-This manual is for support agents and team leads at customer support and SaaS companies who use Victa to manage cases and track team performance.
+This manual is for support agents and team leads at customer support and SaaS companies who use SmartHive to manage cases and track team performance.
 
-You don't need a technical background to use this manual. If you're a developer or system administrator who wants to configure or integrate Victa, see the [Victa Developer's manual](#) and the [Victa API Documentation](#).
+You don't need a technical background to use this manual. If you're a developer or system administrator who wants to configure or integrate SmartHive, see the [SmartHive Developer's manual](#) and the [SmartHive API Documentation](#).
 
 ### What you'll learn
 
 This manual covers:
 
-- What Victa is and how it works
-- The user roles and permissions in Victa
+- What SmartHive is and how it works
+- The user roles and permissions in SmartHive
 - How to create your account, sign in, and set up your profile
 - How to navigate the dashboard
 - How to install the mobile app
@@ -51,7 +51,7 @@ This manual covers:
 
 ### How to use this manual
 
-If you're new to Victa, read this manual from start to finish. If you're looking for something specific, use the table of contents to go to that section.
+If you're new to SmartHive, read this manual from start to finish. If you're looking for something specific, use the table of contents to go to that section.
 
 This manual uses the following callouts:
 
@@ -67,22 +67,22 @@ This manual uses the following callouts:
 
 | Document | Description |
 |---|---|
-| [Victa Installation manual](#) | How to set up and deploy Victa for your organization |
-| [Victa Developer's manual](#) | Technical manual for developers who build on Victa |
-| [Victa API Documentation](#) | Complete reference for the Victa API |
-| [Victa Mobile App manual](#) | Full list of features that the mobile app supports |
-| [Victa Design Document](#) | Architecture and system design documentation |
-| [Victa Release Notes](#) | Summary of changes in each Victa release |
+| [SmartHive Installation manual](#) | How to set up and deploy SmartHive for your organization |
+| [SmartHive Developer's manual](#) | Technical manual for developers who build on SmartHive |
+| [SmartHive API Documentation](#) | Complete reference for the SmartHive API |
+| [SmartHive Mobile App manual](#) | Full list of features that the mobile app supports |
+| [SmartHive Design Document](#) | Architecture and system design documentation |
+| [SmartHive Release Notes](#) | Summary of changes in each SmartHive release |
 
 ---
 
 ## Overview
 
-### About Victa
+### About SmartHive
 
-Victa is a case management platform for customer support and SaaS teams. You can use Victa as a cloud service or deploy it on your own servers. Victa gives support agents a single place to receive, manage, and resolve customer cases. It also gives team leads the visibility they need to monitor workload, track performance, and identify issues before they escalate.
+SmartHive is a case management platform for customer support and SaaS teams. You can use SmartHive as a cloud service or deploy it on your own servers. SmartHive gives support agents a single place to receive, manage, and resolve customer cases. It also gives team leads the visibility they need to monitor workload, track performance, and identify issues before they escalate.
 
-Victa connects your support channels (email, live chat, web forms, and phone) in one platform. Every customer interaction becomes a case that you can track, assign, prioritize, and resolve without switching between tools.
+SmartHive connects your support channels (email, live chat, web forms, and phone) in one platform. Every customer interaction becomes a case that you can track, assign, prioritize, and resolve without switching between tools.
 
 ### Key features
 
@@ -92,7 +92,7 @@ Create, assign, and resolve cases from a single interface. Set priorities, due d
 
 #### Omnichannel case intake
 
-Receive cases from email, live chat, web forms, and phone in one place. Victa automatically deduplicates contacts and links related cases, so agents always have full context.
+Receive cases from email, live chat, web forms, and phone in one place. SmartHive automatically deduplicates contacts and links related cases, so agents always have full context.
 
 #### Smart assignment
 
@@ -104,11 +104,11 @@ Add internal notes, mention teammates, and share cases across teams without show
 
 #### Service level agreement (SLA) management
 
-Define SLA policies for different case types and customers. Victa tracks SLA compliance in real time and alerts agents and team leads before a breach occurs.
+Define SLA policies for different case types and customers. SmartHive tracks SLA compliance in real time and alerts agents and team leads before a breach occurs.
 
 #### Knowledge base
 
-Build and maintain an internal knowledge base that agents can search directly from a case. Victa automatically suggests relevant articles based on case content. You can publish articles to the customer portal.
+Build and maintain an internal knowledge base that agents can search directly from a case. SmartHive automatically suggests relevant articles based on case content. You can publish articles to the customer portal.
 
 #### Reporting and analytics
 
@@ -116,7 +116,7 @@ Track team performance, case volume, resolution times, customer satisfaction sco
 
 #### Automation and workflows
 
-Automate repetitive tasks by using the Victa workflow builder. Trigger actions based on case properties, status changes, or time conditions, without writing code.
+Automate repetitive tasks by using the SmartHive workflow builder. Trigger actions based on case properties, status changes, or time conditions, without writing code.
 
 #### Customer portal
 
@@ -124,25 +124,25 @@ Give customers a self-service portal where they can submit cases, check status u
 
 #### Mobile app
 
-Manage cases, respond to customers, and monitor team performance from the Victa iOS and Android apps.
+Manage cases, respond to customers, and monitor team performance from the SmartHive iOS and Android apps.
 
-### How Victa works
+### How SmartHive works
 
-Victa organizes your support operation around three core activities:
+SmartHive organizes your support operation around three core activities:
 
-1. Receive: Cases arrive in Victa from all your support channels. Victa automatically organizes them into queues based on your configuration.
+1. Receive: Cases arrive in SmartHive from all your support channels. SmartHive automatically organizes them into queues based on your configuration.
 2. Resolve: Agents pick up cases from their queue, communicate with customers, collaborate with teammates, and work toward resolution.
 3. Review: Team leads monitor case volume, agent performance, and SLA compliance through dashboards and reports to keep the team on track.
 
-Victa logs every action, so you always have a complete, auditable history of what happened, who did it, and when.
+SmartHive logs every action, so you always have a complete, auditable history of what happened, who did it, and when.
 
 ### Core concepts
 
-Understanding these concepts helps you use Victa effectively.
+Understanding these concepts helps you use SmartHive effectively.
 
 #### Case
 
-A case is a single customer issue or request. Every case has a unique ID, a status, a priority, and a history of all communications and actions taken. Cases are the primary unit of work in Victa.
+A case is a single customer issue or request. Every case has a unique ID, a status, a priority, and a history of all communications and actions taken. Cases are the primary unit of work in SmartHive.
 
 #### Queue
 
@@ -154,15 +154,15 @@ A project is a collection of related cases. Use projects to group cases by custo
 
 #### Contact
 
-A contact is a customer record in Victa. Victa automatically creates and updates contact records based on inbound case activity. Each contact has a full history of every case that the customer submitted.
+A contact is a customer record in SmartHive. SmartHive automatically creates and updates contact records based on inbound case activity. Each contact has a full history of every case that the customer submitted.
 
 #### SLA policy
 
-An SLA policy defines the response and resolution time targets that apply to a case. Victa tracks SLA compliance automatically and shows breach warnings to agents and team leads.
+An SLA policy defines the response and resolution time targets that apply to a case. SmartHive tracks SLA compliance automatically and shows breach warnings to agents and team leads.
 
 #### Workflow
 
-A workflow is an automated sequence of actions that Victa performs when certain conditions are met. Workflows reduce manual work and make sure that common case types are handled consistently.
+A workflow is an automated sequence of actions that SmartHive performs when certain conditions are met. Workflows reduce manual work and make sure that common case types are handled consistently.
 
 #### Knowledge base article
 
@@ -170,16 +170,16 @@ A knowledge base article is a document that agents use to answer common question
 
 ### User roles and permissions
 
-Victa has four built-in user roles. Your role determines what you can see and do in Victa.
+SmartHive has four built-in user roles. Your role determines what you can see and do in SmartHive.
 
 | Role | Description | Key permissions |
 |---|---|---|
-| Admin | Full access to all Victa settings and features | Manage users, configure channels, set SLA policies, access all reports, and manage billing |
+| Admin | Full access to all SmartHive settings and features | Manage users, configure channels, set SLA policies, access all reports, and manage billing |
 | Team Lead | Access to team management and reporting features | View all team cases, assign cases, access reports, manage queues and workflows, and invite users |
 | Agent | Access to case management features | Create and resolve cases, communicate with customers, and access the knowledge base |
 | Viewer | Read-only access | View cases and reports. Can't create or update cases. |
 
-> **Note:** Admins can create custom roles with specific permission sets. If you need access to features that your role doesn't include, contact your Victa admin.
+> **Note:** Admins can create custom roles with specific permission sets. If you need access to features that your role doesn't include, contact your SmartHive admin.
 
 ### System requirements
 
@@ -191,7 +191,7 @@ Victa has four built-in user roles. Your role determines what you can see and do
 | Internet connection | 5 Mbps or faster |
 | Screen resolution | 1280 x 720 or higher |
 
-> **Note:** Victa doesn't support Internet Explorer.
+> **Note:** SmartHive doesn't support Internet Explorer.
 
 #### Mobile app
 
@@ -207,34 +207,34 @@ Victa has four built-in user roles. Your role determines what you can see and do
 
 ### Create your account
 
-How you create a Victa account depends on how your organization set up Victa.
+How you create a SmartHive account depends on how your organization set up SmartHive.
 
 #### If your organization uses single sign-on (SSO)
 
-1. Go to your organization's Victa URL. This is typically `https://yourworkspace.Victa.io`. If your admin set up a custom domain, use that URL instead.
+1. Go to your organization's SmartHive URL. This is typically `https://yourworkspace.SmartHive.io`. If your admin set up a custom domain, use that URL instead.
 2. Select **Sign in with SSO**.
 3. Enter your work email address, and then select **Continue**.
 4. Complete authentication through your organization's identity provider.
 
 #### If your organization uses email and password
 
-1. Check your inbox for the Victa invitation email from your admin.
+1. Check your inbox for the SmartHive invitation email from your admin.
 2. In the email, select **Accept invitation**.
-3. On the Victa sign-up page, enter your full name and create a password. The password must be at least 12 characters and include one uppercase letter, one number, and one special character.
+3. On the SmartHive sign-up page, enter your full name and create a password. The password must be at least 12 characters and include one uppercase letter, one number, and one special character.
 4. Select **Create account**.
-5. Verify your email address by selecting the link in the confirmation email that Victa sends you.
+5. Verify your email address by selecting the link in the confirmation email that SmartHive sends you.
 
-> **Note:** Invitation links expire after 72 hours. If your link expires, ask your Victa admin to resend the invitation.
+> **Note:** Invitation links expire after 72 hours. If your link expires, ask your SmartHive admin to resend the invitation.
 
-### Sign in to Victa
+### Sign in to SmartHive
 
 #### Web app
 
-1. Go to your organization's Victa URL (for example, `https://yourworkspace.Victa.io`).
+1. Go to your organization's SmartHive URL (for example, `https://yourworkspace.SmartHive.io`).
 2. Enter your email address and password.
 3. Select **Sign in**.
 
-If your organization turned on multifactor authentication, Victa prompts you for a verification code after you enter your password. Get the code from your authenticator app or email.
+If your organization turned on multifactor authentication, SmartHive prompts you for a verification code after you enter your password. Get the code from your authenticator app or email.
 
 > **Tip:** Select **Remember this device for 30 days** to reduce how often you're prompted for multifactor authentication on trusted devices.
 
@@ -247,9 +247,9 @@ To reset a forgotten password:
 
 #### Mobile app
 
-1. Open the Victa app on your device.
+1. Open the SmartHive app on your device.
 2. Tap **Sign in**.
-3. Enter your organization's Victa URL, email address, and password.
+3. Enter your organization's SmartHive URL, email address, and password.
 4. Tap **Sign in**.
 
 If multifactor authentication is turned on, enter the verification code when prompted.
@@ -264,12 +264,12 @@ Set up your profile so that your teammates can identify you and you receive the 
 
    | Field | Description |
    |---|---|
-   | **Full name** | Your display name across Victa |
+   | **Full name** | Your display name across SmartHive |
    | **Profile photo** | A photo in JPG or PNG format. Maximum size: 5 MB. |
    | **Job title** | Your job title in the organization |
-   | **Time zone** | The time zone that Victa uses to display time stamps and schedule reports |
-   | **Language** | The Victa interface language. Supported languages: English, French, German, Spanish, Portuguese, and Japanese. |
-   | **Notification preferences** | How and when Victa notifies you about case activity |
+   | **Time zone** | The time zone that SmartHive uses to display time stamps and schedule reports |
+   | **Language** | The SmartHive interface language. Supported languages: English, French, German, Spanish, Portuguese, and Japanese. |
+   | **Notification preferences** | How and when SmartHive notifies you about case activity |
 
 4. Select **Save changes**.
 
@@ -285,22 +285,22 @@ Your availability status tells your team whether you're available to take new ca
    |---|---|
    | **Online** | You're available and can receive new case assignments. |
    | **Busy** | You're available but at capacity. Smart assignment gives you lower priority for new cases. |
-   | **Away** | You're temporarily unavailable. Victa doesn't assign new cases to you. |
-   | **Offline** | You're not available. Victa doesn't assign new cases to you. |
+   | **Away** | You're temporarily unavailable. SmartHive doesn't assign new cases to you. |
+   | **Offline** | You're not available. SmartHive doesn't assign new cases to you. |
 
-> **Tip:** Set your status to **Away** or **Offline** when you take a break or leave for the day, so that Victa doesn't assign cases to you while you're unavailable.
+> **Tip:** Set your status to **Away** or **Offline** when you take a break or leave for the day, so that SmartHive doesn't assign cases to you while you're unavailable.
 
 ### Navigate the dashboard
 
-When you sign in to Victa, the dashboard is the first screen that you see. It gives you a real-time overview of your work and your team's activity.
+When you sign in to SmartHive, the dashboard is the first screen that you see. It gives you a real-time overview of your work and your team's activity.
 
 #### Dashboard layout
 
-The Victa interface has four main areas:
+The SmartHive interface has four main areas:
 
 | Area | Description |
 |---|---|
-| Left navigation panel | Links to all main sections of Victa |
+| Left navigation panel | Links to all main sections of SmartHive |
 | Top navigation bar | The global search field, notification bell, help center link, and your account avatar |
 | Main content area | The content for the section that you select in the left navigation panel |
 | Right detail panel | When you open a case, the case details, contact information, and related cases |
@@ -338,55 +338,55 @@ Use the search bar at the top of the screen to find cases, contacts, articles, a
 
 1. Select the search bar, or press **Ctrl+K** (Windows) or **Command+K** (Mac).
 2. Enter your search term.
-3. Review the results, which Victa groups by type: Cases, Contacts, Articles, and Users.
+3. Review the results, which SmartHive groups by type: Cases, Contacts, Articles, and Users.
 4. Select a result to open it.
 
 > **Tip:** Use search operators to narrow the results. For example, enter `status:open assignee:me` to find all open cases that are assigned to you.
 
 ### Install the mobile app
 
-The Victa mobile app is available for iOS and Android. Use it to manage cases, respond to customers, and check your dashboard when you're away from your desk.
+The SmartHive mobile app is available for iOS and Android. Use it to manage cases, respond to customers, and check your dashboard when you're away from your desk.
 
 #### iOS
 
 1. Open the **App Store** on your iPhone or iPad.
-2. Search for **Victa**.
+2. Search for **SmartHive**.
 3. Tap **Get**, and then complete the installation.
-4. Open Victa, and sign in. For details, see [Sign in to Victa](#sign-in-to-Victa).
+4. Open SmartHive, and sign in. For details, see [Sign in to SmartHive](#sign-in-to-SmartHive).
 
 #### Android
 
 1. Open **Google Play** on your Android device.
-2. Search for **Victa**.
+2. Search for **SmartHive**.
 3. Tap **Install**.
-4. Open Victa, and sign in. For details, see [Sign in to Victa](#sign-in-to-Victa).
+4. Open SmartHive, and sign in. For details, see [Sign in to SmartHive](#sign-in-to-SmartHive).
 
-> **Note:** The Victa mobile app requires an active internet connection. Some features that are available in the web app might have limited functionality on mobile. For a full list of supported features, see the [Victa Mobile App manual](#).
+> **Note:** The SmartHive mobile app requires an active internet connection. Some features that are available in the web app might have limited functionality on mobile. For a full list of supported features, see the [SmartHive Mobile App manual](#).
 
 #### Turn on push notifications
 
-Victa sends push notifications for case assignments, mentions, SLA warnings, and customer replies.
+SmartHive sends push notifications for case assignments, mentions, SLA warnings, and customer replies.
 
 ##### iOS
 
 1. Open **Settings** on your device.
-2. Find **Victa** in the list, and then tap it.
+2. Find **SmartHive** in the list, and then tap it.
 3. Tap **Notifications**, and then turn on **Allow Notifications**.
 4. Select the alert types that you want to receive.
 
 ##### Android
 
 1. Open **Settings** on your device.
-2. Tap **Apps** > **Victa** > **Notifications**.
+2. Tap **Apps** > **SmartHive** > **Notifications**.
 3. Turn on notifications, and then select the alert types that you want to receive.
 
-> **Tip:** You can also manage notification preferences in the Victa app. Tap **Profile settings** > **Notification preferences**.
+> **Tip:** You can also manage notification preferences in the SmartHive app. Tap **Profile settings** > **Notification preferences**.
 
 ### Invite your team
 
-> **Note:** To invite new users to Victa, you need the **Admin** or **Team Lead** role.
+> **Note:** To invite new users to SmartHive, you need the **Admin** or **Team Lead** role.
 
-To invite teammates to Victa:
+To invite teammates to SmartHive:
 
 1. In the left navigation panel, select **Settings**.
 2. Select **Users and permissions**.
@@ -396,7 +396,7 @@ To invite teammates to Victa:
 6. Optional: Assign the users to one or more teams.
 7. Select **Send invitations**.
 
-Victa sends each person an invitation email with a link to create an account. Invitation links expire after 72 hours.
+SmartHive sends each person an invitation email with a link to create an account. Invitation links expire after 72 hours.
 
 #### Manage pending invitations
 
