@@ -166,7 +166,7 @@ After you register your application, you receive a client ID and client secret. 
 | Label | Description |
 | :---        | :----  |
 | Homepage URL    | The full URL of your application’s home page.| 
-| Authorized Redirect URI       | The URI of the application that the authorization server (SmartHive Accounts) sends the response to. The response includes the authorization code, or the access token for a client-based application, after the user grants consent. The URI must begin with https:// or http://. To add more redirect URIs, select [plus]. Example: https://www.panacim.com/oauthredirect  |
+| Authorized Redirect URI       | The URI of the application that the authorization server (SmartHive Accounts) sends the response to. The response includes the authorization code, or the access token for a client-based application, after the user grants consent. The URI must begin with https:// or http://. To add more redirect URIs, select [plus]. Example: https://www.victa.com/oauthredirect  |
 | JavaScript Domain       | If your application is a client-based JavaScript application, specify its JavaScript domain. The domain must begin with https:// or http://. To add more JavaScript domains, select [plus].  |
 
 
@@ -225,7 +225,7 @@ Exchange the authorization code for an access token and a refresh token.
 
 **Endpoint:** `POST {accounts-server-url}/oauth/v2/token`
 
-> **Note:** The accounts-server-url value depends on the data center where you registered the client. For a list of server-specific URLs, see SmartHive Accounts server information.
+> **Note:** The accounts-server-url value depends on the data center where you registered the client. For a list of server-specific URLs, see [server-specific URLs](#server-specific-URLs).
 
 **Query parameters**
 
@@ -275,7 +275,7 @@ When an access token expires, use the refresh token to get a new one.
 
 **Endpoint:** `POST	{accounts-server-url}/oauth/v2/token`
 
-> **Note:** The accounts-server-url value depends on the data center where you registered the client. For a list of server-specific URLs, see SmartHive Accounts server information.
+> **Note:** The accounts-server-url value depends on the data center where you registered the client. For a list of server-specific URLs, see [server-specific URLs](#server-specific-URLs).
 
 **Query parameters**
 
@@ -318,7 +318,7 @@ https://accounts.smarthive.in/oauth/v2/token
 
 **Endpoint:** `POST {accounts-server-url}/oauth/v2/token`
 
-> **Note:** The accounts-server-url value depends on the data center where you registered the client. For a list of server-specific URLs, see [Server-specific URLs](#server-specific-URLs).
+> **Note:** The accounts-server-url value depends on the data center where you registered the client. For a list of server-specific URLs, see [server-specific URLs](#server-specific-URLs).
 
 **Query parameters**
 
@@ -368,37 +368,36 @@ repeat Step 1.
 
 Server-based apps typically separate the front-end (client-side) and back-end (server-side) components. The server runs the application logic and sends the rendered content to the browser for display.
 
-These apps can securely store credentials, such as client secrets, on the server. In OAuth terminology, they’re called “confidential clients.”
+These apps can securely store credentials, such as client secrets, on the server. In OAuth terminology, they’re called “[confidential clients](#https://datatracker.ietf.org/doc/html/rfc6749#section-2.1)”
 
 For these apps, use the Authorization Code Flow to get access tokens. In this flow, you exchange an authorization code (from the authorization server) for access tokens. You can also get refresh tokens, so 
 your app can get new access tokens without user intervention.
 
 #### Authorization code flow
 
-First, register your app in the API console as a “server-based app.” You get a client ID and client secret, which you need to make the API calls that return OAuth tokens. After you receive an access token, 
+First, [register your application](#Client-registration) in the API console as a “server-based app.” You get a client ID and client secret, which you need to make the API calls that return OAuth tokens. After you receive an access token, 
 you can use it to access protected SmartHive resources.
 
-> For added security, you can use the authorization code flow with the **Proof Key for Code Exchange (PKCE)** extension. PKCE is required for mobile apps and recommended for server-based apps. Learn more 
-about PKCE.
+> For added security, you can use the authorization code flow with the **Proof Key for Code Exchange (PKCE)** extension.
 
 **To get an access token:**
 
 1. Step 1:<br> Make a GET request to the `oauth/v2/auth endpoint`, and specify the required scopes. The permissions you’re requesting appear to the user. If the user grants access, the authorization server 
-returns an authorization code to the redirection URL. The code is valid for 2 minutes. For details, see the API reference.
+returns an authorization code to the redirection URL. The code is valid for 2 minutes. For details, see the[get authorization code API](#get-authorization-code).
 2. Step 2:<br> Make a POST request to the `oauth/v2/token` endpoint, using the authorization code you received. The authorization server returns an access token and an optional refresh token. The access 
-token is valid for 1 hour. For details, see the API reference.
+token is valid for 1 hour. For details, see the [get access token API](#get-access-token).
 3. Step 3:<br> Use the access token to call SmartHiveAPIs and access protected resources. When the access token expires, send a POST request to the `oauth/v2/token` endpoint with the refresh token to get a 
-new access token. For details, see the API reference.
+new access token. For details, see the [refresh access token API](#refresh-access-token).
 
 #### Multi DC support
 
-SmartHive stores users’ information in different data centers (DCs). This information isn’t shared between data centers. Learn more about data centers.
+SmartHive stores users’ information in different data centers (DCs). This information isn’t shared between data centers.
 
 If your app is registered in one DC and needs to access data for users in other DCs, turn on multi DC support for your app. After you turn it on, change your endpoint URL to match the user’s DC when you 
 make API calls.
 
-- Turn on multi DC support
-- Workflow for server-based apps
+- [Turn on multi DC support](#turn-on-multi-DC-support)
+- Workflow for [server-based applications](#server-based-applications)
 
 #### Incremental authorization - 
 
