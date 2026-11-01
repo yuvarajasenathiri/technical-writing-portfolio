@@ -71,7 +71,7 @@ curl -X GET \
  ```
 **Query parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 |`status` | String | Optional | The status of the portals to return. <br> Accepted values: `active` or `inactive`.<br> If you omit this parameter, the API returns portals of every status. |
 |`environment` | String | Optional| The environment of the portals to return.<br> Accepted values: `sandbox` or `production`.<br> If you omit this parameter, the API returns portals from every environment. |
 
@@ -123,7 +123,7 @@ Use this endpoint to retrieve details of a specific SmartHive Projects portal.
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 |`portal_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response). |
 
 **Request example**
@@ -188,7 +188,7 @@ Use this endpoint to add a user to the SmartHive Projects portal and to invite a
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
@@ -235,7 +235,7 @@ curl -X POST \
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
 
 | Name	| Data type |	Required/Optional  | Description |
-| :---        | :----  |  :----  |     :---- |	
+|---|---|---|---| 
 | `userdetails`	| JSONArray| 	Required | The details of the users to add to the portal. |
 | &emsp; userdetails[].`email_id` |	String |	| The email ID of the user. |
 | &emsp; userdetails[].`email_template` |	Integer |	| The ID of the email template for the invitation email. |
@@ -561,7 +561,7 @@ Use this endpoint to activate a specific user in a portal and to restore a deact
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects. Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 | `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user. Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts). The `id` field in the response is the `user_id`. |
 
@@ -646,7 +646,7 @@ Use this endpoint to deactivate a specific user in a portal and to revoke a user
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects. Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 | `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user. Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts). The `id` field in the response is the `user_id`. |
 
@@ -660,7 +660,7 @@ curl -X POST \
 **Query parameters**
 
 |Name	| Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 |`notify` |	String |	Required | Whether to notify the user about the activation.<br> Accepted values: `true` or `false`. |
 
 **Sample input **
@@ -746,7 +746,7 @@ Use this endpoint to remove a specific user from a portal and to permanently rev
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 | `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br>Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts).<br>The `id` field in the response is the `user_id`. |
 
@@ -758,7 +758,7 @@ curl -X DELETE \
  ```
 **Query parameters**
 | Name | 	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `notify`	| String |	Required | Whether to notify the user.<br> Accepted values: `true` or `false`. |
 | `reporting_manager` |	Integer | Optional | 	The reporting manager of the user. |
 | `reporting_to` |	Integer |	Optional | The reporting manager of the user.<br>  Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts) (the `id` field in the response). |
@@ -859,7 +859,7 @@ Use this endpoint to retrieve all projects associated with a specific user in a 
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 | `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br> Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts).<br>The `id` field in the response is the `user_id`. |
 
@@ -872,7 +872,7 @@ curl -X GET \
 **Query parameters**
 
 |Name	| Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `status` |	String |	Optional | The status of the projects to retrieve.<br> Accepted values: `active` or `archived`. |
 | `search_term` |	String | Optional |	A search term to filter the projects. |
 | `page` |	Integer<br>Default: 1  | Optional |	The page number. |
@@ -938,7 +938,7 @@ Use this endpoint to retrieve all users and contacts in the SmartHive Projects p
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
@@ -952,7 +952,7 @@ curl -X GET \
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
 
 |Name	| Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `type`	| String | Optional |	The user type.<br> Accepted values: `portal_user`, `client_user`, or `client_contact`. |
 | `view_type` |	String | Optional |	The view type.<br> Accepted values: `active`, `inactive`, `active_read_only`, `inactive_read_only`, `subordinates_active`, `direct_reporters_active`, `activate_user_request`, `sandboxdevelopers`, `inactive_lite_user`, or `active_lite_user`. |
 | `page` |	Integer<br>Default: 1 |	Optional |The page number.|
@@ -1077,7 +1077,7 @@ Use this endpoint to retrieve all users in a project.
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).| 
 | `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br> Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
@@ -1092,7 +1092,7 @@ curl -X GET \
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
 
 |Name	| Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `type`	| String	| Optional | The user type.<br> Accepted values: `portal_user`, `client_user`, or `client_contact`. |
 | `view_type`	| String| Optional |	The view type.<br> Accepted values: `active`, `inactive`, `active_read_only`, `inactive_read_only`, `subordinates_active`, `direct_reporters_active`, `activate_user_request`, `sandboxdevelopers`, `inactive_lite_user`, `active_lite_user`, or `project_viewers_active`. |
 | `page` |	Integer<br>*Default: 1* |	Optional | The page number. |
@@ -1200,7 +1200,7 @@ Use this endpoint to add a user to a specific project and to grant a portal user
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 | `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
@@ -1230,7 +1230,7 @@ curl -X POST \
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
 
 | Name	| Data type |	Required/Optional  | Description |
-| :---        | :----  |  :----  |     :---- |	
+|---|---|---|---| 	
 | `userdetails` |	JSONArray | Required |	The details of the users to add to the project. |
 | &emsp; userdetails[].`email_id`	| String |   |	The email ID of the user. |
 | &emsp; userdetails[].`profile_id`	| String |   |	The ID of the profile to assign to the user. |
@@ -1384,7 +1384,7 @@ Use this endpoint to modify the details of a specific user within a project usin
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 | `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal. <br> Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 | `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br> Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts).<br>The `id` field in the response is the `user_id`. |
@@ -1401,7 +1401,7 @@ curl -X POST \
  
 **Body parameters**
 | Name	| Data type |	Required/Optional  | Description |
-| :---        | :----  |  :----  |     :---- |	
+|---|---|---|---| 
 | `invoice` |	String | Optional	| The invoice rate.<br> For example, $30 per hour. |
 | `costrate` |	String	| Optional | The cost per hour.<br> For example, $15 per hour. |
 | `profile_id` |	Integer |	Optional | The profile ID of the user.<br> Get it from the [Get all portal profiles API](#get-all-portal-profiles) (the `id` field in the response). |
@@ -1524,7 +1524,7 @@ Use this endpoint to remove a specific user from a project and to revoke a userâ
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 | `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal. <br> Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 | `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br> Get it from the [Get all portal users and contacts API](#get-all-portal-users-and-contacts).<br>The `id` field in the response is the `user_id`. |
@@ -1537,7 +1537,7 @@ curl -X DELETE \
  ```
 **Query parameters**
 | Name | 	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `notify`	| String |	Required | Whether to notify the user.<br> Accepted values: `true` or `false`. |
 
 **Sample input **
@@ -1639,7 +1639,7 @@ Use this end point to retrieve the list of all projects in the SmartHive Project
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 |`portal_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response). |
 
 **Request example**
@@ -1651,7 +1651,7 @@ curl -X GET \
 **Query parameters**
 
 | Name |	Data type | Required/Optional|	Description |
-| :---        | :----  |  :----  |     :---- |
+|---|---|---|---|
 | `page` |	Integer<br>*default 1* | Optional |	The page number. |
 | `per_page` |	Integer<br> *limit 1-200* <br> *default 100* | Optional |	The number of entries to display on each page. |
 | `filter` |	JSONObject | Optional |	The filter criteria for retrieving specific projects.<br>The filter is a JSON object that contains a list of conditions (`criteria`) and a logical `pattern` that defines how the conditions are combined.|
@@ -1779,7 +1779,7 @@ Use this endpoint to retrieve a project details in the SmartHive Projects portal
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 |`portal_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response). |
 |`project_id` | String<br>*digits only[0-9]+* | Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
@@ -1924,7 +1924,7 @@ Use this endpoint to create a project in the SmartHive Projects portal.
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).| 
 
 **Request example**
@@ -1998,7 +1998,7 @@ curl -X POST \
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
 
 | Name	| Data type |	Required/Optional  | Description |
-| :---        | :----  |  :----  |     :---- |
+|---|---|---|---| 
 | `name` |	String<br> *Maximum length: 200*|	Required | The project name. |
 | `description` |	String<br>*Maximum length: 80,000* | Optional |	The project description. | 
 | `project_type` |	String | Optional |	The project type.<br> Accepted values: `active` or `template`.| 
@@ -2244,7 +2244,7 @@ Use this endpoint to modify an existing project in the SmartHive Projects portal
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the`id` field in the response).| 
 | `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br> Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
@@ -2321,7 +2321,7 @@ curl -X PATCH \
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
 
 | Name	| Data type |	Required/Optional  | Description |
-| :---        | :----  |  :----  |     :---- |
+|---|---|---|---| 
 | `name` |	String<br> *Maximum length: 200*|	Required | The project name. |
 | `description` |	String<br>*Maximum length: 80,000* | Optional |	The project description. | 
 | `project_type` |	String | Optional |	The project type.<br> Accepted values: `active` or `template`.| 
@@ -2643,7 +2643,7 @@ Use this endpoint to move an existing project in the SmartHive Projects portal t
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).| 
 | `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
@@ -2666,7 +2666,7 @@ Use this endpoint to Restore a project from the trash in the SmartHive Projects 
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).| 
 | `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
@@ -2689,7 +2689,7 @@ Use this endpoint to remove a project from the trash permanently.
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).| 
 | `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
 
@@ -2718,7 +2718,7 @@ Use this endpoint to retrieve all profiles in a specific portal and their config
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
@@ -2732,7 +2732,7 @@ curl -X GET \
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
 
 |Name	| Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `sort_by`	| String | Optional |	The sort order.<br> Accepted values: `ASC(field_name)` or `DESC(field_name)`.<br> Available fields: `name`, `type`, `created_by`, `created_time`, `last_updated_by`, `last_updated_time`, `default_profile`, and system_defined`. |
 | `page`	| Integer<br>*Default: 1* | Optional |	The page number.|
 | `per_page` |	Integer<br>*Default: 25* | Optional |	| The number of entries to display on each page.|
@@ -2802,7 +2802,7 @@ Use this endpoint:
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
@@ -2816,7 +2816,7 @@ curl -X GET \
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
 
 |Name	| Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `filter`	| JSONObject | Optional |	The filter criteria for refining the results.<br> You can combine multiple filter conditions. |
 | &emsp; filter.is_`customized` |	Boolean |	| Whether to include only customized modules. |
 | &emsp; filter.is_`default`	| Boolean	| | Whether to include only default modules.|
@@ -3237,7 +3237,7 @@ Use this endpoint:
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
@@ -3251,7 +3251,7 @@ curl -X GET \
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
 
 |Name	| Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | module |	String |	Required | The API name or ID of the module.<br> Get it from the [Get Modules API](#get-modules) (the `id` field in the response). |
 | filter	| JSONObject	|Optional  |The filter criteria for refining the results.<br> Use only one filter property per request. |
 | &emsp; filter.`status_ids` |	JSONArray| 	| The IDs of the statuses to get.|
@@ -3319,7 +3319,7 @@ Use this endpoint to:
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
@@ -3333,7 +3333,7 @@ curl -X GET \
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
 
 |Name	| Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `module` |	String |	Required | The API name or ID of the module.<br> Get it from the [Get Modules API](#get-modules)(the `id` field in the response).|
 | `index` |	Integer | Optional |	The index of the layouts. |
 | `range` |	Integer | Optional |	The range of the layouts. |
@@ -3423,7 +3423,7 @@ Use this endpoint to retrieve the project groups associated with a user.
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response).|
 
 **Request example**
@@ -3435,7 +3435,7 @@ curl -X GET \
 **Query parameters**
 
 |Name	| Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `page` |	Integer<br>*Default: 1*| Optional |	The page number. |
 | `per_page` |	Integer<br>*Limit: 1 to 200*<br>*Default: 100* | Optional |	The number of entries to display on each page.| 
 
@@ -3470,7 +3470,7 @@ Use this endpoint to retrieve all tags in the SmartHive Projects portal.
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response).|
 
 **Request example**
@@ -3484,7 +3484,7 @@ curl -X GET \
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
 
 |Name	| Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- | 
+|---|---|---|---| 
 | `page`	| Integer<br>*Default: 1* |	Optional | The page number. |
 | `per_page` |	Integer<br>*Limit: 1 to 200*<br>*Default: 100*| Optional |	The number of entries to display on each page.|
 | `filter` |	JSONObject| Optional |	The filter criteria.|
@@ -3550,7 +3550,7 @@ Use this endpoint to retrieve the list of business hours in the SmartHive Projec
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response).|
 
 **Request example**
@@ -3564,7 +3564,7 @@ curl -X GET \
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
 
 |Name	| Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | filter| 	JSONObject| Optional |	The filter criteria. |
 | &emsp; filter.`criteria`	| JSONArray<br>*Maximum length: 10,000*<br>*Array size: 0 or greater* |  | The criteria information.|
 | &emsp;&emsp; filter.criteria[].`cfid` | 	Integer |	| The custom field ID. |
@@ -3654,7 +3654,7 @@ Use this endpoint:
 
 **Path parameters**
 | Name |	Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get All Portals with Details API](#get-all-portals-with-details-API) (the `id` field in the response).|
 
 **Request example**
@@ -3668,7 +3668,7 @@ curl -X GET \
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
 
 |Name	| Data type | Required/Optional |	Description |
-| :---        | :----  |   :----  |   :---- |
+|---|---|---|---| 
 | `module` |	String	| Required | The API name or ID of the module. Get it from the [Get Modules API](#get-modules) (the `id` field in the response). |
 | filter |	JSONObject| Optional |	The filter criteria for refining the results.<br> You can combine multiple filter conditions. |
 | &emsp; filter.`is_mandatory`	| Boolean |	| Whether the field is mandatory.<br> Accepted values: `true` or `false`. |
