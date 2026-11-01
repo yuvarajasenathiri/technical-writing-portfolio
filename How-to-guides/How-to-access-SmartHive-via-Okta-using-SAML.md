@@ -14,7 +14,7 @@ You can configure SAML-based single sign-on (SSO) with Okta as your identity pro
       - [Add the Okta details to SmartHive](#add-the-Okta-details-to-SmartHive)
 3.  [Assign users to the app in Okta](#assign-users-to-the-app-in-Okta)
 4.  [Test the SAML configuration](#test-the-SAML-configuration)
-	  - [Test the service provider-initiated (SP-initiated) flow](#test-the-service-provider-initiated-(SP-initiated)-flow)
+	  - [Test the service provider-initiated (SP initiated) flow](#test-the-service-provider-initiated-(SP initiated)-flow)
 	  - [Test the IdP-initiated flow](#test-the-IdP-initiated-flow)
 5.  [Turn on single logout (SLO)](#turn-on-single-logout-(SLO))
 	  - [Turn on single logout in SmartHive](#turn-on-single-logout-in-SmartHive)
@@ -68,7 +68,7 @@ Your Okta users can sign in to SmartHive by using the app that you configured. B
 
 To verify that the configuration works, complete the following tests as a user in Okta.
 
-### Test the service provider-initiated (SP-initiated) flow
+### Test the service provider-initiated (SP initiated) flow
 
 1. Go to your SmartHive sign-in page.
 2. Enter your email address, and then select **Next**. SmartHive redirects you to Okta for authentication.
