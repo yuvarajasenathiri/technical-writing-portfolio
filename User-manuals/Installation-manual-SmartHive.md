@@ -992,4 +992,4 @@ You're locked out of SmartHive after you turn on SSO. To fix the problem:
 
 ---
 
-*This document is part of the [SmartHive Sample Portfolio](./README.md). SmartHive is a fictional product created for the [Awesome Tech Writing](../README.md) repository.*
+*This document is part of the [technical-writing-portfolio](./README.md). SmartHive is a fictional product created for the [technical-writing-portfolio](./README.md) repository.*

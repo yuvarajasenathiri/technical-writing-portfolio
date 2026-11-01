@@ -409,3 +409,5 @@ To view, resend, or cancel pending invitations:
 
 ---
 
+*This document is part of the [technical-writing-portfolio](./README.md). SmartHive is a fictional product created for the [technical-writing-portfolio](./README.md) repository.*
+
