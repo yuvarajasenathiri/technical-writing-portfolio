@@ -16,51 +16,34 @@ Currently: Lead Engineer - Technical Writing at R Systems International, Chennai
 
 ---
 
-## 📄 Documentation Samples
+## 📄 Documentation samples
 
-### API Documentation
-**SyncoraDMP (MES Platform) — R Systems International**
-End-to-end REST API documentation covering 80+ reference topics: request/response examples, authentication flows, error codes, and code samples, built from OpenAPI/Swagger specifications.
-- 🔗 [View sample](./api-docs/syncoradmp-rest-api-reference.md)
-- Tools: Swagger/OpenAPI, Postman, Oxygen XML Editor, Markdown
-- Highlights: Zero post-release documentation corrections on a high-priority B2B integration project
+### User manuals
+End-user guidance and setup workflows.
+- 🔗 [Installation-manual-SmartHive.md](./User-manuals/Installation-manual-SmartHive.md)
+- 🔗 [User-manual-SmartHive.md](./User-manuals/User-manual-SmartHive.md)
+- Tools: Madcap Flare, Oxygen XML Editor (DITA XML), CCMS, SnagIt
 
-### Developer Onboarding Guides
-**SyncoraDMP (MES Platform) — R Systems International**
-Onboarding documentation for developers integrating with the platform's API, covering authentication setup, environment configuration, and first-call walkthroughs.
-- 🔗 [View sample](./onboarding/developer-onboarding-guide.md)
+### How-to guides
+Step-by-step walkthroughs for specific configuration tasks.
+- 🔗 [How-to-access-SmartHive-via-Okta-using-SAML.md](./How-to-guides/How-to-access-SmartHive-via-Okta-using-SAML.md)
+- Tools: Madcap Flare, Oxygen XML Editor (DITA XML), CCMS, SnagIt
+
+### Developer onboarding docs
+Getting started guides for developers integrating with SmartHive.
+- 🔗 [API-overview-SmartHive-Projects.md](./Developer-onboarding-docs/1-API-overview-SmartHive-Projects.md)
+- 🔗 [OAuth-2.0-authentication-SmartHive-Projects.md](./Developer-onboarding-docs/2.-OAuth-2.0-authentication-SmartHive-Projects.md)
 - Tools: Markdown, Docs-as-code (Git/GitHub)
 
-### User Manuals & Online Help
-**Boeing Aerospace Products — Axiscades Technologies**
-User manuals and online help systems for aerospace products, aligned with Agile sprint cycles and MSTP compliance standards.
-- 🔗 [View sample](./user-guides/boeing-user-manual-sample.md)
-- Tools: MadCap Flare, SnagIt
-
-**Defense & Aerospace Software — Raytheon Technologies**
-Installation guides, operation manuals, and troubleshooting resources for defense technology products.
-- 🔗 [View sample](./user-guides/defense-operations-manual-sample.md)
-- Tools: Oxygen XML Editor (DITA XML), SnagIt
-
-### Release Notes & Changelogs
-**SyncoraDMP (MES Platform) — R Systems International**
-Release notes synced with sprint releases, shipped alongside new features.
-- 🔗 [View sample](./release-notes/syncoradmp-release-notes-sample.md)
-
-**Fintech Product — Capgemini**
-Release bulletins communicating feature changes to end users and partners across 12 product releases.
-- 🔗 [View sample](./release-notes/fintech-release-bulletin-sample.md)
-- Tools: Arbortext Epic Editor (SGML)
-
-### DITA XML Component Library
-**Reusable modular content — R Systems International**
-Sample of a structured DITA XML component library (120+ topics across 3 product lines) built for single-source, multi-product publishing.
-- 🔗 [View sample](./dita-xml/component-library-sample.md)
-- Tools: Oxygen XML Editor, CCMS
+### API references
+Detailed endpoints, parameters, and structural schemas.
+- 🔗 [API-references-SmartHive-Projects.md](./API-references/API-references-SmartHive-Projects.md)
+- Tools: Markdown, Docs-as-code (Git/GitHub) Swagger/OpenAPI, Postman
+- Highlights: Zero post-release documentation corrections on a high-priority B2B integration project
 
 ---
 
-## 🛠 Technical Skills
+## 🛠 Technical skills
 
 | Category | Tools |
 |---|---|
@@ -75,7 +58,7 @@ Sample of a structured DITA XML component library (120+ topics across 3 product 
 
 ---
 
-## 💼 Experience Summary
+## 💼 Experience summary
 
 | Role | Company | Period | Project | Focus | 
 |---|---|---|---|---|
@@ -106,7 +89,7 @@ Produced user manuals and online help content, conducted audience analysis to de
 - **Technology Stack:** SGML, Enterprise Software, Agile/Scrum, SDLC, DDLC, STE
 - **Tools & Platforms:** Arbortext Epic Editor (SGML), WMT, SnagIt
 
-## 🏆 Key Achievements
+## 🏆 Key achievements
 - Delivered end-to-end API documentation for a high-priority B2B integration project, producing 80+ REST API reference topics within sprint timelines and achieving zero post-release documentation corrections.
 - Built a reusable DITA XML component library comprising 120+ topics across three product lines, reducing content development time by ~20% while lowering downstream translation costs.
 - Mentored 2 junior Technical Writers and implemented a peer-review process with standardized style guides, reducing first-pass SME review iterations by approximately two cycles per release and improving documentation quality consistency.
@@ -125,16 +108,14 @@ Produced user manuals and online help content, conducted audience analysis to de
 ```
 technical-writing-portfolio/
 ├── README.md
-├── api-docs/
-│   └── syncoradmp-rest-api-reference.md
-├── onboarding/
-│   └── developer-onboarding-guide.md
-├── user-guides/
-│   ├── boeing-user-manual-sample.md
-│   └── defense-operations-manual-sample.md
-├── release-notes/
-│   ├── syncoradmp-release-notes-sample.md
-│   └── fintech-release-bulletin-sample.md
-└── dita-xml/
-    └── component-library-sample.md
+├── User-manuals/
+│   ├── Installation-manual-SmartHive.md
+│   └── User-manual-SmartHive.md
+├── How-to-guides/
+│   └── How-to-access-SmartHive-via-Okta-using-SAML.md
+├── Developer-onboarding-docs/
+│   ├── 1-API-overview-SmartHive-Projects.md
+│   └── 2.-OAuth-2.0-authentication-SmartHive-Projects.md
+└── API-references/
+    └── API-references-SmartHive-Projects.md
 ```
