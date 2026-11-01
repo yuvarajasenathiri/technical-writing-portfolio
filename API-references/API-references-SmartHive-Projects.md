@@ -280,7 +280,7 @@ curl -X POST \
 
 **Sample input**
 
-> *Content-Type: application/json
+> *Content-Type: application/json*
 
 ```
 userdetails : [ {
