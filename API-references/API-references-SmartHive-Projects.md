@@ -117,7 +117,6 @@ environment : "production"
   } ]
 }
 ```
-
 ### Get portal details
 
 Use this endpoint to retrieve details of a specific SmartHive Projects portal.
