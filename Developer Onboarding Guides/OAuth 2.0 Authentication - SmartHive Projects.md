@@ -14,8 +14,8 @@
 4.  [Register your application](#Client-registration)
 5.  [Self client](#self-client)
 	  - [Set up a self client](#set-up-a-self-client)
-	  - [Get an access token using authorization code flow](#self-client--authorization-code-flow)
-	  - [Get an access token using client credentials flow](#self-client--client-credentials-flow)
+	  - [Get an access token using authorization code flow](#authorization-code-flow)
+	  - [Get an access token using client credentials flow](#client-credentials-flow)
 6.	[Server-based applications](#server-based-applications)
       - [Overview](#what-are-server-based-apps)
 	  - [Get authorization code](#get-authorization-code)
@@ -204,7 +204,7 @@ see Authorization code flow for self clients.
 Provide your client credentials to get an access token. SmartHive doesn’t provide a refresh token, so when the access token expires, send the same request again to get a new one. For details, 
 see Client credentials flow for self clients.
 
-### Self client - Authorization code flow
+### Authorization code flow
 
 #### Step 1: Generate an authorization code
 
@@ -311,7 +311,7 @@ https://accounts.smarthive.in/oauth/v2/token
     "expires_in": 3600
 }
 ```
-### Self client - Client credentials flow
+### Client credentials flow
 
 #### Step 1: Use the client credentials to get an access token
 
