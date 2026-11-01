@@ -1,4 +1,4 @@
-# Victa installation guide
+# Victa installation manual
 
 - Version: 1.0
 - Last updated: May 2026
@@ -9,9 +9,9 @@
 ## Table of contents
 
 1.  [Introduction](#introduction)
-	  - [Who this guide is for](#who-this-guide-is-for)
+	  - [Who this manual is for](#who-this-manual-is-for)
       - [Deployment options](#deployment-options)
-      - [How to use this guide](#how-to-use-this-guide)
+      - [How to use this manual](#how-to-use-this-manual)
       - [Related documentation](#related-documentation)
 2.  [System requirements](#system-requirements)
       - [Cloud requirements](#cloud-requirements)
@@ -48,9 +48,9 @@
 
 ## Introduction
 
-### Who this guide is for
+### Who this manual is for
 
-This guide is for system administrators and developers who deploy, configure, and maintain Victa for their organization.
+This manual is for system administrators and developers who deploy, configure, and maintain Victa for their organization.
 
 You should be familiar with:
 
@@ -59,7 +59,7 @@ You should be familiar with:
 - Database management (PostgreSQL)
 - Network configuration and DNS management
 
-If you're an end user, see the [Victa User Guide](#) to set up your account after your admin deploys Victa.
+If you're an end user, see the [Victa User manual](#) to set up your account after your admin deploys Victa.
 
 ### Deployment options
 
@@ -72,7 +72,7 @@ Victa supports two deployment models:
 
 Both deployment models provide the same Victa features. The difference is who manages the infrastructure.
 
-### How to use this guide
+### How to use this manual
 
 - To set up Victa Cloud, follow [Cloud deployment](#cloud-deployment).
 - To set up Victa Self-Hosted, review [System requirements](#system-requirements), and then follow [Self-hosted deployment](#self-hosted-deployment).
@@ -82,8 +82,8 @@ Both deployment models provide the same Victa features. The difference is who ma
 
 | Document | Description |
 |---|---|
-| [Victa User Guide](#) | End-to-end guide for support agents and team leads |
-| [Victa Developer's Guide](#) | Technical guide for developers who build on Victa |
+| [Victa User manual](#) | End-to-end manual for support agents and team leads |
+| [Victa Developer's manual](#) | Technical manual for developers who build on Victa |
 | [Victa API Documentation](#) | Complete reference for the Victa API |
 | [Victa Release Notes](#) | Summary of changes in each Victa release |
 
