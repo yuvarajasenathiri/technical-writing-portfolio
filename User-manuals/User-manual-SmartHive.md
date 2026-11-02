@@ -36,7 +36,7 @@
 
 This manual is for support agents and team leads at customer support and SaaS companies who use SmartHive to manage cases and track team performance.
 
-You don't need a technical background to use this manual. If you're a developer or system administrator who wants to configure or integrate SmartHive, see the [SmartHive Developer's manual](../Developer-onboarding-docs/API-overview-SmartHive-Projects.md) and the [SmartHive API Documentation](../API-references/API-references-SmartHive-Projects.md).
+You don't need a technical background to use this manual. If you're a developer or system administrator who wants to configure or integrate SmartHive, see the [SmartHive developer's guide](../Developer-onboarding-docs/API-overview-SmartHive-Projects.md) and the [SmartHive API documentation](../API-references/API-references-SmartHive-Projects.md).
 
 ### What you'll learn
 
@@ -67,12 +67,12 @@ This manual uses the following callouts:
 
 | Document | Description |
 |---|---|
-| [SmartHive Installation manual](Installation-manual-SmartHive.md) | How to set up and deploy SmartHive for your organization |
-| [SmartHive Developer's manual](../Developer-onboarding-docs/API-overview-SmartHive-Projects.md) | Technical manual for developers who build on SmartHive |
-| [SmartHive API Documentation](../API-references/API-references-SmartHive-Projects.md) | Complete reference for the SmartHive API |
-| [SmartHive Mobile App manual](#) | Full list of features that the mobile app supports |
-| [SmartHive Design Document](#) | Architecture and system design documentation |
-| [SmartHive Release Notes](../Release-notes/Victa-4.2-release-notes.md) | Summary of changes in each SmartHive release |
+| [SmartHive installation manual](Installation-manual-SmartHive.md) | How to set up and deploy SmartHive for your organization |
+| [SmartHive developer's guide](../Developer-onboarding-docs/API-overview-SmartHive-Projects.md) | Technical manual for developers who build on SmartHive |
+| [SmartHive API documentation](../API-references/API-references-SmartHive-Projects.md) | Complete reference for the SmartHive API |
+| [SmartHive mobile application manual](#) | Full list of features that the mobile app supports |
+| [SmartHive design document](#) | Architecture and system design documentation |
+| [SmartHive release notes](../Release-notes/Victa-4.2-release-notes.md) | Summary of changes in each SmartHive release |
 
 ---
 

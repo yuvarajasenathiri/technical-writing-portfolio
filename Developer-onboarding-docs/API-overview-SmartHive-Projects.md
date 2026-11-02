@@ -152,7 +152,7 @@ You can define multiple conditions in a single request by using a structured fil
 - **Pattern logic:** Combine conditions by using `AND`, `OR`, and grouping, for example, `"(1 OR 2) AND 3"`.
 - **Custom field support:** Use the `api_name` of any custom field as the criteria `field_name`.
 
-For the complete syntax reference, see the [Filter guide](#filter-guide).
+For the complete syntax reference, see the [filter guide](#filter-guide).
 
 #### Standardized custom fields
 
@@ -185,7 +185,7 @@ Custom fields now use clear, consistent `api_name` values. You can reference the
 
 - **Consistent names:** The same `api_name` works in requests, responses, and `filter criteria`.
 
-For full details, see [Custom fields](#custom-fields).
+For full details, see [custom fields](#custom-fields).
 
 #### Request and response structure
 
@@ -240,6 +240,7 @@ Content-Type: application/json
   ]
 }
 ```
+
 #### Pagination
 
 Pagination is now page-based, which makes it easier to work with large datasets.
@@ -249,12 +250,13 @@ Pagination is now page-based, which makes it easier to work with large datasets.
  - Pagination avoids duplicate or skipped records.
  - You don’t need to calculate offsets manually.
  
-For full details and examples, see [Pagination](#pagination).
+For full details and examples, see [pagination](#pagination).
  
 #### Base URL structure
  
 All v3 endpoints follow a consistent URL pattern. The base URL is simplified and standardized, and trailing slashes aren’t required. This makes it easier to construct and predict endpoint URLs across the 
 API.
+
 |      | v2 | v3 |
 |---|---|---|
 | Base URL    | */restapi/portal/{portal_id}/projects/*    | *api/v3/portal/{portal_id}/projects* |
@@ -602,8 +604,8 @@ The **Fields** section in SmartHive Projects shows the API names for custom fiel
 The Modules API returns metadata for all modules in a portal, including their API names. The Fields API returns metadata for all fields in a module, including API names, data types, and whether each field 
 is custom. Together, they give you a complete reference of the available modules and fields.
 
-- For the list of modules and their API names, see [Get Modules API](../API-references/API-references-SmartHive-Projects.md#get-modules).
-- For field-level details, including API names, see [Get field info for a custom module API](../API-references/API-references-SmartHive-Projects.md#get-field-info-for-a-custom-module).
+- For the list of modules and their API names, see [get modules API](../API-references/API-references-SmartHive-Projects.md#get-modules).
+- For field-level details, including API names, see [get field info for a custom module API](../API-references/API-references-SmartHive-Projects.md#get-field-info-for-a-custom-module).
 
 ### Custom fields
 
@@ -616,7 +618,7 @@ For example, you can use a checkbox custom field to track a project condition an
 **Note:***
 
 - Custom field API names are currently supported only in the Tasks and Projects APIs.
-- Before you pass values, use the [Get field info for a custom module API](../API-references/API-references-SmartHive-Projects.md#get-field-info-for-a-custom-module) to get field details such as API names and field types.
+- Before you pass values, use the [get field info for a custom module API](../API-references/API-references-SmartHive-Projects.md#get-field-info-for-a-custom-module) to get field details such as API names and field types.
 
 #### Field types
 
@@ -894,8 +896,8 @@ The filter payload has two key components, `criteria` and `pattern`. Together, t
 | Property     | Data Type | Description |	
 | :---        | :----  | :---- |
 | `criteria`     | Array       | *required.*<br> The array of conditions. Each property of a condition represents a specific part of it and determines how the API interprets fields, operators, and values during filtering. |
-| &emsp; criteria.`field_name`   | String        | *required.*<br> The API name of the field to filter, for example, `status`, `due_date`, or `name`. To get valid field names for a module, use the [Get field info for a custom module API](../API-references/API-references-SmartHive-Projects.md#get-field-info-for-a-custom-module).     |
-| &emsp; criteria.`criteria_condition`  | String      | *required.*<br> The filter operation. The available conditions depend on the field type. See [Conditions reference](#conditions-reference).   |
+| &emsp; criteria.`field_name`   | String        | *required.*<br> The API name of the field to filter, for example, `status`, `due_date`, or `name`. To get valid field names for a module, use the [get field info for a custom module API](../API-references/API-references-SmartHive-Projects.md#get-field-info-for-a-custom-module).     |
+| &emsp; criteria.`criteria_condition`  | String      | *required.*<br> The filter operation. The available conditions depend on the field type. See [conditions reference](#conditions-reference).   |
 | &emsp; criteria.`value`   | Array<String>    | *optional.*<br> Required for most conditions. Always an array. Omit it for presets (`today`, `is_empty`). `between` requires exactly 2 values. |
 | `pattern`   | String        | *required.*<br> The logic that combines the criteria by using `AND` and `OR`. Reference each criterion by its 1-based index in the array order, for example, `1` for the first criterion and `2` for the second. Example: `"(1 AND 2) OR 3"`      |
 
@@ -1387,7 +1389,7 @@ For detailed information, refer to the [SmartHive OAuth 2.0 documentation](OAuth
 #### Multi DC support
 
 SmartHive operates data centers in multiple regions. If your application serves users across regions, you must enable Multi DC support in the API console and use region-specific endpoints 
-for both OAuth and SmartHive Projects API calls. See [Multi-DC support](../Developer-onboarding-docs/OAuth-2.0-authentication-SmartHive-Projects.md#multi-dc-support).
+for both OAuth and SmartHive Projects API calls. See [multi DC support](../Developer-onboarding-docs/OAuth-2.0-authentication-SmartHive-Projects.md#multi-dc-support).
 
 ### Scopes
 
@@ -1405,7 +1407,7 @@ To request multiple scopes, separate them with commas:
 
 `scope=SmartHiveProjects.projects.READ,SmartHiveProjects.tasks.ALL`
 
-For more details about scope format, see [OAuth Scopes](../Developer-onboarding-docs/OAuth-2.0-authentication-SmartHive-Projects.md#OAuth-scope).
+For more details about scope format, see [OAuth scopes](../Developer-onboarding-docs/OAuth-2.0-authentication-SmartHive-Projects.md#OAuth-scope).
 
 ### Making API calls with access token
 
@@ -1420,11 +1422,11 @@ To authenticate your API calls, include the access token in the `Authorization` 
 Use this method to generate the organization-specific grant token if your application does not have a domain and a redirect URL.
 You can also use this option when your application is a standalone server-side application performing a back-end job.
 
-1. Go to the [SmartHive Developer Console](#), and then sign in with your SmartHive Projects username and password.
+1. Go to the [SmartHive developer console](#), and then sign in with your SmartHive Projects username and password.
 2. From the list of client types, select **Self Client**, and then select **Create Now**.
 3. In the pop-up window, select **OK** to enable a self client for your account. Your client ID and client secret appear on the **Client Secret** tab.
 3. Select the **Generate Code** tab.
-4. In the **Scope** field, enter the required scopes, separated by commas. For a list of valid scopes, see [OAuth Scopes](../Developer-onboarding-docs/OAuth-2.0-authentication-SmartHive-Projects.md#OAuth-scope).
+4. In the **Scope** field, enter the required scopes, separated by commas. For a list of valid scopes, see [OAuth scopes](../Developer-onboarding-docs/OAuth-2.0-authentication-SmartHive-Projects.md#OAuth-scope).
 	**Note:** If you enter one or more incorrect scopes, the system displays the error *“Enter a valid scope.”*
 5. From the **Time Duration** field, select how long the grant token is valid.
 	**Important:** The grant token expires after this time.
@@ -1446,7 +1448,7 @@ values - use it to pick the matching SmartHive Projects base URL from the table 
 | United Kingdom (UK)  | https://projects.smarthive.uk     |
 
 **Important:** Never hardcode a single region's URL. Resolve the user's data center from the `location` / `api_domain` value in the access token response, then use the corresponding SmartHive Projects 
-base URL from the table above. See [Multi-DC support](../Developer-onboarding-docs/OAuth-2.0-authentication-SmartHive-Projects.md#multi-dc-support).
+base URL from the table above. See [multi DC support](../Developer-onboarding-docs/OAuth-2.0-authentication-SmartHive-Projects.md#multi-dc-support).
 
 ### Related resources on OAuth
 
