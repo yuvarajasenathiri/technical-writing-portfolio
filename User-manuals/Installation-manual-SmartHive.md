@@ -59,7 +59,7 @@ You should be familiar with:
 - Database management (PostgreSQL)
 - Network configuration and DNS management
 
-If you're an end user, see the [SmartHive User manual](#) to set up your account after your admin deploys SmartHive.
+If you're an end user, see the [User-manual-SmartHive](./User-manuals/User-manual-SmartHive.md) to set up your account after your admin deploys SmartHive.
 
 ### Deployment options
 
@@ -82,10 +82,10 @@ Both deployment models provide the same SmartHive features. The difference is wh
 
 | Document | Description |
 |---|---|
-| [SmartHive User manual](#) | End-to-end manual for support agents and team leads |
-| [SmartHive Developer's manual](#) | Technical manual for developers who build on SmartHive |
-| [SmartHive API Documentation](#) | Complete reference for the SmartHive API |
-| [SmartHive Release Notes](#) | Summary of changes in each SmartHive release |
+| [SmartHive User manual](./User-manuals/User-manual-SmartHive.md) | End-to-end manual for support agents and team leads |
+| [SmartHive Developer's manual](./Developer-onboarding-docs/API-overview-SmartHive-Projects.md) | Technical manual for developers who build on SmartHive |
+| [SmartHive API Documentation](./API-references/API-references-SmartHive-Projects.md) | Complete reference for the SmartHive API |
+| [Victa Release Notes](./Release-notes/Victa-4.2-release-notes.md) | Summary of changes in each SmartHive release |
 
 ---
 
