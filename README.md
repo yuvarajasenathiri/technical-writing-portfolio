@@ -47,7 +47,7 @@ Detailed endpoints, parameters, and structural schemas.
 - Highlights: Zero post-release documentation corrections on a high-priority B2B integration project
 
 ### Release notes
-explain what has changed, been added, or fixed in a software update
+explain what has changed, been added, or fixed in a software update.
 - 🔗 [Victa-4.2-release-notes.md](./Release-notes/Victa-4.2-release-notes.md)
 - Tools: Arbortext Epic Editor (SGML), SnagIt
 
