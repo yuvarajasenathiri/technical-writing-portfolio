@@ -2,7 +2,7 @@
 
 Use this procedure to reset your forgotten password.
 
-> **Note:** If you remember your password and want only to change it, see [Change your password](How-to-manage-your-SmartHive-account/#change-your-password).
+> **Note:** If you remember your password and want only to change it, see [Change your password](How-to-manage-your-SmartHive-account.md#change-your-password).
 
 ## Table of contents
 
