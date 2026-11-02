@@ -21,7 +21,7 @@ Use this procedure to manage the security, profile, and settings of your SmartHi
       - [Preferences](#preferences)
       - [Authorized websites](#authorized-websites)
       - [Linked accounts](#linked-accounts)
-	  
+
 ----
 
 ## Security
