@@ -43,7 +43,7 @@
 OAuth 2.0 is an industry-standard protocol that lets you grant a third-party website or app (a client) delegated access to protected SmartHive resources through SmartHive APIs. It authenticates and 
 authorizes API requests made to SmartHive.
 
-> For API overview, see [SmartHive API overview](../API-references/API-overview-SmartHive-Projects.md).
+> For API overview, see [SmartHive Projects API overview](../Developer-onboarding-docs/API-overview-SmartHive-Projects.md).
 > For API references, see [SmartHive Projects API references](../API-references/API-references-SmartHive-Projects.md).
 
 ### Advantages of OAuth 2.0

@@ -49,7 +49,7 @@
 
 --------
 
-> For API overview, see [SmartHive Projects API overview](../API-references/API-overview-SmartHive-Projects.md).
+> For API overview, see [SmartHive Projects API overview](../Developer-onboarding-docs/API-overview-SmartHive-Projects.md).
 > For API authentication, see [SmartHive Projects API OAuth 2.0 authentication](../Developer-onboarding-docs/OAuth-2.0-authentication-SmartHive-Projects.md).
 
 ## Portals
