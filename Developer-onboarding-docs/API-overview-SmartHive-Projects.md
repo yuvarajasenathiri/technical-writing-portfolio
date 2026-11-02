@@ -1354,7 +1354,7 @@ Set `module_name` to `tasklist` to filter on the related module’s `name` field
 
 SmartHive Projects APIs use OAuth 2.0 for authentication. This page gives you an overview of the authentication process. 
 
-For complete details on OAuth 2.0 flows, registration, token management, and more, refer to [SmartHive OAuth 2.0 documentation](#OAuth-20-authentication-SmartHive-Projects.md).
+For complete details on OAuth 2.0 flows, registration, token management, and more, refer to [SmartHive OAuth 2.0 documentation](OAuth-2.0-authentication-SmartHive-Projects.md).
 
 ### How it works
 
@@ -1376,13 +1376,13 @@ To maintain uninterrupted access, you can request for an optional refresh token,
 - Refresh tokens can be used to generate new access tokens without requiring user re-authorization.
 - Users can revoke an application's access at any time, which invalidates the associated tokens.
 
-For more details on token management, refer to [SmartHive OAuth 2.0 documentation](#OAuth-20-authentication-SmartHive-Projects.md).
+For more details on token management, refer to [SmartHive OAuth 2.0 documentation](OAuth-2.0-authentication-SmartHive-Projects.md).
 
 #### Different OAuth flows for different app types
 
 SmartHive supports OAuth flows for different application types (server-based, client-based, and self client). You can choose the flow that matches your application.
 
-For detailed information, refer to the [SmartHive OAuth 2.0 documentation](#OAuth-20-authentication-SmartHive-Projects.md).
+For detailed information, refer to the [SmartHive OAuth 2.0 documentation](OAuth-2.0-authentication-SmartHive-Projects.md).
 
 #### Multi DC support
 
