@@ -6,18 +6,18 @@ Use this procedure to reset your forgotten password.
 
 ## Table of contents
 
-1.  - [Prerequisites(#prerequisites)
-2.  - [Reset your password](#reset-your-password)
-3.  - [Verify your identity](#verify-your-identity)
-      - [Verify with an OTP sent to your email address](#verify-with-an-OTP-sent-to-your-email-address)
-      - [Verify with an OTP sent to your mobile number](#verify-with-an-OTP-sent-to-your-mobile-number)
-      - [Verify with a push notification sent to your recovery device](#verify-with-a-push-notification-sent-to-your-recovery-device)
-      - [Verify by proving domain ownership](#verify-by-proving-domain-ownership)
-4.  - [Reset a user's password as an organization admin](#reset-a-user's-password-as-an-organization-admin)
-5.  - [Troubleshooting](#troubleshooting)
-      - [Email address or mobile number verification](#email-address-or-mobile-number-verification)
-      - [Recovery device verification](#recovery-device-verification)
-      - [Domain verification](#domain-verification)
+1. [Prerequisites](#prerequisites)
+2. [Reset your password](#reset-your-password)
+3. [Verify your identity](#verify-your-identity)
+     - [Verify with an OTP sent to your email address](#verify-with-an-OTP-sent-to-your-email-address)
+     - [Verify with an OTP sent to your mobile number](#verify-with-an-OTP-sent-to-your-mobile-number)
+     - [Verify with a push notification sent to your recovery device](#verify-with-a-push-notification-sent-to-your-recovery-device)
+     - [Verify by proving domain ownership](#verify-by-proving-domain-ownership)
+4. [Reset a user's password as an organization admin](#reset-a-user's-password-as-an-organization-admin)
+5. [Troubleshooting](#troubleshooting)
+     - [Email address or mobile number verification](#email-address-or-mobile-number-verification)
+     - [Recovery device verification](#recovery-device-verification)
+     - [Domain verification](#domain-verification)
 ----
 
 ## Prerequisites

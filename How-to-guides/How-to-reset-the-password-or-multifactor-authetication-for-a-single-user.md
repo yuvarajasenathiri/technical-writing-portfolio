@@ -4,10 +4,10 @@ Use this procedure to reset a user's password or multifactor authentication in S
 
 ## Table of contents
 
-1.  - [Prerequisites](#prerequisites)
-2.  - [Select the user](#select-the-user)
-3.  - [Reset the user's password](#reset-the-user's-password)
-4.  - [Reset the user's multifactor authentication](#reset-the-user's-multifactor-authentication)
+1. [Prerequisites](#prerequisites)
+2. [Select the user](#select-the-user)
+3. [Reset the user's password](#reset-the-user's-password)
+4. [Reset the user's multifactor authentication](#reset-the-user's-multifactor-authentication)
 
 ---- 
 

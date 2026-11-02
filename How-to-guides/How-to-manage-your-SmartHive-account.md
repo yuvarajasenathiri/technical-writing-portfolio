@@ -4,20 +4,20 @@ Use this procedure to manage the security, profile, and settings of your SmartHi
 
 ## Table of contents
 
-1.  - [Security](#security)
+1.  [Security](#security)
       - [Change your password](#change-your-password)
       - [Improve your account security](#improve-your-account-security)
       - [Allowed IP address](#allowed-ip-address)
       - [Application-specific passwords](#application-specific-passwords)
       - [Device sign-ins](#device-sign-ins)
-2.  - [Profile](#profile)
+2.  [Profile](#profile)
       - [Change your profile picture](#change-your-profile-picture)
       - [Edit your personal details](#edit-your-personal-details)
       - [Add an email address](#add-an-email-address)
       - [Change your primary email address](#change-your-primary-email-address)
       - [Add a mobile number](#add-a-mobile-number)
       - [Change your primary mobile number](#change-your-primary-mobile-number)
-3.   - [Settings](#settings)
+3.  [Settings](#settings)
       - [Preferences](#preferences)
       - [Authorized websites](#authorized-websites)
       - [Linked accounts](#linked-accounts)
