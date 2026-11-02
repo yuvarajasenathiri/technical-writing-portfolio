@@ -110,7 +110,7 @@ Okta supports only SP-initiated single logout. When your users sign out of Smart
 10. Select **Upload Certificate**.
 11. Select **Next**, and then select **Finish**.
 
-> **Note:** If you encounter errors when signing in with SAML, see the SAML troubleshooting guide.
+> **Note:** If you encounter errors when signing in with SAML, see the [SAML troubleshooting guide](#).
 
 ------
 
