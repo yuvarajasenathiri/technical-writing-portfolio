@@ -131,4 +131,4 @@ Victa 4.2 doesn't introduce breaking changes. Review the following compatibility
 
 ----
 
-*This document is part of the [technical-writing-portfolio](./README.md). Victa is a fictional software product created for the [technical-writing-portfolio](./README.md) repository.*
+*This document is part of the [technical-writing-portfolio](../README.md). Victa is a fictional software product created for the [technical-writing-portfolio](../README.md) repository.*

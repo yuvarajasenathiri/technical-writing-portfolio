@@ -85,7 +85,7 @@ You can verify your identity by using a one-time password (OTP), a push notifica
 
 If you're an administrator of an organization, you can reset passwords for users who can't reset them on their own. The following link provide the option 
 
-To reset users' passwords, see [SmartHive Directory](https://help.SmartHive.com/portal/en/kb/directory/admin-guide/users/articles/reset-password-mfa): Recommended for admins who want to manage users across apps from a single place
+To reset users' passwords, see the [Reset the password or multifactor authentication for a single user](How-to-reset-the-password-or-multifactor-authetication-for-a-single-user) section: Recommended for admins who want to manage users across apps from a single place
 
 ## Troubleshooting
 
@@ -158,5 +158,5 @@ Domain ownership verification might fail for any of the following reasons:
 
 ----
 
-*This document is part of the [technical-writing-portfolio](./README.md). SmartHive is a fictional software product created for the [technical-writing-portfolio](./README.md) repository.*
+*This document is part of the [technical-writing-portfolio](../README.md). SmartHive is a fictional software product created for the [technical-writing-portfolio](../README.md) repository.*
 

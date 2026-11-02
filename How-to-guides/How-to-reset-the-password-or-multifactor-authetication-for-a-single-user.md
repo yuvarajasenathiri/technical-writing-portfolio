@@ -46,4 +46,4 @@ You need the following permissions:
 
 ----
 
-*This document is part of the [technical-writing-portfolio](./README.md). SmartHive is a fictional software product created for the [technical-writing-portfolio](./README.md) repository.*
+*This document is part of the [technical-writing-portfolio](../README.md). SmartHive is a fictional software product created for the [technical-writing-portfolio](../README.md) repository.*
