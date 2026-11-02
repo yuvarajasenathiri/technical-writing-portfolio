@@ -608,8 +608,8 @@ Use this endpoint to activate a specific user in a portal and to restore a deact
 
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects. Get it from the [get all portals with details API](#get-all-portals-with-details)  (the `id` field in the response).|
-| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user. Get it from the [get all portal users and contacts API](#get-all-portal-users-and-contacts). The `id` field in the response is the `user_id`. |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects. <br> Get it from the [get all portals with details API](#get-all-portals-with-details)  (the `id` field in the response).|
+| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user. <br> Get it from the [get all portal users and contacts API](#get-all-portal-users-and-contacts). <br> The `id` field in the response is the `user_id`. |
 
 **Request example**
 
@@ -706,8 +706,8 @@ Use this endpoint to deactivate a specific user in a portal and to revoke a user
 
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects. Get it from the [get all portals with details API](#get-all-portals-with-details)  (the `id` field in the response).|
-| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user. Get it from the [get all portal users and contacts API](#get-all-portal-users-and-contacts). The `id` field in the response is the `user_id`. |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects. <br> Get it from the [get all portals with details API](#get-all-portals-with-details)  (the `id` field in the response).|
+| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user. Get it from the [get all portal users and contacts API](#get-all-portal-users-and-contacts). <br> The `id` field in the response is the `user_id`. |
 
 **Request example**
 
@@ -822,8 +822,8 @@ Use this endpoint to remove a specific user from a portal and to permanently rev
 
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [get all portals with details API](#get-all-portals-with-details)  (the `id` field in the response).|
-| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br>Get it from the [get all portal users and contacts API](#get-all-portal-users-and-contacts).<br>The `id` field in the response is the `user_id`. |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br> Get it from the [get all portals with details API](#get-all-portals-with-details)  (the `id` field in the response).|
+| `user_id`| String<br>digits only ([0-9]+ | Required | The ID of the user.<br> Get it from the [get all portal users and contacts API](#get-all-portal-users-and-contacts).<br> The `id` field in the response is the `user_id`. |
 
 **Request example**
 
@@ -2998,7 +2998,7 @@ ids : 4000000029001
 
 ## Modules
 
-This module covers operations for managing modules in Smarthive Projects. Use the Modules API to get lists of modules and their configuration details.
+This module covers operations for managing modules in Smarthive Projects. Use the modules API to get lists of modules and their configuration details.
 
 ### Get modules
 
