@@ -2546,13 +2546,13 @@ curl -X PATCH \
 |&emsp; project_group.`id` |	String<br>*Maximum length: 30*|  |	The identifier of the project group.<br> Get it from the Get a user’s project groups API](#get-a-user’s-project-groups) (the `id` field in the response).|
 |`tags` |	JSONArray<br*Maximum length: 10,000* |	Optional |The tags for the project.|
 |&emsp; tags.`add`	|JSONArray<br>*Array size: 0 to 5,000*| 	| The tags to add to the project.|
-|&emsp;&emsp; tags.add[].`id` |	String<br>*Maximum length: 30* |  |The identifier of the tag to add.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
+|&emsp;&emsp; tags.add[].`id` |	String<br>*Maximum length: 30* |  |The identifier of the tag to add.<br> Get it from the [get all tags API](#get-all-tags) (the `id` field in the response). |
 |&emsp;  tags.`remove` |	JSONArray<br>*Array size: 0 to 5,000* |	| The tags to remove from the project.|
-|&emsp;&emsp; tags.remove[].`id` |	String<br>*Maximum length: 30* | |	The identifier of the tag to remove.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
-|&emsp; tags[].`id`	| String<br>*Maximum length: 30* |	 | The identifier of the tag.<br> Get it from the [Get all tags API](#get-all-tags) (the `id` field in the response). |
+|&emsp;&emsp; tags.remove[].`id` |	String<br>*Maximum length: 30* | |	The identifier of the tag to remove.<br> Get it from the [get all tags API](#get-all-tags) (the `id` field in the response). |
+|&emsp; tags[].`id`	| String<br>*Maximum length: 30* |	 | The identifier of the tag.<br> Get it from the [get all tags API](#get-all-tags) (the `id` field in the response). |
 | `color` | 	String | 	Optional | The project color. |
-| `business_hours_id` |	String	| Optional | The business hours ID.<br> Get it from the [Get business hours API](#get-business-hours) (the `id` field in the response). |
-| `<field_name>` |	String	| Optional |  The value of a project custom field.<br> Replace `<field_name>` with the custom field’s API name in snake_case, as listed in the Custom Fields Guide.<br> **Note:** The type shows as `String` by default because most basic custom fields accept string values. The value format and input structure depend on the custom field type. For details, see the Custom Fields Guide.|
+| `business_hours_id` |	String	| Optional | The business hours ID.<br> Get it from the [get business hours API](#get-business-hours) (the `id` field in the response). |
+| `<field_name>` |	String	| Optional |  The value of a project custom field.<br> Replace `<field_name>` with the custom field’s API name in snake_case, as listed in the Custom Fields Guide.<br> **Note:** The type shows as `String` by default because most basic custom fields accept string values. The value format and input structure depend on the custom field type. For details, see the [custom fields guide](../Developer-onboarding-docs/API-overview-SmartHive-Projects.md#custom-fields).|
 
 **Sample input**
 
@@ -2837,8 +2837,8 @@ Use this endpoint to move an existing project in the SmartHive Projects portal t
 
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).| 
-| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).| 
+| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [get all projects API](#get-all-projects) (the `id` field in the response). |
 
 **Request example**
 
@@ -2864,8 +2864,8 @@ Use this endpoint to Restore a project from the trash in the SmartHive Projects 
 
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).| 
-| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).| 
+| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [get all projects API](#get-all-projects) (the `id` field in the response). |
 
 **Request example**
 
@@ -2891,8 +2891,8 @@ Use this endpoint to remove a project from the trash permanently.
 
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).| 
-| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [Get all projects API](#get-all-projects) (the `id` field in the response). |
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).| 
+| `project_id` | String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the project in the sepcified portal.<br>Get it from the [get all projects API](#get-all-projects) (the `id` field in the response). |
 
 **Request example**
 
@@ -2924,7 +2924,7 @@ Use this endpoint to retrieve all profiles in a specific portal and their config
 
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
 
@@ -3015,7 +3015,7 @@ Use this endpoint:
 
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
 
@@ -3458,7 +3458,7 @@ Use this endpoint:
 
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
 
@@ -3550,7 +3550,7 @@ Use this endpoint to:
 
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [Get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [get all portals with details API](#get-all-portals-with-details) (the `id` field in the response).|
 
 **Request example**
 
@@ -3565,7 +3565,7 @@ curl -X GET \
 
 |Name	| Data type | Required/Optional |	Description |
 |---|---|---|---| 
-| `module` |	String |	Required | The API name or ID of the module.<br> Get it from the [get modules API](#get-modules)(the `id` field in the response).|
+| `module` |	String |	Required | The API name or ID of the module.<br> Get it from the [get modules API](#get-modules) (the `id` field in the response).|
 | `index` |	Integer | Optional |	The index of the layouts. |
 | `range` |	Integer | Optional |	The range of the layouts. |
 | `page`	| Integer<br>*Default: 1* |	Required | The page number. |
@@ -3897,7 +3897,7 @@ per_page : "10"
 
 ## Module fields
 
-This module covers operations related to managing fields in SmartHive Projects modules. Use the Module Fields API to get field details, create fields, update fields, delete fields, and associate fields 
+This module covers operations related to managing fields in SmartHive Projects modules. Use the module fields API to get field details, create fields, update fields, delete fields, and associate fields 
 with layouts.
 
 ### Get field info for a custom module
