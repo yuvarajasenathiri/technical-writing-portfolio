@@ -18,6 +18,7 @@ Use this procedure to reset your forgotten password.
      - [Email address or mobile number verification](#email-address-or-mobile-number-verification)
      - [Recovery device verification](#recovery-device-verification)
      - [Domain verification](#domain-verification)
+
 ----
 
 ## Prerequisites
@@ -85,7 +86,7 @@ You can verify your identity by using a one-time password (OTP), a push notifica
 
 If you're an administrator of an organization, you can reset passwords for users who can't reset them on their own. The following link provide the option 
 
-To reset users' passwords, see the [Reset the password or multifactor authentication for a single user](How-to-reset-the-password-or-multifactor-authetication-for-a-single-user) section: Recommended for admins who want to manage users across apps from a single place
+To reset users' passwords, see the [Reset the password or multifactor authentication for a single user](How-to-reset-the-password-or-multifactor-authentication-for-a-single-user.md) section: Recommended for admins who want to manage users across apps from a single place
 
 ## Troubleshooting
 
