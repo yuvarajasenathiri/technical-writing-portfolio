@@ -59,7 +59,7 @@ You should be familiar with:
 - Database management (PostgreSQL)
 - Network configuration and DNS management
 
-If you're an end user, see the [User-manual-SmartHive](./User-manuals/User-manual-SmartHive.md) to set up your account after your admin deploys SmartHive.
+If you're an end user, see the [User-manual-SmartHive](User-manual-SmartHive.md) to set up your account after your admin deploys SmartHive.
 
 ### Deployment options
 
@@ -83,9 +83,9 @@ Both deployment models provide the same SmartHive features. The difference is wh
 | Document | Description |
 |---|---|
 | [SmartHive User manual](User-manual-SmartHive.md) | End-to-end manual for support agents and team leads |
-| [SmartHive Developer's manual](./Developer-onboarding-docs/API-overview-SmartHive-Projects.md) | Technical manual for developers who build on SmartHive |
-| [SmartHive API Documentation](./API-references/API-references-SmartHive-Projects.md) | Complete reference for the SmartHive API |
-| [Victa Release Notes](./Release-notes/Victa-4.2-release-notes.md) | Summary of changes in each SmartHive release |
+| [SmartHive Developer's manual](API-overview-SmartHive-Projects.md) | Technical manual for developers who build on SmartHive |
+| [SmartHive API Documentation](API-references-SmartHive-Projects.md) | Complete reference for the SmartHive API |
+| [Victa Release Notes](Victa-4.2-release-notes.md) | Summary of changes in each SmartHive release |
 
 ---
 
@@ -992,4 +992,4 @@ You're locked out of SmartHive after you turn on SSO. To fix the problem:
 
 ---
 
-*This document is part of the [technical-writing-portfolio](./README.md). SmartHive is a fictional product created for the [technical-writing-portfolio](./README.md) repository.*
+*This document is part of the [technical-writing-portfolio](README.md). SmartHive is a fictional product created for the [technical-writing-portfolio](README.md) repository.*
