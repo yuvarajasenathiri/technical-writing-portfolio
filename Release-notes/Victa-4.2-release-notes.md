@@ -5,7 +5,7 @@
 1. [Release summary](#release-summary)
 	- [Version number and build date](#version-number-and-build-date)
 	- [Executive summary of the release](#executive-summary-of-the-release)
-2. [What's new (major features)](#what's-new-(major features)
+2. [What's new (major features)](#what's-new-(major features))
     - [Lien information updates: Key capabilities and how to access](#lien-information-updates-key-capabilities-and-how-to-access)
 3. [Enhancements and improvements](#enhancements-and-improvements)
     - [UI/UX updates](#UI/UX-updates)
@@ -18,7 +18,7 @@
 6. [Migration and upgrade instructions](#migration-and-upgrade-instructions)
 	- [Breaking changes and compatibility warnings](#breaking-changes-and-compatibility-warnings)
 	- [Step-by-step upgrade process](#step-by-step-upgrade-process)
-
+	
 ----	 	 
 
 ## Release summary
