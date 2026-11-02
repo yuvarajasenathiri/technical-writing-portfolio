@@ -31,7 +31,7 @@ Step-by-step walkthroughs for specific configuration tasks.
 - 🔗 [How-to-access-SmartHive-via-Okta-using-SAML.md](./How-to-guides/How-to-access-SmartHive-via-Okta-using-SAML.md)
 - 🔗 [How-to-manage-your-SmartHive-account](./How-to-guides/How-to-manage-your-SmartHive-account.md)
 - 🔗 [How-to-reset-your-SmartHive-account-password](./How-to-guides/How-to-reset-your-SmartHive-account-password.md)
-- 🔗 [How-to-reset-the-password-or-multifactor-authetication-for-a-single-user]((./How-to-guides/How-to-reset-the-password-or-multifactor-authetication-for-a-single-user.md)
+- 🔗 [How-to-reset-the-password-or-multifactor-authetication-for-a-single-user](./How-to-guides/How-to-reset-the-password-or-multifactor-authetication-for-a-single-user.md)
 - Tools: Madcap Flare, Oxygen XML Editor (DITA XML), CCMS, SnagIt
 
 ### Developer onboarding docs
