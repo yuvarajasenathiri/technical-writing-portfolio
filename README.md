@@ -129,8 +129,8 @@ technical-writing-portfolio/
 ├── Developer-onboarding-docs/
 │   ├── API-overview-SmartHive-Projects.md
 │   └── OAuth-2.0-authentication-SmartHive-Projects.md
-└── API-references/
-    └── API-references-SmartHive-Projects.md
+├── API-references/
+│   └── API-references-SmartHive-Projects.md
 └── Release-notes/
     └── Victa-4.2-release-notes.md	
 ```
