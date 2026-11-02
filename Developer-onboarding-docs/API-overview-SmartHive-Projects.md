@@ -1354,7 +1354,7 @@ Set `module_name` to `tasklist` to filter on the related module’s `name` field
 
 SmartHive Projects APIs use OAuth 2.0 for authentication. This page gives you an overview of the authentication process. 
 
-For complete details on OAuth 2.0 flows, registration, token management, and more, refer to [SmartHive OAuth 2.0 documentation](#OAuth-2.0-authentication-SmartHive-Projects.md).
+For complete details on OAuth 2.0 flows, registration, token management, and more, refer to [SmartHive OAuth 2.0 documentation](#OAuth-20-authentication-SmartHive-Projects.md).
 
 ### How it works
 
@@ -1376,18 +1376,18 @@ To maintain uninterrupted access, you can request for an optional refresh token,
 - Refresh tokens can be used to generate new access tokens without requiring user re-authorization.
 - Users can revoke an application's access at any time, which invalidates the associated tokens.
 
-For more details on token management, refer to [SmartHive OAuth 2.0 documentation](#OAuth-2.0-authentication-SmartHive-Projects.md).
+For more details on token management, refer to [SmartHive OAuth 2.0 documentation](#OAuth-20-authentication-SmartHive-Projects.md).
 
 #### Different OAuth flows for different app types
 
 SmartHive supports OAuth flows for different application types (server-based, client-based, and self client). You can choose the flow that matches your application.
 
-For detailed information, refer to the [SmartHive OAuth 2.0 documentation](#OAuth-2.0-authentication-SmartHive-Projects.md).
+For detailed information, refer to the [SmartHive OAuth 2.0 documentation](#OAuth-20-authentication-SmartHive-Projects.md).
 
 #### Multi DC support
 
 SmartHive operates data centers in multiple regions. If your application serves users across regions, you must enable Multi DC support in the API console and use region-specific endpoints 
-for both OAuth and SmartHive Projects API calls. See [Multi-DC Support](../Developer-onboarding-docs/OAuth-2.0-authentication-SmartHive-Projects.md#multi-dc-support).
+for both OAuth and SmartHive Projects API calls. See [Multi-DC support](../Developer-onboarding-docs/OAuth-2.0-authentication-SmartHive-Projects.md#multi-dc-support).
 
 ### Scopes
 
@@ -1446,7 +1446,7 @@ values - use it to pick the matching SmartHive Projects base URL from the table 
 | United Kingdom (UK)  | https://projects.smarthive.uk     |
 
 **Important:** Never hardcode a single region's URL. Resolve the user's data center from the `location` / `api_domain` value in the access token response, then use the corresponding SmartHive Projects 
-base URL from the table above. See [Multi-DC Support](../Developer-onboarding-docs/OAuth-2.0-authentication-SmartHive-Projects.md#multi-dc-support)..
+base URL from the table above. See [Multi-DC support](../Developer-onboarding-docs/OAuth-2.0-authentication-SmartHive-Projects.md#multi-dc-support).
 
 ### Related resources on OAuth
 

@@ -389,7 +389,7 @@ token is valid for 1 hour. For details, see the [get access token API](#get-acce
 3. Step 3:<br> Use the access token to call SmartHiveAPIs and access protected resources. When the access token expires, send a POST request to the `oauth/v2/token` endpoint with the refresh token to get a 
 new access token. For details, see the [refresh access token API](#refresh-access-token).
 
-#### Multi DC support
+#### Multi DC support-
 
 SmartHive stores users’ information in different data centers (DCs). This information isn’t shared between data centers.
 
@@ -652,7 +652,7 @@ Make a GET request to the `oauth/v2/auth` endpoint, and specify the required sco
 2. Step 2:<br>
 Use the access token to call SmartHive APIs and access protected resources. When the access token expires, you can get another one if the user granted access for the entire session in step 1. To get another access token, send a GET request to the `oauth/v2/auth/refresh` endpoint. For details, see the [refresh access token API](#refresh-access-token) reference.
 
-#### Multi DC support
+#### Multi DC support-
 
 SmartHive stores users’ information in different datacenters (DCs). This information isn’t shared between datacenters.
 
