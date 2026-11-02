@@ -27,7 +27,7 @@
      - [Navigate the dashboard](#navigate-the-dashboard)
      - [Install the mobile app](#install-the-mobile-app)
      - [Invite your team](#invite-your-team)
-	 
+
 ----
 
 ## Introduction
