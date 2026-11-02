@@ -83,7 +83,7 @@ Both deployment models provide the same SmartHive features. The difference is wh
 | Document | Description |
 |---|---|
 | [SmartHive User manual](User-manual-SmartHive.md) | End-to-end manual for support agents and team leads |
-| [SmartHive Developer's manual](API-overview-SmartHive-Projects.md) | Technical manual for developers who build on SmartHive |
+| [SmartHive Developer's manual](../Developer-onboarding-docs/API-overview-SmartHive-Projects.md) | Technical manual for developers who build on SmartHive |
 | [SmartHive API Documentation](API-references-SmartHive-Projects.md) | Complete reference for the SmartHive API |
 | [Victa Release Notes](Victa-4.2-release-notes.md) | Summary of changes in each SmartHive release |
 
