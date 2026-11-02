@@ -10,13 +10,15 @@ Implemented scalable structured-authoring and single-source publishing practices
 
 Implemented Docs-as-Code practices using Markdown, Git/GitHub, CI/CD pipelines, and Postman, integrating documentation delivery with Agile sprints, SDLC, and DDLC to improve release readiness, streamline documentation workflows, and synchronize technical content with product development and release cycles.
 
-Currently: Lead Engineer - Technical Writing at R Systems International, Chennai. Targeting Senior/Lead Technical Writer roles in Chennai/Bangalore.
+Currently: Lead Engineer - Technical Writing at R Systems International, Chennai. Targeting Senior/Lead Technical Writer roles in Chennai/Bangalore/Hyderabad.
 
 📫 yuvarajasenathiri@gmail.com · 📱 +91 8870311052 · [LinkedIn](https://www.linkedin.com/in/yuvaraja-senathiri-thulasiraman-02200217a/)
 
----
+----
 
 ## 📄 Documentation samples
+
+>*SmartHive, SmartHive Projects APIs, and Victa are a fictional software products created for the [technical-writing-portfolio](./README.md) repository.*
 
 ### User manuals
 End-user guidance and setup workflows.
@@ -27,12 +29,15 @@ End-user guidance and setup workflows.
 ### How-to guides
 Step-by-step walkthroughs for specific configuration tasks.
 - 🔗 [How-to-access-SmartHive-via-Okta-using-SAML.md](./How-to-guides/How-to-access-SmartHive-via-Okta-using-SAML.md)
+- 🔗 [How-to-manage-your-SmartHive-account](./How-to-guides/How-to-manage-your-SmartHive-account.md)
+- 🔗 [How-to-reset-your-SmartHive-account-password](./How-to-guides/How-to-reset-your-SmartHive-account-password.md)
+- 🔗 [How-to-reset-the-password-or-multifactor-authetication-for-a-single-user]((./How-to-guides/How-to-reset-the-password-or-multifactor-authetication-for-a-single-user.md)
 - Tools: Madcap Flare, Oxygen XML Editor (DITA XML), CCMS, SnagIt
 
 ### Developer onboarding docs
 Getting started guides for developers integrating with SmartHive.
-- 🔗 [API-overview-SmartHive-Projects.md](./Developer-onboarding-docs/1-API-overview-SmartHive-Projects.md)
-- 🔗 [OAuth-2.0-authentication-SmartHive-Projects.md](./Developer-onboarding-docs/2.-OAuth-2.0-authentication-SmartHive-Projects.md)
+- 🔗 [API-overview-SmartHive-Projects.md](./Developer-onboarding-docs/API-overview-SmartHive-Projects.md)
+- 🔗 [OAuth-2.0-authentication-SmartHive-Projects.md](./Developer-onboarding-docs/OAuth-2.0-authentication-SmartHive-Projects.md)
 - Tools: Markdown, Docs-as-code (Git/GitHub)
 
 ### API references
@@ -41,7 +46,12 @@ Detailed endpoints, parameters, and structural schemas.
 - Tools: Markdown, Docs-as-code (Git/GitHub) Swagger/OpenAPI, Postman
 - Highlights: Zero post-release documentation corrections on a high-priority B2B integration project
 
----
+### Release notes
+explain what has changed, been added, or fixed in a software update
+- 🔗 [Victa-4.2-release-notes.md](./Release-notes/Victa-4.2-release-notes.md)
+- Tools: Arbortext Epic Editor (SGML), SnagIt
+
+----
 
 ## 🛠 Technical skills
 
@@ -113,9 +123,15 @@ technical-writing-portfolio/
 │   └── User-manual-SmartHive.md
 ├── How-to-guides/
 │   └── How-to-access-SmartHive-via-Okta-using-SAML.md
+│   └── How-to-manage-your-SmartHive-account.md
+│   └── How-to-reset-your-SmartHive-account-password.md
+│   └── How-to-reset-the-password-or-multifactor-authetication-for-a-single-user.md
 ├── Developer-onboarding-docs/
-│   ├── 1-API-overview-SmartHive-Projects.md
-│   └── 2.-OAuth-2.0-authentication-SmartHive-Projects.md
+│   ├── API-overview-SmartHive-Projects.md
+│   └── OAuth-2.0-authentication-SmartHive-Projects.md
 └── API-references/
     └── API-references-SmartHive-Projects.md
+└── Release-notes/
+    └── Victa-4.2-release-notes.md	
 ```
+----

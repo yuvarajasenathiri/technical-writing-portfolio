@@ -1,6 +1,6 @@
 # Access SmartHive through Okta by using SAML
 
-You can configure SAML-based single sign-on (SSO) with Okta as your identity provider (IdP), so your users can sign in to SmartHive.
+Use this procedure to configure SAML-based single sign-on (SSO) with Okta as your identity provider (IdP), so your users can sign in to SmartHive.
 
 ----
 
@@ -114,7 +114,7 @@ Okta supports only SP-initiated single logout. When your users sign out of Smart
 
 ------
 
-*This document is part of the [technical-writing-portfolio](./README.md). SmartHive is a fictional product created for the [technical-writing-portfolio](./README.md) repository.*
+*This document is part of the [technical-writing-portfolio](./README.md). SmartHive is a fictional software product created for the [technical-writing-portfolio](./README.md) repository.*
 
 
 

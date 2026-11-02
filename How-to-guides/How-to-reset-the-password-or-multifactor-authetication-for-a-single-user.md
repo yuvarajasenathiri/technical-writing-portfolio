@@ -1,6 +1,15 @@
 # Reset the password or multifactor authentication for a single user
 
-Use this procedure to reset a user's password or multifactor authentication in Zoho Directory.
+Use this procedure to reset a user's password or multifactor authentication in SmartHive.
+
+## Table of contents
+
+1.  - [Prerequisites](#prerequisites)
+2.  - [Select the user](#select-the-user)
+3.  - [Reset the user's password](#reset-the-user's-password)
+4.  - [Reset the user's multifactor authentication](#reset-the-user's-multifactor-authentication)
+
+---- 
 
 ## Prerequisites
 
@@ -11,7 +20,7 @@ You need the following permissions:
 
 ## Select the user
 
-1. Sign in to [Zoho Directory](https://directory.zoho.com/).
+1. Sign in to [SmartHive](https://directory.SmartHive.com/).
 2. In the left menu, select **Admin Panel**.
 3. Go to **User Management**. The **Users** tab opens by default.
 4. Select the user whose password or multifactor authentication you want to reset.
@@ -34,3 +43,7 @@ You need the following permissions:
 1. Select **Reset MFA**, and then enter your password to confirm the reset of the user's multifactor authentication mode.
 2. Select **Yes, Reset**.
 3. In the confirmation dialog that appears, select **Yes, Reset**.
+
+----
+
+*This document is part of the [technical-writing-portfolio](./README.md). SmartHive is a fictional software product created for the [technical-writing-portfolio](./README.md) repository.*

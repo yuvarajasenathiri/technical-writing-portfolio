@@ -1457,7 +1457,7 @@ base URL from the table above. See Multi-DC Support.
 
 ----
 
-*This document is part of the [technical-writing-portfolio](./README.md). SmartHive Projects is a fictional product created for the [technical-writing-portfolio](./README.md) repository.*
+*This document is part of the [technical-writing-portfolio](./README.md). SmartHive Projects is a fictional software product created for the [technical-writing-portfolio](./README.md) repository.*
 
 
 

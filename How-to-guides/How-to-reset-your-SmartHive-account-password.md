@@ -1,6 +1,8 @@
-# Reset your password
+# Reset your SmartHive account password
 
-> **Note:** If you remember your password and want only to change it, see [Change your password](https://help.SmartHive.com/portal/en/kb/accounts/manage-your-SmartHive-account/articles/securing-your-SmartHive-account#Change_Password). This article describes how to reset a forgotten password.
+Use this procedure to reset your forgotten password.
+
+> **Note:** If you remember your password and want only to change it, see [Change your password](https://help.SmartHive.com/portal/en/kb/accounts/manage-your-SmartHive-account/articles/securing-your-SmartHive-account#Change_Password).
 
 ## Table of contents
 
@@ -156,5 +158,5 @@ Domain ownership verification might fail for any of the following reasons:
 
 ----
 
-*This document is part of the [technical-writing-portfolio](./README.md). SmartHive is a fictional product created for the [technical-writing-portfolio](./README.md) repository.*
+*This document is part of the [technical-writing-portfolio](./README.md). SmartHive is a fictional software product created for the [technical-writing-portfolio](./README.md) repository.*
 

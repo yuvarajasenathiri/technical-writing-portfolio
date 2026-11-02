@@ -1,6 +1,6 @@
 # Manage your SmartHive account
 
-This guide describes how to manage the security, profile, and settings of your SmartHive account.
+Use this procedure to manage the security, profile, and settings of your SmartHive account.
 
 ## Table of contents
 
@@ -272,4 +272,4 @@ To remove a linked account:
 
 ----
 
-*This document is part of the [technical-writing-portfolio](./README.md). SmartHive is a fictional product created for the [technical-writing-portfolio](./README.md) repository.*
+*This document is part of the [technical-writing-portfolio](./README.md). SmartHive is a fictional software product created for the [technical-writing-portfolio](./README.md) repository.*
