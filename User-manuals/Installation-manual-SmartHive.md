@@ -84,8 +84,8 @@ Both deployment models provide the same SmartHive features. The difference is wh
 |---|---|
 | [SmartHive User manual](User-manual-SmartHive.md) | End-to-end manual for support agents and team leads |
 | [SmartHive Developer's manual](../Developer-onboarding-docs/API-overview-SmartHive-Projects.md) | Technical manual for developers who build on SmartHive |
-| [SmartHive API Documentation](API-references-SmartHive-Projects.md) | Complete reference for the SmartHive API |
-| [Victa Release Notes](Victa-4.2-release-notes.md) | Summary of changes in each SmartHive release |
+| [SmartHive API Documentation](../API-references/API-references-SmartHive-Projects.md) | Complete reference for the SmartHive API |
+| [SmartHive Release Notes](../Release-notes/Victa-4.2-release-notes.md) | Summary of changes in each SmartHive release |
 
 ---
 
@@ -747,7 +747,7 @@ For self-hosted deployments, set up regular backups of your SmartHive database.
 
 ### Upgrade a cloud deployment
 
-SmartHive Cloud updates automatically, so you don't need to take any action. SmartHive publishes release notes for all updates in the [SmartHive Release Notes](#).
+SmartHive Cloud updates automatically, so you don't need to take any action. SmartHive publishes release notes for all updates in the [SmartHive Release Notes](../Release-notes/Victa-4.2-release-notes.md).
 
 ### Upgrade a self-hosted deployment
 
@@ -992,4 +992,4 @@ You're locked out of SmartHive after you turn on SSO. To fix the problem:
 
 ---
 
-*This document is part of the [technical-writing-portfolio](README.md). SmartHive is a fictional product created for the [technical-writing-portfolio](README.md) repository.*
+*This document is part of the [technical-writing-portfolio](../README.md). SmartHive is a fictional product created for the [technical-writing-portfolio](../README.md) repository.*
