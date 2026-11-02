@@ -34,7 +34,7 @@ SmartHive Projects provides REST APIs to manage your projects, connect third-par
 
 **API Root Endpoint:** `https://projects.smartHive.com`
 
-For all API references, see [SmartHive API documentation](../API-references/API-references-SmartHive-Projects.md)
+For all API references, see [SmartHive API documentation](../API-references/API-references-SmartHive-Projects.md).
 
 ## Getting started
 

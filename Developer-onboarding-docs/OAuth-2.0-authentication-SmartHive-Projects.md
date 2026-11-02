@@ -43,6 +43,9 @@
 OAuth 2.0 is an industry-standard protocol that lets you grant a third-party website or app (a client) delegated access to protected SmartHive resources through SmartHive APIs. It authenticates and 
 authorizes API requests made to SmartHive.
 
+> For API overview, see [SmartHive API overview](../API-references/API-overview-SmartHive-Projects.md).
+> For all API references, see [SmartHive API references](../API-references/API-references-SmartHive-Projects.md).
+
 ### Advantages of OAuth 2.0
 
 - Clients don’t need to support password authentication or store user credentials, because OAuth tokens handle authentication and authorization.
@@ -52,7 +55,7 @@ authorizes API requests made to SmartHive.
 
 ### OAuth 2.0 workflow
 
-`Refer to the OAuth 2.0 [glossary](#glossary) section to understand more about the terms used here.`
+> Refer to the OAuth 2.0 [glossary](#glossary) section to understand more about the terms used here.`
 
 #### Step 1: Register your app and get OAuth credentials
 
@@ -74,7 +77,7 @@ To learn about the workflows for each client type, see the following pages:
 #### Step 3: Access the resource using the access token
 
 After your app has the access token, it can access protected SmartHive resources. When your app gives the access token to the resource server, the server grants access based on the scopes defined in the request. 
-SmartHive’s OAuth implementation uses the [Bearer authentication scheme](https://datatracker.ietf.org/doc/html/rfc6750). When you make API calls, pass the access token in the `Authorization` header with the prefix `Bearer`.
+SmartHive’s OAuth implementation uses the [bearer authentication scheme](https://datatracker.ietf.org/doc/html/rfc6750). When you make API calls, pass the access token in the `Authorization` header with the prefix `Bearer`.
 
 Syntax: `Authorization: Bearer <space> {access-token-value}`
 Example: `Authorization: Bearer 1000.2deaf8d0c2...`
@@ -512,7 +515,7 @@ https://accounts.smarthive.com/oauth/v2/token
 | `access_token` |	The token your app uses to access the resources defined by the requested scopes. The token is valid for 1 hour. |
 | `refresh_token` |	A token your app can use to [refresh the access token](#refresh-access-token) after it expires. The response includes the refresh token if you set the `access_type` parameter to `offline` in the [authorization code request](#get-authorization-code) (the first time you make it). |
 | `api_domain`	| The domain your app sends API requests to when it accesses protected resources. |
-| `token_type` | The type of access token that’s generated. SmartHive issues [Bearer](https://datatracker.ietf.org/doc/html/rfc6750) tokens. When your app makes API requests to access protected resources, send the access token in the `Authorization header`. **Syntax:** `Authorization: Bearer {access token}`
+| `token_type` | The type of access token that’s generated. SmartHive issues [bearer](https://datatracker.ietf.org/doc/html/rfc6750) tokens. When your app makes API requests to access protected resources, send the access token in the `Authorization header`. **Syntax:** `Authorization: Bearer {access token}`
 | `expires_in` |	The time, in seconds, until the access token expires. An access token lasts 1 hour (3,600 seconds). |
 
 **Response example**
@@ -569,7 +572,7 @@ https://accounts.smarthive.com/oauth/v2/token
 |---|---| 
 | `access_token` | The token your app uses to access the resources defined by the requested scopes. The token is valid for 1 hour. |
 | `api_domain` | The domain your app sends API requests to when it accesses protected resources. |
-| `token_type` | The type of access token that’s generated. SmartHive issues [Bearer](https://datatracker.ietf.org/doc/html/rfc6750) tokens. When your app makes API requests to access protected resources, send the access token in the `Authorization header`.<br> **Syntax:** `Authorization: Bearer {access token}` |
+| `token_type` | The type of access token that’s generated. SmartHive issues [bearer](https://datatracker.ietf.org/doc/html/rfc6750) tokens. When your app makes API requests to access protected resources, send the access token in the `Authorization header`.<br> **Syntax:** `Authorization: Bearer {access token}` |
 | `expires_in`| The time, in seconds, until the access token expires. An access token lasts 1 hour (3,600 seconds). |
 
 **Response example**
@@ -834,7 +837,7 @@ When you turn on multi DC support, you can use a separate client secret for each
 	
 ### Workflow for server-based applications
 
-The multi DC flow for [Server-based applications](#server-based-applications) has these steps:
+The multi DC flow for [server-based applications](#server-based-applications) has these steps:
 
 1. Identify the user’s location in the authorization request
 
@@ -886,7 +889,7 @@ Send requests to the service you want to access through the `api_domain` value f
 
 ### Workflow for client-based applications
 
-The multi DC flow for [Client-based applications](#client-based-applications) has these steps:
+The multi DC flow for [client-based applications](#client-based-applications) has these steps:
 
 1. Identify the user’s location in the access token request
 
@@ -1055,7 +1058,7 @@ Make a POST request to the `oauth/v2/revoke/token` endpoint. You can revoke both
 
 | Header |	Description |
 |---|---| 
-| `Authorization` |	*Required*.<br> Your app’s Base64-encoded credentials (the client ID and client secret), sent with the `Basic` scheme.<br> Syntax: `Authorization: Basic {Base64Encoded(client_id:client_secret)}`<br>Example: `Authorization: Basic MTAwMC5IVUZBV0xBO.......`<br> If your app is a [Client-based applications](#client-based-applications), you don’t need to include `client_secret`. Otherwise, `client_secret` is required. |
+| `Authorization` |	*Required*.<br> Your app’s Base64-encoded credentials (the client ID and client secret), sent with the `Basic` scheme.<br> Syntax: `Authorization: Basic {Base64Encoded(client_id:client_secret)}`<br>Example: `Authorization: Basic MTAwMC5IVUZBV0xBO.......`<br> If your app is a [client-based applications](#client-based-applications), you don’t need to include `client_secret`. Otherwise, `client_secret` is required. |
 
 **Parameters**
 
@@ -1160,4 +1163,4 @@ client reaches the limit, SmartHive throws the `access_denied` exception for the
 ```
 ----
 
-*This document is part of the [technical-writing-portfolio](./README.md). SmartHive Projects is a fictional software product created for the [technical-writing-portfolio](./README.md) repository.*
+*This document is part of the [technical-writing-portfolio](../README.md). SmartHive Projects is a fictional software product created for the [technical-writing-portfolio](../README.md) repository.*
