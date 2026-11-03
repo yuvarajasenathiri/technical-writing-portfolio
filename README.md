@@ -1,6 +1,6 @@
 # Hi, I'm Yuvaraja Senathiri 👋
 
-**Senior Technical Writer | API Documentation Specialist | Information Developer/Architecture**
+**Senior Technical Writer** | **API Documentation Specialist** | **Information Developer/Architecture**
 
 9+ years delivering end-to-end technical documentation for B2B SaaS, Enterprise Software, Fintech, Manufacturing Execution Systems (MES), Cloud-Based Applications, and Embedded Software, creating enterprise-grade, user-centric, and developer-focused content.
 
@@ -18,7 +18,7 @@ Currently: Lead Engineer - Technical Writing at R Systems International, Chennai
 
 ## 📄 Documentation samples
 
->*SmartHive, SmartHive Projects APIs, and Victa are a fictional software products created for the [technical-writing-portfolio](./README.md) repository.*
+>**Info:** *SmartHive, SmartHive Projects APIs, and Victa are fictional software products created for the [technical-writing-portfolio](./README.md) repository.*
 
 ### User manuals
 End-user guidance and setup workflows.
