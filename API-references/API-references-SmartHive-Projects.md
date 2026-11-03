@@ -19,7 +19,7 @@
      - [Get associated projects](#get-associated-projects)
      - [Get all portal users and contacts](#get-all-portal-users-and-contacts)
 3.  [Project users](#project-users)
-     - [Get all users](#Get-all-users)
+     - [Get all users](#get-all-users)
      - [Add a project user](#add-a-project-user)
      - [Update a project user details](#update-a-project-user-details)
      - [Delete a project user](#delete-a-project-user)
@@ -37,15 +37,15 @@
      - [Get Modules](#get-modules)
      - [Get Global Statuses](#get-global-statuses)
 7.  [Module layouts](#module-layouts)
-     - [Get a layout list](#get-a-module-list)
+     - [Get a layout list](#get-a-layout-list)
 8.  [Project groups](#project-groups)
-     - [Get a user’s project groups](#get-a-user’s-project-groups)
+     - [Get a user’s project groups](#get-a-users-project-groups)
 9.  [Tags](#tags)
      - [Get all tags](#get-all-tags)
 9.  [Business hours](#business-hours)
      - [Get business hours](#get-business-hours)
 10. [Module fields](#module-fields)
-     - [Get field info for a custom module](#Get-field-info-for-a-custom-module)
+     - [Get field info for a custom module](#get-field-info-for-a-custom-module)
 
 --------
 
@@ -2181,14 +2181,14 @@ curl -X POST \
 | `description` |	String<br>*Maximum length: 80,000* | Optional |	The project description. | 
 | `project_type` |	String | Optional |	The project type.<br> Accepted values: `active` or `template`.| 
 | `owner`| 	JSONObject| Required 	| The project owner.|
-|&emsp;owner.`zpuid`|	String|	| The user ID of the project owner.<br> Get it from the [get all portal users and contacts API](#get-all-portal-users-and-contacts) (the `id` field in the response).
+|&emsp;owner.`zpuid`|	String|	| The user ID of the project owner.<br> Get it from the [get all portal users and contacts API](#get-all-portal-users-and-contacts)  (the `id` field in the response).
 | `is_public_project` | 	Boolean	| Optional | Whether the project is public.<br> Accepted values: `true` or `false`. |
 | `start_date`	| String<br> *format:YYYY-MM-DD* | Optional |	The start date of the project.|
 | `end_date` |	String<br>*format:YYYY-MM-DD* |Optional |	The end date of the project. |
 | `status` | 	JSONObject<br>  *Maximum length: 1,000*| Optional	| The status of the project.| 
 |&emsp;status.`id` | 	String<br>*Maximum length: 30* |  |	The identifier of the status.<br> Get it from the [get global statuses API](#get-global-statuses).|
 | `layout`	| JSONObject<br>*Maximum length: 1,000*	| Optional |The project layout details.|
-|&emsp;layout.`id` |	String<br>*Maximum length: 30*|  |	The identifier of the layout.<br> Get it from the [get a layout list API](#get-a-module-list)  (the `id` field in the response). |
+|&emsp;layout.`id` |	String<br>*Maximum length: 30*|  |	The identifier of the layout.<br> Get it from the [get a layout list API](#get-a-layout-list)  (the `id` field in the response). |
 | `added_via` |	String | Optional |	The source of the project.<br> Accepted values: `web` or `api`. |
 | `is_rollu1p_project` | 	Boolean	| Optional | Whether the project is a roll-up project.<br> Accepted values: `true` or `false`.  |
 | `budget_info` | 	JSONObject<br> *Maximum length: 80,000* | Optional	| The project budget details.|
@@ -2213,7 +2213,7 @@ curl -X POST \
 |&emsp; budget_info.`budget_threshold`	|JSONObject|   |	The budget threshold details.|
 |&emsp;&emsp; budget_info.budget_threshold.`amount`|	double |  |	The budget threshold amount. |
 |`project_group`|	JSONObject<br>*Maximum length: 1,000*|	Optional |The project group details.|
-|&emsp; project_group.`id` |	String<br>*Maximum length: 30*|  |	The identifier of the project group.<br> Get it from the [get a user’s project groups API](#get-a-user’s-project-groups)  (the `id` field in the response).|
+|&emsp; project_group.`id` |	String<br>*Maximum length: 30*|  |	The identifier of the project group.<br> Get it from the [get a user’s project groups API](#get-a-users-project-groups)  (the `id` field in the response).|
 |`sub_module_settings` |	JSONObject |	| The sub-module settings, which declare sub-module configurations. |
 |&emsp; sub_module_settings.`sub_module_layouts_configuration` |	JSONObject |  |	The sub-module layouts. |
 |`tags` |	JSONArray<br*Maximum length: 10,000* | Optional 	|The tags for the project.|
@@ -2512,7 +2512,7 @@ curl -X PATCH \
 | `description` |	String<br>*Maximum length: 80,000* | Optional |	The project description. | 
 | `project_type` |	String | Optional |	The project type.<br> Accepted values: `active` or `template`.| 
 | `owner`| 	JSONObject | Required	| The project owner.|
-|&emsp; owner.`zpuid`|	String|	 | The user ID of the project owner.<br> Get it from the [get all users API](#Get-all-users)  (the `id` field in the response).
+|&emsp; owner.`zpuid`|	String|	 | The user ID of the project owner.<br> Get it from the [get all users API](#get-all-users)  (the `id` field in the response).
 | `is_public_project` | 	Boolean	| Optional | Whether the project is public.<br> Accepted values: `true` or `false`. |
 | `start_date`	| String<br> *format:YYYY-MM-DD* | Optional |	The start date of the project.|
 | `end_date` |	String<br>*format:YYYY-MM-DD* |Optional |	The end date of the project. |
@@ -2520,7 +2520,7 @@ curl -X PATCH \
 | `status` | 	JSONObject<br>  *Maximum length: 1,000*| Optional	| The status of the project.| 
 |&emsp; status.`id` | 	String<br>*Maximum length: 30* |  |	The identifier of the status.<br> Get it from the [get global statuses API](#get-global-statuses).|
 | `layout`	| JSONObject<br>*Maximum length: 1,000*	| Optional |The project layout details.|
-|&emsp; layout.`id` |	String<br>*Maximum length: 30*|  |	The identifier of the layout.<br> Get it from the [get a layout list API](#get-a-module-list)  (the `id` field in the response). |
+|&emsp; layout.`id` |	String<br>*Maximum length: 30*|  |	The identifier of the layout.<br> Get it from the [get a layout list API](#get-a-layout-list)  (the `id` field in the response). |
 | `added_via` |	String | Optional |	The source of the project.<br> Accepted values: `web` or `api`. |
 | `is_rollu1p_project` | 	Boolean	| Optional | Whether the project is a roll-up project.<br> Accepted values: `true` or `false`.  |
 |  `budget_info` | 	JSONObject<br> *Maximum length: 80,000* | Optional	| The project budget details.|
@@ -2543,7 +2543,7 @@ curl -X PATCH \
 |&emsp; budget_info.`revenue_budget` |	JSONObject |	|The revenue budget.|
 |&emsp;&emsp; budget_info.revenue_budget.`amount`	|double|  |	The revenue budget amount.|
 |`project_group`|	JSONObject<br>*Maximum length: 1,000*|	Optional |The project group details.|
-|&emsp; project_group.`id` |	String<br>*Maximum length: 30*|  |	The identifier of the project group.<br> Get it from the [get a user’s project groups API](#get-a-user’s-project-groups)  (the `id` field in the response).|
+|&emsp; project_group.`id` |	String<br>*Maximum length: 30*|  |	The identifier of the project group.<br> Get it from the [get a user’s project groups API](#get-a-users-project-groups)  (the `id` field in the response).|
 |`tags` |	JSONArray<br*Maximum length: 10,000* |	Optional |The tags for the project.|
 |&emsp; tags.`add`	|JSONArray<br>*Array size: 0 to 5,000*| 	| The tags to add to the project.|
 |&emsp;&emsp; tags.add[].`id` |	String<br>*Maximum length: 30* |  |The identifier of the tag to add.<br> Get it from the [get all tags API](#get-all-tags)  (the `id` field in the response). |
@@ -2910,7 +2910,7 @@ curl -X DELETE \
 
 ## Profiles
 
-This module covers profile-related operations in Smarthive Projects. Use the Profiles API to manage portal profiles, update profile permissions, and set default profiles for your users.
+This module covers profile-related operations in SmartHive Projects. Use the Profiles API to manage portal profiles, update profile permissions, and set default profiles for your users.
 
 ### Get all portal profiles
 
@@ -2933,6 +2933,7 @@ curl -X GET \
  'https://projects.smarthive.com/api/v3/portal/[PORTAL_ID]/profiles?sort_by=ASC%28last_updated_time%29&page=1&per_page=10&filter=%7B%22criteria%22%3A%5B%7B%22module%22%3A%22-%22%2C%22field_name%22%3A%22project%22%2C%22module_name%22%3A%22task%22%2C%22criteria_condition%22%3A%22contains%22%2C%22value%22%3A%5B1752587000000097269%5D%7D%5D%2C%22pattern%22%3A%221%22%7D&ids=4000000029001' \
  -H 'Authorization: Bearer 1000.03xxxxxxxxxxxxxxxxxa5317.dxxxxxxxxxxxxxxxxxfa'
 ```
+
 **Query parameters**
 
 > In the following table, a dot in a name shows that the parameter is a property of the object before it, and [] shows an array item.
@@ -3662,7 +3663,7 @@ Use this endpoint to retrieve the project groups associated with a user.
 
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [get all portals with details API](#get-all-portals-with-details-API)  (the `id` field in the response).|
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [get all portals with details API](#get-all-portals-with-details)  (the `id` field in the response).|
 
 **Request example**
 
@@ -3716,7 +3717,7 @@ Use this endpoint to retrieve all tags in the SmartHive Projects portal.
 
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [get all portals with details API](#get-all-portals-with-details-API)  (the `id` field in the response).|
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [get all portals with details API](#get-all-portals-with-details)  (the `id` field in the response).|
 
 **Request example**
 
@@ -3803,7 +3804,7 @@ Use this endpoint to retrieve the list of business hours in the SmartHive Projec
 
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [get all portals with details API](#get-all-portals-with-details-API)  (the `id` field in the response).|
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [get all portals with details API](#get-all-portals-with-details)  (the `id` field in the response).|
 
 **Request example**
 
@@ -3915,7 +3916,7 @@ Use this endpoint:
 
 | Name |	Data type | Required/Optional |	Description |
 |---|---|---|---| 
-| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [get all portals with details API](#get-all-portals-with-details-API)  (the `id` field in the response).|
+| `portal_id` |	String<br>digits only ([0-9]+ 	| Required | The unique, immutable identifier of the portal in SmartHive Projects.<br>Get it from the [get all portals with details API](#get-all-portals-with-details)  (the `id` field in the response).|
 
 **Request example**
 
